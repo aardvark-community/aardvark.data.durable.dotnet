@@ -1,0 +1,10 @@
+type project
+id Aardvark.Data.Durable
+authors Aardworx GmbH
+owners Aardworx GmbH
+projectUrl https://github.com/aardvark-community/aardvark.data.durable.dotnet
+licenseUrl https://github.com/aardvark-community/aardvark.data.durable.dotnet/blob/master/LICENSE
+description
+    .NET types for Aardvark durable data definitions.
+    See https://github.com/aardvark-community/aardvark.data.durable.definitions.
+include-pdbs true
