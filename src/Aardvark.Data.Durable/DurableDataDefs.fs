@@ -1378,6 +1378,15 @@ module Durable =
             IsArray = false
             }
 
+        /// Octree. Per-point colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. UInt16[].
+        let ColorsRGB565 = addDef {
+            Id = Guid("bf36c54b-f199-4138-a32f-c089cf527dad")
+            Name = "Octree.Colors.RGB565"
+            Description = "Octree. Per-point colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. UInt16[]."
+            Type = Primitives.UInt16Array.Id
+            IsArray = false
+            }
+
         /// Octree. Per-point intensities. Int32[].
         let Intensities1i = addDef {
             Id = Guid("361027fd-ac58-4de8-89ee-98695f8c5520")
