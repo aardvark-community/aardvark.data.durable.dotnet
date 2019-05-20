@@ -1142,6 +1142,24 @@ module Durable =
             IsArray = true
             }
 
+        /// Data of an Aardvark.Geometry.PointRkdTreeF.
+        let PointRkdTreeFData = addDef {
+            Id = Guid("c5e8c7d1-3b0f-4221-8ad8-443ff1994979")
+            Name = "PointRkdTreeFData"
+            Description = "Data of an Aardvark.Geometry.PointRkdTreeF."
+            Type = None
+            IsArray = false
+            }
+
+        /// Data of an Aardvark.Geometry.PointRkdTreeD.
+        let PointRkdTreeDData = addDef {
+            Id = Guid("ad480012-bcfc-4d0c-ae74-c6f629e7fa87")
+            Name = "PointRkdTreeDData"
+            Description = "Data of an Aardvark.Geometry.PointRkdTreeD."
+            Type = None
+            IsArray = false
+            }
+
     module Octree =
 
         /// Octree. An octree node. DurableMap.
@@ -1464,6 +1482,42 @@ module Durable =
             Id = Guid("4e6842a2-3c3a-4b4e-a773-06ba138ad86e")
             Name = "Octree.Intensities1i.Reference"
             Description = "Octree. Reference to per-point intensities. Guid."
+            Type = Primitives.GuidDef.Id
+            IsArray = false
+            }
+
+        /// Octree. Per-point classifications. UInt8[].
+        let Classifications1b = addDef {
+            Id = Guid("d25cff0e-ea80-445b-ab72-d0a5a1013818")
+            Name = "Octree.Classifications1b"
+            Description = "Octree. Per-point classifications. UInt8[]."
+            Type = Primitives.UInt8Array.Id
+            IsArray = false
+            }
+
+        /// Octree. Reference to per-point classifications (uint8).
+        let Classifications1bReference = addDef {
+            Id = Guid("9056806d-eb49-4c09-83cd-0fec099b016e")
+            Name = "Octree.Classifications1b.Reference"
+            Description = "Octree. Reference to per-point classifications (uint8)."
+            Type = Primitives.GuidDef.Id
+            IsArray = false
+            }
+
+        /// Octree. Per-point classifications. UInt16[].
+        let Classifications1s = addDef {
+            Id = Guid("b1619ade-79be-4554-894e-3f7e46240119")
+            Name = "Octree.Classifications1s"
+            Description = "Octree. Per-point classifications. UInt16[]."
+            Type = Primitives.UInt16Array.Id
+            IsArray = false
+            }
+
+        /// Octree. Reference to per-point classifications (uint16).
+        let Classifications1sReference = addDef {
+            Id = Guid("3142284a-d7e0-45f9-8044-44800df1daac")
+            Name = "Octree.Classifications1s.Reference"
+            Description = "Octree. Reference to per-point classifications (uint16)."
             Type = Primitives.GuidDef.Id
             IsArray = false
             }
