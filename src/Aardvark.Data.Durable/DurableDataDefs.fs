@@ -1333,12 +1333,30 @@ module Durable =
             IsArray = false
             }
 
+        /// Octree. Reference to per-point positions in local cell space (as offsets from cell's center). Guid.
+        let PositionsLocal3fReference = addDef {
+            Id = Guid("f3d3264d-abb4-47c5-963b-39d1a1728fa9")
+            Name = "Octree.PositionsLocal3f.Reference"
+            Description = "Octree. Reference to per-point positions in local cell space (as offsets from cell's center). Guid."
+            Type = Primitives.GuidDef.Id
+            IsArray = false
+            }
+
         /// Octree. Per-point normals (V3f[]).
         let Normals3f = addDef {
             Id = Guid("712d0a0c-a8d0-42d1-bfc7-77eac2e4a755")
             Name = "Octree.Normals3f"
             Description = "Octree. Per-point normals (V3f[])."
             Type = Aardvark.V3fArray.Id
+            IsArray = false
+            }
+
+        /// Octree. Reference to per-point normals (Guid).
+        let Normals3fReference = addDef {
+            Id = Guid("0fb38f30-08fb-402f-bc10-a7c54d92fb26")
+            Name = "Octree.Normals3f.Reference"
+            Description = "Octree. Reference to per-point normals (Guid)."
+            Type = Primitives.GuidDef.Id
             IsArray = false
             }
 
@@ -1351,12 +1369,30 @@ module Durable =
             IsArray = false
             }
 
+        /// Octree. Reference to per-point normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0].
+        let Normals3sbReference = addDef {
+            Id = Guid("eb245ac4-a207-4428-87ea-2e715b9f01ef")
+            Name = "Octree.Normals3sb.Reference"
+            Description = "Octree. Reference to per-point normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0]."
+            Type = Primitives.GuidDef.Id
+            IsArray = false
+            }
+
         /// Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf.
         let NormalsOct16 = addDef {
             Id = Guid("144770e4-70ea-4dd2-91a5-91f48672e87e")
             Name = "Octree.Normals.Oct16"
             Description = "Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf."
             Type = Primitives.Int16Array.Id
+            IsArray = false
+            }
+
+        /// Octree. Reference to per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf.
+        let NormalsOct16Reference = addDef {
+            Id = Guid("7a397f13-b0dd-4925-89a2-066ef5426be3")
+            Name = "Octree.Normals.Oct16.Reference"
+            Description = "Octree. Reference to per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf."
+            Type = Primitives.GuidDef.Id
             IsArray = false
             }
 
@@ -1369,12 +1405,30 @@ module Durable =
             IsArray = false
             }
 
+        /// Octree. Reference to per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf.
+        let NormalsOct16PReference = addDef {
+            Id = Guid("eec0ba91-bdcf-469a-b2f2-9c46009b04e6")
+            Name = "Octree.Normals.Oct16P.Reference"
+            Description = "Octree. Reference to per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf."
+            Type = Primitives.GuidDef.Id
+            IsArray = false
+            }
+
         /// Octree. Per-point colors. C3b[].
         let Colors3b = addDef {
             Id = Guid("61cb1fa8-b2e2-41ae-8022-5787b44ee058")
             Name = "Octree.Colors3b"
             Description = "Octree. Per-point colors. C3b[]."
             Type = Aardvark.C3bArray.Id
+            IsArray = false
+            }
+
+        /// Octree. Reference to per-point colors. Guid.
+        let Colors3bReference = addDef {
+            Id = Guid("b8a664d9-c77d-4ea6-a196-6d82602356a2")
+            Name = "Octree.Colors3b.Reference"
+            Description = "Octree. Reference to per-point colors. Guid."
+            Type = Primitives.GuidDef.Id
             IsArray = false
             }
 
@@ -1387,6 +1441,15 @@ module Durable =
             IsArray = false
             }
 
+        /// Octree. Reference to per-point colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. Guid.
+        let ColorsRGB565Reference = addDef {
+            Id = Guid("9557c438-16b0-49c7-979d-8de5dc8829b4")
+            Name = "Octree.Colors.RGB565.Reference"
+            Description = "Octree. Reference to per-point colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. Guid."
+            Type = Primitives.GuidDef.Id
+            IsArray = false
+            }
+
         /// Octree. Per-point intensities. Int32[].
         let Intensities1i = addDef {
             Id = Guid("361027fd-ac58-4de8-89ee-98695f8c5520")
@@ -1396,11 +1459,29 @@ module Durable =
             IsArray = false
             }
 
+        /// Octree. Reference to per-point intensities. Guid.
+        let Intensities1iReference = addDef {
+            Id = Guid("4e6842a2-3c3a-4b4e-a773-06ba138ad86e")
+            Name = "Octree.Intensities1i.Reference"
+            Description = "Octree. Reference to per-point intensities. Guid."
+            Type = Primitives.GuidDef.Id
+            IsArray = false
+            }
+
         /// Octree. Kd-tree index array. Int32[], where pivot is stored at index n/2 recursively.
         let KdTreeIndexArray = addDef {
             Id = Guid("c533bd54-9aff-40e1-a2bb-c69c9778fecb")
             Name = "Octree.KdTreeIndexArray"
             Description = "Octree. Kd-tree index array. Int32[], where pivot is stored at index n/2 recursively."
             Type = Primitives.Int32Array.Id
+            IsArray = false
+            }
+
+        /// Octree. Reference to kd-tree index array. Int32[], where pivot is stored at index n/2 recursively.
+        let KdTreeIndexArrayReference = addDef {
+            Id = Guid("fc2b48cb-ab79-4579-92a3-0a421c8d9112")
+            Name = "Octree.KdTreeIndexArray.Reference"
+            Description = "Octree. Reference to kd-tree index array. Int32[], where pivot is stored at index n/2 recursively."
+            Type = Primitives.GuidDef.Id
             IsArray = false
             }
