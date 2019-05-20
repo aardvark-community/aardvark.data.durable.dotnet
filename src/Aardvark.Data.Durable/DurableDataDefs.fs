@@ -1539,3 +1539,21 @@ module Durable =
             Type = Primitives.GuidDef.Id
             IsArray = false
             }
+
+        /// Octree. Reference to Aardvark.Geometry.PointRkdTreeFData.
+        let PointRkdTreeFDataReference = addDef {
+            Id = Guid("d48d006e-9840-433c-afdb-c5fc5b14be54")
+            Name = "Octree.PointRkdTreeFData.Reference"
+            Description = "Octree. Reference to Aardvark.Geometry.PointRkdTreeFData."
+            Type = Primitives.GuidDef.Id
+            IsArray = false
+            }
+
+        /// Octree. Reference to Aardvark.Geometry.PointRkdTreeDData.
+        let PointRkdTreeDDataReference = addDef {
+            Id = Guid("05cf0cac-4f8f-41bc-ac50-1b291297f892")
+            Name = "Octree.PointRkdTreeDData.Reference"
+            Description = "Octree. Reference to Aardvark.Geometry.PointRkdTreeDData."
+            Type = Primitives.GuidDef.Id
+            IsArray = false
+            }

@@ -1,7 +1,7 @@
 RESTRICTION: || (== netcoreapp2.2) (== netstandard2.0)
 NUGET
   remote: https://api.nuget.org/v3/index.json
-    FSharp.Core (4.6.2)
+    FSharp.Core (4.3.4)
     Newtonsoft.Json (12.0.2)
 
 GROUP Build
@@ -10,7 +10,7 @@ RESTRICTION: == netcoreapp2.2
 NUGET
   remote: https://api.nuget.org/v3/index.json
     FAKE (4.63.2)
-    Microsoft.NETCore.Platforms (2.2)
+    Microsoft.NETCore.Platforms (2.2.1)
     Microsoft.NETCore.Targets (2.1)
     Mono.Cecil (0.10.3)
       System.Collections (>= 4.0.11)
@@ -27,8 +27,6 @@ NUGET
     runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl (4.3.3)
     runtime.fedora.27-x64.runtime.native.System.Security.Cryptography.OpenSsl (4.3.3)
     runtime.fedora.28-x64.runtime.native.System.Security.Cryptography.OpenSsl (4.3.3)
-    runtime.native.System.Security.Cryptography.Apple (4.3.1)
-      runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple (>= 4.3.1)
     runtime.native.System.Security.Cryptography.OpenSsl (4.3.3)
       runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl (>= 4.3.3)
       runtime.debian.9-x64.runtime.native.System.Security.Cryptography.OpenSsl (>= 4.3.3)
@@ -48,7 +46,6 @@ NUGET
     runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography.OpenSsl (4.3.3)
     runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl (4.3.3)
     runtime.opensuse.42.3-x64.runtime.native.System.Security.Cryptography.OpenSsl (4.3.3)
-    runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple (4.3.1)
     runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl (4.3.3)
     runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl (4.3.3)
     runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl (4.3.3)
@@ -140,23 +137,14 @@ NUGET
       System.Reflection.Primitives (>= 4.3)
       System.Runtime (>= 4.3)
       System.Runtime.Handles (>= 4.3)
-    System.Runtime.Numerics (4.3)
-      System.Globalization (>= 4.3)
-      System.Resources.ResourceManager (>= 4.3)
-      System.Runtime (>= 4.3)
-      System.Runtime.Extensions (>= 4.3)
     System.Security.Cryptography.Algorithms (4.3.1)
       Microsoft.NETCore.Platforms (>= 1.1)
-      runtime.native.System.Security.Cryptography.Apple (>= 4.3.1)
-      runtime.native.System.Security.Cryptography.OpenSsl (>= 4.3.2)
-      System.Collections (>= 4.3)
       System.IO (>= 4.3)
       System.Resources.ResourceManager (>= 4.3)
       System.Runtime (>= 4.3)
       System.Runtime.Extensions (>= 4.3)
       System.Runtime.Handles (>= 4.3)
       System.Runtime.InteropServices (>= 4.3)
-      System.Runtime.Numerics (>= 4.3)
       System.Security.Cryptography.Encoding (>= 4.3)
       System.Security.Cryptography.Primitives (>= 4.3)
       System.Text.Encoding (>= 4.3)
