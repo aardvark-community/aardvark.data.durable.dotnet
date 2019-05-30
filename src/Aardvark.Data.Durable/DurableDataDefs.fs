@@ -13,7 +13,7 @@ module Durable =
         }
 
     let mutable private defs = Map.empty<Guid, Def>
-    let private addDef x =
+    let addDef x =
         defs <- defs |> Map.add x.Id x
         x
 
