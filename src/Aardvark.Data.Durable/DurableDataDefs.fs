@@ -1142,20 +1142,20 @@ module Durable =
             IsArray = true
             }
 
-        /// Data of an Aardvark.Geometry.PointRkdTreeF.
+        /// Aardvark.Geometry.PointRkdTreeFData.
         let PointRkdTreeFData = addDef {
-            Id = Guid("c5e8c7d1-3b0f-4221-8ad8-443ff1994979")
+            Id = Guid("023ebe21-d8c2-4ccd-9c6d-326ead4a0ee9")
             Name = "PointRkdTreeFData"
-            Description = "Data of an Aardvark.Geometry.PointRkdTreeF."
+            Description = "Aardvark.Geometry.PointRkdTreeFData."
             Type = None
             IsArray = false
             }
 
-        /// Data of an Aardvark.Geometry.PointRkdTreeD.
+        /// Aardvark.Geometry.PointRkdTreeDData.
         let PointRkdTreeDData = addDef {
-            Id = Guid("ad480012-bcfc-4d0c-ae74-c6f629e7fa87")
+            Id = Guid("e6445682-46e8-4598-9757-22757e6110ca")
             Name = "PointRkdTreeDData"
-            Description = "Data of an Aardvark.Geometry.PointRkdTreeD."
+            Description = "Aardvark.Geometry.PointRkdTreeDData."
             Type = None
             IsArray = false
             }
@@ -1167,6 +1167,15 @@ module Durable =
             Id = Guid("e0883944-1d81-4ff5-845f-0b96075880b7")
             Name = "Octree.Node"
             Description = "Octree. An octree node. DurableMap."
+            Type = Primitives.DurableMap.Id
+            IsArray = false
+            }
+
+        /// Octree. A filtered octree node. DurableMap.
+        let NodeFiltered = addDef {
+            Id = Guid("da963994-0883-4697-868c-4719131fb146")
+            Name = "Octree.Node.Filtered"
+            Description = "Octree. A filtered octree node. DurableMap."
             Type = Primitives.DurableMap.Id
             IsArray = false
             }
@@ -1450,6 +1459,24 @@ module Durable =
             IsArray = false
             }
 
+        /// Octree. Per-point colors. C4b[].
+        let Colors4b = addDef {
+            Id = Guid("c91dfea3-243d-4272-9dba-b572931dba23")
+            Name = "Octree.Colors4b"
+            Description = "Octree. Per-point colors. C4b[]."
+            Type = Aardvark.C3bArray.Id
+            IsArray = false
+            }
+
+        /// Octree. Reference to per-point colors. Guid.
+        let Colors4bReference = addDef {
+            Id = Guid("cb2bdeae-2085-442b-90bc-990b892fdb61")
+            Name = "Octree.Colors4b.Reference"
+            Description = "Octree. Reference to per-point colors. Guid."
+            Type = Primitives.GuidDef.Id
+            IsArray = false
+            }
+
         /// Octree. Per-point colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. UInt16[].
         let ColorsRGB565 = addDef {
             Id = Guid("bf36c54b-f199-4138-a32f-c089cf527dad")
@@ -1486,38 +1513,38 @@ module Durable =
             IsArray = false
             }
 
-        /// Octree. Per-point classifications. UInt8[].
+        /// Octree. Per-point classifications. uint8[].
         let Classifications1b = addDef {
-            Id = Guid("d25cff0e-ea80-445b-ab72-d0a5a1013818")
+            Id = Guid("bf0975e4-43bd-4742-9e61-c7469d81805d")
             Name = "Octree.Classifications1b"
-            Description = "Octree. Per-point classifications. UInt8[]."
+            Description = "Octree. Per-point classifications. uint8[]."
             Type = Primitives.UInt8Array.Id
             IsArray = false
             }
 
-        /// Octree. Reference to per-point classifications (uint8).
+        /// Octree. Reference to per-point uint8 classifications. Guid.
         let Classifications1bReference = addDef {
-            Id = Guid("9056806d-eb49-4c09-83cd-0fec099b016e")
+            Id = Guid("41d796a1-4f34-49a3-8669-1be4a0b17ac4")
             Name = "Octree.Classifications1b.Reference"
-            Description = "Octree. Reference to per-point classifications (uint8)."
+            Description = "Octree. Reference to per-point uint8 classifications. Guid."
             Type = Primitives.GuidDef.Id
             IsArray = false
             }
 
-        /// Octree. Per-point classifications. UInt16[].
+        /// Octree. Per-point classifications. uint16[].
         let Classifications1s = addDef {
-            Id = Guid("b1619ade-79be-4554-894e-3f7e46240119")
+            Id = Guid("33f675ea-09d4-4bf5-82d3-ec6be885de6d")
             Name = "Octree.Classifications1s"
-            Description = "Octree. Per-point classifications. UInt16[]."
+            Description = "Octree. Per-point classifications. uint16[]."
             Type = Primitives.UInt16Array.Id
             IsArray = false
             }
 
-        /// Octree. Reference to per-point classifications (uint16).
+        /// Octree. Reference to per-point uint16 classifications. Guid.
         let Classifications1sReference = addDef {
-            Id = Guid("3142284a-d7e0-45f9-8044-44800df1daac")
+            Id = Guid("093ace41-4ec6-4e3e-9881-1f10a082df44")
             Name = "Octree.Classifications1s.Reference"
-            Description = "Octree. Reference to per-point classifications (uint16)."
+            Description = "Octree. Reference to per-point uint16 classifications. Guid."
             Type = Primitives.GuidDef.Id
             IsArray = false
             }
@@ -1540,12 +1567,30 @@ module Durable =
             IsArray = false
             }
 
+        /// Octree. Aardvark.Geometry.PointRkdTreeFData.
+        let PointRkdTreeFData = addDef {
+            Id = Guid("c90f303c-f9be-49d1-9188-51fde1e1e75d")
+            Name = "Octree.PointRkdTreeFData"
+            Description = "Octree. Aardvark.Geometry.PointRkdTreeFData."
+            Type = Aardvark.PointRkdTreeFData.Id
+            IsArray = false
+            }
+
         /// Octree. Reference to Aardvark.Geometry.PointRkdTreeFData.
         let PointRkdTreeFDataReference = addDef {
             Id = Guid("d48d006e-9840-433c-afdb-c5fc5b14be54")
             Name = "Octree.PointRkdTreeFData.Reference"
             Description = "Octree. Reference to Aardvark.Geometry.PointRkdTreeFData."
             Type = Primitives.GuidDef.Id
+            IsArray = false
+            }
+
+        /// Octree. Aardvark.Geometry.PointRkdTreeDData.
+        let PointRkdTreeDData = addDef {
+            Id = Guid("c00e3cc0-983c-4c51-801f-8c55ff337b2d")
+            Name = "Octree.PointRkdTreeDData"
+            Description = "Octree. Aardvark.Geometry.PointRkdTreeDData."
+            Type = Aardvark.PointRkdTreeDData.Id
             IsArray = false
             }
 

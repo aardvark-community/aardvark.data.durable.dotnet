@@ -84,11 +84,11 @@ let parseEntry category (id : string) (def : JObject) =
 [<EntryPoint>]
 let main argv =
 
-    let address = @"https://raw.githubusercontent.com/aardvark-community/aardvark.data.durable.definitions/master/definitions.json"
-    let wc = new WebClient()
-    let json = JObject.Parse(wc.DownloadString(address))
+    //let address = @"https://raw.githubusercontent.com/aardvark-community/aardvark.data.durable.definitions/master/definitions.json"
+    //let wc = new WebClient()
+    //let json = JObject.Parse(wc.DownloadString(address))
 
-    //let json = JObject.Parse(File.ReadAllText(@"..\..\..\..\aardvark.data.durable.definitions\definitions.json"))
+    let json = JObject.Parse(File.ReadAllText(@"..\..\..\..\aardvark.data.durable.definitions\definitions.json"))
 
     printfn "%s" """namespace Aardvark.Data
     
