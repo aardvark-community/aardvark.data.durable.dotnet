@@ -1171,15 +1171,6 @@ module Durable =
             IsArray = false
             }
 
-        /// Octree. A filtered octree node. DurableMap.
-        let NodeFiltered = addDef {
-            Id = Guid("da963994-0883-4697-868c-4719131fb146")
-            Name = "Octree.Node.Filtered"
-            Description = "Octree. A filtered octree node. DurableMap."
-            Type = Primitives.DurableMap.Id
-            IsArray = false
-            }
-
         /// Octree. An octree node followed by all other nodes in depth first order. DurableMap.
         let Tree = addDef {
             Id = Guid("708b4b8e-286b-4658-82ac-dd8ea98d1b1c")
@@ -1315,11 +1306,11 @@ module Durable =
             IsArray = false
             }
 
-        /// Octree. Stdandard deviation of average point distance to centroid (global space). Float64.
+        /// Octree. Standard deviation of average point distance to centroid (global space). Float64.
         let PositionsGlobal3dDistToCentroidStdDev = addDef {
             Id = Guid("61d5ad06-37d3-4df2-a999-6599efc2ae83")
             Name = "Octree.PositionsGlobal3d.DistToCentroid.StdDev"
-            Description = "Octree. Stdandard deviation of average point distance to centroid (global space). Float64."
+            Description = "Octree. Standard deviation of average point distance to centroid (global space). Float64."
             Type = Primitives.Float64.Id
             IsArray = false
             }
@@ -1351,11 +1342,11 @@ module Durable =
             IsArray = false
             }
 
-        /// Octree. Stdandard deviation of average point distance to centroid (local space). Float32.
+        /// Octree. Standard deviation of average point distance to centroid (local space). Float32.
         let PositionsLocal3fDistToCentroidStdDev = addDef {
             Id = Guid("c927d42b-02d8-480e-be93-0660eefd62a5")
             Name = "Octree.PositionsLocal3f.DistToCentroid.StdDev"
-            Description = "Octree. Stdandard deviation of average point distance to centroid (local space). Float32."
+            Description = "Octree. Standard deviation of average point distance to centroid (local space). Float32."
             Type = Primitives.Float32.Id
             IsArray = false
             }
