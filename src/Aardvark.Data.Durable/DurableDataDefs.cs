@@ -40,7 +40,7 @@ namespace Aardvark.Data
             }
         }
 
-        private static Dictionary<Guid, Def> defs = new Dictionary<Guid, Def>();
+        private static readonly Dictionary<Guid, Def> defs = new Dictionary<Guid, Def>();
 
         /// <summary></summary>
         public static Def Get(Guid key) => defs[key];
