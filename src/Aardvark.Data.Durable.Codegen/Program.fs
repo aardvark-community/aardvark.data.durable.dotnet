@@ -1,7 +1,6 @@
 ﻿open Newtonsoft.Json.Linq
 open System
 open System.IO
-open System.Collections.Generic
 open System.Net
 
 type Entry = {
@@ -84,55 +83,91 @@ let parseEntry category (id : string) (def : JObject) =
 [<EntryPoint>]
 let main argv =
 
-    //let address = @"https://raw.githubusercontent.com/aardvark-community/aardvark.data.durable.definitions/master/definitions.json"
-    //let wc = new WebClient()
-    //let json = JObject.Parse(wc.DownloadString(address))
+    let address = @"https://raw.githubusercontent.com/aardvark-community/aardvark.data.durable.definitions/master/definitions.json"
+    let wc = new WebClient()
+    let json = JObject.Parse(wc.DownloadString(address))
 
-    let json = JObject.Parse(File.ReadAllText(@"..\..\..\..\aardvark.data.durable.definitions\definitions.json"))
+    //let json = JObject.Parse(File.ReadAllText(@"..\..\..\..\aardvark.data.durable.definitions\definitions.json"))
 
-    printfn "%s" """namespace Aardvark.Data
+    printfn "%s" """using System;
+using System.Collections.Generic;
     
-open System
+namespace Aardvark.Data
+{
+    /// <summary></summary>
+    public static class Durable
+    {
+        /// <summary></summary>
+        public class Def
+        {
+            /// <summary></summary>
+            public readonly Guid Id;
+            /// <summary></summary>
+            public readonly string Name;
+            /// <summary></summary>
+            public readonly string Description;
+            /// <summary></summary>
+            public readonly Guid Type;
+            /// <summary></summary>
+            public readonly bool IsArray;
     
-module Durable =
+            /// <summary></summary>
+            public Def(Guid id, string name, string description, Guid type, bool isArray)
+            {
+                if (defs.ContainsKey(id))
+                {
+                    throw new InvalidOperationException(
+                        $"Duplicate Def(id: {id}, name: {name}, description: {description}, type: {type}, isArray: {isArray})."
+                        );
+                }
     
-    type Def = {
-        Id : Guid
-        Name : string
-        Description : string
-        Type : Guid
-        IsArray : bool
+                Id = id;
+                Name = name;
+                Description = description;
+                Type = type;
+                IsArray = isArray;
+    
+                defs[id] = this;
+            }
         }
+    
+        private static Dictionary<Guid, Def> defs = new Dictionary<Guid, Def>();
+    
+        /// <summary></summary>
+        public static Def Get(Guid key) => defs[key];
 
-    let mutable private defs = Map.empty<Guid, Def>
-    let addDef x =
-        defs <- defs |> Map.add x.Id x
-        x
-
-    let get x = defs.[x]
-    let tryGet x = defs |> Map.tryFind x
-
-    let private None = Guid.Empty
+        /// <summary></summary>
+        public static bool TryGet(Guid key, out Def def) => defs.TryGetValue(key, out def);
+    
+        private static readonly Guid None = Guid.Empty;
     """
     
     for kv in json do
         let category = kv.Key
-        printfn "    module %s =" category
-        printfn ""
+        printfn "        /// <summary></summary>"
+        printfn "        public static class %s" category
+        printfn "        {"
         for kv in kv.Value :?> JObject do
 
             let entry = parseEntry category kv.Key (kv.Value :?> JObject)
 
-            let formatGuid g = if g = Guid.Empty then "Guid.Empty" else sprintf "Guid(\"%A\")" g
+            let formatGuid g = if g = Guid.Empty then "Guid.Empty" else sprintf "new Guid(\"%A\")" g
             
+            printfn "        /// <summary>"
             printfn "        /// %s" (entry.Description)
-            printfn "        let %s = addDef {" entry.LetName
-            printfn "            Id = %s" (formatGuid entry.Id)
-            printfn "            Name = \"%s\"" entry.Name
-            printfn "            Description = \"%s\"" (entry.Description)
-            printfn "            Type = %s" entry.Type
-            printfn "            IsArray = %A" entry.IsArray
-            printfn "            }"
+            printfn "        /// </summary>"
+            printfn "        public static readonly Def %s = new Def(" entry.LetName
+            printfn "            %s," (formatGuid entry.Id)
+            printfn "            \"%s\"," entry.Name
+            printfn "            \"%s\"," (entry.Description)
+            printfn "            %s," entry.Type
+            printfn "            %A" entry.IsArray
+            printfn "            );"
             printfn ""
+
+        printfn "        }"
+
+    printfn "    }"
+    printfn "}"
 
     0

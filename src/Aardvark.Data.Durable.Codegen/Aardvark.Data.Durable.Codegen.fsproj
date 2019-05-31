@@ -14,7 +14,7 @@
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Aardvark.Data.Durable\Aardvark.Data.Durable.fsproj" />
+    <ProjectReference Include="..\Aardvark.Data.Durable\Aardvark.Data.Durable.csproj" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

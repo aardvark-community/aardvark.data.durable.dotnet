@@ -11,8 +11,5 @@
     <OutputPath>../../bin/Release</OutputPath>
     <DocumentationFile>../../bin/Release\Aardvark.Data.Durable.xml</DocumentationFile>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="DurableDataDefs.fs" />
-  </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
