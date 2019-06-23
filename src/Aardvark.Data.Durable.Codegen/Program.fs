@@ -130,9 +130,12 @@ namespace Aardvark.Data
     
                 defs[id] = this;
             }
+
+            /// <summary></summary>
+            public override string ToString() => $"[{Name}, {Id}]";
         }
     
-        private static Dictionary<Guid, Def> defs = new Dictionary<Guid, Def>();
+        private static readonly Dictionary<Guid, Def> defs = new Dictionary<Guid, Def>();
     
         /// <summary></summary>
         public static Def Get(Guid key) => defs[key];

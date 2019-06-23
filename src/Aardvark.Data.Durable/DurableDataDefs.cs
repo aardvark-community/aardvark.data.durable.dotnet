@@ -38,6 +38,9 @@ namespace Aardvark.Data
 
                 defs[id] = this;
             }
+
+            /// <summary></summary>
+            public override string ToString() => $"[{Name}, {Id}]";
         }
 
         private static readonly Dictionary<Guid, Def> defs = new Dictionary<Guid, Def>();
@@ -1422,23 +1425,23 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// Aardvark.Geometry.PointRkdTreeFData.
+            /// Data of an Aardvark.Geometry.PointRkdTreeF.
             /// </summary>
             public static readonly Def PointRkdTreeFData = new Def(
-                new Guid("023ebe21-d8c2-4ccd-9c6d-326ead4a0ee9"),
+                new Guid("c5e8c7d1-3b0f-4221-8ad8-443ff1994979"),
                 "PointRkdTreeFData",
-                "Aardvark.Geometry.PointRkdTreeFData.",
+                "Data of an Aardvark.Geometry.PointRkdTreeF.",
                 None,
                 false
                 );
 
             /// <summary>
-            /// Aardvark.Geometry.PointRkdTreeDData.
+            /// Data of an Aardvark.Geometry.PointRkdTreeD.
             /// </summary>
             public static readonly Def PointRkdTreeDData = new Def(
-                new Guid("e6445682-46e8-4598-9757-22757e6110ca"),
+                new Guid("ad480012-bcfc-4d0c-ae74-c6f629e7fa87"),
                 "PointRkdTreeDData",
-                "Aardvark.Geometry.PointRkdTreeDData.",
+                "Data of an Aardvark.Geometry.PointRkdTreeD.",
                 None,
                 false
                 );
@@ -1492,12 +1495,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// Octree. Exact bounding box of this node's positions. Global space. Box3d.
+            /// Octree. Exact bounding box of this tree's positions. Global space. Box3d.
             /// </summary>
             public static readonly Def BoundingBoxExactGlobal = new Def(
                 new Guid("7912c862-74b4-4f44-a8cd-d11ea1da9304"),
                 "Octree.BoundingBoxExactGlobal",
-                "Octree. Exact bounding box of this node's positions. Global space. Box3d.",
+                "Octree. Exact bounding box of this tree's positions. Global space. Box3d.",
                 Aardvark.Box3d.Id,
                 false
                 );
@@ -1866,45 +1869,45 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// Octree. Per-point classifications. uint8[].
+            /// Octree. Per-point classifications. UInt8[].
             /// </summary>
             public static readonly Def Classifications1b = new Def(
-                new Guid("bf0975e4-43bd-4742-9e61-c7469d81805d"),
+                new Guid("d25cff0e-ea80-445b-ab72-d0a5a1013818"),
                 "Octree.Classifications1b",
-                "Octree. Per-point classifications. uint8[].",
+                "Octree. Per-point classifications. UInt8[].",
                 Primitives.UInt8Array.Id,
                 false
                 );
 
             /// <summary>
-            /// Octree. Reference to per-point uint8 classifications. Guid.
+            /// Octree. Reference to per-point classifications (UInt8[]).
             /// </summary>
             public static readonly Def Classifications1bReference = new Def(
-                new Guid("41d796a1-4f34-49a3-8669-1be4a0b17ac4"),
+                new Guid("9056806d-eb49-4c09-83cd-0fec099b016e"),
                 "Octree.Classifications1b.Reference",
-                "Octree. Reference to per-point uint8 classifications. Guid.",
+                "Octree. Reference to per-point classifications (UInt8[]).",
                 Primitives.GuidDef.Id,
                 false
                 );
 
             /// <summary>
-            /// Octree. Per-point classifications. uint16[].
+            /// Octree. Per-point classifications. UInt16[].
             /// </summary>
             public static readonly Def Classifications1s = new Def(
-                new Guid("33f675ea-09d4-4bf5-82d3-ec6be885de6d"),
+                new Guid("b1619ade-79be-4554-894e-3f7e46240119"),
                 "Octree.Classifications1s",
-                "Octree. Per-point classifications. uint16[].",
+                "Octree. Per-point classifications. UInt16[].",
                 Primitives.UInt16Array.Id,
                 false
                 );
 
             /// <summary>
-            /// Octree. Reference to per-point uint16 classifications. Guid.
+            /// Octree. Reference to per-point classifications (UInt16[]).
             /// </summary>
             public static readonly Def Classifications1sReference = new Def(
-                new Guid("093ace41-4ec6-4e3e-9881-1f10a082df44"),
+                new Guid("3142284a-d7e0-45f9-8044-44800df1daac"),
                 "Octree.Classifications1s.Reference",
-                "Octree. Reference to per-point uint16 classifications. Guid.",
+                "Octree. Reference to per-point classifications (UInt16[]).",
                 Primitives.GuidDef.Id,
                 false
                 );
