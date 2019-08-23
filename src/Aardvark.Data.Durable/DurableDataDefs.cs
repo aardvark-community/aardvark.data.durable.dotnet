@@ -1552,9 +1552,9 @@ namespace Aardvark.Data
             /// <summary>
             /// Octree. Total number of points in this tree's leaf nodes. Float64. Backwards compatibility.
             /// </summary>
-            public static readonly Def PointCountTreeLeafs = new Def(
+            public static readonly Def PointCountTreeLeafsFloat64 = new Def(
                 new Guid("6bef7603-47fa-405f-a330-a1ac1b09c475"),
-                "Octree.PointCountTreeLeafs",
+                "Octree.PointCountTreeLeafs.Float64",
                 "Octree. Total number of points in this tree's leaf nodes. Float64. Backwards compatibility.",
                 Primitives.Float64.Id,
                 false
@@ -1737,8 +1737,7 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// Octree. Reference to per-point normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0].
-            /// </summary>
+            /// Octree. Reference to per-point normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0].        /// </summary>
             public static readonly Def Normals3sbReference = new Def(
                 new Guid("eb245ac4-a207-4428-87ea-2e715b9f01ef"),
                 "Octree.Normals3sb.Reference",

@@ -2,8 +2,8 @@ framework: netcoreapp22, netstandard20
 
 source https://api.nuget.org/v3/index.json
 
-nuget FSharp.Core                       ~> 4.3.0
 nuget Newtonsoft.Json                   ~> 12.0
+nuget Aardvark.Base                     ~> 4.5.11
 
 group Build
 framework: netcoreapp22

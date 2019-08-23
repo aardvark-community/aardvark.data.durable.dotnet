@@ -6,6 +6,8 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Aardvark.Data.Durable.Codeg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aardvark.Data.Durable", "Aardvark.Data.Durable\Aardvark.Data.Durable.csproj", "{EB7CD791-D406-46A0-B15E-5539B263A462}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aardvark.Data.Durable.Codec", "Aardvark.Data.Durable.Codec\Aardvark.Data.Durable.Codec.csproj", "{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,12 +22,16 @@ Global
 		{EB7CD791-D406-46A0-B15E-5539B263A462}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB7CD791-D406-46A0-B15E-5539B263A462}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB7CD791-D406-46A0-B15E-5539B263A462}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E996B5E6-49B2-4479-9DDE-455A40509F43}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45
+		SolutionGuid = {E996B5E6-49B2-4479-9DDE-455A40509F43}
 	EndGlobalSection
 EndGlobal

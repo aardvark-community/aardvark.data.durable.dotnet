@@ -1,8 +1,6 @@
 ﻿open Newtonsoft.Json.Linq
 open System
-open System.IO
 open System.Net
-open Aardvark.Data
 
 type Entry = {
     LetName : string
