@@ -1550,6 +1550,17 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
+            /// Octree. Total number of points in this tree's leaf nodes. Float64. Backwards compatibility.
+            /// </summary>
+            public static readonly Def PointCountTreeLeafs = new Def(
+                new Guid("6bef7603-47fa-405f-a330-a1ac1b09c475"),
+                "Octree.PointCountTreeLeafs",
+                "Octree. Total number of points in this tree's leaf nodes. Float64. Backwards compatibility.",
+                Primitives.Float64.Id,
+                false
+                );
+
+            /// <summary>
             /// Octree. Average distance of each point to its nearest neighbour.
             /// </summary>
             public static readonly Def AveragePointDistance = new Def(
