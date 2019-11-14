@@ -1473,6 +1473,17 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
+            /// Octree. Node format specifier.
+            /// </summary>
+            public static readonly Def NodeFormat = new Def(
+                new Guid("7c1151c8-9d5f-406d-9c03-9778f657806b"),
+                "Octree.NodeFormat",
+                "Octree. Node format specifier.",
+                Primitives.GuidDef.Id,
+                false
+                );
+
+            /// <summary>
             /// Octree. Node's unique id.
             /// </summary>
             public static readonly Def NodeId = new Def(
@@ -1524,6 +1535,28 @@ namespace Aardvark.Data
                 "Octree.Cell",
                 "Octree. Cell's index. Global space. Cell.",
                 Aardvark.Cell.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Number of nodes in this tree (including inner nodes). Int64.
+            /// </summary>
+            public static readonly Def NodeCountTotal = new Def(
+                new Guid("5f904be4-09fb-4b16-ad9d-460c3ae63248"),
+                "Octree.NodeCountTotal",
+                "Octree. Number of nodes in this tree (including inner nodes). Int64.",
+                Primitives.Int64.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Number of leaf nodes in this tree. Int64.
+            /// </summary>
+            public static readonly Def NodeCountLeafs = new Def(
+                new Guid("8d50e820-69b0-4923-969d-e10aedecdfc2"),
+                "Octree.NodeCountLeafs",
+                "Octree. Number of leaf nodes in this tree. Int64.",
+                Primitives.Int64.Id,
                 false
                 );
 
@@ -1737,7 +1770,8 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// Octree. Reference to per-point normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0].        /// </summary>
+            /// Octree. Reference to per-point normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0].
+            /// </summary>
             public static readonly Def Normals3sbReference = new Def(
                 new Guid("eb245ac4-a207-4428-87ea-2e715b9f01ef"),
                 "Octree.Normals3sb.Reference",
