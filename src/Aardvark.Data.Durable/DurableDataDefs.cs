@@ -50,7 +50,6 @@ namespace Aardvark.Data
 
         /// <summary></summary>
         public static bool TryGet(Guid key, out Def def) => defs.TryGetValue(key, out def);
-
         private static readonly Guid None = Guid.Empty;
 
         /// <summary></summary>
@@ -1952,6 +1951,50 @@ namespace Aardvark.Data
                 new Guid("3142284a-d7e0-45f9-8044-44800df1daac"),
                 "Octree.Classifications1s.Reference",
                 "Octree. Reference to per-point classifications (UInt16[]).",
+                Primitives.GuidDef.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Per-point velocities (V3f[]).
+            /// </summary>
+            public static readonly Def Velocities3f = new Def(
+                new Guid("c8db5f0a-1ddf-47ab-8266-f8e929cf98c5"),
+                "Octree.Velocities3f",
+                "Octree. Per-point velocities (V3f[]).",
+                Aardvark.V3fArray.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Reference to per-point velocities (Guid).
+            /// </summary>
+            public static readonly Def Velocities3fReference = new Def(
+                new Guid("390115cc-5928-4526-8c28-37e709bf31d2"),
+                "Octree.Velocities3f.Reference",
+                "Octree. Reference to per-point velocities (Guid).",
+                Primitives.GuidDef.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Per-point velocities (V3d[]).
+            /// </summary>
+            public static readonly Def Velocities3d = new Def(
+                new Guid("3f8a922d-3458-427f-8237-a189e338bf77"),
+                "Octree.Velocities3d",
+                "Octree. Per-point velocities (V3d[]).",
+                Aardvark.V3dArray.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Reference to per-point velocities (Guid).
+            /// </summary>
+            public static readonly Def Velocities3dReference = new Def(
+                new Guid("f7d97f68-e1e1-4b1b-9133-42689b6fb65b"),
+                "Octree.Velocities3d.Reference",
+                "Octree. Reference to per-point velocities (Guid).",
                 Primitives.GuidDef.Id,
                 false
                 );
