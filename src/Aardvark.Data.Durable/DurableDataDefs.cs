@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Aardvark.Data
@@ -50,6 +50,7 @@ namespace Aardvark.Data
 
         /// <summary></summary>
         public static bool TryGet(Guid key, out Def def) => defs.TryGetValue(key, out def);
+
         private static readonly Guid None = Guid.Empty;
 
         /// <summary></summary>
