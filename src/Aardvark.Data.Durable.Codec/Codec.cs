@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -43,7 +44,7 @@ namespace Aardvark.Data
                 [Durable.Primitives.Float64.Id] = EncodeFloat64,
                 [Durable.Primitives.Float64Array.Id] = EncodeFloat64Array,
                 [Durable.Primitives.StringUTF8.Id] = EncodeStringUtf8,
-                [Durable.Primitives.DurableMap.Id] = EncodeDurableMap,
+                [Durable.Primitives.DurableMap.Id] = EncodeDurableMapWithoutHeader,
 
                 [Durable.Aardvark.Cell.Id] = EncodeCell,
                 [Durable.Aardvark.CellArray.Id] = EncodeCellArray,
@@ -93,7 +94,7 @@ namespace Aardvark.Data
                 [Durable.Primitives.Float64.Id] = DecodeFloat64,
                 [Durable.Primitives.Float64Array.Id] = DecodeFloat64Array,
                 [Durable.Primitives.StringUTF8.Id] = DecodeStringUtf8,
-                [Durable.Primitives.DurableMap.Id] = DecodeDurableMap,
+                [Durable.Primitives.DurableMap.Id] = DecodeDurableMapWithoutHeader,
 
                 [Durable.Aardvark.Cell.Id] = DecodeCell,
                 [Durable.Aardvark.CellArray.Id] = DecodeCellArray,
@@ -125,108 +126,102 @@ namespace Aardvark.Data
 
         #region Encode
 
-        private static readonly Action<BinaryWriter, object> EncodeGuid = (s, o) => s.Write(((Guid)o).ToByteArray(), 0, 16);
-        private static readonly Action<BinaryWriter, object> EncodeGuidArray = (s, o) => EncodeArray(s, (Guid[])o);
-        private static readonly Action<BinaryWriter, object> EncodeInt16 = (s, o) => s.Write((short)o);
-        private static readonly Action<BinaryWriter, object> EncodeInt16Array = (s, o) => EncodeArray(s, (short[])o);
-        private static readonly Action<BinaryWriter, object> EncodeUInt16 = (s, o) => s.Write((ushort)o);
-        private static readonly Action<BinaryWriter, object> EncodeUInt16Array = (s, o) => EncodeArray(s, (ushort[])o);
-        private static readonly Action<BinaryWriter, object> EncodeInt32 = (s, o) => s.Write((int)o);
-        private static readonly Action<BinaryWriter, object> EncodeInt32Array = (s, o) => EncodeArray(s, (int[])o);
-        private static readonly Action<BinaryWriter, object> EncodeUInt32 = (s, o) => s.Write((uint)o);
-        private static readonly Action<BinaryWriter, object> EncodeUInt32Array = (s, o) => EncodeArray(s, (uint[])o);
-        private static readonly Action<BinaryWriter, object> EncodeInt64 = (s, o) => s.Write((long)o);
-        private static readonly Action<BinaryWriter, object> EncodeInt64Array = (s, o) => EncodeArray(s, (long[])o);
-        private static readonly Action<BinaryWriter, object> EncodeUInt64 = (s, o) => s.Write((ulong)o);
-        private static readonly Action<BinaryWriter, object> EncodeUInt64Array = (s, o) => EncodeArray(s, (ulong[])o);
-        private static readonly Action<BinaryWriter, object> EncodeFloat32 = (s, o) => s.Write((float)o);
-        private static readonly Action<BinaryWriter, object> EncodeFloat32Array = (s, o) => EncodeArray(s, (float[])o);
-        private static readonly Action<BinaryWriter, object> EncodeFloat64 = (s, o) => s.Write((double)o);
-        private static readonly Action<BinaryWriter, object> EncodeFloat64Array = (s, o) => EncodeArray(s, (double[])o);
-        private static readonly Action<BinaryWriter, object> EncodeStringUtf8 = (s, o) => EncodeArray(s, Encoding.UTF8.GetBytes((string)o));
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static void Write<T>(this Stream s, object o) where T : struct
+        {
+            var x = (T)o;
+            var ros = MemoryMarshal.CreateReadOnlySpan(ref x, 1);
+            var p = MemoryMarshal.Cast<T, byte>(ros);
+            s.Write(p);
+        }
 
-        private static readonly Action<BinaryWriter, object> EncodeDurableMap =
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static void Write<T>(this Stream s, ref T x) where T : struct
+        {
+            var ros = MemoryMarshal.CreateReadOnlySpan(ref x, 1);
+            var p = MemoryMarshal.Cast<T, byte>(ros);
+            s.Write(p);
+        }
+
+        private static readonly Action<Stream, object> EncodeGuid = Write<Guid>;
+        private static readonly Action<Stream, object> EncodeGuidArray = (s, o) => EncodeArray(s, (Guid[])o);
+        private static readonly Action<Stream, object> EncodeInt16 = Write<short>;
+        private static readonly Action<Stream, object> EncodeInt16Array = (s, o) => EncodeArray(s, (short[])o);
+        private static readonly Action<Stream, object> EncodeUInt16 = Write<ushort>;
+        private static readonly Action<Stream, object> EncodeUInt16Array = (s, o) => EncodeArray(s, (ushort[])o);
+        private static readonly Action<Stream, object> EncodeInt32 = Write<int>;
+        private static readonly Action<Stream, object> EncodeInt32Array = (s, o) => EncodeArray(s, (int[])o);
+        private static readonly Action<Stream, object> EncodeUInt32 = Write<uint>;
+        private static readonly Action<Stream, object> EncodeUInt32Array = (s, o) => EncodeArray(s, (uint[])o);
+        private static readonly Action<Stream, object> EncodeInt64 = Write<long>;
+        private static readonly Action<Stream, object> EncodeInt64Array = (s, o) => EncodeArray(s, (long[])o);
+        private static readonly Action<Stream, object> EncodeUInt64 = Write<ulong>;
+        private static readonly Action<Stream, object> EncodeUInt64Array = (s, o) => EncodeArray(s, (ulong[])o);
+        private static readonly Action<Stream, object> EncodeFloat32 = Write<float>;
+        private static readonly Action<Stream, object> EncodeFloat32Array = (s, o) => EncodeArray(s, (float[])o);
+        private static readonly Action<Stream, object> EncodeFloat64 = Write<double>;
+        private static readonly Action<Stream, object> EncodeFloat64Array = (s, o) => EncodeArray(s, (double[])o);
+        private static readonly Action<Stream, object> EncodeStringUtf8 = (s, o) => EncodeArray(s, Encoding.UTF8.GetBytes((string)o));
+
+        private static readonly Action<Stream, object> EncodeDurableMapWithoutHeader =
             (s, o) =>
             {
                 var xs = (IEnumerable<KeyValuePair<Durable.Def, object>>)o;
                 var count = xs.Count();
-                s.Write(count);
+                s.Write(ref count);
                 foreach (var x in xs) Encode(s, x.Key, x.Value);
             };
 
-        private static readonly Action<BinaryWriter, object> EncodeCell =
-            (s, o) => { var x = (Cell)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); s.Write(x.Exponent); };
-        private static readonly Action<BinaryWriter, object> EncodeCellArray =
-            (s, o) => EncodeArray(s, (Cell[])o);
+        private static readonly Action<Stream, object> EncodeCell = Write<Cell>;
+        private static readonly Action<Stream, object> EncodeCellArray = (s, o) => EncodeArray(s, (Cell[])o);
 
 
-        private static readonly Action<BinaryWriter, object> EncodeV2f =
-            (s, o) => { var x = (V2f)o; s.Write(x.X); s.Write(x.Y); };
-        private static readonly Action<BinaryWriter, object> EncodeV2fArray =
-            (s, o) => EncodeArray(s, (V2f[])o);
+        private static readonly Action<Stream, object> EncodeV2f = Write<V2f>;
+        private static readonly Action<Stream, object> EncodeV2fArray = (s, o) => EncodeArray(s, (V2f[])o);
 
-        private static readonly Action<BinaryWriter, object> EncodeV3f =
-            (s, o) => { var x = (V3f)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); };
-        private static readonly Action<BinaryWriter, object> EncodeV3fArray =
-            (s, o) => EncodeArray(s, (V3f[])o);
+        private static readonly Action<Stream, object> EncodeV3f = Write<V3f>;
+        private static readonly Action<Stream, object> EncodeV3fArray = (s, o) => EncodeArray(s, (V3f[])o);
 
-        private static readonly Action<BinaryWriter, object> EncodeV4f =
-            (s, o) => { var x = (V4f)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); s.Write(x.W); };
-        private static readonly Action<BinaryWriter, object> EncodeV4fArray =
-            (s, o) => EncodeArray(s, (V4f[])o);
+        private static readonly Action<Stream, object> EncodeV4f = Write<V4f>;
+        private static readonly Action<Stream, object> EncodeV4fArray = (s, o) => EncodeArray(s, (V4f[])o);
 
 
-        private static readonly Action<BinaryWriter, object> EncodeV2d =
-            (s, o) => { var x = (V2d)o; s.Write(x.X); s.Write(x.Y); };
-        private static readonly Action<BinaryWriter, object> EncodeV2dArray =
-            (s, o) => EncodeArray(s, (V2d[])o);
+        private static readonly Action<Stream, object> EncodeV2d = Write<V2d>;
+        private static readonly Action<Stream, object> EncodeV2dArray = (s, o) => EncodeArray(s, (V2d[])o);
 
-        private static readonly Action<BinaryWriter, object> EncodeV3d =
-            (s, o) => { var x = (V3d)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); };
-        private static readonly Action<BinaryWriter, object> EncodeV3dArray =
-            (s, o) => EncodeArray(s, (V3d[])o);
+        private static readonly Action<Stream, object> EncodeV3d = Write<V3d>;
+        private static readonly Action<Stream, object> EncodeV3dArray = (s, o) => EncodeArray(s, (V3d[])o);
 
-        private static readonly Action<BinaryWriter, object> EncodeV4d =
-            (s, o) => { var x = (V4d)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); s.Write(x.W); };
-        private static readonly Action<BinaryWriter, object> EncodeV4dArray =
-            (s, o) => EncodeArray(s, (V4d[])o);
+        private static readonly Action<Stream, object> EncodeV4d = Write<V4f>;
+        private static readonly Action<Stream, object> EncodeV4dArray = (s, o) => EncodeArray(s, (V4d[])o);
 
 
-        private static readonly Action<BinaryWriter, object> EncodeBox2f =
-            (s, o) => { var x = (Box2f)o; EncodeV2f(s, x.Min); EncodeV2f(s, x.Max); };
-        private static readonly Action<BinaryWriter, object> EncodeBox2fArray =
-            (s, o) => EncodeArray(s, (Box2f[])o);
+        private static readonly Action<Stream, object> EncodeBox2f = Write<Box3f>;
+        private static readonly Action<Stream, object> EncodeBox2fArray = (s, o) => EncodeArray(s, (Box2f[])o);
 
-        private static readonly Action<BinaryWriter, object> EncodeBox2d =
-            (s, o) => { var x = (Box2d)o; EncodeV2d(s, x.Min); EncodeV2d(s, x.Max); };
-        private static readonly Action<BinaryWriter, object> EncodeBox2dArray =
-            (s, o) => EncodeArray(s, (Box2d[])o);
+        private static readonly Action<Stream, object> EncodeBox2d = Write<Box2d>;
+        private static readonly Action<Stream, object> EncodeBox2dArray = (s, o) => EncodeArray(s, (Box2d[])o);
 
 
-        private static readonly Action<BinaryWriter, object> EncodeBox3f =
-            (s, o) => { var x = (Box3f)o; EncodeV3f(s, x.Min); EncodeV3f(s, x.Max); };
-        private static readonly Action<BinaryWriter, object> EncodeBox3fArray =
-            (s, o) => EncodeArray(s, (Box3f[])o);
+        private static readonly Action<Stream, object> EncodeBox3f = Write<Box3f>;
+        private static readonly Action<Stream, object> EncodeBox3fArray = (s, o) => EncodeArray(s, (Box3f[])o);
 
-        private static readonly Action<BinaryWriter, object> EncodeBox3d =
-            (s, o) => { var x = (Box3d)o; EncodeV3d(s, x.Min); EncodeV3d(s, x.Max); };
-        private static readonly Action<BinaryWriter, object> EncodeBox3dArray =
-            (s, o) => EncodeArray(s, (Box3d[])o);
+        private static readonly Action<Stream, object> EncodeBox3d = Write<Box3d>;
+        private static readonly Action<Stream, object> EncodeBox3dArray = (s, o) => EncodeArray(s, (Box3d[])o);
 
-        private static readonly Action<BinaryWriter, object> EncodeC3b =
-            (s, o) => { var x = (C3b)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); };
-        private static readonly Action<BinaryWriter, object> EncodeC3bArray =
-            (s, o) => EncodeArray(s, (C3b[])o);
+        private static readonly Action<Stream, object> EncodeC3b = Write<C3b>;
+        private static readonly Action<Stream, object> EncodeC3bArray = (s, o) => EncodeArray(s, (C3b[])o);
 
-        private static unsafe void EncodeArray<T>(BinaryWriter s, params T[] xs) where T : struct
+        private static unsafe void EncodeArray<T>(Stream s, params T[] xs) where T : struct
         {
+            var length = xs.Length;
             var gc = GCHandle.Alloc(xs, GCHandleType.Pinned);
-            var size = xs.Length * Marshal.SizeOf<T>();
+            var size = length * Marshal.SizeOf<T>();
             var dst = new byte[size];
             try
             {
                 Marshal.Copy(gc.AddrOfPinnedObject(), dst, 0, size);
-                s.Write(xs.Length);
+                s.Write(ref length);
                 s.Write(dst);
             }
             finally
@@ -235,18 +230,14 @@ namespace Aardvark.Data
             }
         }
 
-
-
-        /// <summary>
-        /// </summary>
-        public static void Encode<T>(BinaryWriter stream, Durable.Def def, T x)
+        private static void Encode(Stream stream, Durable.Def def, object x)
         {
             if (def.Type != Durable.Primitives.Unit.Id)
             {
-                EncodeGuid(stream, def.Id);
                 if (s_encoders.TryGetValue(def.Type, out var encoder))
                 {
-                    ((Action<BinaryWriter, T>)encoder)(stream, x);
+                    EncodeGuid(stream, def.Id);
+                    ((Action<Stream, object>)encoder)(stream, x);
                 }
                 else
                 {
@@ -258,7 +249,7 @@ namespace Aardvark.Data
             {
                 if (s_encoders.TryGetValue(def.Id, out var encoder))
                 {
-                    ((Action<BinaryWriter, T>)encoder)(stream, x);
+                    ((Action<Stream, object>)encoder)(stream, x);
                 }
                 else
                 {
@@ -268,117 +259,159 @@ namespace Aardvark.Data
             }
         }
 
+        /// <summary>
+        /// Serializes value x to byte array. 
+        /// Can be deserialized with Deserialize.
+        /// </summary>
+        public static byte[] Serialize<T>(Durable.Def def, T x)
+        {
+            using var ms = new MemoryStream();
+            if (def.Type == Durable.Primitives.Unit.Id)
+            {
+                // encode type of primitive value, so we can roundtrip with Deserialize
+                // (since it is not encoded by the Encode function called below)
+                EncodeGuid(ms, def.Id);
+            }
+
+            Encode(ms, def, x);
+            return ms.ToArray();
+        }
+
+        /// <summary>
+        /// Serializes value x to stream. 
+        /// Can be deserialized with Deserialize.
+        /// </summary>
+        public static void Serialize<T>(Stream stream, Durable.Def def, T x)
+        {
+            if (def.Type == Durable.Primitives.Unit.Id)
+            {
+                // encode type of primitive value, so we can roundtrip with Deserialize
+                // (since it is not encoded by the Encode function called below)
+                EncodeGuid(stream, def.Id);
+            }
+
+            Serialize(stream, def, x);
+        }
+
         #endregion
 
         #region Decode
 
-        private static readonly Func<BinaryReader, object> DecodeGuid = s => new Guid(s.ReadBytes(16));
-        private static readonly Func<BinaryReader, object> DecodeStringUtf8 = s => Encoding.UTF8.GetString(DecodeArray<byte>(s));
-
-        private static readonly Func<BinaryReader, object> DecodeInt16 = s => s.ReadInt16();
-        private static readonly Func<BinaryReader, object> DecodeInt16Array = s => DecodeArray<short>(s);
-
-        private static readonly Func<BinaryReader, object> DecodeUInt16 = s => s.ReadUInt16();
-        private static readonly Func<BinaryReader, object> DecodeUInt16Array = s => DecodeArray<ushort>(s);
-
-        private static readonly Func<BinaryReader, object> DecodeInt32 = s => s.ReadInt32();
-        private static readonly Func<BinaryReader, object> DecodeInt32Array = s => DecodeArray<int>(s);
-
-        private static readonly Func<BinaryReader, object> DecodeUInt32 = s => s.ReadUInt32();
-        private static readonly Func<BinaryReader, object> DecodeUInt32Array = s => DecodeArray<uint>(s);
-
-        private static readonly Func<BinaryReader, object> DecodeInt64 = s => s.ReadInt64();
-        private static readonly Func<BinaryReader, object> DecodeInt64Array = s => DecodeArray<long>(s);
-
-        private static readonly Func<BinaryReader, object> DecodeUInt64 = s => s.ReadUInt64();
-        private static readonly Func<BinaryReader, object> DecodeUInt64Array = s => DecodeArray<ulong>(s);
-
-        private static readonly Func<BinaryReader, object> DecodeFloat32 = s => s.ReadSingle();
-        private static readonly Func<BinaryReader, object> DecodeFloat32Array = s => DecodeArray<float>(s);
-
-        private static readonly Func<BinaryReader, object> DecodeFloat64 = s => s.ReadDouble();
-        private static readonly Func<BinaryReader, object> DecodeFloat64Array = s => DecodeArray<double>(s);
-
-        private static readonly Func<BinaryReader, object> DecodeDurableMap =
-            s =>
-            {
-                var count = s.ReadInt32();
-                var entries = new KeyValuePair<Durable.Def, object>[count];
-                for (var i = 0; i < count; i++)
-                {
-                    var e = Decode(s);
-                    entries[i] = new KeyValuePair<Durable.Def, object>(e.Item1, e.Item2);
-                }
-                return ImmutableDictionary.CreateRange(entries);
-            };
-
-        private static readonly Func<BinaryReader, object> DecodeCell = s => new Cell(s.ReadInt64(), s.ReadInt64(), s.ReadInt64(), s.ReadInt32());
-        private static readonly Func<BinaryReader, object> DecodeCellArray = s => DecodeArray<Cell>(s);
-
-        private static readonly Func<BinaryReader, object> DecodeV2f = s => new V2f(s.ReadSingle(), s.ReadSingle());
-        private static readonly Func<BinaryReader, object> DecodeV2fArray = s => DecodeArray<V2f>(s);
-        private static readonly Func<BinaryReader, object> DecodeV3f = s => new V3f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
-        private static readonly Func<BinaryReader, object> DecodeV3fArray = s => DecodeArray<V3f>(s);
-        private static readonly Func<BinaryReader, object> DecodeV4f = s => new V4f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
-        private static readonly Func<BinaryReader, object> DecodeV4fArray = s => DecodeArray<V4f>(s);
-
-        private static readonly Func<BinaryReader, object> DecodeV2d = s => new V2d(s.ReadDouble(), s.ReadDouble());
-        private static readonly Func<BinaryReader, object> DecodeV2dArray = s => DecodeArray<V2d>(s);
-        private static readonly Func<BinaryReader, object> DecodeV3d = s => new V3d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
-        private static readonly Func<BinaryReader, object> DecodeV3dArray = s => DecodeArray<V3d>(s);
-        private static readonly Func<BinaryReader, object> DecodeV4d = s => new V4d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
-        private static readonly Func<BinaryReader, object> DecodeV4dArray = s => DecodeArray<V4d>(s);
-
-        private static readonly Func<BinaryReader, object> DecodeBox2f = s => new Box2f((V2f)DecodeV2f(s), (V2f)DecodeV2f(s));
-        private static readonly Func<BinaryReader, object> DecodeBox2fArray = s => DecodeArray<Box2f>(s);
-        private static readonly Func<BinaryReader, object> DecodeBox2d = s => new Box2d((V2d)DecodeV2d(s), (V2d)DecodeV2d(s));
-        private static readonly Func<BinaryReader, object> DecodeBox2dArray = s => DecodeArray<Box2d>(s);
-
-        private static readonly Func<BinaryReader, object> DecodeBox3f = s => new Box3f((V3f)DecodeV3f(s), (V3f)DecodeV3f(s));
-        private static readonly Func<BinaryReader, object> DecodeBox3fArray = s => DecodeArray<Box3f>(s);
-        private static readonly Func<BinaryReader, object> DecodeBox3d = s => new Box3d((V3d)DecodeV3d(s), (V3d)DecodeV3d(s));
-        private static readonly Func<BinaryReader, object> DecodeBox3dArray = s => DecodeArray<Box3d>(s);
-
-        private static readonly Func<BinaryReader, object> DecodeC3b = s => new C3b(s.ReadByte(), s.ReadByte(), s.ReadByte());
-        private static readonly Func<BinaryReader, object> DecodeC3bArray = s => DecodeArray<C3b>(s);
-
-        private static unsafe T[] DecodeArray<T>(BinaryReader s) where T : struct
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static T Read<T>(this Stream s) where T : struct
         {
-            var count = s.ReadInt32();
-            var size = count * Marshal.SizeOf<T>();
-            var buffer = s.ReadBytes(size);
-            var xs = new T[count];
-            var gc = GCHandle.Alloc(xs, GCHandleType.Pinned);
-            try
-            {
-                Marshal.Copy(buffer, 0, gc.AddrOfPinnedObject(), size);
-                return xs;
-            }
-            finally
-            {
-                gc.Free();
-            }
+            T x = default;
+            var span = MemoryMarshal.CreateSpan(ref x, 1);
+            var p = MemoryMarshal.Cast<T, byte>(span);
+            if (s.Read(p) != p.Length) throw new Exception();
+            return x;
         }
 
-        private static readonly Func<BinaryReader, object> DecodeGuidArray = s => DecodeArray<Guid>(s);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static object ReadBoxed<T>(this Stream s) where T : struct
+        {
+            T x = default;
+            var span = MemoryMarshal.CreateSpan(ref x, 1);
+            var p = MemoryMarshal.Cast<T, byte>(span);
+            if (s.Read(p) != p.Length) throw new Exception();
+            return x;
+        }
 
-        /// <summary>
-        /// </summary>
-        public static Func<BinaryReader, object> GetDecoderFor(Durable.Def def)
-            => (Func<BinaryReader, object>)s_decoders[def.Id];
+        private static readonly Func<Stream, object> DecodeGuid = ReadBoxed<Guid>;
+        private static readonly Func<Stream, object> DecodeStringUtf8 = s => Encoding.UTF8.GetString(DecodeArray<byte>(s));
 
-        /// <summary>
-        /// </summary>
-        public static (Durable.Def, object) Decode(BinaryReader stream)
+        private static readonly Func<Stream, object> DecodeInt16 = ReadBoxed<short>;
+        private static readonly Func<Stream, object> DecodeInt16Array = s => DecodeArray<short>(s);
+
+        private static readonly Func<Stream, object> DecodeUInt16 = ReadBoxed<ushort>;
+        private static readonly Func<Stream, object> DecodeUInt16Array = s => DecodeArray<ushort>(s);
+
+        private static readonly Func<Stream, object> DecodeInt32 = ReadBoxed<int>;
+        private static readonly Func<Stream, object> DecodeInt32Array = s => DecodeArray<int>(s);
+
+        private static readonly Func<Stream, object> DecodeUInt32 =ReadBoxed<uint>;
+        private static readonly Func<Stream, object> DecodeUInt32Array = s => DecodeArray<uint>(s);
+
+        private static readonly Func<Stream, object> DecodeInt64 = ReadBoxed<long>;
+        private static readonly Func<Stream, object> DecodeInt64Array = s => DecodeArray<long>(s);
+
+        private static readonly Func<Stream, object> DecodeUInt64 = ReadBoxed<ulong>;
+        private static readonly Func<Stream, object> DecodeUInt64Array = s => DecodeArray<ulong>(s);
+
+        private static readonly Func<Stream, object> DecodeFloat32 = ReadBoxed<float>;
+        private static readonly Func<Stream, object> DecodeFloat32Array = s => DecodeArray<float>(s);
+
+        private static readonly Func<Stream, object> DecodeFloat64 = ReadBoxed<double>;
+        private static readonly Func<Stream, object> DecodeFloat64Array = s => DecodeArray<double>(s);
+
+        private static readonly Func<Stream, object> DecodeDurableMapWithoutHeader =
+            s =>
+            {
+                var count = s.Read<int>();
+                var map = ImmutableDictionary<Durable.Def, object>.Empty;
+                for (var i = 0; i < count; i++)
+                {
+                    var (def, o) = Decode(s);
+                    map = map.Add(def, o);
+                }
+                return map;
+            };
+
+        private static readonly Func<Stream, object> DecodeCell = ReadBoxed<Cell>;
+        private static readonly Func<Stream, object> DecodeCellArray = s => DecodeArray<Cell>(s);
+
+        private static readonly Func<Stream, object> DecodeV2f = ReadBoxed<V2f>;
+        private static readonly Func<Stream, object> DecodeV2fArray = s => DecodeArray<V2f>(s);
+        private static readonly Func<Stream, object> DecodeV3f = ReadBoxed<V3f>;
+        private static readonly Func<Stream, object> DecodeV3fArray = s => DecodeArray<V3f>(s);
+        private static readonly Func<Stream, object> DecodeV4f = ReadBoxed<V4f>;
+        private static readonly Func<Stream, object> DecodeV4fArray = s => DecodeArray<V4f>(s);
+
+        private static readonly Func<Stream, object> DecodeV2d = ReadBoxed<V2d>;
+        private static readonly Func<Stream, object> DecodeV2dArray = s => DecodeArray<V2d>(s);
+        private static readonly Func<Stream, object> DecodeV3d = ReadBoxed<V3d>;
+        private static readonly Func<Stream, object> DecodeV3dArray = s => DecodeArray<V3d>(s);
+        private static readonly Func<Stream, object> DecodeV4d = ReadBoxed<V4d>;
+        private static readonly Func<Stream, object> DecodeV4dArray = s => DecodeArray<V4d>(s);
+
+        private static readonly Func<Stream, object> DecodeBox2f = ReadBoxed<Box2f>;
+        private static readonly Func<Stream, object> DecodeBox2fArray = s => DecodeArray<Box2f>(s);
+        private static readonly Func<Stream, object> DecodeBox2d = ReadBoxed<Box2d>;
+        private static readonly Func<Stream, object> DecodeBox2dArray = s => DecodeArray<Box2d>(s);
+
+        private static readonly Func<Stream, object> DecodeBox3f = ReadBoxed<Box3f>;
+        private static readonly Func<Stream, object> DecodeBox3fArray = s => DecodeArray<Box3f>(s);
+        private static readonly Func<Stream, object> DecodeBox3d = ReadBoxed<Box3d>;
+        private static readonly Func<Stream, object> DecodeBox3dArray = s => DecodeArray<Box3d>(s);
+
+        private static readonly Func<Stream, object> DecodeC3b = ReadBoxed<C3b>;
+        private static readonly Func<Stream, object> DecodeC3bArray = s => DecodeArray<C3b>(s);
+
+        private static unsafe T[] DecodeArray<T>(Stream s) where T : struct
+        {
+            var count = s.Read<int>();
+            var xs = new T[count];
+            var p = MemoryMarshal.Cast<T, byte>(xs.AsSpan());
+            if (s.Read(p) != p.Length) throw new Exception();
+            return xs;
+        }
+
+        private static readonly Func<Stream, object> DecodeGuidArray = s => DecodeArray<Guid>(s);
+
+        private static (Durable.Def, object) Decode(Stream stream)
         {
             var key = (Guid)DecodeGuid(stream);
-            var def = Durable.Get(key);
+            if (!Durable.TryGet(key, out var def))
+            {
+                stream.Position -= 16;
+                def = Durable.Get(Durable.Primitives.DurableMap.Id);
+            }
 
             if (def.Type != Durable.Primitives.Unit.Id)
             {
                 if (s_decoders.TryGetValue(def.Type, out var decoder))
                 {
-                    var o = ((Func<BinaryReader, object>)decoder)(stream);
+                    var o = ((Func<Stream, object>)decoder)(stream);
                     return (def, o);
                 }
                 else
@@ -389,9 +422,9 @@ namespace Aardvark.Data
             }
             else
             {
-                if (s_encoders.TryGetValue(def.Id, out var decoder))
+                if (s_decoders.TryGetValue(def.Id, out var decoder))
                 {
-                    var o = ((Func<BinaryReader, object>)decoder)(stream);
+                    var o = ((Func<Stream, object>)decoder)(stream);
                     return (def, o);
                 }
                 else
@@ -401,6 +434,21 @@ namespace Aardvark.Data
                 }
             }
         }
+
+        /// <summary>
+        /// Deserializes value from byte array.
+        /// </summary>
+        public static (Durable.Def, object) Deserialize(byte[] buffer)
+        {
+            using var stream = new MemoryStream(buffer);
+            return Decode(stream);
+        }
+
+        /// <summary>
+        /// Deserializes value from byte array.
+        /// </summary>
+        public static (Durable.Def, object) Deserialize(Stream stream)
+            => Decode(stream);
 
         #endregion
     }
