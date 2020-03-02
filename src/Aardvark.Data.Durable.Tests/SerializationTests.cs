@@ -1,3 +1,4 @@
+using Aardvark.Base;
 using System;
 using System.Collections.Immutable;
 using Xunit;
@@ -6,38 +7,32 @@ namespace Aardvark.Data.Tests
 {
     public class SerializationTests
     {
-        [Fact]
-        public void Primitive_Guid()
-        {
-            var x = Guid.NewGuid();
-            var buffer = Codec.Serialize(Durable.Primitives.GuidDef, x);
-
-            var (def, o) = Codec.Deserialize(buffer);
-            Assert.True(def == Durable.Primitives.GuidDef);
-            Assert.True(o is Guid);
-            Assert.True((Guid)o == x);
-        }
-
-
-        private void Primitive_Int<T>(Durable.Def def, T value) where T : IComparable<T>
+        private void Primitive<T>(Durable.Def def, T value) where T : IEquatable<T>
         {
             var buffer = Codec.Serialize(def, value);
 
             var (d, o) = Codec.Deserialize(buffer);
             Assert.True(d == def);
             Assert.True(o is T);
-            Assert.True(value.CompareTo((T)o) == 0);
+            Assert.True(value.Equals((T)o));
         }
+        [Fact] public void Primitive_StringUTF8() => Primitive(Durable.Primitives.StringUTF8, "foo bar woohoo");
+        [Fact] public void Primitive_Guid() => Primitive(Durable.Primitives.GuidDef, Guid.NewGuid());
+        [Fact] public void Primitive_Int8() => Primitive(Durable.Primitives.Int8, (sbyte)42);
+        [Fact] public void Primitive_UInt8() => Primitive(Durable.Primitives.UInt8, (byte)42);
+        [Fact] public void Primitive_Int16() => Primitive(Durable.Primitives.Int16, (short)42);
+        [Fact] public void Primitive_UInt16() => Primitive(Durable.Primitives.UInt16, (ushort)42);
+        [Fact] public void Primitive_Int32() => Primitive(Durable.Primitives.Int32, (int)42);
+        [Fact] public void Primitive_UInt32() => Primitive(Durable.Primitives.UInt32, (uint)42);
+        [Fact] public void Primitive_Int64() => Primitive(Durable.Primitives.Int64, (long)42);
+        [Fact] public void Primitive_UInt64() => Primitive(Durable.Primitives.UInt64, (ulong)42);
+        [Fact] public void Primitive_Float32() => Primitive(Durable.Primitives.Float32, 3.1415926f);
+        [Fact] public void Primitive_Float64() => Primitive(Durable.Primitives.Float64, 3.1415926);
 
-        [Fact] public void Primitive_Int8() => Primitive_Int(Durable.Primitives.Int8, (sbyte)42);
-        [Fact] public void Primitive_UInt8() => Primitive_Int(Durable.Primitives.UInt8, (byte)42);
-        [Fact] public void Primitive_Int16() => Primitive_Int(Durable.Primitives.Int16, (short)42);
-        [Fact] public void Primitive_UInt16() => Primitive_Int(Durable.Primitives.UInt16, (ushort)42);
-        [Fact] public void Primitive_Int32() => Primitive_Int(Durable.Primitives.Int32, (int)42);
-        [Fact] public void Primitive_UInt32() => Primitive_Int(Durable.Primitives.UInt32, (uint)42);
-        [Fact] public void Primitive_Int64() => Primitive_Int(Durable.Primitives.Int64, (long)42);
-        [Fact] public void Primitive_UInt64() => Primitive_Int(Durable.Primitives.UInt64, (ulong)42);
-
+        [Fact] public void Primitive_Cell() => Primitive(Durable.Aardvark.Cell, new Cell(2,11,-5,-6));
+        [Fact] public void Primitive_V2f() => Primitive(Durable.Aardvark.V2f, new V2f(1.2f, 3.4f));
+        [Fact] public void Primitive_V3f() => Primitive(Durable.Aardvark.V3f, new V3f(1.2f, 3.4f, 5.6f));
+        [Fact] public void Primitive_V4f() => Primitive(Durable.Aardvark.V4f, new V4f(1.2f, 3.4f, 5.6f, 7.8f));
 
         [Fact]
         public void Primitive_DurableMap()
