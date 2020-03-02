@@ -79,6 +79,28 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
+            /// A map of key/value pairs, where keys are durable IDs with values of corresponding types. Entries are 16-byte aligned.
+            /// </summary>
+            public static readonly Def DurableMapAligned16 = new Def(
+                new Guid("0ca48518-96b9-424f-b146-046ac3c8ed10"),
+                "DurableMapAligned16",
+                "A map of key/value pairs, where keys are durable IDs with values of corresponding types. Entries are 16-byte aligned.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// A gzipped element.
+            /// </summary>
+            public static readonly Def GZipped = new Def(
+                new Guid("7d8fc4c0-d727-4171-bc91-78f92f0c1aa4"),
+                "GZipped",
+                "A gzipped element.",
+                None,
+                false
+                );
+
+            /// <summary>
             /// Globally unique identifier (GUID, 16 bytes). https://tools.ietf.org/html/rfc4122.
             /// </summary>
             public static readonly Def GuidDef = new Def(

@@ -6,26 +6,50 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Aardvark.Data.Durable.Codeg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aardvark.Data.Durable", "Aardvark.Data.Durable\Aardvark.Data.Durable.csproj", "{EB7CD791-D406-46A0-B15E-5539B263A462}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aardvark.Data.Durable.Codec", "Aardvark.Data.Durable.Codec\Aardvark.Data.Durable.Codec.csproj", "{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aardvark.Data.Durable.Codec", "Aardvark.Data.Durable.Codec\Aardvark.Data.Durable.Codec.csproj", "{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aardvark.Data.Durable.Tests", "Aardvark.Data.Durable.Tests\Aardvark.Data.Durable.Tests.csproj", "{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug NetCore31|Any CPU = Debug NetCore31|Any CPU
 		Debug|Any CPU = Debug|Any CPU
+		Release NetCore31|Any CPU = Release NetCore31|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Debug NetCore31|Any CPU.ActiveCfg = Debug NetCore31|Any CPU
+		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Debug NetCore31|Any CPU.Build.0 = Debug NetCore31|Any CPU
 		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Release NetCore31|Any CPU.ActiveCfg = Release NetCore31|Any CPU
+		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Release NetCore31|Any CPU.Build.0 = Release NetCore31|Any CPU
 		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB7CD791-D406-46A0-B15E-5539B263A462}.Debug NetCore31|Any CPU.ActiveCfg = Debug NetCore31|Any CPU
+		{EB7CD791-D406-46A0-B15E-5539B263A462}.Debug NetCore31|Any CPU.Build.0 = Debug NetCore31|Any CPU
 		{EB7CD791-D406-46A0-B15E-5539B263A462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EB7CD791-D406-46A0-B15E-5539B263A462}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB7CD791-D406-46A0-B15E-5539B263A462}.Release NetCore31|Any CPU.ActiveCfg = Release NetCore31|Any CPU
+		{EB7CD791-D406-46A0-B15E-5539B263A462}.Release NetCore31|Any CPU.Build.0 = Release NetCore31|Any CPU
 		{EB7CD791-D406-46A0-B15E-5539B263A462}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB7CD791-D406-46A0-B15E-5539B263A462}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Debug NetCore31|Any CPU.ActiveCfg = Debug NetCore31|Any CPU
+		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Debug NetCore31|Any CPU.Build.0 = Debug NetCore31|Any CPU
 		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Release NetCore31|Any CPU.ActiveCfg = Release NetCore31|Any CPU
+		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Release NetCore31|Any CPU.Build.0 = Release NetCore31|Any CPU
 		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Debug NetCore31|Any CPU.ActiveCfg = Debug NetCore31|Any CPU
+		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Debug NetCore31|Any CPU.Build.0 = Debug NetCore31|Any CPU
+		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Release NetCore31|Any CPU.ActiveCfg = Release NetCore31|Any CPU
+		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Release NetCore31|Any CPU.Build.0 = Release NetCore31|Any CPU
+		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

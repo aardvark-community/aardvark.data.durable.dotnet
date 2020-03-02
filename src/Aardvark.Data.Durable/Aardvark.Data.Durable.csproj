@@ -2,12 +2,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release;Release NetCore31;Debug NetCore31</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>../../bin/Debug</OutputPath>
     <DocumentationFile>../../bin/Debug\Aardvark.Data.Durable.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug NetCore31|AnyCPU'">
+    <OutputPath>../../bin/Debug</OutputPath>
+    <DocumentationFile>../../bin/Debug\Aardvark.Data.Durable.xml</DocumentationFile>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>../../bin/Release</OutputPath>
+    <DocumentationFile>../../bin/Release\Aardvark.Data.Durable.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release NetCore31|AnyCPU'">
     <OutputPath>../../bin/Release</OutputPath>
     <DocumentationFile>../../bin/Release\Aardvark.Data.Durable.xml</DocumentationFile>
   </PropertyGroup>

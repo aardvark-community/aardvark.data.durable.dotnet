@@ -1,14 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>8</LangVersion>
     <RootNamespace>Aardvark.Data.Durable</RootNamespace>
+    <Configurations>Debug;Release;Release NetCore31;Debug NetCore31</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <OutputPath>../../bin/Debug</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug NetCore31|AnyCPU'">
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputPath>../../bin/Debug</OutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <OutputPath>../../bin/Release</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release NetCore31|AnyCPU'">
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputPath>../../bin/Release</OutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
