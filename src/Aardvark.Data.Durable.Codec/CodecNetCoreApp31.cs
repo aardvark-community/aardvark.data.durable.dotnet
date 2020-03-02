@@ -77,6 +77,12 @@ namespace Aardvark.Data
 
                 [Durable.Aardvark.C3b.Id]               = EncodeC3b,
                 [Durable.Aardvark.C3bArray.Id]          = EncodeC3bArray,
+                [Durable.Aardvark.C4b.Id]               = EncodeC4b,
+                [Durable.Aardvark.C4bArray.Id]          = EncodeC4bArray,
+                [Durable.Aardvark.C3f.Id]               = EncodeC3f,
+                [Durable.Aardvark.C3fArray.Id]          = EncodeC3fArray,
+                [Durable.Aardvark.C4f.Id]               = EncodeC4f,
+                [Durable.Aardvark.C4fArray.Id]          = EncodeC4fArray,
             };
 
             s_decoders = new Dictionary<Guid, object>
@@ -133,6 +139,12 @@ namespace Aardvark.Data
 
                 [Durable.Aardvark.C3b.Id]               = DecodeC3b,
                 [Durable.Aardvark.C3bArray.Id]          = DecodeC3bArray,
+                [Durable.Aardvark.C4b.Id]               = DecodeC4b,
+                [Durable.Aardvark.C4bArray.Id]          = DecodeC4bArray, 
+                [Durable.Aardvark.C3f.Id]               = DecodeC3f,
+                [Durable.Aardvark.C3fArray.Id]          = DecodeC3fArray,
+                [Durable.Aardvark.C4f.Id]               = DecodeC4f,
+                [Durable.Aardvark.C4fArray.Id]          = DecodeC4fArray, 
             };
         }
 
@@ -215,11 +227,11 @@ namespace Aardvark.Data
         private static readonly Action<Stream, object> EncodeV3d = Write<V3d>;
         private static readonly Action<Stream, object> EncodeV3dArray = (s, o) => EncodeArray(s, (V3d[])o);
 
-        private static readonly Action<Stream, object> EncodeV4d = Write<V4f>;
+        private static readonly Action<Stream, object> EncodeV4d = Write<V4d>;
         private static readonly Action<Stream, object> EncodeV4dArray = (s, o) => EncodeArray(s, (V4d[])o);
 
 
-        private static readonly Action<Stream, object> EncodeBox2f = Write<Box3f>;
+        private static readonly Action<Stream, object> EncodeBox2f = Write<Box2f>;
         private static readonly Action<Stream, object> EncodeBox2fArray = (s, o) => EncodeArray(s, (Box2f[])o);
 
         private static readonly Action<Stream, object> EncodeBox2d = Write<Box2d>;
@@ -232,8 +244,18 @@ namespace Aardvark.Data
         private static readonly Action<Stream, object> EncodeBox3d = Write<Box3d>;
         private static readonly Action<Stream, object> EncodeBox3dArray = (s, o) => EncodeArray(s, (Box3d[])o);
 
+
         private static readonly Action<Stream, object> EncodeC3b = Write<C3b>;
         private static readonly Action<Stream, object> EncodeC3bArray = (s, o) => EncodeArray(s, (C3b[])o);
+
+        private static readonly Action<Stream, object> EncodeC4b = Write<C4b>;
+        private static readonly Action<Stream, object> EncodeC4bArray = (s, o) => EncodeArray(s, (C4b[])o);
+
+        private static readonly Action<Stream, object> EncodeC3f = Write<C3f>;
+        private static readonly Action<Stream, object> EncodeC3fArray = (s, o) => EncodeArray(s, (C3f[])o);
+
+        private static readonly Action<Stream, object> EncodeC4f= Write<C4f>;
+        private static readonly Action<Stream, object> EncodeC4fArray = (s, o) => EncodeArray(s, (C4f[])o);
 
         private static unsafe void EncodeArray<T>(Stream s, params T[] xs) where T : struct
         {
@@ -415,6 +437,12 @@ namespace Aardvark.Data
 
         private static readonly Func<Stream, object> DecodeC3b = ReadBoxed<C3b>;
         private static readonly Func<Stream, object> DecodeC3bArray = s => DecodeArray<C3b>(s);
+        private static readonly Func<Stream, object> DecodeC4b = ReadBoxed<C4b>;
+        private static readonly Func<Stream, object> DecodeC4bArray = s => DecodeArray<C4b>(s);
+        private static readonly Func<Stream, object> DecodeC3f = ReadBoxed<C3f>;
+        private static readonly Func<Stream, object> DecodeC3fArray = s => DecodeArray<C3f>(s);
+        private static readonly Func<Stream, object> DecodeC4f = ReadBoxed<C4f>;
+        private static readonly Func<Stream, object> DecodeC4fArray = s => DecodeArray<C4f>(s);
 
         private static unsafe T[] DecodeArray<T>(Stream s) where T : struct
         {
