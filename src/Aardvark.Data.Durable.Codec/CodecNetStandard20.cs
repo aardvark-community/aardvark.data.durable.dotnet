@@ -21,7 +21,7 @@ namespace Aardvark.Data
         static Codec()
         {
             // force Durable.Octree initializer
-            if (Durable.Octree.NodeId == null) throw new InvalidOperationException("Invariant 98c78cd6-cef2-4f0b-bb8e-907064c305c4.");
+            if (Durable.Octree.NodeId == null) throw new InvalidOperationException("Invariant 29fd2fed-e038-441c-939c-89219e426b3f.");
 
             s_encoders = new Dictionary<Guid, object>
             {
@@ -261,7 +261,7 @@ namespace Aardvark.Data
                 else
                 {
                     var unknownDef = Durable.Get(def.Type);
-                    throw new InvalidOperationException($"Unknown definition {unknownDef}.");
+                    throw new InvalidOperationException($"Unknown definition {unknownDef}. Invariant 4619ee6d-81e7-4212-b813-bfe2178d906f.");
                 }
             }
             else
@@ -273,7 +273,7 @@ namespace Aardvark.Data
                 else
                 {
                     var unknownDef = Durable.Get(def.Id);
-                    throw new InvalidOperationException($"Unknown definition {unknownDef}.");
+                    throw new InvalidOperationException($"Unknown definition {unknownDef}. Invariant 0de99f99-a339-421b-ac5d-4f55b71342de.");
                 }
             }
         }
@@ -434,7 +434,7 @@ namespace Aardvark.Data
                 else
                 {
                     var unknownDef = Durable.Get(def.Type);
-                    throw new InvalidOperationException($"Unknown definition {unknownDef}.");
+                    throw new InvalidOperationException($"Unknown definition {unknownDef}. Invariant bcdd79e9-06dd-42d1-9906-9974d49e8dd8.");
                 }
             }
             else
@@ -447,7 +447,7 @@ namespace Aardvark.Data
                 else
                 {
                     var unknownDef = Durable.Get(def.Id);
-                    throw new InvalidOperationException($"Unknown definition {unknownDef}.");
+                    throw new InvalidOperationException($"Unknown definition {unknownDef}. Invariant 9d4570d5-b9ef-404f-a247-9b571cd4f1f6.");
                 }
             }
         }

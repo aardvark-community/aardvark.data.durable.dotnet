@@ -263,7 +263,7 @@ namespace Aardvark.Data
                 else
                 {
                     var unknownDef = Durable.Get(def.Type);
-                    throw new InvalidOperationException($"Unknown definition {unknownDef}.");
+                    throw new InvalidOperationException($"Unknown definition {unknownDef}. Invariant 009acad8-31bc-48fa-b0ad-0ccb1da4b26d.");
                 }
             }
             else
@@ -275,7 +275,7 @@ namespace Aardvark.Data
                 else
                 {
                     var unknownDef = Durable.Get(def.Id);
-                    throw new InvalidOperationException($"Unknown definition {unknownDef}.");
+                    throw new InvalidOperationException($"Unknown definition {unknownDef}. Invariant 4ae8b2d1-2a5d-4d87-9ddc-3d780de516fc.");
                 }
             }
         }
@@ -324,7 +324,7 @@ namespace Aardvark.Data
             T x = default;
             var span = MemoryMarshal.CreateSpan(ref x, 1);
             var p = MemoryMarshal.Cast<T, byte>(span);
-            if (s.Read(p) != p.Length) throw new Exception();
+            if (s.Read(p) != p.Length) throw new Exception("Invariant f96c6373-e9c1-4af2-b253-efa048cfbb2d.");
             return x;
         }
 
@@ -334,7 +334,7 @@ namespace Aardvark.Data
             T x = default;
             var span = MemoryMarshal.CreateSpan(ref x, 1);
             var p = MemoryMarshal.Cast<T, byte>(span);
-            if (s.Read(p) != p.Length) throw new Exception();
+            if (s.Read(p) != p.Length) throw new Exception("Invariant 79a51e2f-8cf0-4d37-ab3a-5fc5b30be658.");
             return x;
         }
 
@@ -419,7 +419,7 @@ namespace Aardvark.Data
             var count = s.Read<int>();
             var xs = new T[count];
             var p = MemoryMarshal.Cast<T, byte>(xs.AsSpan());
-            if (s.Read(p) != p.Length) throw new Exception();
+            if (s.Read(p) != p.Length) throw new Exception("Invariant 24838184-9d56-4c1f-a626-ba006641ef94.");
             return xs;
         }
 
@@ -444,7 +444,7 @@ namespace Aardvark.Data
                 else
                 {
                     var unknownDef = Durable.Get(def.Type);
-                    throw new InvalidOperationException($"Unknown definition {unknownDef}.");
+                    throw new InvalidOperationException($"Unknown definition {unknownDef}. Invariant 07f5aa80-431a-4e21-9186-fcb9206248b7.");
                 }
             }
             else
@@ -457,7 +457,7 @@ namespace Aardvark.Data
                 else
                 {
                     var unknownDef = Durable.Get(def.Id);
-                    throw new InvalidOperationException($"Unknown definition {unknownDef}.");
+                    throw new InvalidOperationException($"Unknown definition {unknownDef}. Invariant e5938812-3f34-4dfd-b0f1-ea247cd88ad8.");
                 }
             }
         }
