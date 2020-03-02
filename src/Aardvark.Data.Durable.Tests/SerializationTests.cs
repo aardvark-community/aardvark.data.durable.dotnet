@@ -16,9 +16,24 @@ namespace Aardvark.Data.Tests
             Assert.True(o is T);
             Assert.True(eq(value, (T)o));
         }
+        private void PrimitiveArray<T>(Durable.Def def, T[] value, Func<T, T, bool> eq)
+        {
+            var buffer = Codec.Serialize(def, value);
+
+            var (d, o) = Codec.Deserialize(buffer);
+            Assert.True(d == def);
+            Assert.True(o is T[]);
+            var xs = (T[])o;
+            for (var i = 0; i < value.Length; i++)
+                Assert.True(eq(value[i], xs[i]));
+        }
         private void Primitive<T>(Durable.Def def, T value) where T : IEquatable<T>
             => Primitive(def, value, (a, b) => a.Equals(b));
+        private void PrimitiveArray<T>(Durable.Def def, T[] value) where T : IEquatable<T>
+            => PrimitiveArray(def, value, (a, b) => a.Equals(b));
+
         [Fact] public void Primitive_StringUTF8() => Primitive(Durable.Primitives.StringUTF8, "foo bar woohoo");
+
         [Fact] public void Primitive_Guid() => Primitive(Durable.Primitives.GuidDef, Guid.NewGuid());
         [Fact] public void Primitive_Int8() => Primitive(Durable.Primitives.Int8, (sbyte)42);
         [Fact] public void Primitive_UInt8() => Primitive(Durable.Primitives.UInt8, (byte)42);
@@ -59,6 +74,62 @@ namespace Aardvark.Data.Tests
 
 
 
+
+        [Fact] public void Primitive_GuidArray() => PrimitiveArray(Durable.Primitives.GuidArray, 
+                new[] { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() }
+                );
+
+        [Fact]
+        public void Primitive_Int8Array() => PrimitiveArray(Durable.Primitives.Int8Array,
+                new[] { (sbyte)42, (sbyte)43, (sbyte)44 }
+                );
+        [Fact]
+        public void Primitive_UInt8Array() => PrimitiveArray(Durable.Primitives.UInt8Array,
+                new[] { (byte)42, (byte)43, (byte)44 }
+                );
+
+        [Fact]
+        public void Primitive_Int16Array() => PrimitiveArray(Durable.Primitives.Int16Array,
+                new[] { (short)42, (short)43, (short)44 }
+                );
+        [Fact]
+        public void Primitive_UInt16Array() => PrimitiveArray(Durable.Primitives.UInt16Array,
+                new[] { (ushort)42, (ushort)43, (ushort)44 }
+                );
+
+        [Fact]
+        public void Primitive_Int32Array() => PrimitiveArray(Durable.Primitives.Int32Array,
+                new[] { (int)42, (int)43, (int)44 }
+                );
+
+        [Fact]
+        public void Primitive_UInt32Array() => PrimitiveArray(Durable.Primitives.UInt32Array,
+                new[] { (uint)42, (uint)43, (uint)44 }
+                );
+
+        [Fact]
+        public void Primitive_Int64Array() => PrimitiveArray(Durable.Primitives.Int64Array,
+                new[] { (long)42, (long)43, (long)44 }
+                );
+
+        [Fact]
+        public void Primitive_UInt64Array() => PrimitiveArray(Durable.Primitives.UInt64Array,
+                new[] { (ulong)42, (ulong)43, (ulong)44 }
+                );
+
+        [Fact]
+        public void Primitive_Float32Array() => PrimitiveArray(Durable.Primitives.Float32Array,
+                new[] { (float)42, (float)43, (float)44 }
+                );
+
+        [Fact]
+        public void Primitive_Float64Array() => PrimitiveArray(Durable.Primitives.Float64Array,
+                new[] { (double)42, (double)43, (double)44 }
+                );
+
+        
+
+
         [Fact]
         public void Primitive_DurableMap()
         {
@@ -79,5 +150,8 @@ namespace Aardvark.Data.Tests
             Assert.True(((Guid)m[Durable.Octree.NodeId]) == id);
             Assert.True(((long)m[Durable.Octree.NodeCountTotal]) == 123L);
         }
+
+
+
     }
 }
