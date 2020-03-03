@@ -3,14 +3,21 @@
   <PropertyGroup>
     <LangVersion>8</LangVersion>
     <RootNamespace>Aardvark.Data.Durable</RootNamespace>
-    <Configurations>Debug;Release;Release NetCore31;Debug NetCore31</Configurations>
+    <Configurations>Debug; Release; Debug NetStandard20 NetStandard20;Release;Release NetCore31;Debug NetCore31</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TargetFrameworks>netstandard2.0;netcoreapp3.1</TargetFrameworks>
+    <OutputPath>../../bin/Debug</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>../../bin/Debug/Aardvark.Data.Durable.Codec.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug NetStandard20|AnyCPU'">
     <TargetFramework>netstandard2.0</TargetFramework>
     <OutputPath>../../bin/Debug</OutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DocumentationFile>../../bin/Debug\Aardvark.Data.Durable.Codec.xml</DocumentationFile>
+    <DocumentationFile>../../bin/Debug/Aardvark.Data.Durable.Codec.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug NetCore31|AnyCPU'">
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -18,20 +25,26 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <Optimize>false</Optimize>
-    <DocumentationFile>../../bin/Debug\Aardvark.Data.Durable.Codec.xml</DocumentationFile>
+    <DocumentationFile>../../bin/Debug/Aardvark.Data.Durable.Codec.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <TargetFrameworks>netstandard2.0;netcoreapp3.1</TargetFrameworks>
+    <OutputPath>../../bin/Release</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>../../bin/Release/Aardvark.Data.Durable.Codec.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release NetStandard20|AnyCPU'">
     <TargetFramework>netstandard2.0</TargetFramework>
     <OutputPath>../../bin/Release</OutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DocumentationFile>../../bin/Release\Aardvark.Data.Durable.Codec.xml</DocumentationFile>
+    <DocumentationFile>../../bin/Release/Aardvark.Data.Durable.Codec.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release NetCore31|AnyCPU'">
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputPath>../../bin/Release</OutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Optimize>true</Optimize>
-    <DocumentationFile>../../bin/Release\Aardvark.Data.Durable.Codec.xml</DocumentationFile>
+    <DocumentationFile>../../bin/Release/Aardvark.Data.Durable.Codec.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aardvark.Data.Durable\Aardvark.Data.Durable.csproj" />

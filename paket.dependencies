@@ -1,4 +1,4 @@
-framework: netcoreapp22, netstandard20, netcoreapp31
+framework: netstandard20, netcoreapp31
 source https://api.nuget.org/v3/index.json
 
 nuget FSharp.Core                     >= 4.6.2 lowest_matching: true
