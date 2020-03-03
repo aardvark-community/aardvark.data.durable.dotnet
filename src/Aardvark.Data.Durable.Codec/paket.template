@@ -1,0 +1,10 @@
+type project
+id Aardvark.Data.Durable.Codec
+authors Aardworx GmbH
+owners Aardworx GmbH
+projectUrl https://github.com/aardvark-community/aardvark.data.durable.dotnet
+licenseUrl https://github.com/aardvark-community/aardvark.data.durable.dotnet/blob/master/LICENSE
+description
+    Aardvark durable data serialization.
+    See https://github.com/aardvark-community/aardvark.data.durable.definitions.
+include-pdbs true
