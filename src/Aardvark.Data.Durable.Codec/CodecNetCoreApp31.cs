@@ -1,7 +1,7 @@
 ﻿/*
     MIT License
 
-    Copyright (c) 2019 Aardworx GmbH (https://aardworx.com). All rights reserved.
+    Copyright (c) 2020 Aardworx GmbH (https://aardworx.com). All rights reserved.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,7 @@ namespace Aardvark.Data
 {
     public static partial class DurableCodec
     {
-        #region Encode
+#region Encode
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static void Write<T>(this Stream s, object o) where T : struct
@@ -248,9 +248,9 @@ namespace Aardvark.Data
             }
         }
 
-        #endregion
+#endregion
 
-        #region Decode
+#region Decode
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static T Read<T>(this Stream s) where T : struct
@@ -447,9 +447,9 @@ namespace Aardvark.Data
             }
         }
 
-        #endregion
+#endregion
 
-        #region Serialization
+#region Serialization
 
         /// <summary>
         /// Serializes value x to byte array. 
@@ -527,7 +527,7 @@ namespace Aardvark.Data
         /// </summary>
         public static T DeserializeAs<T>(string filename) => (T)Deserialize(filename).obj;
 
-        #endregion
+#endregion
     }
 }
 

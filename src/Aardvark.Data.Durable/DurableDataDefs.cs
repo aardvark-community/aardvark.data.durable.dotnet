@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2019 Aardworx GmbH (https://aardworx.com). All rights reserved.
+    Copyright (c) 2020 Aardworx GmbH (https://aardworx.com). All rights reserved.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -1684,6 +1684,61 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
+            /// Octree. Per-point positions in global space. V3f[].
+            /// </summary>
+            public static readonly Def PositionsGlobal3f = new Def(
+                new Guid("fcb577f8-28cc-43b2-9aef-ca0569c22a03"),
+                "Octree.PositionsGlobal3f",
+                "Octree. Per-point positions in global space. V3f[].",
+                Aardvark.V3fArray.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Centroid of positions (global space). V3f.
+            /// </summary>
+            public static readonly Def PositionsGlobal3fCentroid = new Def(
+                new Guid("5ace7e46-f67d-4dba-9c60-e63f18b26166"),
+                "Octree.PositionsGlobal3f.Centroid",
+                "Octree. Centroid of positions (global space). V3f.",
+                Aardvark.V3f.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Average point distance to centroid (global space). Float32.
+            /// </summary>
+            public static readonly Def PositionsGlobal3fDistToCentroidAverage = new Def(
+                new Guid("1d61fded-6d27-4cf3-a6b7-c187ed21ae10"),
+                "Octree.PositionsGlobal3f.DistToCentroid.Average",
+                "Octree. Average point distance to centroid (global space). Float32.",
+                Primitives.Float32.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Standard deviation of average point distance to centroid (global space). Float32.
+            /// </summary>
+            public static readonly Def PositionsGlobal3fDistToCentroidStdDev = new Def(
+                new Guid("d725dcde-0f50-4f36-8e23-580cd59d04e4"),
+                "Octree.PositionsGlobal3f.DistToCentroid.StdDev",
+                "Octree. Standard deviation of average point distance to centroid (global space). Float32.",
+                Primitives.Float32.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Reference to per-point positions in global space. Guid.
+            /// </summary>
+            public static readonly Def PositionsGlobal3fReference = new Def(
+                new Guid("03a62e0e-4a4b-4d24-b558-cf700d275edd"),
+                "Octree.PositionsGlobal3f.Reference",
+                "Octree. Reference to per-point positions in global space. Guid.",
+                Primitives.GuidDef.Id,
+                false
+                );
+
+            /// <summary>
             /// Octree. Per-point positions in global space. V3d[].
             /// </summary>
             public static readonly Def PositionsGlobal3d = new Def(
@@ -1724,6 +1779,17 @@ namespace Aardvark.Data
                 "Octree.PositionsGlobal3d.DistToCentroid.StdDev",
                 "Octree. Standard deviation of average point distance to centroid (global space). Float64.",
                 Primitives.Float64.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Reference to per-point positions in global space. Guid.
+            /// </summary>
+            public static readonly Def PositionsGlobal3dReference = new Def(
+                new Guid("839e1897-5fa3-426b-b66f-af166048ec34"),
+                "Octree.PositionsGlobal3d.Reference",
+                "Octree. Reference to per-point positions in global space. Guid.",
+                Primitives.GuidDef.Id,
                 false
                 );
 
@@ -1777,6 +1843,61 @@ namespace Aardvark.Data
             public static readonly Def PositionsLocal3fReference = new Def(
                 new Guid("f3d3264d-abb4-47c5-963b-39d1a1728fa9"),
                 "Octree.PositionsLocal3f.Reference",
+                "Octree. Reference to per-point positions in local cell space (as offsets from cell's center). Guid.",
+                Primitives.GuidDef.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Per-point positions in local cell space (as offsets from cell's center). V3d[].
+            /// </summary>
+            public static readonly Def PositionsLocal3d = new Def(
+                new Guid("303bb5ba-3488-4d40-9002-c484aa4b93e1"),
+                "Octree.PositionsLocal3d",
+                "Octree. Per-point positions in local cell space (as offsets from cell's center). V3d[].",
+                Aardvark.V3dArray.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Centroid of positions (local space). V3d.
+            /// </summary>
+            public static readonly Def PositionsLocal3dCentroid = new Def(
+                new Guid("000f0635-6b73-49ac-b44a-bcf6d6dcbef0"),
+                "Octree.PositionsLocal3d.Centroid",
+                "Octree. Centroid of positions (local space). V3d.",
+                Aardvark.V3d.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Average point distance to centroid (local space). Float64.
+            /// </summary>
+            public static readonly Def PositionsLocal3dDistToCentroidAverage = new Def(
+                new Guid("6c191627-eb5b-44a1-82c3-eb5da439e493"),
+                "Octree.PositionsLocal3d.DistToCentroid.Average",
+                "Octree. Average point distance to centroid (local space). Float64.",
+                Primitives.Float64.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Standard deviation of average point distance to centroid (local space). Float64.
+            /// </summary>
+            public static readonly Def PositionsLocal3dDistToCentroidStdDev = new Def(
+                new Guid("5ea424e2-6a47-411e-a398-062e81194ada"),
+                "Octree.PositionsLocal3d.DistToCentroid.StdDev",
+                "Octree. Standard deviation of average point distance to centroid (local space). Float64.",
+                Primitives.Float64.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Reference to per-point positions in local cell space (as offsets from cell's center). Guid.
+            /// </summary>
+            public static readonly Def PositionsLocal3dReference = new Def(
+                new Guid("b4c7208d-98e2-4c30-a18a-c853746ee78a"),
+                "Octree.PositionsLocal3d.Reference",
                 "Octree. Reference to per-point positions in local cell space (as offsets from cell's center). Guid.",
                 Primitives.GuidDef.Id,
                 false
@@ -2042,6 +2163,28 @@ namespace Aardvark.Data
                 new Guid("f7d97f68-e1e1-4b1b-9133-42689b6fb65b"),
                 "Octree.Velocities3d.Reference",
                 "Octree. Reference to per-point velocities (Guid).",
+                Primitives.GuidDef.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Per-point densities (float32[]).
+            /// </summary>
+            public static readonly Def Densities1f = new Def(
+                new Guid("040d084d-1f1b-4058-afc7-ea300bbb551d"),
+                "Octree.Densities1f",
+                "Octree. Per-point densities (float32[]).",
+                Primitives.Float32Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Reference to per-point densities (Guid).
+            /// </summary>
+            public static readonly Def Densities1fReference = new Def(
+                new Guid("bf51bb51-7947-49ec-9f60-2d4f78a60674"),
+                "Octree.Densities1f.Reference",
+                "Octree. Reference to per-point densities (Guid).",
                 Primitives.GuidDef.Id,
                 false
                 );

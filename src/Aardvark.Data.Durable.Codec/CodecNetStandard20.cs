@@ -1,7 +1,7 @@
 ﻿/*
     MIT License
 
-    Copyright (c) 2019 Aardworx GmbH (https://aardworx.com). All rights reserved.
+    Copyright (c) 2020 Aardworx GmbH (https://aardworx.com). All rights reserved.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
