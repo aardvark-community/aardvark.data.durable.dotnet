@@ -9,11 +9,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <OutputPath>../../bin/Debug</OutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug NetCore31|AnyCPU'">
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputPath>../../bin/Debug</OutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <Optimize>false</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -24,6 +27,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputPath>../../bin/Release</OutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aardvark.Data.Durable\Aardvark.Data.Durable.csproj" />
