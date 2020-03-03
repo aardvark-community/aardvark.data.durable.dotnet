@@ -29,17 +29,16 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Aardvark.Data
 {
-    /// <summary>
-    /// </summary>
-    public static partial class Codec
+    public static partial class DurableCodec
     {
-#region Encode
+        #region Encode
 
         private static readonly Action<BinaryWriter, object> EncodeDurableMapWithoutHeader =
             (s, o) =>
@@ -67,23 +66,41 @@ namespace Aardvark.Data
 
                 var xs = (IEnumerable<KeyValuePair<Durable.Def, object>>)o;
 
-                // number of entries (int + padding)
-                var count = xs.Count();
+            // number of entries (int + padding)
+            var count = xs.Count();
                 bw.Write(count); // 4 bytes
-                s.PadToNextMultipleOf(16);
+            s.PadToNextMultipleOf(16);
 #if DEBUG
-                if (s.Position % 16 != 0) throw new Exception("Invariant 75944da3-3efa-4a0d-935d-c020d5ca7d56.");
+            if (s.Position % 16 != 0) throw new Exception("Invariant 75944da3-3efa-4a0d-935d-c020d5ca7d56.");
 #endif
 
-                // entries (+ padding after each entry)
-                foreach (var x in xs)
+            // entries (+ padding after each entry)
+            foreach (var x in xs)
                 {
                     Encode(bw, x.Key, x.Value);
                     s.PadToNextMultipleOf(16);
 #if DEBUG
-                    if (s.Position % 16 != 0) throw new Exception("Invariant 9212ca74-a0a4-406f-9f7b-262e2e516918.");
+                if (s.Position % 16 != 0) throw new Exception("Invariant 9212ca74-a0a4-406f-9f7b-262e2e516918.");
 #endif
-                }
+            }
+            };
+
+        private static readonly Action<BinaryWriter, object> EncodeGZipped =
+            (s, o) =>
+            {
+                var gzipped = (DurableGZipped)o;
+                using var ms = new MemoryStream();
+                using var bw = new BinaryWriter(ms);
+                EncodeGuid(bw, gzipped.Def.Id);
+                Encode(bw, gzipped.Def, gzipped.Value);
+                bw.Flush();
+
+                var buffer = ms.ToArray();
+
+                var bufferGZipped = buffer.GZipCompress();
+                s.Write(buffer.Length);
+                s.Write(bufferGZipped.Length);
+                s.Write(bufferGZipped, 0, bufferGZipped.Length);
             };
 
         private static readonly Action<BinaryWriter, object> EncodeGuid = (s, o) => s.Write(((Guid)o).ToByteArray(), 0, 16);
@@ -218,7 +235,9 @@ namespace Aardvark.Data
                 else
                 {
                     var unknownDef = Durable.Get(def.Type);
-                    throw new InvalidOperationException($"Unknown definition {unknownDef}. Invariant 4619ee6d-81e7-4212-b813-bfe2178d906f.");
+                    throw new InvalidOperationException(
+                        $"Unknown definition {unknownDef}. Invariant 4619ee6d-81e7-4212-b813-bfe2178d906f."
+                        );
                 }
             }
             else
@@ -230,7 +249,9 @@ namespace Aardvark.Data
                 else
                 {
                     var unknownDef = Durable.Get(def.Id);
-                    throw new InvalidOperationException($"Unknown definition {unknownDef}. Invariant 0de99f99-a339-421b-ac5d-4f55b71342de.");
+                    throw new InvalidOperationException(
+                        $"Unknown definition {unknownDef}. Invariant 0de99f99-a339-421b-ac5d-4f55b71342de."
+                        );
                 }
             }
         }
@@ -271,9 +292,9 @@ namespace Aardvark.Data
             Serialize(stream, def, x);
         }
 
-#endregion
+        #endregion
 
-#region Decode
+        #region Decode
 
         private static readonly Func<BinaryReader, object> DecodeDurableMapWithoutHeader =
             s =>
@@ -302,20 +323,36 @@ namespace Aardvark.Data
                 var count = br.ReadInt32();
                 s.SkipToNextMultipleOf(16);
 #if DEBUG
-                if (s.Position % 16 != 0) throw new Exception("Invariant a28bd69e-9807-4a66-971c-c3cfa46eebad.");
+            if (s.Position % 16 != 0) throw new Exception("Invariant a28bd69e-9807-4a66-971c-c3cfa46eebad.");
 #endif
 
-                var map = ImmutableDictionary<Durable.Def, object>.Empty;
+            var map = ImmutableDictionary<Durable.Def, object>.Empty;
                 for (var i = 0; i < count; i++)
                 {
                     var (def, o) = Decode(br);
                     map = map.Add(def, o);
                     s.SkipToNextMultipleOf(16);
 #if DEBUG
-                    if (s.Position % 16 != 0) throw new Exception("Invariant 078e73a4-b743-46f5-acc2-79c22e9a1d89.");
+                if (s.Position % 16 != 0) throw new Exception("Invariant 078e73a4-b743-46f5-acc2-79c22e9a1d89.");
 #endif
-                }
+            }
                 return map;
+            };
+
+        private static readonly Func<BinaryReader, object> DecodeGZipped =
+            s =>
+            {
+                var uncompressedBufferSize = s.ReadInt32();
+                var compressedBufferSize = s.ReadInt32();
+                var compressedBuffer = s.ReadBytes(compressedBufferSize);
+
+                var uncompressedBuffer = compressedBuffer.GZipDecompress(uncompressedBufferSize);
+
+                using var ms = new MemoryStream(uncompressedBuffer);
+                using var br = new BinaryReader(ms);
+
+                var (def, o) = Decode(br);
+                return new DurableGZipped(def, o);
             };
 
         private static readonly Func<BinaryReader, object> DecodeGuid = s => new Guid(s.ReadBytes(16));
@@ -430,7 +467,9 @@ namespace Aardvark.Data
                 else
                 {
                     var unknownDef = Durable.Get(def.Type);
-                    throw new InvalidOperationException($"Unknown definition {unknownDef}. Invariant bcdd79e9-06dd-42d1-9906-9974d49e8dd8.");
+                    throw new InvalidOperationException(
+                        $"Unknown definition {unknownDef}. Invariant bcdd79e9-06dd-42d1-9906-9974d49e8dd8."
+                        );
                 }
             }
             else
@@ -443,7 +482,9 @@ namespace Aardvark.Data
                 else
                 {
                     var unknownDef = Durable.Get(def.Id);
-                    throw new InvalidOperationException($"Unknown definition {unknownDef}. Invariant 9d4570d5-b9ef-404f-a247-9b571cd4f1f6.");
+                    throw new InvalidOperationException(
+                        $"Unknown definition {unknownDef}. Invariant 9d4570d5-b9ef-404f-a247-9b571cd4f1f6."
+                        );
                 }
             }
         }
@@ -464,7 +505,7 @@ namespace Aardvark.Data
         public static (Durable.Def, object) Deserialize(BinaryReader stream)
             => Decode(stream);
 
-#endregion
+        #endregion
     }
 }
 

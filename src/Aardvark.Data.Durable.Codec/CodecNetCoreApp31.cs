@@ -36,9 +36,7 @@ using System.Text;
 
 namespace Aardvark.Data
 {
-    /// <summary>
-    /// </summary>
-    public static partial class Codec
+    public static partial class DurableCodec
     {
         #region Encode
 
@@ -78,23 +76,43 @@ namespace Aardvark.Data
             {
                 var xs = (IEnumerable<KeyValuePair<Durable.Def, object>>)o;
 
-                // number of entries (int + padding)
-                var count = xs.Count(); 
+            // number of entries (int + padding)
+            var count = xs.Count();
                 s.Write(ref count); // 4 bytes
-                s.PadToNextMultipleOf(16);
+            s.PadToNextMultipleOf(16);
 #if DEBUG
-                if (s.Position % 16 != 0) throw new Exception("Invariant 8552bd4a-292d-426f-9a58-a04860a8ab58.");
+            if (s.Position % 16 != 0) throw new Exception("Invariant 8552bd4a-292d-426f-9a58-a04860a8ab58.");
 #endif
 
-                // entries (+ padding after each entry)
-                foreach (var x in xs)
+            // entries (+ padding after each entry)
+            foreach (var x in xs)
                 {
                     Encode(s, x.Key, x.Value);
                     s.PadToNextMultipleOf(16);
 #if DEBUG
-                    if (s.Position % 16 != 0) throw new Exception("Invariant 06569c61-8b8f-422a-9648-50a994fb09c7.");
+                if (s.Position % 16 != 0) throw new Exception("Invariant 06569c61-8b8f-422a-9648-50a994fb09c7.");
 #endif
-                }
+            }
+            };
+
+        private static readonly Action<Stream, object> EncodeGZipped =
+            (s, o) =>
+            {
+                var gzipped = (DurableGZipped)o;
+                using var ms = new MemoryStream();
+                EncodeGuid(ms, gzipped.Def.Id);
+                Encode(ms, gzipped.Def, gzipped.Value);
+                ms.Flush();
+
+                var buffer = ms.ToArray();
+                var bufferLength = buffer.Length;
+
+                var bufferGZipped = buffer.GZipCompress();
+                var bufferGZippedLength = bufferGZipped.Length;
+
+                s.Write(ref bufferLength);
+                s.Write(ref bufferGZippedLength);
+                s.Write(bufferGZipped, 0, bufferGZipped.Length);
             };
 
         private static readonly Action<Stream, object> EncodeGuid = Write<Guid>;
@@ -176,7 +194,7 @@ namespace Aardvark.Data
         private static readonly Action<Stream, object> EncodeC3f = Write<C3f>;
         private static readonly Action<Stream, object> EncodeC3fArray = (s, o) => EncodeArray(s, (C3f[])o);
 
-        private static readonly Action<Stream, object> EncodeC4f= Write<C4f>;
+        private static readonly Action<Stream, object> EncodeC4f = Write<C4f>;
         private static readonly Action<Stream, object> EncodeC4fArray = (s, o) => EncodeArray(s, (C4f[])o);
 
         private static unsafe void EncodeArray<T>(Stream s, params T[] xs) where T : struct
@@ -209,7 +227,9 @@ namespace Aardvark.Data
                 else
                 {
                     var unknownDef = Durable.Get(def.Type);
-                    throw new InvalidOperationException($"Unknown definition {unknownDef}. Invariant 009acad8-31bc-48fa-b0ad-0ccb1da4b26d.");
+                    throw new InvalidOperationException(
+                        $"Unknown definition {unknownDef}. Invariant 009acad8-31bc-48fa-b0ad-0ccb1da4b26d."
+                        );
                 }
             }
             else
@@ -221,14 +241,16 @@ namespace Aardvark.Data
                 else
                 {
                     var unknownDef = Durable.Get(def.Id);
-                    throw new InvalidOperationException($"Unknown definition {unknownDef}. Invariant 4ae8b2d1-2a5d-4d87-9ddc-3d780de516fc.");
+                    throw new InvalidOperationException(
+                        $"Unknown definition {unknownDef}. Invariant 4ae8b2d1-2a5d-4d87-9ddc-3d780de516fc."
+                        );
                 }
             }
         }
 
-#endregion
+        #endregion
 
-#region Decode
+        #region Decode
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static T Read<T>(this Stream s) where T : struct
@@ -251,17 +273,17 @@ namespace Aardvark.Data
         }
 
         private static readonly Func<Stream, object> DecodeDurableMapWithoutHeader =
-           s =>
-           {
-               var count = s.Read<int>();
-               var map = ImmutableDictionary<Durable.Def, object>.Empty;
-               for (var i = 0; i < count; i++)
-               {
-                   var (def, o) = Decode(s);
-                   map = map.Add(def, o);
-               }
-               return map;
-           };
+            s =>
+            {
+                var count = s.Read<int>();
+                var map = ImmutableDictionary<Durable.Def, object>.Empty;
+                for (var i = 0; i < count; i++)
+                {
+                    var (def, o) = Decode(s);
+                    map = map.Add(def, o);
+                }
+                return map;
+            };
 
         private static void SkipToNextMultipleOf(this Stream s, int numberOfBytes)
         {
@@ -274,22 +296,38 @@ namespace Aardvark.Data
                 var count = s.Read<int>();
                 s.SkipToNextMultipleOf(16);
 #if DEBUG
-                if (s.Position % 16 != 0) throw new Exception("Invariant f54b0828-683f-4e63-bab8-e2331d8db36d.");
+            if (s.Position % 16 != 0) throw new Exception("Invariant f54b0828-683f-4e63-bab8-e2331d8db36d.");
 #endif
 
-                var map = ImmutableDictionary<Durable.Def, object>.Empty;
+            var map = ImmutableDictionary<Durable.Def, object>.Empty;
                 for (var i = 0; i < count; i++)
                 {
                     var (def, o) = Decode(s);
                     map = map.Add(def, o);
                     s.SkipToNextMultipleOf(16);
 #if DEBUG
-                    if (s.Position % 16 != 0) throw new Exception("Invariant 3dd73301-ca55-4330-b976-60df90f383c8.");
+                if (s.Position % 16 != 0) throw new Exception("Invariant 3dd73301-ca55-4330-b976-60df90f383c8.");
 #endif
-                }
+            }
                 return map;
             };
 
+        private static readonly Func<Stream, object> DecodeGZipped =
+            s =>
+            {
+                var uncompressedBufferSize = s.Read<int>();
+                var compressedBufferSize = s.Read<int>();
+
+                var compressedBuffer = new byte[compressedBufferSize];
+                s.Read(compressedBuffer, 0, compressedBufferSize);
+
+                var uncompressedBuffer = compressedBuffer.GZipDecompress(uncompressedBufferSize);
+
+                using var ms = new MemoryStream(uncompressedBuffer);
+
+                var (def, o) = Decode(ms);
+                return new DurableGZipped(def, o);
+            };
 
         private static readonly Func<Stream, object> DecodeGuid = ReadBoxed<Guid>;
         private static readonly Func<Stream, object> DecodeStringUtf8 = s => Encoding.UTF8.GetString(DecodeArray<byte>(s));
@@ -324,7 +362,7 @@ namespace Aardvark.Data
         private static readonly Func<Stream, object> DecodeFloat64 = ReadBoxed<double>;
         private static readonly Func<Stream, object> DecodeFloat64Array = s => DecodeArray<double>(s);
 
-       
+
         private static readonly Func<Stream, object> DecodeCell = ReadBoxed<Cell>;
         private static readonly Func<Stream, object> DecodeCellArray = s => DecodeArray<Cell>(s);
 
@@ -409,9 +447,9 @@ namespace Aardvark.Data
             }
         }
 
-#endregion
+        #endregion
 
-#region Serialization
+        #region Serialization
 
         /// <summary>
         /// Serializes value x to byte array. 
@@ -457,7 +495,7 @@ namespace Aardvark.Data
         /// <summary>
         /// Deserializes value from byte array.
         /// </summary>
-        
+
         public static (Durable.Def def, object obj) Deserialize(byte[] buffer)
         {
             using var stream = new MemoryStream(buffer);
@@ -489,7 +527,7 @@ namespace Aardvark.Data
         /// </summary>
         public static T DeserializeAs<T>(string filename) => (T)Deserialize(filename).obj;
 
-#endregion
+        #endregion
     }
 }
 

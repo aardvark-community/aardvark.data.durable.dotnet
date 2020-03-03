@@ -9,18 +9,18 @@ namespace Aardvark.Data.Tests
     {
         private void Primitive<T>(Durable.Def def, T value, Func<T, T, bool> eq)
         {
-            var buffer = Codec.Serialize(def, value);
+            var buffer = DurableCodec.Serialize(def, value);
 
-            var (d, o) = Codec.Deserialize(buffer);
+            var (d, o) = DurableCodec.Deserialize(buffer);
             Assert.True(d == def);
             Assert.True(o is T);
             Assert.True(eq(value, (T)o));
         }
         private void PrimitiveArray<T>(Durable.Def def, T[] value, Func<T, T, bool> eq)
         {
-            var buffer = Codec.Serialize(def, value);
+            var buffer = DurableCodec.Serialize(def, value);
 
-            var (d, o) = Codec.Deserialize(buffer);
+            var (d, o) = DurableCodec.Deserialize(buffer);
             Assert.True(d == def);
             Assert.True(o is T[]);
             var xs = (T[])o;
@@ -141,11 +141,11 @@ namespace Aardvark.Data.Tests
                 .Add(Durable.Octree.Colors3b, new[] { C3b.Red, C3b.Green, C3b.Blue })
                 .Add(Durable.Octree.PositionsLocal3f, new[] { V3f.IOO, V3f.OIO })
                 ;
-            var buffer = Codec.Serialize(Durable.Primitives.DurableMap, map);
+            var buffer = DurableCodec.Serialize(Durable.Primitives.DurableMap, map);
             var l = 16 + 4 + (16 + 16) + (16 + 8) + (16 + 4 + 3 * 3) + (16 + 4 + 2 * 12);
             Assert.True(buffer.Length == l);
 
-            var (def, o) = Codec.Deserialize(buffer);
+            var (def, o) = DurableCodec.Deserialize(buffer);
             Assert.True(def == Durable.Primitives.DurableMap);
 
             var m = o as ImmutableDictionary<Durable.Def, object>;
@@ -179,12 +179,12 @@ namespace Aardvark.Data.Tests
                 .Add(Durable.Octree.Colors3b, new[] { C3b.Red, C3b.Green, C3b.Blue })
                 .Add(Durable.Octree.PositionsLocal3f, new[] { V3f.IOO, V3f.OIO })
                 ;
-            var buffer = Codec.Serialize(Durable.Primitives.DurableMapAligned16, map);
+            var buffer = DurableCodec.Serialize(Durable.Primitives.DurableMapAligned16, map);
             var l = 16 + 4 + 12 + (16 + 16) + (16 + 8 + 8) + (16 + 4 + 3 * 3 + 3) + (16 + 4 + 2 * 12 + 4);
             Assert.True(buffer.Length == l);
             Assert.True(buffer.Length % 16 == 0);
 
-            var (def, o) = Codec.Deserialize(buffer);
+            var (def, o) = DurableCodec.Deserialize(buffer);
             Assert.True(def == Durable.Primitives.DurableMapAligned16);
 
             var m = o as ImmutableDictionary<Durable.Def, object>;
@@ -209,5 +209,86 @@ namespace Aardvark.Data.Tests
 
 
 
+        [Fact]
+        public void Primitive_GZipped_DurableMap()
+        {
+            var id = Guid.NewGuid();
+
+            var map = ImmutableDictionary<Durable.Def, object>.Empty
+                .Add(Durable.Octree.NodeId, id)
+                .Add(Durable.Octree.NodeCountTotal, 123L)
+                .Add(Durable.Octree.Colors3b, new[] { C3b.Red, C3b.Green, C3b.Blue })
+                .Add(Durable.Octree.PositionsLocal3f, new[] { V3f.IOO, V3f.OIO })
+                ;
+            var value = new DurableGZipped(Durable.Primitives.DurableMap, map);
+            var buffer = DurableCodec.Serialize(Durable.Primitives.GZipped, value);
+
+            var (def, o) = DurableCodec.Deserialize(buffer);
+            Assert.True(def == Durable.Primitives.GZipped);
+
+            var gz = o as DurableGZipped;
+            Assert.True(gz != null);
+            Assert.True(gz.Def == Durable.Primitives.DurableMap);
+
+            var m = gz.Value as ImmutableDictionary<Durable.Def, object>;
+            Assert.True(m != null);
+            Assert.True(m.Count == 4);
+
+            Assert.True(((Guid)m[Durable.Octree.NodeId]) == id);
+
+            Assert.True(((long)m[Durable.Octree.NodeCountTotal]) == 123L);
+
+            var cs = (C3b[])m[Durable.Octree.Colors3b];
+            Assert.True(cs.Length == 3);
+            Assert.True(cs[0] == C3b.Red);
+            Assert.True(cs[1] == C3b.Green);
+            Assert.True(cs[2] == C3b.Blue);
+
+            var ps = (V3f[])m[Durable.Octree.PositionsLocal3f];
+            Assert.True(ps.Length == 2);
+            Assert.True(ps[0] == V3f.IOO);
+            Assert.True(ps[1] == V3f.OIO);
+        }
+
+        [Fact]
+        public void Primitive_GZipped_DurableMapAligned16()
+        {
+            var id = Guid.NewGuid();
+
+            var map = ImmutableDictionary<Durable.Def, object>.Empty
+                .Add(Durable.Octree.NodeId, id)
+                .Add(Durable.Octree.NodeCountTotal, 123L)
+                .Add(Durable.Octree.Colors3b, new[] { C3b.Red, C3b.Green, C3b.Blue })
+                .Add(Durable.Octree.PositionsLocal3f, new[] { V3f.IOO, V3f.OIO })
+                ;
+            var value = new DurableGZipped(Durable.Primitives.DurableMapAligned16, map);
+            var buffer = DurableCodec.Serialize(Durable.Primitives.GZipped, value);
+
+            var (def, o) = DurableCodec.Deserialize(buffer);
+            Assert.True(def == Durable.Primitives.GZipped);
+
+            var gz = o as DurableGZipped;
+            Assert.True(gz != null);
+            Assert.True(gz.Def == Durable.Primitives.DurableMapAligned16);
+
+            var m = gz.Value as ImmutableDictionary<Durable.Def, object>;
+            Assert.True(m != null);
+            Assert.True(m.Count == 4);
+
+            Assert.True(((Guid)m[Durable.Octree.NodeId]) == id);
+
+            Assert.True(((long)m[Durable.Octree.NodeCountTotal]) == 123L);
+
+            var cs = (C3b[])m[Durable.Octree.Colors3b];
+            Assert.True(cs.Length == 3);
+            Assert.True(cs[0] == C3b.Red);
+            Assert.True(cs[1] == C3b.Green);
+            Assert.True(cs[2] == C3b.Blue);
+
+            var ps = (V3f[])m[Durable.Octree.PositionsLocal3f];
+            Assert.True(ps.Length == 2);
+            Assert.True(ps[0] == V3f.IOO);
+            Assert.True(ps[1] == V3f.OIO);
+        }
     }
 }
