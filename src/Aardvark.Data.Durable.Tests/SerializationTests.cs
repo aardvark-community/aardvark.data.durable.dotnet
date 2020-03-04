@@ -32,14 +32,6 @@ namespace Aardvark.Data.Tests
         private void PrimitiveArray<T>(Durable.Def def, T[] value) where T : IEquatable<T>
             => PrimitiveArray(def, value, (a, b) => a.Equals(b));
 
-        [Fact]
-        public void TargetTest()
-        {
-#if NETSTANDARD2_0
-            throw new Exception();
-#endif
-            Assert.True(true);
-        }
         [Fact] public void Primitive_StringUTF8() => Primitive(Durable.Primitives.StringUTF8, "foo bar woohoo");
 
         [Fact] public void Primitive_Guid() => Primitive(Durable.Primitives.GuidDef, Guid.NewGuid());
