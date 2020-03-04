@@ -12,11 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aardvark.Data.Durable.Tests
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug NetCore31|Any CPU = Debug NetCore31|Any CPU
-		Debug NetStandard20|Any CPU = Debug NetStandard20|Any CPU
 		Debug|Any CPU = Debug|Any CPU
-		Release NetCore31|Any CPU = Release NetCore31|Any CPU
-		Release NetStandard20|Any CPU = Release NetStandard20|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
