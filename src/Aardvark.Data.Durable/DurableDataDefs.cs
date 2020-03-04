@@ -1494,6 +1494,208 @@ namespace Aardvark.Data
 
         }
         /// <summary></summary>
+        public static class Generic
+        {
+            /// <summary>
+            /// Generic positions. V3f[].
+            /// </summary>
+            public static readonly Def Positions3f = new Def(
+                new Guid("40db0cd8-f4fc-4139-a7f0-ba5144b27e11"),
+                "Generic.Positions3f",
+                "Generic positions. V3f[].",
+                Aardvark.V3fArray.Id,
+                false
+                );
+
+            /// <summary>
+            /// Generic positions. V3d[].
+            /// </summary>
+            public static readonly Def Positions3d = new Def(
+                new Guid("7218415c-dd2e-42e9-bc2f-566353978559"),
+                "Generic.Positions3d",
+                "Generic positions. V3d[].",
+                Aardvark.V3dArray.Id,
+                false
+                );
+
+            /// <summary>
+            /// Generic normals. V3f[].
+            /// </summary>
+            public static readonly Def Normals3f = new Def(
+                new Guid("3e8f21d0-b653-4665-811b-4a6fa9f343cb"),
+                "Generic.Normals3f",
+                "Generic normals. V3f[].",
+                Aardvark.V3fArray.Id,
+                false
+                );
+
+            /// <summary>
+            /// Generic normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0].
+            /// </summary>
+            public static readonly Def Normals3sb = new Def(
+                new Guid("d1707d33-18af-45ed-9bce-870b0fe30310"),
+                "Generic.Normals3sb",
+                "Generic normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0].",
+                Primitives.Int8Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf.
+            /// </summary>
+            public static readonly Def NormalsOct16 = new Def(
+                new Guid("e801cbc2-c1b7-49cd-9bdf-5f212562575c"),
+                "Generic.Normals.Oct16",
+                "Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf.",
+                Primitives.Int16Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf.
+            /// </summary>
+            public static readonly Def NormalsOct16P = new Def(
+                new Guid("e855b0f0-63c7-49ac-810e-aa48dd65349a"),
+                "Generic.Normals.Oct16P",
+                "Octree. Per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf.",
+                Primitives.Int16Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Generic colors. C3b[].
+            /// </summary>
+            public static readonly Def Colors3b = new Def(
+                new Guid("9f7dacb5-3d0e-4623-8ae2-aad072f12cab"),
+                "Generic.Colors3b",
+                "Generic colors. C3b[].",
+                Aardvark.C3bArray.Id,
+                false
+                );
+
+            /// <summary>
+            /// Generic colors. C4b[].
+            /// </summary>
+            public static readonly Def Colors4b = new Def(
+                new Guid("b18a2463-a821-4ae7-a259-9a7739257286"),
+                "Generic.Colors4b",
+                "Generic colors. C4b[].",
+                Aardvark.C3bArray.Id,
+                false
+                );
+
+            /// <summary>
+            /// Generic colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. UInt16[].
+            /// </summary>
+            public static readonly Def ColorsRGB565 = new Def(
+                new Guid("125f054f-003f-459b-8415-e6150992bb5f"),
+                "Generic.Colors.RGB565",
+                "Generic colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. UInt16[].",
+                Primitives.UInt16Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Generic intensities. Int32[].
+            /// </summary>
+            public static readonly Def Intensities1i = new Def(
+                new Guid("eec1c41a-8f76-4d09-9ddc-bb7755a2f4b8"),
+                "Generic.Intensities1i",
+                "Generic intensities. Int32[].",
+                Primitives.Int32Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Generic intensities. Float32[].
+            /// </summary>
+            public static readonly Def Intensities1f = new Def(
+                new Guid("e337e43b-ea72-4c96-8712-3684cb5d4b73"),
+                "Generic.Intensities1f",
+                "Generic intensities. Float32[].",
+                Primitives.Float32Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Generic classifications. UInt8[].
+            /// </summary>
+            public static readonly Def Classifications1b = new Def(
+                new Guid("61a27f4d-b6c8-4ce1-8390-07fe3caee09b"),
+                "Generic.Classifications1b",
+                "Generic classifications. UInt8[].",
+                Primitives.UInt8Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Generic classifications. UInt16[].
+            /// </summary>
+            public static readonly Def Classifications1s = new Def(
+                new Guid("e7d38eab-5b7f-4469-98a2-a940d5ee8852"),
+                "Generic.Classifications1s",
+                "Generic classifications. UInt16[].",
+                Primitives.UInt16Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Generic classifications. Int32[].
+            /// </summary>
+            public static readonly Def Classifications1i = new Def(
+                new Guid("fe0b56b8-bf84-4e6e-ab9e-33cd63ae187d"),
+                "Generic.Classifications1i",
+                "Generic classifications. Int32[].",
+                Primitives.Int32Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Generic velocities (V3f[]).
+            /// </summary>
+            public static readonly Def Velocities3f = new Def(
+                new Guid("8916a1b8-59a3-4bc6-ab17-d91abd6a4ee3"),
+                "Generic.Velocities3f",
+                "Generic velocities (V3f[]).",
+                Aardvark.V3fArray.Id,
+                false
+                );
+
+            /// <summary>
+            /// Generic velocities (V3d[]).
+            /// </summary>
+            public static readonly Def Velocities3d = new Def(
+                new Guid("14528fc1-a5b6-4cbb-9cab-489f962cff6c"),
+                "Generic.Velocities3d",
+                "Generic velocities (V3d[]).",
+                Aardvark.V3dArray.Id,
+                false
+                );
+
+            /// <summary>
+            /// Generic densities (float32[]).
+            /// </summary>
+            public static readonly Def Densities1f = new Def(
+                new Guid("e912f821-fba2-4177-9419-007930582a4e"),
+                "Generic.Densities1f",
+                "Generic densities (float32[]).",
+                Primitives.Float32Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Generic densities (float64[]).
+            /// </summary>
+            public static readonly Def Densities1d = new Def(
+                new Guid("5f8fa111-eb42-4a45-8f7a-c1cd45e200be"),
+                "Generic.Densities1d",
+                "Generic densities (float64[]).",
+                Primitives.Float64Array.Id,
+                false
+                );
+
+        }
+        /// <summary></summary>
         public static class Octree
         {
             /// <summary>
@@ -2080,6 +2282,28 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
+            /// Octree. Per-point intensities. Float32[].
+            /// </summary>
+            public static readonly Def Intensities1f = new Def(
+                new Guid("ebe476d9-32e8-4d47-982e-35703c3a6b4c"),
+                "Octree.Intensities1f",
+                "Octree. Per-point intensities. Float32[].",
+                Primitives.Float32Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Reference to per-point intensities. Guid.
+            /// </summary>
+            public static readonly Def Intensities1fReference = new Def(
+                new Guid("85509d76-d44c-4839-8c36-52abb2c35679"),
+                "Octree.Intensities1f.Reference",
+                "Octree. Reference to per-point intensities. Guid.",
+                Primitives.GuidDef.Id,
+                false
+                );
+
+            /// <summary>
             /// Octree. Per-point classifications. UInt8[].
             /// </summary>
             public static readonly Def Classifications1b = new Def(
@@ -2119,6 +2343,28 @@ namespace Aardvark.Data
                 new Guid("3142284a-d7e0-45f9-8044-44800df1daac"),
                 "Octree.Classifications1s.Reference",
                 "Octree. Reference to per-point classifications (UInt16[]).",
+                Primitives.GuidDef.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Per-point classifications. Int32[].
+            /// </summary>
+            public static readonly Def Classifications1i = new Def(
+                new Guid("826cc58d-ed89-4d56-b389-e4b581c71706"),
+                "Octree.Classifications1i",
+                "Octree. Per-point classifications. Int32[].",
+                Primitives.Int32Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Reference to per-point classifications (Guid -> Int32[]).
+            /// </summary>
+            public static readonly Def Classifications1iReference = new Def(
+                new Guid("045cc89b-73de-4170-bb55-e108853e9779"),
+                "Octree.Classifications1i.Reference",
+                "Octree. Reference to per-point classifications (Guid -> Int32[]).",
                 Primitives.GuidDef.Id,
                 false
                 );
@@ -2201,12 +2447,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// Octree. Reference to kd-tree index array. Int32[], where pivot is stored at index n/2 recursively.
+            /// Octree. Reference to kd-tree index array. Guid -> Int32[].
             /// </summary>
             public static readonly Def KdTreeIndexArrayReference = new Def(
                 new Guid("fc2b48cb-ab79-4579-92a3-0a421c8d9112"),
                 "Octree.KdTreeIndexArray.Reference",
-                "Octree. Reference to kd-tree index array. Int32[], where pivot is stored at index n/2 recursively.",
+                "Octree. Reference to kd-tree index array. Guid -> Int32[].",
                 Primitives.GuidDef.Id,
                 false
                 );
