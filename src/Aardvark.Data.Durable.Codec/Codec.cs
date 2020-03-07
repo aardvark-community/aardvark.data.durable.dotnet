@@ -64,6 +64,7 @@ namespace Aardvark.Data
                 [Durable.Primitives.GZipped.Id] = EncodeGZipped,
 
                 [Durable.Primitives.StringUTF8.Id] = EncodeStringUtf8,
+                [Durable.Primitives.StringUTF8Array.Id] = EncodeStringUtf8Array,
                 [Durable.Primitives.GuidDef.Id] = EncodeGuid,
                 [Durable.Primitives.GuidArray.Id] = EncodeGuidArray,
                 [Durable.Primitives.Int8.Id] = EncodeInt8,
@@ -127,6 +128,7 @@ namespace Aardvark.Data
                 [Durable.Primitives.GZipped.Id] = DecodeGZipped,
 
                 [Durable.Primitives.StringUTF8.Id] = DecodeStringUtf8,
+                [Durable.Primitives.StringUTF8Array.Id] = DecodeStringUtf8Array,
                 [Durable.Primitives.GuidDef.Id] = DecodeGuid,
                 [Durable.Primitives.GuidArray.Id] = DecodeGuidArray,
                 [Durable.Primitives.Int8.Id] = DecodeInt8,

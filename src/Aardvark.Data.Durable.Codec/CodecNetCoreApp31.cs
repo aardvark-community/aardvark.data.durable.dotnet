@@ -145,7 +145,13 @@ namespace Aardvark.Data
         private static readonly Action<Stream, object> EncodeFloat64Array = (s, o) => EncodeArray(s, (double[])o);
 
         private static readonly Action<Stream, object> EncodeStringUtf8 = (s, o) => EncodeArray(s, Encoding.UTF8.GetBytes((string)o));
-
+        private static readonly Action<Stream, object> EncodeStringUtf8Array = (s, o) =>
+        {
+            var xs = (string[])o;
+            var length = xs.Length;
+            s.Write(ref length);
+            foreach (var x in xs) EncodeArray(s, Encoding.UTF8.GetBytes(x));
+        };
 
         private static readonly Action<Stream, object> EncodeCell = Write<Cell>;
         private static readonly Action<Stream, object> EncodeCellArray = (s, o) => EncodeArray(s, (Cell[])o);
@@ -330,7 +336,16 @@ namespace Aardvark.Data
             };
 
         private static readonly Func<Stream, object> DecodeGuid = ReadBoxed<Guid>;
+
         private static readonly Func<Stream, object> DecodeStringUtf8 = s => Encoding.UTF8.GetString(DecodeArray<byte>(s));
+        private static readonly Func<Stream, object> DecodeStringUtf8Array = s =>
+        {
+            var count = s.Read<int>();
+            var xs = new string[count];
+            for (var i = 0; i < count; i++)
+                xs[i] = Encoding.UTF8.GetString(DecodeArray<byte>(s));
+            return xs;
+        };
 
         private static readonly Func<Stream, object> DecodeInt8 = ReadBoxed<sbyte>;
         private static readonly Func<Stream, object> DecodeInt8Array = s => DecodeArray<sbyte>(s);

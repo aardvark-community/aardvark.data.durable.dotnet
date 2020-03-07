@@ -125,6 +125,12 @@ namespace Aardvark.Data
         private static readonly Action<BinaryWriter, object> EncodeFloat64 = (s, o) => s.Write((double)o);
         private static readonly Action<BinaryWriter, object> EncodeFloat64Array = (s, o) => EncodeArray(s, (double[])o);
         private static readonly Action<BinaryWriter, object> EncodeStringUtf8 = (s, o) => EncodeArray(s, Encoding.UTF8.GetBytes((string)o));
+        private static readonly Action<BinaryWriter, object> EncodeStringUtf8Array = (s, o) =>
+        {
+            var xs = (string[])o;
+            s.Write(xs.Length);
+            foreach (var x in xs) EncodeArray(s, Encoding.UTF8.GetBytes(x));
+        };
 
         private static readonly Action<BinaryWriter, object> EncodeCell =
             (s, o) => { var x = (Cell)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); s.Write(x.Exponent); };
@@ -355,8 +361,16 @@ namespace Aardvark.Data
             };
 
         private static readonly Func<BinaryReader, object> DecodeGuid = s => new Guid(s.ReadBytes(16));
-        private static readonly Func<BinaryReader, object> DecodeStringUtf8 = s => Encoding.UTF8.GetString(DecodeArray<byte>(s));
 
+        private static readonly Func<BinaryReader, object> DecodeStringUtf8 = s => Encoding.UTF8.GetString(DecodeArray<byte>(s));
+        private static readonly Func<BinaryReader, object> DecodeStringUtf8Array = s =>
+        {
+            var count = s.ReadInt32();
+            var xs = new string[count];
+            for (var i = 0; i < count; i++)
+                xs[i] = Encoding.UTF8.GetString(DecodeArray<byte>(s));
+            return xs;
+        };
 
         private static readonly Func<BinaryReader, object> DecodeInt8 = s => s.ReadSByte();
         private static readonly Func<BinaryReader, object> DecodeInt8Array = s => DecodeArray<sbyte>(s);
