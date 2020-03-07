@@ -47,6 +47,7 @@ namespace Aardvark.Data.Tests
         [Fact] public void Primitive_Float64() => Primitive(Durable.Primitives.Float64, 3.1415926);
 
         [Fact] public void Primitive_Cell() => Primitive(Durable.Aardvark.Cell, new Cell(2,11,-5,-6));
+
         [Fact] public void Primitive_V2f() => Primitive(Durable.Aardvark.V2f, new V2f(1.2f, 3.4f));
         [Fact] public void Primitive_V3f() => Primitive(Durable.Aardvark.V3f, new V3f(1.2f, 3.4f, 5.6f));
         [Fact] public void Primitive_V4f() => Primitive(Durable.Aardvark.V4f, new V4f(1.2f, 3.4f, 5.6f, 7.8f));
@@ -74,6 +75,9 @@ namespace Aardvark.Data.Tests
 
 
 
+        [Fact] public void Primitive_StringUTF8Array() => PrimitiveArray(Durable.Primitives.StringUTF8Array, 
+            new[] { "foo", "bar", "woohoo" }
+            );
 
         [Fact] public void Primitive_GuidArray() => PrimitiveArray(Durable.Primitives.GuidArray, 
                 new[] { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() }
@@ -87,7 +91,6 @@ namespace Aardvark.Data.Tests
         public void Primitive_UInt8Array() => PrimitiveArray(Durable.Primitives.UInt8Array,
                 new[] { (byte)42, (byte)43, (byte)44 }
                 );
-
         [Fact]
         public void Primitive_Int16Array() => PrimitiveArray(Durable.Primitives.Int16Array,
                 new[] { (short)42, (short)43, (short)44 }
@@ -96,38 +99,110 @@ namespace Aardvark.Data.Tests
         public void Primitive_UInt16Array() => PrimitiveArray(Durable.Primitives.UInt16Array,
                 new[] { (ushort)42, (ushort)43, (ushort)44 }
                 );
-
         [Fact]
         public void Primitive_Int32Array() => PrimitiveArray(Durable.Primitives.Int32Array,
                 new[] { (int)42, (int)43, (int)44 }
                 );
-
         [Fact]
         public void Primitive_UInt32Array() => PrimitiveArray(Durable.Primitives.UInt32Array,
                 new[] { (uint)42, (uint)43, (uint)44 }
                 );
-
         [Fact]
         public void Primitive_Int64Array() => PrimitiveArray(Durable.Primitives.Int64Array,
                 new[] { (long)42, (long)43, (long)44 }
                 );
-
         [Fact]
         public void Primitive_UInt64Array() => PrimitiveArray(Durable.Primitives.UInt64Array,
                 new[] { (ulong)42, (ulong)43, (ulong)44 }
                 );
-
         [Fact]
         public void Primitive_Float32Array() => PrimitiveArray(Durable.Primitives.Float32Array,
                 new[] { (float)42, (float)43, (float)44 }
                 );
-
         [Fact]
         public void Primitive_Float64Array() => PrimitiveArray(Durable.Primitives.Float64Array,
                 new[] { (double)42, (double)43, (double)44 }
                 );
 
-        
+        [Fact]
+        public void Primitive_CellArray() => PrimitiveArray(Durable.Aardvark.CellArray,
+                new[] { new Cell(1,2,3,4), new Cell(-5, 42, -17, -10) }
+                );
+
+        [Fact]
+        public void Primitive_V2fArray() => PrimitiveArray(Durable.Aardvark.V2fArray,
+                new[] { new V2f(1.2f, 3.4f), new V2f(5.6f, 7.8f) }
+                );
+        [Fact]
+        public void Primitive_V3fArray() => PrimitiveArray(Durable.Aardvark.V3fArray,
+                new[] { new V3f(1.2f, 3.4f, -2.3f), new V3f(5.6f, 7.8f, -6.7f) }
+                );
+        [Fact]
+        public void Primitive_V4fArray() => PrimitiveArray(Durable.Aardvark.V4fArray,
+                new[] { new V4f(1.2f, 3.4f, -2.3f, 0.1f), new V4f(5.6f, 7.8f, -6.7f, -0.1f) }
+                );
+        [Fact]
+        public void Primitive_V2dArray() => PrimitiveArray(Durable.Aardvark.V2dArray,
+                new[] { new V2d(1.2, 3.4), new V2d(5.6, 7.8) }
+                );
+        [Fact]
+        public void Primitive_V3dArray() => PrimitiveArray(Durable.Aardvark.V3dArray,
+                new[] { new V3d(1.2, 3.4, -2.3), new V3d(5.6, 7.8, -6.7) }
+                );
+        [Fact]
+        public void Primitive_V4dArray() => PrimitiveArray(Durable.Aardvark.V4dArray,
+                new[] { new V4d(1.2, 3.4, -2.3, 0.1), new V4d(5.6, 7.8, -6.7, -0.1) }
+                );
+
+        [Fact]
+        public void Primitive_C3bArray() => PrimitiveArray(Durable.Aardvark.C3bArray,
+                new[] { C3b.Red, C3b.Magenta, C3b.DarkGreen }
+                );
+        [Fact]
+        public void Primitive_C4bArray() => PrimitiveArray(Durable.Aardvark.C4bArray,
+                new[] { C4b.Red, C4b.Magenta, C4b.DarkGreen }
+                );
+        [Fact]
+        public void Primitive_C3fArray() => PrimitiveArray(Durable.Aardvark.C3fArray,
+                new[] { C3f.Red, C3f.Magenta, C3f.DarkGreen }
+                );
+        [Fact]
+        public void Primitive_C4fArray() => PrimitiveArray(Durable.Aardvark.C4fArray,
+                new[] { C4f.Red, C4f.Magenta, C4f.DarkGreen }
+                );
+
+        [Fact]
+        public void Primitive_Box2fArray() => PrimitiveArray(Durable.Aardvark.Box2fArray,
+            new[] {
+                new Box2f(new V2f(1.2f, 3.4f), new V2f(5.6f, 7.8f)),
+                new Box2f(new V2f(2.3f, 4.5f), new V2f(6.7f, 8.9f))
+                },
+            (a, b) => a == b
+            );
+        [Fact]
+        public void Primitive_Box3fArray() => PrimitiveArray(Durable.Aardvark.Box3fArray,
+            new[] {
+                new Box3f(new V3f(1.2f, 3.4f, 5.6f), new V3f(5.6f, 7.8f, -213.5f)),
+                new Box3f(new V3f(2.3f, 4.5f, 6.7f), new V3f(6.7f, 8.9f, 234.67f))
+                },
+            (a, b) => a == b
+            );
+        [Fact]
+        public void Primitive_Box2dArray() => PrimitiveArray(Durable.Aardvark.Box2dArray,
+            new[] {
+                new Box2d(new V2d(1.2, 3.4), new V2d(5.6f, 7.8)),
+                new Box2d(new V2d(2.3, 4.5), new V2d(6.7f, 8.9))
+                },
+            (a, b) => a == b
+            );
+        [Fact]
+        public void Primitive_Box3dArray() => PrimitiveArray(Durable.Aardvark.Box3dArray,
+            new[] {
+                new Box3d(new V3d(1.2, 3.4, 5.6), new V3d(5.6, 7.8, 2354.567)),
+                new Box3d(new V3d(2.3, 4.5, 6.7), new V3d(6.7, 8.9, -456.345))
+                },
+            (a, b) => a == b
+            );
 
 
         [Fact]
