@@ -2293,13 +2293,68 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// Octree. Reference to per-point intensities. Guid.
+            /// Octree. Reference to Octree.Intensities1f. Guid.
             /// </summary>
             public static readonly Def Intensities1fReference = new Def(
                 new Guid("85509d76-d44c-4839-8c36-52abb2c35679"),
                 "Octree.Intensities1f.Reference",
-                "Octree. Reference to per-point intensities. Guid.",
+                "Octree. Reference to Octree.Intensities1f. Guid.",
                 Primitives.GuidDef.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Intensities range for Octree.Intensities[.Reference]. Range1f[].
+            /// </summary>
+            public static readonly Def Intensities1fRange = new Def(
+                new Guid("2cb2501c-fc7e-450b-9926-fcb75677f08d"),
+                "Octree.Intensities1f.Range",
+                "Octree. Intensities range for Octree.Intensities[.Reference]. Range1f[].",
+                Aardvark.Range1f.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Per-point intensities with offset stored as Octree.IntensitiesWithOffset1f.Offset. Float32[].
+            /// </summary>
+            public static readonly Def IntensitiesWithOffset1f = new Def(
+                new Guid("6753a6e1-9633-4997-b403-661578191f8c"),
+                "Octree.IntensitiesWithOffset1f",
+                "Octree. Per-point intensities with offset stored as Octree.IntensitiesWithOffset1f.Offset. Float32[].",
+                Primitives.Float32Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Reference to Octree.IntensitiesWithOffset1f. Guid.
+            /// </summary>
+            public static readonly Def IntensitiesWithOffset1fReference = new Def(
+                new Guid("d2874881-99a6-4eed-aa15-0d34b03e150e"),
+                "Octree.IntensitiesWithOffset1f.Reference",
+                "Octree. Reference to Octree.IntensitiesWithOffset1f. Guid.",
+                Primitives.GuidDef.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. The offset for Octree.IntensitiesWithOffset1f[.Reference]. Float64.
+            /// </summary>
+            public static readonly Def IntensitiesWithOffset1fOffset = new Def(
+                new Guid("5b237e1d-743e-435e-9daa-b9884d7a4419"),
+                "Octree.IntensitiesWithOffset1f.Offset",
+                "Octree. The offset for Octree.IntensitiesWithOffset1f[.Reference]. Float64.",
+                Primitives.Float64.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Intensities range for Octree.IntensitiesWithOffset1f[.Reference]. Range1f.
+            /// </summary>
+            public static readonly Def IntensitiesWithOffset1fRange = new Def(
+                new Guid("435d8a84-c195-456c-b87b-ded2e5930134"),
+                "Octree.IntensitiesWithOffset1f.Range",
+                "Octree. Intensities range for Octree.IntensitiesWithOffset1f[.Reference]. Range1f.",
+                Aardvark.Range1f.Id,
                 false
                 );
 
