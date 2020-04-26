@@ -2,7 +2,7 @@ framework: netcoreapp2.0, netcoreapp2.2, netstandard2.0, netcoreapp3.0, netcorea
 source https://api.nuget.org/v3/index.json
 
 nuget FSharp.Core                   >= 4.6.2 lowest_matching: true
-nuget Aardvark.Base                 ~> 5.0.0-prerelease
+nuget Aardvark.Base                 ~> 5.0.7
 nuget Newtonsoft.Json               ~> 12.0
 
 group Build

@@ -156,6 +156,9 @@ namespace Aardvark.Data
         private static readonly Action<Stream, object> EncodeCell = Write<Cell>;
         private static readonly Action<Stream, object> EncodeCellArray = (s, o) => EncodeArray(s, (Cell[])o);
 
+        private static readonly Action<Stream, object> EncodeCell2d = Write<Cell2d>;
+        private static readonly Action<Stream, object> EncodeCell2dArray = (s, o) => EncodeArray(s, (Cell2d[])o);
+
         private static readonly Action<Stream, object> EncodeV2i = Write<V2i>;
         private static readonly Action<Stream, object> EncodeV2iArray = (s, o) => EncodeArray(s, (V2i[])o);
         private static readonly Action<Stream, object> EncodeV3i = Write<V3i>;
@@ -416,6 +419,9 @@ namespace Aardvark.Data
 
         private static readonly Func<Stream, object> DecodeCell = ReadBoxed<Cell>;
         private static readonly Func<Stream, object> DecodeCellArray = s => DecodeArray<Cell>(s);
+
+        private static readonly Func<Stream, object> DecodeCell2d = ReadBoxed<Cell2d>;
+        private static readonly Func<Stream, object> DecodeCell2dArray = s => DecodeArray<Cell2d>(s);
 
         private static readonly Func<Stream, object> DecodeV2i = ReadBoxed<V2i>;
         private static readonly Func<Stream, object> DecodeV2iArray = s => DecodeArray<V2i>(s);

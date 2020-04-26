@@ -28,7 +28,9 @@ using System.IO.Compression;
 
 namespace Aardvark.Data
 {
-    /// <summary></summary>
+    /// <summary>
+    /// A gzipped element.
+    /// </summary>
     public class DurableGZipped
     {
         /// <summary></summary>
@@ -90,6 +92,8 @@ namespace Aardvark.Data
 
                 [Durable.Aardvark.Cell.Id] = EncodeCell,
                 [Durable.Aardvark.CellArray.Id] = EncodeCellArray,
+                [Durable.Aardvark.Cell2d.Id] = EncodeCell2d,
+                [Durable.Aardvark.Cell2dArray.Id] = EncodeCell2dArray,
 
                 [Durable.Aardvark.V2i.Id] = EncodeV2i,
                 [Durable.Aardvark.V2iArray.Id] = EncodeV2iArray,
@@ -205,6 +209,8 @@ namespace Aardvark.Data
 
                 [Durable.Aardvark.Cell.Id] = DecodeCell,
                 [Durable.Aardvark.CellArray.Id] = DecodeCellArray,
+                [Durable.Aardvark.Cell2d.Id] = DecodeCell2d,
+                [Durable.Aardvark.Cell2dArray.Id] = DecodeCell2dArray,
 
                 [Durable.Aardvark.V2i.Id] = DecodeV2i,
                 [Durable.Aardvark.V2iArray.Id] = DecodeV2iArray,

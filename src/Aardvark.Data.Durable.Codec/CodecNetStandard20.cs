@@ -138,6 +138,10 @@ namespace Aardvark.Data
         private static readonly Action<BinaryWriter, object> EncodeCellArray =
             (s, o) => EncodeArray(s, (Cell[])o);
 
+        private static readonly Action<BinaryWriter, object> EncodeCell2d =
+            (s, o) => { var x = (Cell2d)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Exponent); };
+        private static readonly Action<BinaryWriter, object> EncodeCell2dArray =
+            (s, o) => EncodeArray(s, (Cell2d[])o);
 
         private static readonly Action<BinaryWriter, object> EncodeV2i =
             (s, o) => { var x = (V2i)o; s.Write(x.X); s.Write(x.Y); };
@@ -449,6 +453,9 @@ namespace Aardvark.Data
 
         private static readonly Func<BinaryReader, object> DecodeCell = s => new Cell(s.ReadInt64(), s.ReadInt64(), s.ReadInt64(), s.ReadInt32());
         private static readonly Func<BinaryReader, object> DecodeCellArray = s => DecodeArray<Cell>(s);
+
+        private static readonly Func<BinaryReader, object> DecodeCell2d = s => new Cell2d(s.ReadInt64(), s.ReadInt64(), s.ReadInt32());
+        private static readonly Func<BinaryReader, object> DecodeCell2dArray = s => DecodeArray<Cell2d>(s);
 
         private static readonly Func<BinaryReader, object> DecodeV2i = s => new V2i(s.ReadInt32(), s.ReadInt32());
         private static readonly Func<BinaryReader, object> DecodeV2iArray = s => DecodeArray<V2i>(s);

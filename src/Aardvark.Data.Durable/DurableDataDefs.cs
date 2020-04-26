@@ -92,6 +92,17 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
+            /// A durable definition stored inline. [Id:Guid][Name:StringUTF8][Description:StringUTF8][Type:StringUTF8].
+            /// </summary>
+            public static readonly Def DurableDefinition = new Def(
+                new Guid("f924fd35-ae59-4b0e-a05b-e9c85536c52c"),
+                "DurableDefinition",
+                "A durable definition stored inline. [Id:Guid][Name:StringUTF8][Description:StringUTF8][Type:StringUTF8].",
+                None,
+                false
+                );
+
+            /// <summary>
             /// A map of key/value pairs, where keys are durable IDs with values of corresponding types.
             /// </summary>
             public static readonly Def DurableMap = new Def(
@@ -323,89 +334,265 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// Floating point value (half precision, 16-bit). https://en.wikipedia.org/wiki/IEEE_754.
+            /// Floating point value (IEEE 754, half precision, 16-bit). https://en.wikipedia.org/wiki/IEEE_754.
             /// </summary>
             public static readonly Def Float16 = new Def(
                 new Guid("7891b070-5249-479f-81b8-d8bca5127211"),
                 "Float16",
-                "Floating point value (half precision, 16-bit). https://en.wikipedia.org/wiki/IEEE_754.",
+                "Floating point value (IEEE 754, half precision, 16-bit). https://en.wikipedia.org/wiki/IEEE_754.",
                 None,
                 false
                 );
 
             /// <summary>
-            /// Array of floating point values (half precision, 16-bit). https://en.wikipedia.org/wiki/IEEE_754.
+            /// Array of floating point values (IEEE 754, half precision, 16-bit). https://en.wikipedia.org/wiki/IEEE_754.
             /// </summary>
             public static readonly Def Float16Array = new Def(
                 new Guid("fb1d889e-b7bb-41f4-b047-1f6838cd5fdd"),
                 "Float16[]",
-                "Array of floating point values (half precision, 16-bit). https://en.wikipedia.org/wiki/IEEE_754.",
+                "Array of floating point values (IEEE 754, half precision, 16-bit). https://en.wikipedia.org/wiki/IEEE_754.",
                 None,
                 true
                 );
 
             /// <summary>
-            /// Floating point value (single precision, 32-bit). https://en.wikipedia.org/wiki/IEEE_754.
+            /// Floating point value (IEEE 754, single precision, 32-bit). https://en.wikipedia.org/wiki/IEEE_754.
             /// </summary>
             public static readonly Def Float32 = new Def(
                 new Guid("23fb286f-663b-4c71-9923-7e51c500f4ed"),
                 "Float32",
-                "Floating point value (single precision, 32-bit). https://en.wikipedia.org/wiki/IEEE_754.",
+                "Floating point value (IEEE 754, single precision, 32-bit). https://en.wikipedia.org/wiki/IEEE_754.",
                 None,
                 false
                 );
 
             /// <summary>
-            /// Array of floating point values (single precision, 32-bit). https://en.wikipedia.org/wiki/IEEE_754.
+            /// Array of floating point values (IEEE 754, single precision, 32-bit). https://en.wikipedia.org/wiki/IEEE_754.
             /// </summary>
             public static readonly Def Float32Array = new Def(
                 new Guid("a687a789-1b63-49e9-a2e4-8099aa7879e9"),
                 "Float32[]",
-                "Array of floating point values (single precision, 32-bit). https://en.wikipedia.org/wiki/IEEE_754.",
+                "Array of floating point values (IEEE 754, single precision, 32-bit). https://en.wikipedia.org/wiki/IEEE_754.",
                 None,
                 true
                 );
 
             /// <summary>
-            /// Floating point value (double precision, 64-bit). https://en.wikipedia.org/wiki/IEEE_754.
+            /// Floating point value (IEEE 754, double precision, 64-bit). https://en.wikipedia.org/wiki/IEEE_754.
             /// </summary>
             public static readonly Def Float64 = new Def(
                 new Guid("c58c9b83-c2de-4153-a588-39c808aed50b"),
                 "Float64",
-                "Floating point value (double precision, 64-bit). https://en.wikipedia.org/wiki/IEEE_754.",
+                "Floating point value (IEEE 754, double precision, 64-bit). https://en.wikipedia.org/wiki/IEEE_754.",
                 None,
                 false
                 );
 
             /// <summary>
-            /// Array of floating point values (double precision, 64-bit). https://en.wikipedia.org/wiki/IEEE_754.
+            /// Array of floating point values (IEEE 754, double precision, 64-bit). https://en.wikipedia.org/wiki/IEEE_754.
             /// </summary>
             public static readonly Def Float64Array = new Def(
                 new Guid("ba60cc30-2d56-45d8-a051-6b895b51bb3f"),
                 "Float64[]",
-                "Array of floating point values (double precision, 64-bit). https://en.wikipedia.org/wiki/IEEE_754.",
+                "Array of floating point values (IEEE 754, double precision, 64-bit). https://en.wikipedia.org/wiki/IEEE_754.",
                 None,
                 true
                 );
 
             /// <summary>
-            /// Floating point value (quadruple precision, 128-bit). https://en.wikipedia.org/wiki/IEEE_754.
+            /// Floating point value (IEEE 754, quadruple precision, 128-bit). https://en.wikipedia.org/wiki/IEEE_754.
             /// </summary>
             public static readonly Def Float128 = new Def(
                 new Guid("5d343235-21f6-41e4-992e-93541db26502"),
                 "Float128",
-                "Floating point value (quadruple precision, 128-bit). https://en.wikipedia.org/wiki/IEEE_754.",
+                "Floating point value (IEEE 754, quadruple precision, 128-bit). https://en.wikipedia.org/wiki/IEEE_754.",
                 None,
                 false
                 );
 
             /// <summary>
-            /// Array of floating point values (quadruple precision, 128-bit). https://en.wikipedia.org/wiki/IEEE_754.
+            /// Array of floating point values (IEEE 754, quadruple precision, 128-bit). https://en.wikipedia.org/wiki/IEEE_754.
             /// </summary>
             public static readonly Def Float128Array = new Def(
                 new Guid("6477a574-ffb0-4717-9f00-5fb9aff409ce"),
                 "Float128[]",
-                "Array of floating point values (quadruple precision, 128-bit). https://en.wikipedia.org/wiki/IEEE_754.",
+                "Array of floating point values (IEEE 754, quadruple precision, 128-bit). https://en.wikipedia.org/wiki/IEEE_754.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Floating point value (IEEE 754, octuple precision, 256-bit). https://en.wikipedia.org/wiki/IEEE_754.
+            /// </summary>
+            public static readonly Def Float256 = new Def(
+                new Guid("4c7c4a8d-a4fb-43f5-82d8-34b8b171a05c"),
+                "Float256",
+                "Floating point value (IEEE 754, octuple precision, 256-bit). https://en.wikipedia.org/wiki/IEEE_754.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of floating point values (IEEE 754, octuple precision, 256-bit). https://en.wikipedia.org/wiki/IEEE_754.
+            /// </summary>
+            public static readonly Def Float256Array = new Def(
+                new Guid("acb4dd89-57f7-4229-9f1a-da017947843b"),
+                "Float256[]",
+                "Array of floating point values (IEEE 754, octuple precision, 256-bit). https://en.wikipedia.org/wiki/IEEE_754.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Decimal floating point value (IEEE 754, 32-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal32_floating-point_format.
+            /// </summary>
+            public static readonly Def DecimalBID32 = new Def(
+                new Guid("4b970fc3-ce64-45d0-a602-0546b155760a"),
+                "DecimalBID32",
+                "Decimal floating point value (IEEE 754, 32-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal32_floating-point_format.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of decimal floating point values (IEEE 754, 32-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal32_floating-point_format.
+            /// </summary>
+            public static readonly Def DecimalBID32Array = new Def(
+                new Guid("349d24de-e84f-44dc-81cc-f110bc907062"),
+                "DecimalBID32[]",
+                "Array of decimal floating point values (IEEE 754, 32-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal32_floating-point_format.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Decimal floating point value (IEEE 754, 32-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal32_floating-point_format.
+            /// </summary>
+            public static readonly Def DecimalDPD32 = new Def(
+                new Guid("067151e9-eaee-498e-88f5-fba450dd6cca"),
+                "DecimalDPD32",
+                "Decimal floating point value (IEEE 754, 32-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal32_floating-point_format.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of decimal floating point values (IEEE 754, 32-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal32_floating-point_format.
+            /// </summary>
+            public static readonly Def DecimalDPD32Array = new Def(
+                new Guid("25d58ac1-cac8-4d67-a0af-65363c86e126"),
+                "DecimalDPD32[]",
+                "Array of decimal floating point values (IEEE 754, 32-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal32_floating-point_format.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Decimal floating point value (IEEE 754, 64-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal64_floating-point_format.
+            /// </summary>
+            public static readonly Def DecimalBID64 = new Def(
+                new Guid("8a4c6d2b-c4f4-4e5c-864f-fa2226fb0414"),
+                "DecimalBID64",
+                "Decimal floating point value (IEEE 754, 64-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal64_floating-point_format.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of decimal floating point values (6IEEE 754, 4-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal64_floating-point_format.
+            /// </summary>
+            public static readonly Def DecimalBID64Array = new Def(
+                new Guid("dea7b2cd-231a-4796-bfb9-30cc9d874f0c"),
+                "DecimalBID64[]",
+                "Array of decimal floating point values (6IEEE 754, 4-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal64_floating-point_format.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Decimal floating point value (IEEE 754, 64-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal64_floating-point_format.
+            /// </summary>
+            public static readonly Def DecimalDPD64 = new Def(
+                new Guid("23f81713-bb19-4640-8e89-d91c5a31201e"),
+                "DecimalDPD64",
+                "Decimal floating point value (IEEE 754, 64-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal64_floating-point_format.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of decimal floating point values (IEEE 754, 64-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal64_floating-point_format.
+            /// </summary>
+            public static readonly Def DecimalDPD64Array = new Def(
+                new Guid("34cf3e10-c798-4011-9a5c-00c4c053d34c"),
+                "DecimalDPD64[]",
+                "Array of decimal floating point values (IEEE 754, 64-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal64_floating-point_format.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Decimal floating point value (IEEE 754, 128-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal128_floating-point_format.
+            /// </summary>
+            public static readonly Def DecimalBID128 = new Def(
+                new Guid("4911e3b9-8c72-4f82-a1fa-8d1a3a2d799d"),
+                "DecimalBID128",
+                "Decimal floating point value (IEEE 754, 128-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal128_floating-point_format.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of decimal floating point values (IEEE 754, 128-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal128_floating-point_format.
+            /// </summary>
+            public static readonly Def DecimalBID128Array = new Def(
+                new Guid("1a90ad03-b00f-4db5-928a-9a949c85c5e4"),
+                "DecimalBID128[]",
+                "Array of decimal floating point values (IEEE 754, 128-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal128_floating-point_format.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Decimal floating point value (IEEE 754, 128-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal128_floating-point_format.
+            /// </summary>
+            public static readonly Def DecimalDPD128 = new Def(
+                new Guid("d45469bd-f10c-4fb7-b26c-296c38286044"),
+                "DecimalDPD128",
+                "Decimal floating point value (IEEE 754, 128-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal128_floating-point_format.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of decimal floating point values (IEEE 754, 128-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal128_floating-point_format.
+            /// </summary>
+            public static readonly Def DecimalDPD128Array = new Def(
+                new Guid("c4e6665a-5387-4f71-b224-27775cffeaf5"),
+                "DecimalDPD128[]",
+                "Array of decimal floating point values (IEEE 754, 128-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal128_floating-point_format.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A .NET decimal value (System.Decimal, 128-bit). https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/types#the-decimal-type.
+            /// </summary>
+            public static readonly Def DecimalDotnet = new Def(
+                new Guid("eada3477-f3a5-48a4-a05c-da2aa359e034"),
+                "DecimalDotnet",
+                "A .NET decimal value (System.Decimal, 128-bit). https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/types#the-decimal-type.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of .NET decimal values (System.Decimal, 128-bit). https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/types#the-decimal-type.
+            /// </summary>
+            public static readonly Def DecimalDotnetArray = new Def(
+                new Guid("b7327b1f-f349-4014-b244-aa328922e69f"),
+                "DecimalDotnet[]",
+                "Array of .NET decimal values (System.Decimal, 128-bit). https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/types#the-decimal-type.",
                 None,
                 true
                 );
@@ -430,6 +617,149 @@ namespace Aardvark.Data
                 "Array of strings. UTF8 encoding.",
                 None,
                 true
+                );
+
+            /// <summary>
+            /// Float64[] data stored as Int32[] plus Float64 offset.
+            /// </summary>
+            public static readonly Def Float32ArrayWithFloat64Offset = new Def(
+                new Guid("aab1d3e2-80f9-4f12-895c-81cd5fc5d096"),
+                "Float32ArrayWithFloat64Offset",
+                "Float64[] data stored as Int32[] plus Float64 offset.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Int64[] data stored as Int32[] plus Int64 offset.
+            /// </summary>
+            public static readonly Def Int32ArrayWithInt64Offset = new Def(
+                new Guid("8061bb56-3076-4afd-865d-c9a7701d225a"),
+                "Int32ArrayWithInt64Offset",
+                "Int64[] data stored as Int32[] plus Int64 offset.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Int64[] data stored as Int16[] plus Int64 offset.
+            /// </summary>
+            public static readonly Def Int16ArrayWithInt64Offset = new Def(
+                new Guid("f200bcb7-e462-4d42-88e8-d8bfcb10c265"),
+                "Int16ArrayWithInt64Offset",
+                "Int64[] data stored as Int16[] plus Int64 offset.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Int64[] data stored as Int8[] plus Int64 offset.
+            /// </summary>
+            public static readonly Def Int8ArrayWithInt64Offset = new Def(
+                new Guid("46cc0b8e-c4e4-4626-940f-d2adc28c0c00"),
+                "Int8ArrayWithInt64Offset",
+                "Int64[] data stored as Int8[] plus Int64 offset.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Int32[] data stored as Int16[] plus Int32 offset.
+            /// </summary>
+            public static readonly Def Int16ArrayWithInt32Offset = new Def(
+                new Guid("8daf811d-3d1c-4219-8f2e-22c6c49de6cd"),
+                "Int16ArrayWithInt32Offset",
+                "Int32[] data stored as Int16[] plus Int32 offset.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Int32[] data stored as Int8[] plus Int32 offset.
+            /// </summary>
+            public static readonly Def Int8ArrayWithInt32Offset = new Def(
+                new Guid("fd4db85a-5b2c-4390-aeb3-9f2162034ebb"),
+                "Int8ArrayWithInt32Offset",
+                "Int32[] data stored as Int8[] plus Int32 offset.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Int16[] data stored as Int8[] plus Int16 offset.
+            /// </summary>
+            public static readonly Def Int8ArrayWithInt16Offset = new Def(
+                new Guid("2a9f5350-02d3-45e7-84db-5ec55d105787"),
+                "Int8ArrayWithInt16Offset",
+                "Int16[] data stored as Int8[] plus Int16 offset.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// UInt64[] data stored as UInt32[] plus UInt64 offset.
+            /// </summary>
+            public static readonly Def UInt32ArrayWithUInt64Offset = new Def(
+                new Guid("3f3d719a-5a3b-4a97-b9f6-a821c063374f"),
+                "UInt32ArrayWithUInt64Offset",
+                "UInt64[] data stored as UInt32[] plus UInt64 offset.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// UInt64[] data stored as UInt16[] plus UInt64 offset.
+            /// </summary>
+            public static readonly Def UInt16ArrayWithUInt64Offset = new Def(
+                new Guid("f4387c8f-92de-4af7-96fe-5b1e0e3ff935"),
+                "UInt16ArrayWithUInt64Offset",
+                "UInt64[] data stored as UInt16[] plus UInt64 offset.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// UInt64[] data stored as UInt8[] plus UInt64 offset.
+            /// </summary>
+            public static readonly Def UInt8ArrayWithUInt64Offset = new Def(
+                new Guid("166f9886-61a9-4d81-b072-b86bab4e3ba3"),
+                "UInt8ArrayWithUInt64Offset",
+                "UInt64[] data stored as UInt8[] plus UInt64 offset.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// UInt32[] data stored as UInt16[] plus UInt32 offset.
+            /// </summary>
+            public static readonly Def UInt16ArrayWithUInt32Offset = new Def(
+                new Guid("2477f185-8c5b-4f5c-b3d0-21e63f361304"),
+                "UInt16ArrayWithUInt32Offset",
+                "UInt32[] data stored as UInt16[] plus UInt32 offset.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// UInt32[] data stored as UInt8[] plus UInt32 offset.
+            /// </summary>
+            public static readonly Def UInt8ArrayWithUInt32Offset = new Def(
+                new Guid("92355e69-b783-45cd-bf6b-cd5fb978ea33"),
+                "UInt8ArrayWithUInt32Offset",
+                "UInt32[] data stored as UInt8[] plus UInt32 offset.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// UInt16[] data stored as UInt8[] plus UInt16 offset.
+            /// </summary>
+            public static readonly Def UInt8ArrayWithUInt16Offset = new Def(
+                new Guid("625a813d-f2bd-4034-a69c-d967fef3da50"),
+                "UInt8ArrayWithUInt16Offset",
+                "UInt16[] data stored as UInt8[] plus UInt16 offset.",
+                None,
+                false
                 );
 
         }
@@ -833,12 +1163,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 1-dim range with limits [Min, Max] of UInt8.
+            /// A 1-dim range with limits [Min, Max] of UInt8.
             /// </summary>
             public static readonly Def Range1b = new Def(
                 new Guid("db31d0e0-2c56-48da-a769-5a2c1abad38c"),
                 "Range1b",
-                "An 1-dim range with limits [Min, Max] of UInt8.",
+                "A 1-dim range with limits [Min, Max] of UInt8.",
                 None,
                 false
                 );
@@ -855,12 +1185,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 1-dim range with limits [Min, Max] of Int8.
+            /// A 1-dim range with limits [Min, Max] of Int8.
             /// </summary>
             public static readonly Def Range1sb = new Def(
                 new Guid("59e5322f-1677-47e4-b991-3e87e43ac005"),
                 "Range1sb",
-                "An 1-dim range with limits [Min, Max] of Int8.",
+                "A 1-dim range with limits [Min, Max] of Int8.",
                 None,
                 false
                 );
@@ -877,12 +1207,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 1-dim range with limits [Min, Max] of Int16.
+            /// A 1-dim range with limits [Min, Max] of Int16.
             /// </summary>
             public static readonly Def Range1s = new Def(
                 new Guid("ed0450e7-2a14-4fe6-b3ac-f4a8ee314fad"),
                 "Range1s",
-                "An 1-dim range with limits [Min, Max] of Int16.",
+                "A 1-dim range with limits [Min, Max] of Int16.",
                 None,
                 false
                 );
@@ -899,12 +1229,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 1-dim range with limits [Min, Max] of UInt16.
+            /// A 1-dim range with limits [Min, Max] of UInt16.
             /// </summary>
             public static readonly Def Range1us = new Def(
                 new Guid("7809e939-1d9b-4033-9b7e-7459a2e53b73"),
                 "Range1us",
-                "An 1-dim range with limits [Min, Max] of UInt16.",
+                "A 1-dim range with limits [Min, Max] of UInt16.",
                 None,
                 false
                 );
@@ -921,12 +1251,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 1-dim range with limits [Min, Max] of Int32.
+            /// A 1-dim range with limits [Min, Max] of Int32.
             /// </summary>
             public static readonly Def Range1i = new Def(
                 new Guid("06fad1c2-33a1-4962-92af-19a7c84560a9"),
                 "Range1i",
-                "An 1-dim range with limits [Min, Max] of Int32.",
+                "A 1-dim range with limits [Min, Max] of Int32.",
                 None,
                 false
                 );
@@ -943,12 +1273,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 1-dim range with limits [Min, Max] of UInt32.
+            /// A 1-dim range with limits [Min, Max] of UInt32.
             /// </summary>
             public static readonly Def Range1ui = new Def(
                 new Guid("7ff2c8c9-9c4d-4fb2-a750-f07338ebe0b5"),
                 "Range1ui",
-                "An 1-dim range with limits [Min, Max] of UInt32.",
+                "A 1-dim range with limits [Min, Max] of UInt32.",
                 None,
                 false
                 );
@@ -965,12 +1295,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 1-dim range with limits [Min, Max] of Int64
+            /// A 1-dim range with limits [Min, Max] of Int64
             /// </summary>
             public static readonly Def Range1l = new Def(
                 new Guid("03ac4568-a97b-4ca6-b005-587cd9afde75"),
                 "Range1l",
-                "An 1-dim range with limits [Min, Max] of Int64",
+                "A 1-dim range with limits [Min, Max] of Int64",
                 None,
                 false
                 );
@@ -987,12 +1317,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 1-dim range with limits [Min, Max] of UInt64
+            /// A 1-dim range with limits [Min, Max] of UInt64
             /// </summary>
             public static readonly Def Range1ul = new Def(
                 new Guid("b7e36341-3dbb-47a0-b5c7-2d199f8d909b"),
                 "Range1ul",
-                "An 1-dim range with limits [Min, Max] of UInt64",
+                "A 1-dim range with limits [Min, Max] of UInt64",
                 None,
                 false
                 );
@@ -1009,12 +1339,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 1-dim range with limits [Min, Max] of Float32
+            /// A 1-dim range with limits [Min, Max] of Float32
             /// </summary>
             public static readonly Def Range1f = new Def(
                 new Guid("f5b3c83b-a294-4f40-90aa-4abd7c627e95"),
                 "Range1f",
-                "An 1-dim range with limits [Min, Max] of Float32",
+                "A 1-dim range with limits [Min, Max] of Float32",
                 None,
                 false
                 );
@@ -1031,12 +1361,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 1-dim range with limits [Min, Max] of Float64
+            /// A 1-dim range with limits [Min, Max] of Float64
             /// </summary>
             public static readonly Def Range1d = new Def(
                 new Guid("b82bff3c-d075-4d16-85d5-0be5b31a9465"),
                 "Range1d",
-                "An 1-dim range with limits [Min, Max] of Float64",
+                "A 1-dim range with limits [Min, Max] of Float64",
                 None,
                 false
                 );
@@ -1053,12 +1383,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 2-dim axis-aligned box with limits [Min, Max] of V2i.
+            /// A 2-dim axis-aligned box with limits [Min, Max] of V2i.
             /// </summary>
             public static readonly Def Box2i = new Def(
                 new Guid("0edba5a6-1cec-401f-8d98-78bb4b3319e5"),
                 "Box2i",
-                "An 2-dim axis-aligned box with limits [Min, Max] of V2i.",
+                "A 2-dim axis-aligned box with limits [Min, Max] of V2i.",
                 None,
                 false
                 );
@@ -1075,12 +1405,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 2-dim axis-aligned box with limits [Min, Max] of V2l.
+            /// A 2-dim axis-aligned box with limits [Min, Max] of V2l.
             /// </summary>
             public static readonly Def Box2l = new Def(
                 new Guid("380422d0-0428-47a6-aeb3-3ab328e21bef"),
                 "Box2l",
-                "An 2-dim axis-aligned box with limits [Min, Max] of V2l.",
+                "A 2-dim axis-aligned box with limits [Min, Max] of V2l.",
                 None,
                 false
                 );
@@ -1097,12 +1427,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 2-dim axis-aligned box with limits [Min, Max] of V2f.
+            /// A 2-dim axis-aligned box with limits [Min, Max] of V2f.
             /// </summary>
             public static readonly Def Box2f = new Def(
                 new Guid("414d504d-f350-439b-a73a-4fcc38aafa89"),
                 "Box2f",
-                "An 2-dim axis-aligned box with limits [Min, Max] of V2f.",
+                "A 2-dim axis-aligned box with limits [Min, Max] of V2f.",
                 None,
                 false
                 );
@@ -1119,12 +1449,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 2-dim axis-aligned box with limits [Min, Max] of V2d.
+            /// A 2-dim axis-aligned box with limits [Min, Max] of V2d.
             /// </summary>
             public static readonly Def Box2d = new Def(
                 new Guid("2fb054de-db29-4c1c-bc97-5a0cce4bc291"),
                 "Box2d",
-                "An 2-dim axis-aligned box with limits [Min, Max] of V2d.",
+                "A 2-dim axis-aligned box with limits [Min, Max] of V2d.",
                 None,
                 false
                 );
@@ -1141,12 +1471,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 3-dim axis-aligned box with limits [Min, Max] of V3i.
+            /// A 3-dim axis-aligned box with limits [Min, Max] of V3i.
             /// </summary>
             public static readonly Def Box3i = new Def(
                 new Guid("c1301768-a349-489d-907e-a8967166cd7c"),
                 "Box3i",
-                "An 3-dim axis-aligned box with limits [Min, Max] of V3i.",
+                "A 3-dim axis-aligned box with limits [Min, Max] of V3i.",
                 None,
                 false
                 );
@@ -1163,12 +1493,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 3-dim axis-aligned box with limits [Min, Max] of V3l.
+            /// A 3-dim axis-aligned box with limits [Min, Max] of V3l.
             /// </summary>
             public static readonly Def Box3l = new Def(
                 new Guid("b22529e1-926a-4312-bb5c-3bc63700e4ac"),
                 "Box3l",
-                "An 3-dim axis-aligned box with limits [Min, Max] of V3l.",
+                "A 3-dim axis-aligned box with limits [Min, Max] of V3l.",
                 None,
                 false
                 );
@@ -1185,12 +1515,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 3-dim axis-aligned box with limits [Min, Max] of V3f.
+            /// A 3-dim axis-aligned box with limits [Min, Max] of V3f.
             /// </summary>
             public static readonly Def Box3f = new Def(
                 new Guid("416721ca-6df1-4ada-b7ad-1da7256f490d"),
                 "Box3f",
-                "An 3-dim axis-aligned box with limits [Min, Max] of V3f.",
+                "A 3-dim axis-aligned box with limits [Min, Max] of V3f.",
                 None,
                 false
                 );
@@ -1207,12 +1537,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// An 3-dim axis-aligned box with limits [Min, Max] of V3d.
+            /// A 3-dim axis-aligned box with limits [Min, Max] of V3d.
             /// </summary>
             public static readonly Def Box3d = new Def(
                 new Guid("5926f1ce-37fb-4022-a6e5-536b22ad79ea"),
                 "Box3d",
-                "An 3-dim axis-aligned box with limits [Min, Max] of V3d.",
+                "A 3-dim axis-aligned box with limits [Min, Max] of V3d.",
                 None,
                 false
                 );
@@ -1246,6 +1576,28 @@ namespace Aardvark.Data
                 new Guid("2732639f-20b2-46dc-8d54-007a2ef2d2ea"),
                 "Cell[]",
                 "Array of Cell.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A 2^Exponent sized square positioned at (X,Y) * 2^Exponent.
+            /// </summary>
+            public static readonly Def Cell2d = new Def(
+                new Guid("9d580e5d-a559-4c5e-9413-7675f1dfe93c"),
+                "Cell2d",
+                "A 2^Exponent sized square positioned at (X,Y) * 2^Exponent.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Cell2d.
+            /// </summary>
+            public static readonly Def Cell2dArray = new Def(
+                new Guid("5c23fd56-3736-4a95-ab74-52b26a711e0e"),
+                "Cell2d[]",
+                "Array of Cell2d.",
                 None,
                 true
                 );

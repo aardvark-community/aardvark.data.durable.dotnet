@@ -47,6 +47,7 @@ namespace Aardvark.Data.Tests
         [Fact] public void Primitive_Float64() => Primitive(Durable.Primitives.Float64, 3.1415926);
 
         [Fact] public void Primitive_Cell() => Primitive(Durable.Aardvark.Cell, new Cell(2,11,-5,-6));
+        [Fact] public void Primitive_Cell2d() => Primitive(Durable.Aardvark.Cell2d, new Cell2d(2, 11, -6));
 
         [Fact] public void Primitive_V2i() => Primitive(Durable.Aardvark.V2i, new V2i(4, -5));
         [Fact] public void Primitive_V3i() => Primitive(Durable.Aardvark.V3i, new V3i(2, 6, -4));
@@ -156,6 +157,10 @@ namespace Aardvark.Data.Tests
         [Fact]
         public void Primitive_CellArray() => PrimitiveArray(Durable.Aardvark.CellArray,
                 new[] { new Cell(1,2,3,4), new Cell(-5, 42, -17, -10) }
+                );
+        [Fact]
+        public void Primitive_Cell2dArray() => PrimitiveArray(Durable.Aardvark.Cell2dArray,
+                new[] { new Cell2d(1, 2, 4), new Cell2d(-5, 42, -10) }
                 );
 
         [Fact]
