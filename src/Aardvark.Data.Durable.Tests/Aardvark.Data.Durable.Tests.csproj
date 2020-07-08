@@ -5,12 +5,12 @@
     <IsPackable>false</IsPackable>
     <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
-    <PackageReference Include="xunit" Version="2.4.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
-    <PackageReference Include="coverlet.collector" Version="1.0.1" />
-  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\bin\Debug</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\bin\Release</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aardvark.Data.Durable.Codec\Aardvark.Data.Durable.Codec.csproj" />
     <ProjectReference Include="..\Aardvark.Data.Durable\Aardvark.Data.Durable.csproj" />
