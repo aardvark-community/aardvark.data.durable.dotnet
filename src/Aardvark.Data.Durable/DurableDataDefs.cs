@@ -47,20 +47,23 @@ namespace Aardvark.Data
             /// <summary></summary>
             public Def(Guid id, string name, string description, Guid type, bool isArray)
             {
-                if (defs.ContainsKey(id))
+                lock (defs)
                 {
-                    throw new InvalidOperationException(
-                        $"Duplicate Def(id: {id}, name: {name}, description: {description}, type: {type}, isArray: {isArray})."
-                        );
+                    if (defs.ContainsKey(id))
+                    {
+                        throw new InvalidOperationException(
+                            $"Duplicate Def(id: {id}, name: {name}, description: {description}, type: {type}, isArray: {isArray})."
+                            );
+                    }
+
+                    Id = id;
+                    Name = name;
+                    Description = description;
+                    Type = type;
+                    IsArray = isArray;
+
+                    defs[id] = this;
                 }
-
-                Id = id;
-                Name = name;
-                Description = description;
-                Type = type;
-                IsArray = isArray;
-
-                defs[id] = this;
             }
 
             /// <summary></summary>
@@ -73,7 +76,7 @@ namespace Aardvark.Data
             public override bool Equals(object obj) => obj is Def other && Id == other.Id;
 
             /// <summary></summary>
-            public bool Equals(Def other) => !(other is null) && Id == other.Id;
+            public bool Equals(Def other) => !(other is null || Id != other.Id);
 
             /// <summary></summary>
             public int CompareTo(Def other) => other is null ? 1 : Id.CompareTo(other.Id);
