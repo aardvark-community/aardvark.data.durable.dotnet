@@ -22,6 +22,6 @@ jobs:
     - name: Install dependencies
       run: dotnet paket restore
     - name: Build
-      run: dotnet build src\Aardvark.Data.Durable.sln --configuration Release
+      run: dotnet build src/Aardvark.Data.Durable.sln --configuration Release
     - name: Test
-      run: dotnet test src\Aardvark.Data.Durable.sln --no-restore --verbosity normal
+      run: dotnet test src/Aardvark.Data.Durable.sln --no-restore --verbosity normal
