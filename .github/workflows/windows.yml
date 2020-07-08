@@ -1,4 +1,4 @@
-name: linux
+name: windows
 
 on:
   push:
@@ -21,11 +21,7 @@ jobs:
       run: dotnet tool restore
     - name: Install dependencies
       run: dotnet paket restore
-    - name: Build (Debug)
-      run: dotnet build src/Aardvark.Data.Durable.sln --configuration Debug
-    - name: Build (Release)
+    - name: Build
       run: dotnet build src/Aardvark.Data.Durable.sln --configuration Release
-    - name: Test (Debug)
-      run: dotnet test src/Aardvark.Data.Durable.sln --verbosity normal --configuration Debug
-    - name: Test (Release)
-      run: dotnet test src/Aardvark.Data.Durable.sln --verbosity normal --configuration Release
+    - name: Test
+      run: dotnet test src/Aardvark.Data.Durable.sln --verbosity normal
