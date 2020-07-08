@@ -31,7 +31,7 @@ namespace Aardvark.Data
     public static class Durable
     {
         /// <summary></summary>
-        public class Def
+        public class Def : IEquatable<Def>, IComparable<Def>
         {
             /// <summary></summary>
             public readonly Guid Id;
@@ -65,6 +65,18 @@ namespace Aardvark.Data
 
             /// <summary></summary>
             public override string ToString() => $"[{Name}, {Id}]";
+
+            /// <summary></summary>
+            public override int GetHashCode() => Id.GetHashCode();
+            
+            /// <summary></summary>
+            public override bool Equals(object obj) => obj is Def other && Id == other.Id;
+
+            /// <summary></summary>
+            public bool Equals(Def other) => !(other is null) && Id == other.Id;
+
+            /// <summary></summary>
+            public int CompareTo(Def other) => other is null ? 1 : Id.CompareTo(other.Id);
         }
 
         private static readonly Dictionary<Guid, Def> defs = new Dictionary<Guid, Def>();
