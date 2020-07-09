@@ -31,7 +31,7 @@ namespace Aardvark.Data
     public static class Durable
     {
         /// <summary></summary>
-        public class Def : IEquatable<Def>, IComparable<Def>
+        public class Def : IEquatable<Def>, IComparable, IComparable<Def>
         {
             /// <summary></summary>
             public readonly Guid Id;
@@ -77,6 +77,13 @@ namespace Aardvark.Data
 
             /// <summary></summary>
             public bool Equals(Def other) => !(other is null || Id != other.Id);
+
+            /// <summary></summary>
+            public int CompareTo(object obj)
+                => obj is Def other
+                    ? CompareTo(other)
+                    : throw new ArgumentException($"Can't compare Def with {obj?.GetType()}.", nameof(obj))
+                    ;
 
             /// <summary></summary>
             public int CompareTo(Def other) => other is null ? 1 : Id.CompareTo(other.Id);
