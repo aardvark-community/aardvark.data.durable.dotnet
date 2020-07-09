@@ -23,5 +23,3 @@ jobs:
       run: dotnet paket restore
     - name: Build
       run: dotnet build src/Aardvark.Data.Durable.sln --configuration Release
-    - name: Test
-      run: dotnet test src/Aardvark.Data.Durable.sln --verbosity normal
