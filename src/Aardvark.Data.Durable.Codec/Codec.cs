@@ -143,6 +143,15 @@ namespace Aardvark.Data
                 [Durable.Aardvark.Range1usArray.Id] = EncodeRange1usArray,
 #endif
 
+                [Durable.Aardvark.Box2i.Id] = EncodeBox2i,
+                [Durable.Aardvark.Box2iArray.Id] = EncodeBox2iArray,
+                [Durable.Aardvark.Box2l.Id] = EncodeBox2l,
+                [Durable.Aardvark.Box2lArray.Id] = EncodeBox2lArray,
+                [Durable.Aardvark.Box3i.Id] = EncodeBox3i,
+                [Durable.Aardvark.Box3iArray.Id] = EncodeBox3iArray,
+                [Durable.Aardvark.Box3l.Id] = EncodeBox3l,
+                [Durable.Aardvark.Box3lArray.Id] = EncodeBox3lArray,
+
                 [Durable.Aardvark.Box2f.Id] = EncodeBox2f,
                 [Durable.Aardvark.Box2fArray.Id] = EncodeBox2fArray,
                 [Durable.Aardvark.Box2d.Id] = EncodeBox2d,
@@ -260,10 +269,18 @@ namespace Aardvark.Data
                 [Durable.Aardvark.Range1usArray.Id] = DecodeRange1usArray,
 #endif
 
+                [Durable.Aardvark.Box2i.Id] = DecodeBox2i,
+                [Durable.Aardvark.Box2iArray.Id] = DecodeBox2iArray,
+                [Durable.Aardvark.Box2l.Id] = DecodeBox2l,
+                [Durable.Aardvark.Box2lArray.Id] = DecodeBox2lArray,
                 [Durable.Aardvark.Box2f.Id] = DecodeBox2f,
                 [Durable.Aardvark.Box2fArray.Id] = DecodeBox2fArray,
                 [Durable.Aardvark.Box2d.Id] = DecodeBox2d,
                 [Durable.Aardvark.Box2dArray.Id] = DecodeBox2dArray,
+                [Durable.Aardvark.Box3i.Id] = DecodeBox3i,
+                [Durable.Aardvark.Box3iArray.Id] = DecodeBox3iArray,
+                [Durable.Aardvark.Box3l.Id] = DecodeBox3l,
+                [Durable.Aardvark.Box3lArray.Id] = DecodeBox3lArray,
                 [Durable.Aardvark.Box3f.Id] = DecodeBox3f,
                 [Durable.Aardvark.Box3fArray.Id] = DecodeBox3fArray,
                 [Durable.Aardvark.Box3d.Id] = DecodeBox3d,

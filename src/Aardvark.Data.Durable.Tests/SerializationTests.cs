@@ -67,11 +67,23 @@ namespace Aardvark.Data.Tests
         [Fact] public void Primitive_C3f() => Primitive(Durable.Aardvark.C3f, new C3f(0.1f, 0.2f, 0.3f));
         [Fact] public void Primitive_C4f() => Primitive(Durable.Aardvark.C4f, new C4f(0.3f, 0.4f, 0.5f, 0.6f));
 
+        [Fact] public void Primitive_Box2i() => Primitive(Durable.Aardvark.Box2i,
+            new Box2i(new V2i(1, 3), new V2i(5, 7)), (a, b) => a == b
+            );
+        [Fact] public void Primitive_Box2l() => Primitive(Durable.Aardvark.Box2l,
+            new Box2l(new V2l(1, 3), new V2l(5, 7)), (a, b) => a == b
+            );
         [Fact] public void Primitive_Box2f() => Primitive(Durable.Aardvark.Box2f, 
             new Box2f(new V2f(1.2f, 3.4f), new V2f(5.6f, 7.8f)), (a, b) => a == b
             );
         [Fact] public void Primitive_Box2d() => Primitive(Durable.Aardvark.Box2d,
             new Box2d(new V2d(1.2, 3.4), new V2d(5.6, 7.8)), (a, b) => a == b
+            );
+        [Fact] public void Primitive_Box3i() => Primitive(Durable.Aardvark.Box3i,
+            new Box3i(new V3i(1, 3, 5), new V3i(6, 8, 9)), (a, b) => a == b
+            );
+        [Fact] public void Primitive_Box3l() => Primitive(Durable.Aardvark.Box3l,
+            new Box3l(new V3l(1, 3, 5), new V3l(6, 8, 9)), (a, b) => a == b
             );
         [Fact] public void Primitive_Box3f() => Primitive(Durable.Aardvark.Box3f,
             new Box3f(new V3f(1.2f, 3.4f, 5.6f), new V3f(6.7f, 8.9f, 9.0f)), (a, b) => a == b
@@ -229,6 +241,38 @@ namespace Aardvark.Data.Tests
                 new[] { C4f.Red, C4f.Magenta, C4f.DarkGreen }
                 );
 
+        [Fact]
+        public void Primitive_Box2iArray() => PrimitiveArray(Durable.Aardvark.Box2iArray,
+            new[] {
+                new Box2i(new V2i(1, 3), new V2i(5, 7)),
+                new Box2i(new V2i(2, 4), new V2i(6, 8))
+                },
+            (a, b) => a == b
+            );
+        [Fact]
+        public void Primitive_Box3iArray() => PrimitiveArray(Durable.Aardvark.Box3iArray,
+            new[] {
+                new Box3i(new V3i(1, 3, 5), new V3i(5, 7, -213)),
+                new Box3i(new V3i(2, 4, 6), new V3i(6, 8, 234))
+                },
+            (a, b) => a == b
+            );
+        [Fact]
+        public void Primitive_Box2lArray() => PrimitiveArray(Durable.Aardvark.Box2lArray,
+            new[] {
+                new Box2l(new V2l(1, 3), new V2l(5, 7)),
+                new Box2l(new V2l(2, 4), new V2l(6, 8))
+                },
+            (a, b) => a == b
+            );
+        [Fact]
+        public void Primitive_Box3lArray() => PrimitiveArray(Durable.Aardvark.Box3lArray,
+            new[] {
+                new Box3l(new V3l(1, 3, 5), new V3l(5, 7, -213)),
+                new Box3l(new V3l(2, 4, 6), new V3l(6, 8, 234))
+                },
+            (a, b) => a == b
+            );
         [Fact]
         public void Primitive_Box2fArray() => PrimitiveArray(Durable.Aardvark.Box2fArray,
             new[] {
