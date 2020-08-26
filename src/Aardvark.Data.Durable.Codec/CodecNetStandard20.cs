@@ -22,7 +22,7 @@
     SOFTWARE.
 */
 
-#if NETSTANDARD2_0
+#if NETSTANDARD2_0 || NET47 || NET471 || NET472
 
 using Aardvark.Base;
 using System;
@@ -30,7 +30,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -120,6 +119,7 @@ namespace Aardvark.Data
                 bw.Flush();
 
                 var buffer = ms.ToArray();
+                var bufferDebug = string.Join(", ", buffer.Map(x => x.ToString()));
 
                 var bufferGZipped = buffer.GZipCompress();
                 s.Write(buffer.Length);
