@@ -316,7 +316,9 @@ namespace Aardvark.Data
             using var gz = new GZipStream(ms, CompressionMode.Compress);
             gz.Write(buffer, 0, buffer.Length);
             gz.Flush();
-            return ms.ToArray();
+            gz.Close();
+            var compressedBuffer = ms.ToArray();
+            return compressedBuffer;
         }
 
         private static byte[] GZipDecompress(this byte[] buffer, int uncompressedLength)
