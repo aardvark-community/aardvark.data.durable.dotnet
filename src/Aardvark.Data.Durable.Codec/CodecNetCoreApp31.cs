@@ -293,6 +293,9 @@ namespace Aardvark.Data
             }
         }
 
+        /// <summary>
+        /// If def/x is a primitive (def.Type == Durable.Primitives.Unit.Id), then type def is not encoded before object x.
+        /// </summary>
         private static void EncodeWithoutTypeForPrimitives(Stream stream, Durable.Def def, object x)
         {
             if (def.Type != Durable.Primitives.Unit.Id)

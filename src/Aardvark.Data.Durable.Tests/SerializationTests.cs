@@ -46,7 +46,10 @@ namespace Aardvark.Data.Tests
             var (d, o) = DurableCodec.Deserialize(buffer);
 
             Assert.True(d == Durable.Primitives.DurableMap);
-            Console.WriteLine(d);
+
+            var map2 = o as ImmutableDictionary<Durable.Def, object>;
+            Assert.True(map2.ContainsKey(Durable.Aardvark.V2i));
+            Assert.True((V2i)map2[Durable.Aardvark.V2i] == new V2i(17, 42));
         }
 
         [Fact] public void Primitive_StringUTF8() => Primitive(Durable.Primitives.StringUTF8, "foo bar woohoo");

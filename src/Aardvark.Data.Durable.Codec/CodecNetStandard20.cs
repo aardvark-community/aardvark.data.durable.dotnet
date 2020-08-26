@@ -38,9 +38,9 @@ namespace Aardvark.Data
 {
     public static partial class DurableCodec
     {
-        #region Encode
+#region Encode
 
-        #region DurableMap
+#region DurableMap
 
         private static void EncodeDurableMapEntry(BinaryWriter stream, Durable.Def def, object x)
         {
@@ -107,7 +107,7 @@ namespace Aardvark.Data
 
             };
 
-        #endregion
+#endregion
 
         private static readonly Action<BinaryWriter, object> EncodeGZipped =
             (s, o) =>
@@ -318,6 +318,9 @@ namespace Aardvark.Data
             }
         }
 
+        /// <summary>
+        /// If def/x is a primitive (def.Type == Durable.Primitives.Unit.Id), then type def is not encoded before object x.
+        /// </summary>
         private static void EncodeWithoutTypeForPrimitives(BinaryWriter stream, Durable.Def def, object x)
         {
             if (def.Type != Durable.Primitives.Unit.Id)
@@ -387,9 +390,9 @@ namespace Aardvark.Data
             Serialize(stream, def, x);
         }
 
-        #endregion
+#endregion
 
-        #region Decode
+#region Decode
 
         private static readonly Func<BinaryReader, object> DecodeDurableMapWithoutHeader =
             s =>
@@ -651,7 +654,7 @@ namespace Aardvark.Data
         public static (Durable.Def, object) Deserialize(BinaryReader stream)
             => Decode(stream);
 
-        #endregion
+#endregion
     }
 }
 
