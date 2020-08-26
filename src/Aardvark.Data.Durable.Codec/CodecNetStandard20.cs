@@ -116,7 +116,7 @@ namespace Aardvark.Data
                 using var ms = new MemoryStream();
                 using var bw = new BinaryWriter(ms);
                 EncodeGuid(bw, gzipped.Def.Id);
-                Encode(bw, gzipped.Def, gzipped.Value);
+                EncodeWithoutTypeForPrimitives(bw, gzipped.Def, gzipped.Value);
                 bw.Flush();
 
                 var buffer = ms.ToArray();
@@ -318,7 +318,7 @@ namespace Aardvark.Data
             }
         }
 
-        private static void Encode(BinaryWriter stream, Durable.Def def, object x)
+        private static void EncodeWithoutTypeForPrimitives(BinaryWriter stream, Durable.Def def, object x)
         {
             if (def.Type != Durable.Primitives.Unit.Id)
             {
@@ -366,7 +366,7 @@ namespace Aardvark.Data
                 EncodeGuid(bw, def.Id);
             }
 
-            Encode(bw, def, x);
+            EncodeWithoutTypeForPrimitives(bw, def, x);
             bw.Flush();
             return ms.ToArray();
         }

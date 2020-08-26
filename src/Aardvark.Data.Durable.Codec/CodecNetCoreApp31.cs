@@ -102,7 +102,7 @@ namespace Aardvark.Data
                 // entries (+ padding after each entry)
                 foreach (var x in xs)
                 {
-                    Encode(s, x.Key, x.Value);
+                    EncodeWithoutTypeForPrimitives(s, x.Key, x.Value);
                     PadToNextMultipleOf(16);
 #if DEBUG
                     if (s.Position % 16 != 0) throw new Exception("Invariant 06569c61-8b8f-422a-9648-50a994fb09c7.");
@@ -124,7 +124,7 @@ namespace Aardvark.Data
                 var gzipped = (DurableGZipped)o;
                 using var ms = new MemoryStream();
                 EncodeGuid(ms, gzipped.Def.Id);
-                Encode(ms, gzipped.Def, gzipped.Value);
+                EncodeWithoutTypeForPrimitives(ms, gzipped.Def, gzipped.Value);
                 ms.Flush();
 
                 var buffer = ms.ToArray();
@@ -293,7 +293,7 @@ namespace Aardvark.Data
             }
         }
 
-        private static void Encode(Stream stream, Durable.Def def, object x)
+        private static void EncodeWithoutTypeForPrimitives(Stream stream, Durable.Def def, object x)
         {
             if (def.Type != Durable.Primitives.Unit.Id)
             {
@@ -612,7 +612,7 @@ namespace Aardvark.Data
                 EncodeGuid(ms, def.Id);
             }
 
-            Encode(ms, def, x);
+            EncodeWithoutTypeForPrimitives(ms, def, x);
             return ms.ToArray();
         }
 
