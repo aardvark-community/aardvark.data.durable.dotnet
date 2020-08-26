@@ -1,6 +1,8 @@
 using Aardvark.Base;
 using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.IO;
 using Xunit;
 
 namespace Aardvark.Data.Tests
@@ -31,6 +33,21 @@ namespace Aardvark.Data.Tests
             => Primitive(def, value, (a, b) => a.Equals(b));
         private void PrimitiveArray<T>(Durable.Def def, T[] value) where T : IEquatable<T>
             => PrimitiveArray(def, value, (a, b) => a.Equals(b));
+
+        [Fact]
+        public void Mmmh()
+        {
+            //var buffer = File.ReadAllBytes(@"T:\buffer.bin");
+            var map = new Dictionary<Durable.Def, object>() {
+                { Durable.Aardvark.V2i, new V2i(17, 42) }
+            };
+
+            var buffer = DurableCodec.Serialize(Durable.Primitives.DurableMap, map);
+            var (d, o) = DurableCodec.Deserialize(buffer);
+
+            Assert.True(d == Durable.Primitives.DurableMap);
+            Console.WriteLine(d);
+        }
 
         [Fact] public void Primitive_StringUTF8() => Primitive(Durable.Primitives.StringUTF8, "foo bar woohoo");
 

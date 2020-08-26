@@ -57,43 +57,66 @@ namespace Aardvark.Data
             s.Write(p);
         }
 
+        #region DurableMap
+
+        private static void EncodeDurableMapEntry(Stream stream, Durable.Def def, object x)
+        {
+            var key = (def.Type != Durable.Primitives.Unit.Id) ? def.Type : def.Id;
+
+            if (s_encoders.TryGetValue(key, out var encoder))
+            {
+                EncodeGuid(stream, def.Id);
+                ((Action<Stream, object>)encoder)(stream, x);
+            }
+            else
+            {
+                var unknownDef = Durable.Get(key);
+                throw new InvalidOperationException(
+                    $"No encoder for {unknownDef}. Invariant 63e28e62-1c7b-4ed6-9945-f6d469bee271."
+                    );
+            }
+        }
+
         private static readonly Action<Stream, object> EncodeDurableMapWithoutHeader =
             (s, o) =>
             {
                 var xs = (IEnumerable<KeyValuePair<Durable.Def, object>>)o;
                 var count = xs.Count();
                 s.Write(ref count);
-                foreach (var x in xs) Encode(s, x.Key, x.Value);
+                foreach (var x in xs) EncodeDurableMapEntry(s, x.Key, x.Value);
             };
 
-        private static void PadToNextMultipleOf(this Stream s, int numberOfBytes)
-        {
-            var m = (int)(s.Position % numberOfBytes);
-            if (m > 0) s.Write(stackalloc byte[numberOfBytes - m]);
-        }
         private static readonly Action<Stream, object> EncodeDurableMap16WithoutHeader =
             (s, o) =>
             {
                 var xs = (IEnumerable<KeyValuePair<Durable.Def, object>>)o;
 
-            // number of entries (int + padding)
-            var count = xs.Count();
+                // number of entries (int + padding)
+                var count = xs.Count();
                 s.Write(ref count); // 4 bytes
-            s.PadToNextMultipleOf(16);
+                PadToNextMultipleOf(16);
 #if DEBUG
-            if (s.Position % 16 != 0) throw new Exception("Invariant 8552bd4a-292d-426f-9a58-a04860a8ab58.");
+                if (s.Position % 16 != 0) throw new Exception("Invariant 8552bd4a-292d-426f-9a58-a04860a8ab58.");
 #endif
 
-            // entries (+ padding after each entry)
-            foreach (var x in xs)
+                // entries (+ padding after each entry)
+                foreach (var x in xs)
                 {
                     Encode(s, x.Key, x.Value);
-                    s.PadToNextMultipleOf(16);
+                    PadToNextMultipleOf(16);
 #if DEBUG
-                if (s.Position % 16 != 0) throw new Exception("Invariant 06569c61-8b8f-422a-9648-50a994fb09c7.");
+                    if (s.Position % 16 != 0) throw new Exception("Invariant 06569c61-8b8f-422a-9648-50a994fb09c7.");
 #endif
-            }
+                }
+
+                void PadToNextMultipleOf(int numberOfBytes)
+                {
+                    var m = (int)(s.Position % numberOfBytes);
+                    if (m > 0) s.Write(stackalloc byte[numberOfBytes - m]);
+                }
             };
+
+        #endregion
 
         private static readonly Action<Stream, object> EncodeGZipped =
             (s, o) =>
@@ -313,7 +336,7 @@ namespace Aardvark.Data
             T x = default;
             var span = MemoryMarshal.CreateSpan(ref x, 1);
             var p = MemoryMarshal.Cast<T, byte>(span);
-            if (s.Read(p) != p.Length) throw new Exception("Invariant f96c6373-e9c1-4af2-b253-efa048cfbb2d.");
+            if (s.Read(p) != p.Length) throw new Exception($"Invariant f96c6373-e9c1-4af2-b253-efa048cfbb2d. {typeof(T)}.");
             return x;
         }
 
@@ -323,7 +346,7 @@ namespace Aardvark.Data
             T x = default;
             var span = MemoryMarshal.CreateSpan(ref x, 1);
             var p = MemoryMarshal.Cast<T, byte>(span);
-            if (s.Read(p) != p.Length) throw new Exception("Invariant 79a51e2f-8cf0-4d37-ab3a-5fc5b30be658.");
+            if (s.Read(p) != p.Length) throw new Exception($"Invariant 79a51e2f-8cf0-4d37-ab3a-5fc5b30be658. {typeof(T)}.");
             return x;
         }
 
@@ -351,19 +374,19 @@ namespace Aardvark.Data
                 var count = s.Read<int>();
                 s.SkipToNextMultipleOf(16);
 #if DEBUG
-            if (s.Position % 16 != 0) throw new Exception("Invariant f54b0828-683f-4e63-bab8-e2331d8db36d.");
+                if (s.Position % 16 != 0) throw new Exception("Invariant f54b0828-683f-4e63-bab8-e2331d8db36d.");
 #endif
 
-            var map = ImmutableDictionary<Durable.Def, object>.Empty;
+                var map = ImmutableDictionary<Durable.Def, object>.Empty;
                 for (var i = 0; i < count; i++)
                 {
                     var (def, o) = Decode(s);
                     map = map.Add(def, o);
                     s.SkipToNextMultipleOf(16);
 #if DEBUG
-                if (s.Position % 16 != 0) throw new Exception("Invariant 3dd73301-ca55-4330-b976-60df90f383c8.");
+                    if (s.Position % 16 != 0) throw new Exception("Invariant 3dd73301-ca55-4330-b976-60df90f383c8.");
 #endif
-            }
+                }
                 return map;
             };
 

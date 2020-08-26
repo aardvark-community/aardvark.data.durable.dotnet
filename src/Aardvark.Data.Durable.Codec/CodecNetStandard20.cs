@@ -40,25 +40,35 @@ namespace Aardvark.Data
     {
         #region Encode
 
+        #region DurableMap
+
+        private static void EncodeDurableMapEntry(BinaryWriter stream, Durable.Def def, object x)
+        {
+            var key = (def.Type != Durable.Primitives.Unit.Id) ? def.Type : def.Id;
+
+            if (s_encoders.TryGetValue(key, out var encoder))
+            {
+                EncodeGuid(stream, def.Id);
+                ((Action<BinaryWriter, object>)encoder)(stream, x);
+            }
+            else
+            {
+                var unknownDef = Durable.Get(key);
+                throw new InvalidOperationException(
+                    $"No encoder for {unknownDef}. Invariant 723c80aa-dfe4-4da9-9922-1f3c3c39aac0."
+                    );
+            }
+        }
+
         private static readonly Action<BinaryWriter, object> EncodeDurableMapWithoutHeader =
             (s, o) =>
             {
                 var xs = (IEnumerable<KeyValuePair<Durable.Def, object>>)o;
                 var count = xs.Count();
                 s.Write(count);
-                foreach (var x in xs) Encode(s, x.Key, x.Value);
+                foreach (var x in xs) EncodeDurableMapEntry(s, x.Key, x.Value);
             };
 
-        private static void PadToNextMultipleOf(this Stream s, int numberOfBytes)
-        {
-            var m = (int)(s.Position % numberOfBytes);
-            if (m > 0)
-            {
-                var size = numberOfBytes - m;
-                var buffer = new byte[size];
-                s.Write(buffer, 0, size);
-            }
-        }
         private static readonly Action<BinaryWriter, object> EncodeDurableMap16WithoutHeader =
             (bw, o) =>
             {
@@ -66,24 +76,38 @@ namespace Aardvark.Data
 
                 var xs = (IEnumerable<KeyValuePair<Durable.Def, object>>)o;
 
-            // number of entries (int + padding)
-            var count = xs.Count();
+                // number of entries (int + padding)
+                var count = xs.Count();
                 bw.Write(count); // 4 bytes
-            s.PadToNextMultipleOf(16);
+                PadToNextMultipleOf(16);
 #if DEBUG
-            if (s.Position % 16 != 0) throw new Exception("Invariant 75944da3-3efa-4a0d-935d-c020d5ca7d56.");
+                if (s.Position % 16 != 0) throw new Exception("Invariant 75944da3-3efa-4a0d-935d-c020d5ca7d56.");
 #endif
 
-            // entries (+ padding after each entry)
-            foreach (var x in xs)
+                // entries (+ padding after each entry)
+                foreach (var x in xs)
                 {
-                    Encode(bw, x.Key, x.Value);
-                    s.PadToNextMultipleOf(16);
+                    EncodeDurableMapEntry(bw, x.Key, x.Value);
+                    PadToNextMultipleOf(16);
 #if DEBUG
-                if (s.Position % 16 != 0) throw new Exception("Invariant 9212ca74-a0a4-406f-9f7b-262e2e516918.");
+                    if (s.Position % 16 != 0) throw new Exception("Invariant 9212ca74-a0a4-406f-9f7b-262e2e516918.");
 #endif
-            }
+                }
+
+                void PadToNextMultipleOf(int numberOfBytes)
+                {
+                    var m = (int)(s.Position % numberOfBytes);
+                    if (m > 0)
+                    {
+                        var size = numberOfBytes - m;
+                        var buffer = new byte[size];
+                        s.Write(buffer, 0, size);
+                    }
+                }
+
             };
+
+        #endregion
 
         private static readonly Action<BinaryWriter, object> EncodeGZipped =
             (s, o) =>
@@ -426,7 +450,11 @@ namespace Aardvark.Data
                 return new DurableGZipped(def, o);
             };
 
-        private static readonly Func<BinaryReader, object> DecodeGuid = s => new Guid(s.ReadBytes(16));
+        private static readonly Func<BinaryReader, object> DecodeGuid = s =>
+        {
+            var buffer = s.ReadBytes(16);
+            return new Guid(buffer);
+        };
 
         private static readonly Func<BinaryReader, object> DecodeStringUtf8 = s => Encoding.UTF8.GetString(DecodeArray<byte>(s));
         private static readonly Func<BinaryReader, object> DecodeStringUtf8Array = s =>
