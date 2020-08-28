@@ -141,7 +141,7 @@ namespace Aardvark.Data
     public static class Durable
     {
         /// <summary></summary>
-        public class Def
+        public class Def : IEquatable<Def>, IComparable, IComparable<Def>
         {
             /// <summary></summary>
             public readonly Guid Id;
@@ -157,24 +157,46 @@ namespace Aardvark.Data
             /// <summary></summary>
             public Def(Guid id, string name, string description, Guid type, bool isArray)
             {
-                if (defs.ContainsKey(id))
+                lock (defs)
                 {
-                    throw new InvalidOperationException(
-                        $"Duplicate Def(id: {id}, name: {name}, description: {description}, type: {type}, isArray: {isArray})."
-                        );
+                    if (defs.ContainsKey(id))
+                    {
+                        throw new InvalidOperationException(
+                            $"Duplicate Def(id: {id}, name: {name}, description: {description}, type: {type}, isArray: {isArray})."
+                            );
+                    }
+
+                    Id = id;
+                    Name = name;
+                    Description = description;
+                    Type = type;
+                    IsArray = isArray;
+
+                    defs[id] = this;
                 }
-
-                Id = id;
-                Name = name;
-                Description = description;
-                Type = type;
-                IsArray = isArray;
-
-                defs[id] = this;
             }
 
             /// <summary></summary>
             public override string ToString() => $"[{Name}, {Id}]";
+
+            /// <summary></summary>
+            public override int GetHashCode() => Id.GetHashCode();
+            
+            /// <summary></summary>
+            public override bool Equals(object obj) => obj is Def other && Id == other.Id;
+
+            /// <summary></summary>
+            public bool Equals(Def other) => !(other is null || Id != other.Id);
+
+            /// <summary></summary>
+            public int CompareTo(object obj)
+                => obj is Def other
+                    ? CompareTo(other)
+                    : throw new ArgumentException($"Can't compare Def with {obj?.GetType()}.", nameof(obj))
+                    ;
+
+            /// <summary></summary>
+            public int CompareTo(Def other) => other is null ? 1 : Id.CompareTo(other.Id);
         }
 
         private static readonly Dictionary<Guid, Def> defs = new Dictionary<Guid, Def>();
