@@ -127,7 +127,7 @@ namespace Aardvark.Data
                 [Durable.Aardvark.V4d.Id] = EncodeV4d,
                 [Durable.Aardvark.V4dArray.Id] = EncodeV4dArray,
 
-#if NETCOREAPP3_1
+#if NETCOREAPP3_1 || NETCOREAPP5_0
                 [Durable.Aardvark.Range1b.Id] = EncodeRange1b,
                 [Durable.Aardvark.Range1bArray.Id] = EncodeRange1bArray,
                 [Durable.Aardvark.Range1d.Id] = EncodeRange1d,
@@ -260,7 +260,7 @@ namespace Aardvark.Data
                 [Durable.Aardvark.V4d.Id] = DecodeV4d,
                 [Durable.Aardvark.V4dArray.Id] = DecodeV4dArray,
 
-#if NETCOREAPP3_1
+#if NETCOREAPP3_1 || NETCOREAPP5_0
                 [Durable.Aardvark.Range1b.Id] = DecodeRange1b,
                 [Durable.Aardvark.Range1bArray.Id] = DecodeRange1bArray,
                 [Durable.Aardvark.Range1d.Id] = DecodeRange1d,

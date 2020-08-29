@@ -9,6 +9,10 @@ let main argv =
     printfn "NETCOREAPP3_1"
     #endif
 
+    #if NETCOREAPP5_0
+    printfn "NETCOREAPP5_0"
+    #endif
+
     #if NET472
     printfn "NET472"
     #endif

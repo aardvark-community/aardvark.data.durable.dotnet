@@ -22,7 +22,7 @@
     SOFTWARE.
 */
 
-#if NETCOREAPP3_1
+#if NETCOREAPP3_1 || NETCOREAPP5_0
 
 using Aardvark.Base;
 using System;
@@ -66,7 +66,7 @@ namespace Aardvark.Data
             s.Write(p);
         }
 
-        #region DurableMap
+#region DurableMap
 
         private static void EncodeDurableMapEntry(Stream stream, Durable.Def def, object x)
         {
@@ -125,7 +125,7 @@ namespace Aardvark.Data
                 }
             };
 
-        #endregion
+#endregion
 
         private static readonly Action<Stream, object> EncodeGZipped =
             (s, o) =>
