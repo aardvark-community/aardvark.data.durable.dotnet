@@ -1581,46 +1581,90 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// A 2^Exponent sized cube positioned at (X,Y,Z) * 2^Exponent.
+            /// A 2^Exponent sized cube positioned at (X,Y,Z) * 2^Exponent. Serialized to 28 bytes.
             /// </summary>
             public static readonly Def Cell = new Def(
                 new Guid("bb9da8cb-c9d6-43dd-95d6-f569c82d9af6"),
                 "Cell",
-                "A 2^Exponent sized cube positioned at (X,Y,Z) * 2^Exponent.",
+                "A 2^Exponent sized cube positioned at (X,Y,Z) * 2^Exponent. Serialized to 28 bytes.",
                 None,
                 false
                 );
 
             /// <summary>
-            /// Array of Cell.
+            /// A 2^Exponent sized cube positioned at (X,Y,Z) * 2^Exponent. Serialized to 32 bytes (with 4 bytes of padding).
             /// </summary>
-            public static readonly Def CellArray = new Def(
-                new Guid("2732639f-20b2-46dc-8d54-007a2ef2d2ea"),
-                "Cell[]",
-                "Array of Cell.",
+            public static readonly Def CellPadded32 = new Def(
+                new Guid("8665c4d4-69c1-4b47-a493-ce452e075643"),
+                "CellPadded32",
+                "A 2^Exponent sized cube positioned at (X,Y,Z) * 2^Exponent. Serialized to 32 bytes (with 4 bytes of padding).",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of CellPadded32.
+            /// </summary>
+            public static readonly Def CellPadded32Array = new Def(
+                new Guid("9c2e3d4f-7a40-4266-a2dc-bfbde780260a"),
+                "CellPadded32[]",
+                "Array of CellPadded32.",
                 None,
                 true
                 );
 
             /// <summary>
-            /// A 2^Exponent sized square positioned at (X,Y) * 2^Exponent.
+            /// fix 2020-08-28: changed type from Cell[] to CellPadded32[], because it was always serialized this way.
+            /// </summary>
+            public static readonly Def CellArray = new Def(
+                new Guid("2732639f-20b2-46dc-8d54-007a2ef2d2ea"),
+                "Cell[]",
+                "fix 2020-08-28: changed type from Cell[] to CellPadded32[], because it was always serialized this way.",
+                CellPadded32Array.Id,
+                true
+                );
+
+            /// <summary>
+            /// A 2^Exponent sized square positioned at (X,Y) * 2^Exponent. Serialized to 20 bytes.
             /// </summary>
             public static readonly Def Cell2d = new Def(
                 new Guid("9d580e5d-a559-4c5e-9413-7675f1dfe93c"),
                 "Cell2d",
-                "A 2^Exponent sized square positioned at (X,Y) * 2^Exponent.",
+                "A 2^Exponent sized square positioned at (X,Y) * 2^Exponent. Serialized to 20 bytes.",
                 None,
                 false
                 );
 
             /// <summary>
-            /// Array of Cell2d.
+            /// A 2^Exponent sized square positioned at (X,Y) * 2^Exponent. Serialized to 24 bytes (with 4 bytes of padding).
+            /// </summary>
+            public static readonly Def Cell2dPadded24 = new Def(
+                new Guid("3b022668-faa8-47a9-b622-a7a26060c620"),
+                "Cell2dPadded24",
+                "A 2^Exponent sized square positioned at (X,Y) * 2^Exponent. Serialized to 24 bytes (with 4 bytes of padding).",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Cell2dPadded24.
+            /// </summary>
+            public static readonly Def Cell2dPadded24Array = new Def(
+                new Guid("269f0837-a71f-4967-a323-96ccfabbb184"),
+                "Cell2dPadded24[]",
+                "Array of Cell2dPadded24.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// fix 2020-08-28: changed type from Cell2d[] to Cell2dPadded24[], because it was always serialized this way.
             /// </summary>
             public static readonly Def Cell2dArray = new Def(
                 new Guid("5c23fd56-3736-4a95-ab74-52b26a711e0e"),
                 "Cell2d[]",
-                "Array of Cell2d.",
-                None,
+                "fix 2020-08-28: changed type from Cell2d[] to Cell2dPadded24[], because it was always serialized this way.",
+                Cell2dPadded24Array.Id,
                 true
                 );
 

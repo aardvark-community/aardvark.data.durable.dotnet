@@ -92,8 +92,15 @@ namespace Aardvark.Data
 
                 [Durable.Aardvark.Cell.Id] = EncodeCell,
                 [Durable.Aardvark.CellArray.Id] = EncodeCellArray,
+
+                [Durable.Aardvark.CellPadded32.Id] = EncodeCellPadded32,
+                [Durable.Aardvark.CellPadded32Array.Id] = EncodeCellPadded32Array,
+
                 [Durable.Aardvark.Cell2d.Id] = EncodeCell2d,
                 [Durable.Aardvark.Cell2dArray.Id] = EncodeCell2dArray,
+
+                [Durable.Aardvark.Cell2dPadded24.Id] = EncodeCell2dPadded24,
+                [Durable.Aardvark.Cell2dPadded24Array.Id] = EncodeCell2dPadded24Array,
 
                 [Durable.Aardvark.V2i.Id] = EncodeV2i,
                 [Durable.Aardvark.V2iArray.Id] = EncodeV2iArray,
@@ -217,9 +224,16 @@ namespace Aardvark.Data
 
 
                 [Durable.Aardvark.Cell.Id] = DecodeCell,
-                [Durable.Aardvark.CellArray.Id] = DecodeCellArray,
+                [Durable.Aardvark.CellArray.Id] = DecodeCellPadded32Array,
+
+                [Durable.Aardvark.CellPadded32.Id] = DecodeCellPadded32,
+                [Durable.Aardvark.CellPadded32Array.Id] = DecodeCellPadded32Array,
+
                 [Durable.Aardvark.Cell2d.Id] = DecodeCell2d,
-                [Durable.Aardvark.Cell2dArray.Id] = DecodeCell2dArray,
+                [Durable.Aardvark.Cell2dArray.Id] = DecodeCell2dPadded24Array,
+
+                [Durable.Aardvark.Cell2dPadded24.Id] = DecodeCell2dPadded24,
+                [Durable.Aardvark.Cell2dPadded24Array.Id] = DecodeCell2dPadded24Array,
 
                 [Durable.Aardvark.V2i.Id] = DecodeV2i,
                 [Durable.Aardvark.V2iArray.Id] = DecodeV2iArray,

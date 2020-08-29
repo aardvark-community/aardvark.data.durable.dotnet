@@ -50,6 +50,15 @@ namespace Aardvark.Data
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static void Write<T>(this Stream s, object o, int offset, int count) where T : struct
+        {
+            var x = (T)o;
+            var ros = MemoryMarshal.CreateReadOnlySpan(ref x, 1);
+            var p = MemoryMarshal.Cast<T, byte>(ros).Slice(offset, count);
+            s.Write(p);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static void Write<T>(this Stream s, ref T x) where T : struct
         {
             var ros = MemoryMarshal.CreateReadOnlySpan(ref x, 1);
@@ -176,11 +185,17 @@ namespace Aardvark.Data
             foreach (var x in xs) EncodeArray(s, Encoding.UTF8.GetBytes(x));
         };
 
-        private static readonly Action<Stream, object> EncodeCell = Write<Cell>;
+        private static readonly Action<Stream, object> EncodeCell = (s, o) => Write<Cell>(s, o, 0, 28);
         private static readonly Action<Stream, object> EncodeCellArray = (s, o) => EncodeArray(s, (Cell[])o);
 
-        private static readonly Action<Stream, object> EncodeCell2d = Write<Cell2d>;
+        private static readonly Action<Stream, object> EncodeCellPadded32 = (s, o) => Write<Cell>(s, o);
+        private static readonly Action<Stream, object> EncodeCellPadded32Array = (s, o) => EncodeArray(s, (Cell[])o);
+
+        private static readonly Action<Stream, object> EncodeCell2d = (s, o) => Write<Cell2d>(s, o, 0, 20);
         private static readonly Action<Stream, object> EncodeCell2dArray = (s, o) => EncodeArray(s, (Cell2d[])o);
+
+        private static readonly Action<Stream, object> EncodeCell2dPadded24 = (s, o) => Write<Cell2d>(s, o);
+        private static readonly Action<Stream, object> EncodeCell2dPadded24Array = (s, o) => EncodeArray(s, (Cell2d[])o);
 
         private static readonly Action<Stream, object> EncodeV2i = Write<V2i>;
         private static readonly Action<Stream, object> EncodeV2iArray = (s, o) => EncodeArray(s, (V2i[])o);
@@ -353,6 +368,16 @@ namespace Aardvark.Data
             return x;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static object ReadBoxed<T>(this Stream s, int offset, int count) where T : struct
+        {
+            T x = default;
+            var span = MemoryMarshal.CreateSpan(ref x, 1);
+            var p = MemoryMarshal.Cast<T, byte>(span).Slice(offset, count);
+            if (s.Read(p) != count) throw new Exception($"Invariant 7fdf55c3-15a5-41c3-ad9b-c3000fff6141. {typeof(T)}.");
+            return x;
+        }
+
         private static readonly Func<Stream, object> DecodeDurableMapWithoutHeader =
             s =>
             {
@@ -423,131 +448,137 @@ namespace Aardvark.Data
         };
 
         private static readonly Func<Stream, object> DecodeInt8 = ReadBoxed<sbyte>;
-        private static readonly Func<Stream, object> DecodeInt8Array = s => DecodeArray<sbyte>(s);
+        private static readonly Func<Stream, object> DecodeInt8Array = DecodeArray<sbyte>;
 
         private static readonly Func<Stream, object> DecodeUInt8 = ReadBoxed<byte>;
-        private static readonly Func<Stream, object> DecodeUInt8Array = s => DecodeArray<byte>(s);
+        private static readonly Func<Stream, object> DecodeUInt8Array = DecodeArray<byte>;
 
         private static readonly Func<Stream, object> DecodeInt16 = ReadBoxed<short>;
-        private static readonly Func<Stream, object> DecodeInt16Array = s => DecodeArray<short>(s);
+        private static readonly Func<Stream, object> DecodeInt16Array = DecodeArray<short>;
 
         private static readonly Func<Stream, object> DecodeUInt16 = ReadBoxed<ushort>;
-        private static readonly Func<Stream, object> DecodeUInt16Array = s => DecodeArray<ushort>(s);
+        private static readonly Func<Stream, object> DecodeUInt16Array = DecodeArray<ushort>;
 
         private static readonly Func<Stream, object> DecodeInt32 = ReadBoxed<int>;
-        private static readonly Func<Stream, object> DecodeInt32Array = s => DecodeArray<int>(s);
+        private static readonly Func<Stream, object> DecodeInt32Array = DecodeArray<int>;
 
         private static readonly Func<Stream, object> DecodeUInt32 = ReadBoxed<uint>;
-        private static readonly Func<Stream, object> DecodeUInt32Array = s => DecodeArray<uint>(s);
+        private static readonly Func<Stream, object> DecodeUInt32Array = DecodeArray<uint>;
 
         private static readonly Func<Stream, object> DecodeInt64 = ReadBoxed<long>;
-        private static readonly Func<Stream, object> DecodeInt64Array = s => DecodeArray<long>(s);
+        private static readonly Func<Stream, object> DecodeInt64Array = DecodeArray<long>;
 
         private static readonly Func<Stream, object> DecodeUInt64 = ReadBoxed<ulong>;
-        private static readonly Func<Stream, object> DecodeUInt64Array = s => DecodeArray<ulong>(s);
+        private static readonly Func<Stream, object> DecodeUInt64Array = DecodeArray<ulong>;
 
         private static readonly Func<Stream, object> DecodeFloat32 = ReadBoxed<float>;
-        private static readonly Func<Stream, object> DecodeFloat32Array = s => DecodeArray<float>(s);
+        private static readonly Func<Stream, object> DecodeFloat32Array = DecodeArray<float>;
 
         private static readonly Func<Stream, object> DecodeFloat64 = ReadBoxed<double>;
-        private static readonly Func<Stream, object> DecodeFloat64Array = s => DecodeArray<double>(s);
+        private static readonly Func<Stream, object> DecodeFloat64Array = DecodeArray<double>;
 
 
-        private static readonly Func<Stream, object> DecodeCell = ReadBoxed<Cell>;
-        private static readonly Func<Stream, object> DecodeCellArray = s => DecodeArray<Cell>(s);
+        private static readonly Func<Stream, object> DecodeCell = s => ReadBoxed<Cell>(s, 0, 28);
+        //private static readonly Func<Stream, object> DecodeCellArray = DecodeArray<Cell>;
 
-        private static readonly Func<Stream, object> DecodeCell2d = ReadBoxed<Cell2d>;
-        private static readonly Func<Stream, object> DecodeCell2dArray = s => DecodeArray<Cell2d>(s);
+        private static readonly Func<Stream, object> DecodeCellPadded32 = s => ReadBoxed<Cell>(s);
+        private static readonly Func<Stream, object> DecodeCellPadded32Array = DecodeArray<Cell>;
+
+        private static readonly Func<Stream, object> DecodeCell2d = s => ReadBoxed<Cell2d>(s, 0, 20);
+        //private static readonly Func<Stream, object> DecodeCell2dArray = DecodeArray<Cell2d>;
+
+        private static readonly Func<Stream, object> DecodeCell2dPadded24 = s => ReadBoxed<Cell2d>(s);
+        private static readonly Func<Stream, object> DecodeCell2dPadded24Array = DecodeArray<Cell2d>;
 
         private static readonly Func<Stream, object> DecodeV2i = ReadBoxed<V2i>;
-        private static readonly Func<Stream, object> DecodeV2iArray = s => DecodeArray<V2i>(s);
+        private static readonly Func<Stream, object> DecodeV2iArray = DecodeArray<V2i>;
         private static readonly Func<Stream, object> DecodeV3i = ReadBoxed<V3i>;
-        private static readonly Func<Stream, object> DecodeV3iArray = s => DecodeArray<V3i>(s);
+        private static readonly Func<Stream, object> DecodeV3iArray = DecodeArray<V3i>;
         private static readonly Func<Stream, object> DecodeV4i = ReadBoxed<V4i>;
-        private static readonly Func<Stream, object> DecodeV4iArray = s => DecodeArray<V4i>(s);
+        private static readonly Func<Stream, object> DecodeV4iArray = DecodeArray<V4i>;
 
         private static readonly Func<Stream, object> DecodeV2l = ReadBoxed<V2l>;
-        private static readonly Func<Stream, object> DecodeV2lArray = s => DecodeArray<V2l>(s);
+        private static readonly Func<Stream, object> DecodeV2lArray = DecodeArray<V2l>;
         private static readonly Func<Stream, object> DecodeV3l = ReadBoxed<V3l>;
-        private static readonly Func<Stream, object> DecodeV3lArray = s => DecodeArray<V3l>(s);
+        private static readonly Func<Stream, object> DecodeV3lArray = DecodeArray<V3l>;
         private static readonly Func<Stream, object> DecodeV4l = ReadBoxed<V4l>;
-        private static readonly Func<Stream, object> DecodeV4lArray = s => DecodeArray<V4l>(s);
+        private static readonly Func<Stream, object> DecodeV4lArray = DecodeArray<V4l>;
 
         private static readonly Func<Stream, object> DecodeV2f = ReadBoxed<V2f>;
-        private static readonly Func<Stream, object> DecodeV2fArray = s => DecodeArray<V2f>(s);
+        private static readonly Func<Stream, object> DecodeV2fArray = DecodeArray<V2f>;
         private static readonly Func<Stream, object> DecodeV3f = ReadBoxed<V3f>;
-        private static readonly Func<Stream, object> DecodeV3fArray = s => DecodeArray<V3f>(s);
+        private static readonly Func<Stream, object> DecodeV3fArray = DecodeArray<V3f>;
         private static readonly Func<Stream, object> DecodeV4f = ReadBoxed<V4f>;
-        private static readonly Func<Stream, object> DecodeV4fArray = s => DecodeArray<V4f>(s);
+        private static readonly Func<Stream, object> DecodeV4fArray = DecodeArray<V4f>;
 
         private static readonly Func<Stream, object> DecodeV2d = ReadBoxed<V2d>;
-        private static readonly Func<Stream, object> DecodeV2dArray = s => DecodeArray<V2d>(s);
+        private static readonly Func<Stream, object> DecodeV2dArray = DecodeArray<V2d>;
         private static readonly Func<Stream, object> DecodeV3d = ReadBoxed<V3d>;
-        private static readonly Func<Stream, object> DecodeV3dArray = s => DecodeArray<V3d>(s);
+        private static readonly Func<Stream, object> DecodeV3dArray = DecodeArray<V3d>;
         private static readonly Func<Stream, object> DecodeV4d = ReadBoxed<V4d>;
-        private static readonly Func<Stream, object> DecodeV4dArray = s => DecodeArray<V4d>(s);
+        private static readonly Func<Stream, object> DecodeV4dArray = DecodeArray<V4d>;
 
         private static readonly Func<Stream, object> DecodeBox2i = ReadBoxed<Box2i>;
-        private static readonly Func<Stream, object> DecodeBox2iArray = s => DecodeArray<Box2i>(s);
+        private static readonly Func<Stream, object> DecodeBox2iArray = DecodeArray<Box2i>;
         private static readonly Func<Stream, object> DecodeBox2l = ReadBoxed<Box2l>;
-        private static readonly Func<Stream, object> DecodeBox2lArray = s => DecodeArray<Box2l>(s);
+        private static readonly Func<Stream, object> DecodeBox2lArray = DecodeArray<Box2l>;
         private static readonly Func<Stream, object> DecodeBox2f = ReadBoxed<Box2f>;
-        private static readonly Func<Stream, object> DecodeBox2fArray = s => DecodeArray<Box2f>(s);
+        private static readonly Func<Stream, object> DecodeBox2fArray = DecodeArray<Box2f>;
         private static readonly Func<Stream, object> DecodeBox2d = ReadBoxed<Box2d>;
-        private static readonly Func<Stream, object> DecodeBox2dArray = s => DecodeArray<Box2d>(s);
+        private static readonly Func<Stream, object> DecodeBox2dArray = DecodeArray<Box2d>;
 
         private static readonly Func<Stream, object> DecodeBox3i = ReadBoxed<Box3i>;
-        private static readonly Func<Stream, object> DecodeBox3iArray = s => DecodeArray<Box3i>(s);
+        private static readonly Func<Stream, object> DecodeBox3iArray = DecodeArray<Box3i>;
         private static readonly Func<Stream, object> DecodeBox3l = ReadBoxed<Box3l>;
-        private static readonly Func<Stream, object> DecodeBox3lArray = s => DecodeArray<Box3l>(s);
+        private static readonly Func<Stream, object> DecodeBox3lArray = DecodeArray<Box3l>;
         private static readonly Func<Stream, object> DecodeBox3f = ReadBoxed<Box3f>;
-        private static readonly Func<Stream, object> DecodeBox3fArray = s => DecodeArray<Box3f>(s);
+        private static readonly Func<Stream, object> DecodeBox3fArray = DecodeArray<Box3f>;
         private static readonly Func<Stream, object> DecodeBox3d = ReadBoxed<Box3d>;
-        private static readonly Func<Stream, object> DecodeBox3dArray = s => DecodeArray<Box3d>(s);
+        private static readonly Func<Stream, object> DecodeBox3dArray = DecodeArray<Box3d>;
 
         private static readonly Func<Stream, object> DecodeRange1b = ReadBoxed<Range1b>;
-        private static readonly Func<Stream, object> DecodeRange1bArray = s => DecodeArray<Range1b>(s);
+        private static readonly Func<Stream, object> DecodeRange1bArray = DecodeArray<Range1b>;
         private static readonly Func<Stream, object> DecodeRange1d = ReadBoxed<Range1d>;
-        private static readonly Func<Stream, object> DecodeRange1dArray = s => DecodeArray<Range1d>(s);
+        private static readonly Func<Stream, object> DecodeRange1dArray = DecodeArray<Range1d>;
         private static readonly Func<Stream, object> DecodeRange1f = ReadBoxed<Range1f>;
-        private static readonly Func<Stream, object> DecodeRange1fArray = s => DecodeArray<Range1f>(s);
+        private static readonly Func<Stream, object> DecodeRange1fArray = DecodeArray<Range1f>;
         private static readonly Func<Stream, object> DecodeRange1i = ReadBoxed<Range1i>;
-        private static readonly Func<Stream, object> DecodeRange1iArray = s => DecodeArray<Range1i>(s);
+        private static readonly Func<Stream, object> DecodeRange1iArray = DecodeArray<Range1i>;
         private static readonly Func<Stream, object> DecodeRange1l = ReadBoxed<Range1l>;
-        private static readonly Func<Stream, object> DecodeRange1lArray = s => DecodeArray<Range1l>(s);
+        private static readonly Func<Stream, object> DecodeRange1lArray = DecodeArray<Range1l>;
         private static readonly Func<Stream, object> DecodeRange1s = ReadBoxed<Range1s>;
-        private static readonly Func<Stream, object> DecodeRange1sArray = s => DecodeArray<Range1s>(s);
+        private static readonly Func<Stream, object> DecodeRange1sArray = DecodeArray<Range1s>;
         private static readonly Func<Stream, object> DecodeRange1sb = ReadBoxed<Range1sb>;
-        private static readonly Func<Stream, object> DecodeRange1sbArray = s => DecodeArray<Range1sb>(s);
+        private static readonly Func<Stream, object> DecodeRange1sbArray = DecodeArray<Range1sb>;
         private static readonly Func<Stream, object> DecodeRange1ui = ReadBoxed<Range1ui>;
-        private static readonly Func<Stream, object> DecodeRange1uiArray = s => DecodeArray<Range1ui>(s);
+        private static readonly Func<Stream, object> DecodeRange1uiArray = DecodeArray<Range1ui>;
         private static readonly Func<Stream, object> DecodeRange1ul = ReadBoxed<Range1ul>;
-        private static readonly Func<Stream, object> DecodeRange1ulArray = s => DecodeArray<Range1ul>(s);
+        private static readonly Func<Stream, object> DecodeRange1ulArray = DecodeArray<Range1ul>;
         private static readonly Func<Stream, object> DecodeRange1us = ReadBoxed<Range1us>;
-        private static readonly Func<Stream, object> DecodeRange1usArray = s => DecodeArray<Range1us>(s);
+        private static readonly Func<Stream, object> DecodeRange1usArray = DecodeArray<Range1us>;
 
         private static readonly Func<Stream, object> DecodeM22f = ReadBoxed<M22f>;
-        private static readonly Func<Stream, object> DecodeM22fArray = s => DecodeArray<M22f>(s);
+        private static readonly Func<Stream, object> DecodeM22fArray = DecodeArray<M22f>;
         private static readonly Func<Stream, object> DecodeM33f = ReadBoxed<M33f>;
-        private static readonly Func<Stream, object> DecodeM33fArray = s => DecodeArray<M33f>(s); 
+        private static readonly Func<Stream, object> DecodeM33fArray = DecodeArray<M33f>; 
         private static readonly Func<Stream, object> DecodeM44f = ReadBoxed<M44f>;
-        private static readonly Func<Stream, object> DecodeM44fArray = s => DecodeArray<M44f>(s);
+        private static readonly Func<Stream, object> DecodeM44fArray = DecodeArray<M44f>;
 
         private static readonly Func<Stream, object> DecodeM22d = ReadBoxed<M22d>;
-        private static readonly Func<Stream, object> DecodeM22dArray = s => DecodeArray<M22d>(s);
+        private static readonly Func<Stream, object> DecodeM22dArray = DecodeArray<M22d>;
         private static readonly Func<Stream, object> DecodeM33d = ReadBoxed<M33d>;
-        private static readonly Func<Stream, object> DecodeM33dArray = s => DecodeArray<M33d>(s);
+        private static readonly Func<Stream, object> DecodeM33dArray = DecodeArray<M33d>;
         private static readonly Func<Stream, object> DecodeM44d = ReadBoxed<M44d>;
-        private static readonly Func<Stream, object> DecodeM44dArray = s => DecodeArray<M44d>(s);
+        private static readonly Func<Stream, object> DecodeM44dArray = DecodeArray<M44d>;
 
         private static readonly Func<Stream, object> DecodeC3b = ReadBoxed<C3b>;
-        private static readonly Func<Stream, object> DecodeC3bArray = s => DecodeArray<C3b>(s);
+        private static readonly Func<Stream, object> DecodeC3bArray = DecodeArray<C3b>;
         private static readonly Func<Stream, object> DecodeC4b = ReadBoxed<C4b>;
-        private static readonly Func<Stream, object> DecodeC4bArray = s => DecodeArray<C4b>(s);
+        private static readonly Func<Stream, object> DecodeC4bArray = DecodeArray<C4b>;
         private static readonly Func<Stream, object> DecodeC3f = ReadBoxed<C3f>;
-        private static readonly Func<Stream, object> DecodeC3fArray = s => DecodeArray<C3f>(s);
+        private static readonly Func<Stream, object> DecodeC3fArray = DecodeArray<C3f>;
         private static readonly Func<Stream, object> DecodeC4f = ReadBoxed<C4f>;
-        private static readonly Func<Stream, object> DecodeC4fArray = s => DecodeArray<C4f>(s);
+        private static readonly Func<Stream, object> DecodeC4fArray = DecodeArray<C4f>;
 
         private static unsafe T[] DecodeArray<T>(Stream s) where T : struct
         {
