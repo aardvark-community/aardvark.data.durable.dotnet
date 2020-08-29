@@ -10,66 +10,40 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aardvark.Data.Durable.Codec
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aardvark.Data.Durable.Tests", "Aardvark.Data.Durable.Tests\Aardvark.Data.Durable.Tests.csproj", "{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Scratch.FSharp", "Scratch.FSharp\Scratch.FSharp.fsproj", "{AE4D0A66-41B4-463C-9192-65BEC4B4FF45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Debug NetCore31|Any CPU.ActiveCfg = Debug NetCore31|Any CPU
-		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Debug NetCore31|Any CPU.Build.0 = Debug NetCore31|Any CPU
-		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Debug NetStandard20|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Debug NetStandard20|Any CPU.Build.0 = Debug|Any CPU
 		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Release NetCore31|Any CPU.ActiveCfg = Release NetCore31|Any CPU
-		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Release NetCore31|Any CPU.Build.0 = Release NetCore31|Any CPU
-		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Release NetStandard20|Any CPU.ActiveCfg = Release|Any CPU
-		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Release NetStandard20|Any CPU.Build.0 = Release|Any CPU
 		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6299BBD-EF2C-446A-BAB7-DE62012D1E70}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EB7CD791-D406-46A0-B15E-5539B263A462}.Debug NetCore31|Any CPU.ActiveCfg = Debug NetCore31|Any CPU
-		{EB7CD791-D406-46A0-B15E-5539B263A462}.Debug NetCore31|Any CPU.Build.0 = Debug NetCore31|Any CPU
-		{EB7CD791-D406-46A0-B15E-5539B263A462}.Debug NetStandard20|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB7CD791-D406-46A0-B15E-5539B263A462}.Debug NetStandard20|Any CPU.Build.0 = Debug|Any CPU
 		{EB7CD791-D406-46A0-B15E-5539B263A462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EB7CD791-D406-46A0-B15E-5539B263A462}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB7CD791-D406-46A0-B15E-5539B263A462}.Release NetCore31|Any CPU.ActiveCfg = Release NetCore31|Any CPU
-		{EB7CD791-D406-46A0-B15E-5539B263A462}.Release NetCore31|Any CPU.Build.0 = Release NetCore31|Any CPU
-		{EB7CD791-D406-46A0-B15E-5539B263A462}.Release NetStandard20|Any CPU.ActiveCfg = Release|Any CPU
-		{EB7CD791-D406-46A0-B15E-5539B263A462}.Release NetStandard20|Any CPU.Build.0 = Release|Any CPU
 		{EB7CD791-D406-46A0-B15E-5539B263A462}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB7CD791-D406-46A0-B15E-5539B263A462}.Release|Any CPU.Build.0 = Release|Any CPU
-		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Debug NetCore31|Any CPU.ActiveCfg = Debug NetCore31|Any CPU
-		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Debug NetCore31|Any CPU.Build.0 = Debug NetCore31|Any CPU
-		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Debug NetStandard20|Any CPU.ActiveCfg = Debug|Any CPU
-		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Debug NetStandard20|Any CPU.Build.0 = Debug|Any CPU
 		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Release NetCore31|Any CPU.ActiveCfg = Release NetCore31|Any CPU
-		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Release NetCore31|Any CPU.Build.0 = Release NetCore31|Any CPU
-		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Release NetStandard20|Any CPU.ActiveCfg = Release|Any CPU
-		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Release NetStandard20|Any CPU.Build.0 = Release|Any CPU
 		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60857BB9-6C14-4F77-AD0B-D16AF4F0F91B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Debug NetCore31|Any CPU.ActiveCfg = Debug NetCore31|Any CPU
-		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Debug NetCore31|Any CPU.Build.0 = Debug NetCore31|Any CPU
-		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Debug NetStandard20|Any CPU.ActiveCfg = Debug|Any CPU
-		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Debug NetStandard20|Any CPU.Build.0 = Debug|Any CPU
 		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Release NetCore31|Any CPU.ActiveCfg = Release NetCore31|Any CPU
-		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Release NetCore31|Any CPU.Build.0 = Release NetCore31|Any CPU
-		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Release NetStandard20|Any CPU.ActiveCfg = Release|Any CPU
-		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Release NetStandard20|Any CPU.Build.0 = Release|Any CPU
 		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36BA0DDA-14A4-4440-B3B5-81AAC2C49C87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE4D0A66-41B4-463C-9192-65BEC4B4FF45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE4D0A66-41B4-463C-9192-65BEC4B4FF45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE4D0A66-41B4-463C-9192-65BEC4B4FF45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE4D0A66-41B4-463C-9192-65BEC4B4FF45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E996B5E6-49B2-4479-9DDE-455A40509F43}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45
+		SolutionGuid = {E996B5E6-49B2-4479-9DDE-455A40509F43}
 	EndGlobalSection
 EndGlobal
