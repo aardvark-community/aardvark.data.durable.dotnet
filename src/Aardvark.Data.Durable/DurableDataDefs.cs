@@ -136,6 +136,17 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
+            /// A map of key/value pairs, where keys are durable IDs with values of corresponding types. Entries are 8-byte aligned.
+            /// </summary>
+            public static readonly Def DurableMapAligned8 = new Def(
+                new Guid("6780296f-c30a-4eba-806f-d07d84c7a5bc"),
+                "DurableMapAligned8",
+                "A map of key/value pairs, where keys are durable IDs with values of corresponding types. Entries are 8-byte aligned.",
+                None,
+                false
+                );
+
+            /// <summary>
             /// A map of key/value pairs, where keys are durable IDs with values of corresponding types. Entries are 16-byte aligned.
             /// </summary>
             public static readonly Def DurableMapAligned16 = new Def(

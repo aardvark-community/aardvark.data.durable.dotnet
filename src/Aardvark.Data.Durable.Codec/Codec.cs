@@ -56,12 +56,15 @@ namespace Aardvark.Data
 
         static DurableCodec()
         {
-            // force Durable.Octree initializer
-            if (Durable.Octree.NodeId == null) throw new InvalidOperationException("Invariant 98c78cd6-cef2-4f0b-bb8e-907064c305c4.");
+            //// force Durable.Octree initializer
+            var _ = Durable.Octree.NodeId;
 
             s_encoders = new Dictionary<Guid, object>
             {
+                [Durable.Primitives.Unit.Id] = EncodeUnit,
+
                 [Durable.Primitives.DurableMap.Id] = EncodeDurableMapWithoutHeader,
+                [Durable.Primitives.DurableMapAligned8.Id] = EncodeDurableMap8WithoutHeader,
                 [Durable.Primitives.DurableMapAligned16.Id] = EncodeDurableMap16WithoutHeader,
                 [Durable.Primitives.GZipped.Id] = EncodeGZipped,
 
@@ -92,13 +95,10 @@ namespace Aardvark.Data
 
                 [Durable.Aardvark.Cell.Id] = EncodeCell,
                 [Durable.Aardvark.CellArray.Id] = EncodeCellArray,
-
                 [Durable.Aardvark.CellPadded32.Id] = EncodeCellPadded32,
                 [Durable.Aardvark.CellPadded32Array.Id] = EncodeCellPadded32Array,
-
                 [Durable.Aardvark.Cell2d.Id] = EncodeCell2d,
                 [Durable.Aardvark.Cell2dArray.Id] = EncodeCell2dArray,
-
                 [Durable.Aardvark.Cell2dPadded24.Id] = EncodeCell2dPadded24,
                 [Durable.Aardvark.Cell2dPadded24Array.Id] = EncodeCell2dPadded24Array,
 
@@ -127,7 +127,6 @@ namespace Aardvark.Data
                 [Durable.Aardvark.V4d.Id] = EncodeV4d,
                 [Durable.Aardvark.V4dArray.Id] = EncodeV4dArray,
 
-#if NETCOREAPP3_1 || NETCOREAPP5_0
                 [Durable.Aardvark.Range1b.Id] = EncodeRange1b,
                 [Durable.Aardvark.Range1bArray.Id] = EncodeRange1bArray,
                 [Durable.Aardvark.Range1d.Id] = EncodeRange1d,
@@ -148,7 +147,6 @@ namespace Aardvark.Data
                 [Durable.Aardvark.Range1ulArray.Id] = EncodeRange1ulArray,
                 [Durable.Aardvark.Range1us.Id] = EncodeRange1us,
                 [Durable.Aardvark.Range1usArray.Id] = EncodeRange1usArray,
-#endif
 
                 [Durable.Aardvark.Box2i.Id] = EncodeBox2i,
                 [Durable.Aardvark.Box2iArray.Id] = EncodeBox2iArray,
@@ -183,17 +181,33 @@ namespace Aardvark.Data
 
                 [Durable.Aardvark.C3b.Id] = EncodeC3b,
                 [Durable.Aardvark.C3bArray.Id] = EncodeC3bArray,
-                [Durable.Aardvark.C4b.Id] = EncodeC4b,
-                [Durable.Aardvark.C4bArray.Id] = EncodeC4bArray,
+                [Durable.Aardvark.C3d.Id] = EncodeC3d,
+                [Durable.Aardvark.C3dArray.Id] = EncodeC3dArray,
                 [Durable.Aardvark.C3f.Id] = EncodeC3f,
                 [Durable.Aardvark.C3fArray.Id] = EncodeC3fArray,
+                [Durable.Aardvark.C3ui.Id] = EncodeC3ui,
+                [Durable.Aardvark.C3uiArray.Id] = EncodeC3uiArray,
+                [Durable.Aardvark.C3us.Id] = EncodeC3us,
+                [Durable.Aardvark.C3usArray.Id] = EncodeC3usArray,
+
+                [Durable.Aardvark.C4b.Id] = EncodeC4b,
+                [Durable.Aardvark.C4bArray.Id] = EncodeC4bArray,
+                [Durable.Aardvark.C4d.Id] = EncodeC4d,
+                [Durable.Aardvark.C4dArray.Id] = EncodeC4dArray,
                 [Durable.Aardvark.C4f.Id] = EncodeC4f,
                 [Durable.Aardvark.C4fArray.Id] = EncodeC4fArray,
+                [Durable.Aardvark.C4ui.Id] = EncodeC4ui,
+                [Durable.Aardvark.C4uiArray.Id] = EncodeC4uiArray,
+                [Durable.Aardvark.C4us.Id] = EncodeC4us,
+                [Durable.Aardvark.C4usArray.Id] = EncodeC4usArray,
             };
 
             s_decoders = new Dictionary<Guid, object>
             {
+                [Durable.Primitives.Unit.Id] = DecodeUnit,
+
                 [Durable.Primitives.DurableMap.Id] = DecodeDurableMapWithoutHeader,
+                [Durable.Primitives.DurableMapAligned8.Id] = DecodeDurableMap8WithoutHeader,
                 [Durable.Primitives.DurableMapAligned16.Id] = DecodeDurableMap16WithoutHeader,
                 [Durable.Primitives.GZipped.Id] = DecodeGZipped,
 
@@ -222,16 +236,12 @@ namespace Aardvark.Data
                 [Durable.Primitives.Float64.Id] = DecodeFloat64,
                 [Durable.Primitives.Float64Array.Id] = DecodeFloat64Array,
 
-
                 [Durable.Aardvark.Cell.Id] = DecodeCell,
                 [Durable.Aardvark.CellArray.Id] = DecodeCellPadded32Array,
-
                 [Durable.Aardvark.CellPadded32.Id] = DecodeCellPadded32,
                 [Durable.Aardvark.CellPadded32Array.Id] = DecodeCellPadded32Array,
-
                 [Durable.Aardvark.Cell2d.Id] = DecodeCell2d,
                 [Durable.Aardvark.Cell2dArray.Id] = DecodeCell2dPadded24Array,
-
                 [Durable.Aardvark.Cell2dPadded24.Id] = DecodeCell2dPadded24,
                 [Durable.Aardvark.Cell2dPadded24Array.Id] = DecodeCell2dPadded24Array,
 
@@ -260,7 +270,6 @@ namespace Aardvark.Data
                 [Durable.Aardvark.V4d.Id] = DecodeV4d,
                 [Durable.Aardvark.V4dArray.Id] = DecodeV4dArray,
 
-#if NETCOREAPP3_1 || NETCOREAPP5_0
                 [Durable.Aardvark.Range1b.Id] = DecodeRange1b,
                 [Durable.Aardvark.Range1bArray.Id] = DecodeRange1bArray,
                 [Durable.Aardvark.Range1d.Id] = DecodeRange1d,
@@ -281,7 +290,6 @@ namespace Aardvark.Data
                 [Durable.Aardvark.Range1ulArray.Id] = DecodeRange1ulArray,
                 [Durable.Aardvark.Range1us.Id] = DecodeRange1us,
                 [Durable.Aardvark.Range1usArray.Id] = DecodeRange1usArray,
-#endif
 
                 [Durable.Aardvark.Box2i.Id] = DecodeBox2i,
                 [Durable.Aardvark.Box2iArray.Id] = DecodeBox2iArray,
@@ -315,12 +323,25 @@ namespace Aardvark.Data
 
                 [Durable.Aardvark.C3b.Id] = DecodeC3b,
                 [Durable.Aardvark.C3bArray.Id] = DecodeC3bArray,
-                [Durable.Aardvark.C4b.Id] = DecodeC4b,
-                [Durable.Aardvark.C4bArray.Id] = DecodeC4bArray,
+                [Durable.Aardvark.C3d.Id] = DecodeC3d,
+                [Durable.Aardvark.C3dArray.Id] = DecodeC3dArray,
                 [Durable.Aardvark.C3f.Id] = DecodeC3f,
                 [Durable.Aardvark.C3fArray.Id] = DecodeC3fArray,
+                [Durable.Aardvark.C3ui.Id] = DecodeC3ui,
+                [Durable.Aardvark.C3uiArray.Id] = DecodeC3uiArray,
+                [Durable.Aardvark.C3us.Id] = DecodeC3us,
+                [Durable.Aardvark.C3usArray.Id] = DecodeC3usArray,
+
+                [Durable.Aardvark.C4b.Id] = DecodeC4b,
+                [Durable.Aardvark.C4bArray.Id] = DecodeC4bArray,
+                [Durable.Aardvark.C4d.Id] = DecodeC4d,
+                [Durable.Aardvark.C4dArray.Id] = DecodeC4dArray,
                 [Durable.Aardvark.C4f.Id] = DecodeC4f,
                 [Durable.Aardvark.C4fArray.Id] = DecodeC4fArray,
+                [Durable.Aardvark.C4ui.Id] = DecodeC4ui,
+                [Durable.Aardvark.C4uiArray.Id] = DecodeC4uiArray,
+                [Durable.Aardvark.C4us.Id] = DecodeC4us,
+                [Durable.Aardvark.C4usArray.Id] = DecodeC4usArray,
             };
         }
 

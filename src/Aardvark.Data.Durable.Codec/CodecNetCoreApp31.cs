@@ -95,26 +95,26 @@ namespace Aardvark.Data
                 foreach (var x in xs) EncodeDurableMapEntry(s, x.Key, x.Value);
             };
 
-        private static readonly Action<Stream, object> EncodeDurableMap16WithoutHeader =
-            (s, o) =>
+        private static Action<Stream, object> CreateEncodeDurableMapAlignedWithoutHeader(int alignmentInBytes)
+            => (s, o) =>
             {
                 var xs = (IEnumerable<KeyValuePair<Durable.Def, object>>)o;
 
                 // number of entries (int + padding)
                 var count = xs.Count();
                 s.Write(ref count); // 4 bytes
-                PadToNextMultipleOf(16);
+                PadToNextMultipleOf(alignmentInBytes);
 #if DEBUG
-                if (s.Position % 16 != 0) throw new Exception("Invariant 8552bd4a-292d-426f-9a58-a04860a8ab58.");
+                if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant 8552bd4a-292d-426f-9a58-a04860a8ab58.");
 #endif
 
                 // entries (+ padding after each entry)
                 foreach (var x in xs)
                 {
                     EncodeWithoutTypeForPrimitives(s, x.Key, x.Value);
-                    PadToNextMultipleOf(16);
+                    PadToNextMultipleOf(alignmentInBytes);
 #if DEBUG
-                    if (s.Position % 16 != 0) throw new Exception("Invariant 06569c61-8b8f-422a-9648-50a994fb09c7.");
+                    if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant 06569c61-8b8f-422a-9648-50a994fb09c7.");
 #endif
                 }
 
@@ -124,6 +124,12 @@ namespace Aardvark.Data
                     if (m > 0) s.Write(stackalloc byte[numberOfBytes - m]);
                 }
             };
+
+        private static readonly Action<Stream, object> EncodeDurableMap8WithoutHeader =
+            CreateEncodeDurableMapAlignedWithoutHeader(8);
+
+        private static readonly Action<Stream, object> EncodeDurableMap16WithoutHeader =
+            CreateEncodeDurableMapAlignedWithoutHeader(16);
 
 #endregion
 
@@ -146,6 +152,9 @@ namespace Aardvark.Data
                 s.Write(ref bufferGZippedLength);
                 s.Write(bufferGZipped, 0, bufferGZipped.Length);
             };
+
+
+        private static readonly Action<Stream, object> EncodeUnit = (s, o) => { };
 
         private static readonly Action<Stream, object> EncodeGuid = Write<Guid>;
         private static readonly Action<Stream, object> EncodeGuidArray = (s, o) => EncodeArray(s, (Guid[])o);
@@ -283,12 +292,25 @@ namespace Aardvark.Data
 
         private static readonly Action<Stream, object> EncodeC3b = Write<C3b>;
         private static readonly Action<Stream, object> EncodeC3bArray = (s, o) => EncodeArray(s, (C3b[])o);
-        private static readonly Action<Stream, object> EncodeC4b = Write<C4b>;
-        private static readonly Action<Stream, object> EncodeC4bArray = (s, o) => EncodeArray(s, (C4b[])o);
+        private static readonly Action<Stream, object> EncodeC3d = Write<C3d>;
+        private static readonly Action<Stream, object> EncodeC3dArray = (s, o) => EncodeArray(s, (C3d[])o);
         private static readonly Action<Stream, object> EncodeC3f = Write<C3f>;
         private static readonly Action<Stream, object> EncodeC3fArray = (s, o) => EncodeArray(s, (C3f[])o);
+        private static readonly Action<Stream, object> EncodeC3ui = Write<C3ui>;
+        private static readonly Action<Stream, object> EncodeC3uiArray = (s, o) => EncodeArray(s, (C3ui[])o);
+        private static readonly Action<Stream, object> EncodeC3us = Write<C3us>;
+        private static readonly Action<Stream, object> EncodeC3usArray = (s, o) => EncodeArray(s, (C3us[])o);
+
+        private static readonly Action<Stream, object> EncodeC4b = Write<C4b>;
+        private static readonly Action<Stream, object> EncodeC4bArray = (s, o) => EncodeArray(s, (C4b[])o);
+        private static readonly Action<Stream, object> EncodeC4d = Write<C4d>;
+        private static readonly Action<Stream, object> EncodeC4dArray = (s, o) => EncodeArray(s, (C4d[])o);
         private static readonly Action<Stream, object> EncodeC4f = Write<C4f>;
         private static readonly Action<Stream, object> EncodeC4fArray = (s, o) => EncodeArray(s, (C4f[])o);
+        private static readonly Action<Stream, object> EncodeC4ui = Write<C4ui>;
+        private static readonly Action<Stream, object> EncodeC4uiArray = (s, o) => EncodeArray(s, (C4ui[])o);
+        private static readonly Action<Stream, object> EncodeC4us = Write<C4us>;
+        private static readonly Action<Stream, object> EncodeC4usArray = (s, o) => EncodeArray(s, (C4us[])o);
 
         private static unsafe void EncodeArray<T>(Stream s, params T[] xs) where T : struct
         {
@@ -391,18 +413,13 @@ namespace Aardvark.Data
                 return map;
             };
 
-        private static void SkipToNextMultipleOf(this Stream s, int numberOfBytes)
-        {
-            var m = (int)(s.Position % numberOfBytes);
-            if (m > 0) s.Seek(numberOfBytes - m, SeekOrigin.Current);
-        }
-        private static readonly Func<Stream, object> DecodeDurableMap16WithoutHeader =
-            s =>
+        private static Func<Stream, object> CreateDecodeDurableMapAlignedWithoutHeader(int alignmentInBytes)
+            => s =>
             {
                 var count = s.Read<int>();
-                s.SkipToNextMultipleOf(16);
+                SkipToNextMultipleOf(s, alignmentInBytes);
 #if DEBUG
-                if (s.Position % 16 != 0) throw new Exception("Invariant f54b0828-683f-4e63-bab8-e2331d8db36d.");
+                if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant f54b0828-683f-4e63-bab8-e2331d8db36d.");
 #endif
 
                 var map = ImmutableDictionary<Durable.Def, object>.Empty;
@@ -410,13 +427,25 @@ namespace Aardvark.Data
                 {
                     var (def, o) = Decode(s);
                     map = map.Add(def, o);
-                    s.SkipToNextMultipleOf(16);
+                    SkipToNextMultipleOf(s, alignmentInBytes);
 #if DEBUG
-                    if (s.Position % 16 != 0) throw new Exception("Invariant 3dd73301-ca55-4330-b976-60df90f383c8.");
+                    if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant 3dd73301-ca55-4330-b976-60df90f383c8.");
 #endif
                 }
                 return map;
+
+                static void SkipToNextMultipleOf(Stream s, int numberOfBytes)
+                {
+                    var m = (int)(s.Position % numberOfBytes);
+                    if (m > 0) s.Seek(numberOfBytes - m, SeekOrigin.Current);
+                }
             };
+
+        private static readonly Func<Stream, object> DecodeDurableMap8WithoutHeader =
+            CreateDecodeDurableMapAlignedWithoutHeader(8);
+
+        private static readonly Func<Stream, object> DecodeDurableMap16WithoutHeader =
+            CreateDecodeDurableMapAlignedWithoutHeader(16);
 
         private static readonly Func<Stream, object> DecodeGZipped =
             s =>
@@ -434,6 +463,8 @@ namespace Aardvark.Data
                 var (def, o) = Decode(ms);
                 return new DurableGZipped(def, o);
             };
+
+        private static readonly Func<Stream, object> DecodeUnit = s => null;
 
         private static readonly Func<Stream, object> DecodeGuid = ReadBoxed<Guid>;
 
@@ -573,12 +604,25 @@ namespace Aardvark.Data
 
         private static readonly Func<Stream, object> DecodeC3b = ReadBoxed<C3b>;
         private static readonly Func<Stream, object> DecodeC3bArray = DecodeArray<C3b>;
-        private static readonly Func<Stream, object> DecodeC4b = ReadBoxed<C4b>;
-        private static readonly Func<Stream, object> DecodeC4bArray = DecodeArray<C4b>;
+        private static readonly Func<Stream, object> DecodeC3d = ReadBoxed<C3d>;
+        private static readonly Func<Stream, object> DecodeC3dArray = DecodeArray<C3d>;
         private static readonly Func<Stream, object> DecodeC3f = ReadBoxed<C3f>;
         private static readonly Func<Stream, object> DecodeC3fArray = DecodeArray<C3f>;
+        private static readonly Func<Stream, object> DecodeC3ui = ReadBoxed<C3ui>;
+        private static readonly Func<Stream, object> DecodeC3uiArray = DecodeArray<C3ui>;
+        private static readonly Func<Stream, object> DecodeC3us = ReadBoxed<C3us>;
+        private static readonly Func<Stream, object> DecodeC3usArray = DecodeArray<C3us>;
+
+        private static readonly Func<Stream, object> DecodeC4b = ReadBoxed<C4b>;
+        private static readonly Func<Stream, object> DecodeC4bArray = DecodeArray<C4b>;
+        private static readonly Func<Stream, object> DecodeC4d = ReadBoxed<C4d>;
+        private static readonly Func<Stream, object> DecodeC4dArray = DecodeArray<C4d>;
         private static readonly Func<Stream, object> DecodeC4f = ReadBoxed<C4f>;
         private static readonly Func<Stream, object> DecodeC4fArray = DecodeArray<C4f>;
+        private static readonly Func<Stream, object> DecodeC4ui = ReadBoxed<C4ui>;
+        private static readonly Func<Stream, object> DecodeC4uiArray = DecodeArray<C4ui>;
+        private static readonly Func<Stream, object> DecodeC4us = ReadBoxed<C4us>;
+        private static readonly Func<Stream, object> DecodeC4usArray = DecodeArray<C4us>;
 
         private static unsafe T[] DecodeArray<T>(Stream s) where T : struct
         {
