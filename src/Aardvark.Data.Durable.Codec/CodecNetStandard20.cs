@@ -345,7 +345,7 @@ namespace Aardvark.Data
 
 
         private static readonly Action<BinaryWriter, object> EncodeC3b =
-            (s, o) => { var x = (C3b)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); };
+            (s, o) => { var x = (C3b)o; s.Write(x.B); s.Write(x.G); s.Write(x.R); };
         private static readonly Action<BinaryWriter, object> EncodeC3bArray =
             (s, o) => EncodeArray(s, (C3b[])o);
         private static readonly Action<BinaryWriter, object> EncodeC3d =
@@ -366,7 +366,7 @@ namespace Aardvark.Data
             (s, o) => EncodeArray(s, (C3us[])o);
 
         private static readonly Action<BinaryWriter, object> EncodeC4b =
-            (s, o) => { var x = (C4b)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); s.Write(x.A); };
+            (s, o) => { var x = (C4b)o; s.Write(x.B); s.Write(x.G); s.Write(x.R); s.Write(x.A); };
         private static readonly Action<BinaryWriter, object> EncodeC4bArray =
             (s, o) => EncodeArray(s, (C4b[])o);
         private static readonly Action<BinaryWriter, object> EncodeC4d =
@@ -700,7 +700,13 @@ namespace Aardvark.Data
         private static readonly Func<BinaryReader, object> DecodeM44d = s => new M44d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
         private static readonly Func<BinaryReader, object> DecodeM44dArray = DecodeArray<M44d>;
 
-        private static readonly Func<BinaryReader, object> DecodeC3b = s => new C3b(s.ReadByte(), s.ReadByte(), s.ReadByte());
+        private static readonly Func<BinaryReader, object> DecodeC3b = s =>
+        {
+            var b = s.ReadByte();
+            var g = s.ReadByte();
+            var r = s.ReadByte();
+            return new C3b(r, g, b);
+        };
         private static readonly Func<BinaryReader, object> DecodeC3bArray = DecodeArray<C3b>;
         private static readonly Func<BinaryReader, object> DecodeC3d = s => new C3d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
         private static readonly Func<BinaryReader, object> DecodeC3dArray = DecodeArray<C3d>;
@@ -711,7 +717,14 @@ namespace Aardvark.Data
         private static readonly Func<BinaryReader, object> DecodeC3us = s => new C3us(s.ReadUInt16(), s.ReadUInt16(), s.ReadUInt16());
         private static readonly Func<BinaryReader, object> DecodeC3usArray = DecodeArray<C3us>;
 
-        private static readonly Func<BinaryReader, object> DecodeC4b = s => new C4b(s.ReadByte(), s.ReadByte(), s.ReadByte(), s.ReadByte());
+        private static readonly Func<BinaryReader, object> DecodeC4b = s =>
+        {
+            var b = s.ReadByte();
+            var g = s.ReadByte();
+            var r = s.ReadByte();
+            var a = s.ReadByte();
+            return new C4b(r, g, b, a);
+        };
         private static readonly Func<BinaryReader, object> DecodeC4bArray = DecodeArray<C4b>;
         private static readonly Func<BinaryReader, object> DecodeC4d = s => new C4d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
         private static readonly Func<BinaryReader, object> DecodeC4dArray = DecodeArray<C4d>;
