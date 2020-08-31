@@ -119,6 +119,15 @@ namespace Aardvark.Data.Tests
         [Fact] public void Primitive_C4ui() => Primitive(Durable.Aardvark.C4ui, new C4ui(5, 15, 155, 127), 16);
         [Fact] public void Primitive_C4us() => Primitive(Durable.Aardvark.C4us, new C4us(5, 15, 155, 127), 8);
 
+        [Fact] public void Primitive_CieLabf() => Primitive(Durable.Aardvark.CieLabf, new CieLabf(0.1f, 0.2f, 0.3f), 12, (a, b) => a.L == b.L && a.a == b.a && a.b == b.b);
+        [Fact] public void Primitive_CIeLuvf() => Primitive(Durable.Aardvark.CIeLuvf, new CIeLuvf(0.1f, 0.2f, 0.3f), 12, (a, b) => a.L == b.L && a.u == b.u && a.v == b.v);
+        [Fact] public void Primitive_CieXYZf() => Primitive(Durable.Aardvark.CieXYZf, new CieXYZf(0.1f, 0.2f, 0.3f), 12, (a, b) => a.X == b.X && a.Y == b.Y && a.Z == b.Z);
+        [Fact] public void Primitive_CieYxyf() => Primitive(Durable.Aardvark.CieYxyf, new CieYxyf(0.1f, 0.2f, 0.3f), 12, (a, b) => a.Y == b.Y && a.x == b.x && a.y == b.y);
+        [Fact] public void Primitive_CMYKf() => Primitive(Durable.Aardvark.CMYKf, new CMYKf(0.1f, 0.2f, 0.3f, 0.4f), 16, (a, b) => a.C == b.C && a.M == b.M && a.Y == b.Y && a.K == b.K);
+        [Fact] public void Primitive_HSLf() => Primitive(Durable.Aardvark.HSLf, new HSLf(0.1f, 0.2f, 0.3f), 12, (a, b) => a.H == b.H && a.S == b.S && a.L == b.L);
+        [Fact] public void Primitive_HSVf() => Primitive(Durable.Aardvark.HSVf, new HSVf(0.1f, 0.2f, 0.3f), 12, (a, b) => a.H == b.H && a.S == b.S && a.V == b.V);
+        [Fact] public void Primitive_Yuvf() => Primitive(Durable.Aardvark.Yuvf, new Yuvf(0.1f, 0.2f, 0.3f), 12, (a, b) => a.Y == b.Y && a.u == b.u && a.v == b.v);
+
 
         [Fact]
         public void Primitive_M22f() => Primitive(Durable.Aardvark.M22f, new M22f(1, 2, 3, 4), 16, (a, b) => a == b);
@@ -418,6 +427,47 @@ namespace Aardvark.Data.Tests
         public void Primitive_C4usArray() => PrimitiveArray(Durable.Aardvark.C4usArray,
                 new[] { C4us.Red, C4us.Magenta, C4us.DarkGreen }, 4 + 3 * 8
                 );
+
+        [Fact]
+        public void Primitive_CieLabfArray() => PrimitiveArray(Durable.Aardvark.CieLabfArray,
+               new[] { new CieLabf(0.1f, 0.2f, 0.3f) }, 4 + 1 * 12,
+               (a, b) => a.L == b.L && a.a == b.a && a.b == b.b
+               );
+        [Fact]
+        public void Primitive_CieLuvfArray() => PrimitiveArray(Durable.Aardvark.CIeLuvfArray,
+               new[] { new CIeLuvf(0.1f, 0.2f, 0.3f) }, 4 + 1 * 12,
+               (a, b) => a.L == b.L && a.u == b.u && a.v == b.v
+               );
+        [Fact]
+        public void Primitive_CieXYZfArray() => PrimitiveArray(Durable.Aardvark.CieXYZfArray,
+               new[] { new CieXYZf(0.1f, 0.2f, 0.3f) }, 4 + 1 * 12,
+               (a, b) => a.X == b.X && a.Y == b.Y && a.Z == b.Z
+               );
+        [Fact]
+        public void Primitive_CieYxyfArray() => PrimitiveArray(Durable.Aardvark.CieYxyfArray,
+               new[] { new CieYxyf(0.1f, 0.2f, 0.3f) }, 4 + 1 * 12,
+               (a, b) => a.Y == b.Y && a.x == b.x && a.y == b.y
+               );
+        [Fact]
+        public void Primitive_CMYKfArray() => PrimitiveArray(Durable.Aardvark.CMYKfArray,
+               new[] { new CMYKf(0.1f, 0.2f, 0.3f, 0.4f) }, 4 + 1 * 16,
+               (a, b) => a.C == b.C && a.M == b.M && a.Y == b.Y && a.K == b.K
+               );
+        [Fact]
+        public void Primitive_HSLfArray() => PrimitiveArray(Durable.Aardvark.HSLfArray,
+               new[] { new HSLf(0.1f, 0.2f, 0.3f) }, 4 + 1 * 12,
+               (a, b) => a.H == b.H && a.S == b.S && a.L == b.L
+               );
+        [Fact]
+        public void Primitive_HSVfArray() => PrimitiveArray(Durable.Aardvark.HSVfArray,
+               new[] { new HSVf(0.1f, 0.2f, 0.3f) }, 4 + 1 * 12,
+               (a, b) => a.H == b.H && a.S == b.S && a.V == b.V
+               );
+        [Fact]
+        public void Primitive_YuvfArray() => PrimitiveArray(Durable.Aardvark.YuvfArray,
+               new[] { new Yuvf(0.1f, 0.2f, 0.3f) }, 4 + 1 * 12,
+               (a, b) => a.Y == b.Y && a.u == b.u && a.v == b.v
+               );
 
 
         [Fact]
