@@ -623,6 +623,174 @@ namespace Aardvark.Data
 
                 #endregion
 
+                #region Durable.Aardvark.Box2i
+
+                #if NETSTANDARD2_0 || NET472 || NET48
+                Action<BinaryWriter, object> EncodeBox2i = (s, o) => { var x = (Box2i)o; s.Write(x.Min.X); s.Write(x.Min.Y); s.Write(x.Max.X); s.Write(x.Max.Y); };
+                Action<BinaryWriter, object> EncodeBox2iArray = (s, o) => EncodeArray(s, (Box2i[])o);
+                Func<BinaryReader, object> DecodeBox2i = s => new Box2i(s.ReadInt32(), s.ReadInt32(), s.ReadInt32(), s.ReadInt32());
+                Func<BinaryReader, object> DecodeBox2iArray = DecodeArray<Box2i>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeBox2i = Write<Box2i>;
+                Action<Stream, object> EncodeBox2iArray = (s, o) => EncodeArray(s, (Box2i[])o);
+                Func<Stream, object> DecodeBox2i = ReadBoxed<Box2i>;
+                Func<Stream, object> DecodeBox2iArray = DecodeArray<Box2i>;
+                #endif
+                s_encoders[Durable.Aardvark.Box2i.Id] = EncodeBox2i;
+                s_decoders[Durable.Aardvark.Box2i.Id] = DecodeBox2i;
+                s_encoders[Durable.Aardvark.Box2iArray.Id] = EncodeBox2iArray;
+                s_decoders[Durable.Aardvark.Box2iArray.Id] = DecodeBox2iArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Box2l
+
+                #if NETSTANDARD2_0 || NET472 || NET48
+                Action<BinaryWriter, object> EncodeBox2l = (s, o) => { var x = (Box2l)o; s.Write(x.Min.X); s.Write(x.Min.Y); s.Write(x.Max.X); s.Write(x.Max.Y); };
+                Action<BinaryWriter, object> EncodeBox2lArray = (s, o) => EncodeArray(s, (Box2l[])o);
+                Func<BinaryReader, object> DecodeBox2l = s => new Box2l(s.ReadInt64(), s.ReadInt64(), s.ReadInt64(), s.ReadInt64());
+                Func<BinaryReader, object> DecodeBox2lArray = DecodeArray<Box2l>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeBox2l = Write<Box2l>;
+                Action<Stream, object> EncodeBox2lArray = (s, o) => EncodeArray(s, (Box2l[])o);
+                Func<Stream, object> DecodeBox2l = ReadBoxed<Box2l>;
+                Func<Stream, object> DecodeBox2lArray = DecodeArray<Box2l>;
+                #endif
+                s_encoders[Durable.Aardvark.Box2l.Id] = EncodeBox2l;
+                s_decoders[Durable.Aardvark.Box2l.Id] = DecodeBox2l;
+                s_encoders[Durable.Aardvark.Box2lArray.Id] = EncodeBox2lArray;
+                s_decoders[Durable.Aardvark.Box2lArray.Id] = DecodeBox2lArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Box2f
+
+                #if NETSTANDARD2_0 || NET472 || NET48
+                Action<BinaryWriter, object> EncodeBox2f = (s, o) => { var x = (Box2f)o; s.Write(x.Min.X); s.Write(x.Min.Y); s.Write(x.Max.X); s.Write(x.Max.Y); };
+                Action<BinaryWriter, object> EncodeBox2fArray = (s, o) => EncodeArray(s, (Box2f[])o);
+                Func<BinaryReader, object> DecodeBox2f = s => new Box2f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
+                Func<BinaryReader, object> DecodeBox2fArray = DecodeArray<Box2f>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeBox2f = Write<Box2f>;
+                Action<Stream, object> EncodeBox2fArray = (s, o) => EncodeArray(s, (Box2f[])o);
+                Func<Stream, object> DecodeBox2f = ReadBoxed<Box2f>;
+                Func<Stream, object> DecodeBox2fArray = DecodeArray<Box2f>;
+                #endif
+                s_encoders[Durable.Aardvark.Box2f.Id] = EncodeBox2f;
+                s_decoders[Durable.Aardvark.Box2f.Id] = DecodeBox2f;
+                s_encoders[Durable.Aardvark.Box2fArray.Id] = EncodeBox2fArray;
+                s_decoders[Durable.Aardvark.Box2fArray.Id] = DecodeBox2fArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Box2d
+
+                #if NETSTANDARD2_0 || NET472 || NET48
+                Action<BinaryWriter, object> EncodeBox2d = (s, o) => { var x = (Box2d)o; s.Write(x.Min.X); s.Write(x.Min.Y); s.Write(x.Max.X); s.Write(x.Max.Y); };
+                Action<BinaryWriter, object> EncodeBox2dArray = (s, o) => EncodeArray(s, (Box2d[])o);
+                Func<BinaryReader, object> DecodeBox2d = s => new Box2d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
+                Func<BinaryReader, object> DecodeBox2dArray = DecodeArray<Box2d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeBox2d = Write<Box2d>;
+                Action<Stream, object> EncodeBox2dArray = (s, o) => EncodeArray(s, (Box2d[])o);
+                Func<Stream, object> DecodeBox2d = ReadBoxed<Box2d>;
+                Func<Stream, object> DecodeBox2dArray = DecodeArray<Box2d>;
+                #endif
+                s_encoders[Durable.Aardvark.Box2d.Id] = EncodeBox2d;
+                s_decoders[Durable.Aardvark.Box2d.Id] = DecodeBox2d;
+                s_encoders[Durable.Aardvark.Box2dArray.Id] = EncodeBox2dArray;
+                s_decoders[Durable.Aardvark.Box2dArray.Id] = DecodeBox2dArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Box3i
+
+                #if NETSTANDARD2_0 || NET472 || NET48
+                Action<BinaryWriter, object> EncodeBox3i = (s, o) => { var x = (Box3i)o; s.Write(x.Min.X); s.Write(x.Min.Y); s.Write(x.Min.Z); s.Write(x.Max.X); s.Write(x.Max.Y); s.Write(x.Max.Z); };
+                Action<BinaryWriter, object> EncodeBox3iArray = (s, o) => EncodeArray(s, (Box3i[])o);
+                Func<BinaryReader, object> DecodeBox3i = s => new Box3i(s.ReadInt32(), s.ReadInt32(), s.ReadInt32(), s.ReadInt32(), s.ReadInt32(), s.ReadInt32());
+                Func<BinaryReader, object> DecodeBox3iArray = DecodeArray<Box3i>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeBox3i = Write<Box3i>;
+                Action<Stream, object> EncodeBox3iArray = (s, o) => EncodeArray(s, (Box3i[])o);
+                Func<Stream, object> DecodeBox3i = ReadBoxed<Box3i>;
+                Func<Stream, object> DecodeBox3iArray = DecodeArray<Box3i>;
+                #endif
+                s_encoders[Durable.Aardvark.Box3i.Id] = EncodeBox3i;
+                s_decoders[Durable.Aardvark.Box3i.Id] = DecodeBox3i;
+                s_encoders[Durable.Aardvark.Box3iArray.Id] = EncodeBox3iArray;
+                s_decoders[Durable.Aardvark.Box3iArray.Id] = DecodeBox3iArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Box3l
+
+                #if NETSTANDARD2_0 || NET472 || NET48
+                Action<BinaryWriter, object> EncodeBox3l = (s, o) => { var x = (Box3l)o; s.Write(x.Min.X); s.Write(x.Min.Y); s.Write(x.Min.Z); s.Write(x.Max.X); s.Write(x.Max.Y); s.Write(x.Max.Z); };
+                Action<BinaryWriter, object> EncodeBox3lArray = (s, o) => EncodeArray(s, (Box3l[])o);
+                Func<BinaryReader, object> DecodeBox3l = s => new Box3l(s.ReadInt64(), s.ReadInt64(), s.ReadInt64(), s.ReadInt64(), s.ReadInt64(), s.ReadInt64());
+                Func<BinaryReader, object> DecodeBox3lArray = DecodeArray<Box3l>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeBox3l = Write<Box3l>;
+                Action<Stream, object> EncodeBox3lArray = (s, o) => EncodeArray(s, (Box3l[])o);
+                Func<Stream, object> DecodeBox3l = ReadBoxed<Box3l>;
+                Func<Stream, object> DecodeBox3lArray = DecodeArray<Box3l>;
+                #endif
+                s_encoders[Durable.Aardvark.Box3l.Id] = EncodeBox3l;
+                s_decoders[Durable.Aardvark.Box3l.Id] = DecodeBox3l;
+                s_encoders[Durable.Aardvark.Box3lArray.Id] = EncodeBox3lArray;
+                s_decoders[Durable.Aardvark.Box3lArray.Id] = DecodeBox3lArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Box3f
+
+                #if NETSTANDARD2_0 || NET472 || NET48
+                Action<BinaryWriter, object> EncodeBox3f = (s, o) => { var x = (Box3f)o; s.Write(x.Min.X); s.Write(x.Min.Y); s.Write(x.Min.Z); s.Write(x.Max.X); s.Write(x.Max.Y); s.Write(x.Max.Z); };
+                Action<BinaryWriter, object> EncodeBox3fArray = (s, o) => EncodeArray(s, (Box3f[])o);
+                Func<BinaryReader, object> DecodeBox3f = s => new Box3f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
+                Func<BinaryReader, object> DecodeBox3fArray = DecodeArray<Box3f>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeBox3f = Write<Box3f>;
+                Action<Stream, object> EncodeBox3fArray = (s, o) => EncodeArray(s, (Box3f[])o);
+                Func<Stream, object> DecodeBox3f = ReadBoxed<Box3f>;
+                Func<Stream, object> DecodeBox3fArray = DecodeArray<Box3f>;
+                #endif
+                s_encoders[Durable.Aardvark.Box3f.Id] = EncodeBox3f;
+                s_decoders[Durable.Aardvark.Box3f.Id] = DecodeBox3f;
+                s_encoders[Durable.Aardvark.Box3fArray.Id] = EncodeBox3fArray;
+                s_decoders[Durable.Aardvark.Box3fArray.Id] = DecodeBox3fArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Box3d
+
+                #if NETSTANDARD2_0 || NET472 || NET48
+                Action<BinaryWriter, object> EncodeBox3d = (s, o) => { var x = (Box3d)o; s.Write(x.Min.X); s.Write(x.Min.Y); s.Write(x.Min.Z); s.Write(x.Max.X); s.Write(x.Max.Y); s.Write(x.Max.Z); };
+                Action<BinaryWriter, object> EncodeBox3dArray = (s, o) => EncodeArray(s, (Box3d[])o);
+                Func<BinaryReader, object> DecodeBox3d = s => new Box3d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
+                Func<BinaryReader, object> DecodeBox3dArray = DecodeArray<Box3d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeBox3d = Write<Box3d>;
+                Action<Stream, object> EncodeBox3dArray = (s, o) => EncodeArray(s, (Box3d[])o);
+                Func<Stream, object> DecodeBox3d = ReadBoxed<Box3d>;
+                Func<Stream, object> DecodeBox3dArray = DecodeArray<Box3d>;
+                #endif
+                s_encoders[Durable.Aardvark.Box3d.Id] = EncodeBox3d;
+                s_decoders[Durable.Aardvark.Box3d.Id] = DecodeBox3d;
+                s_encoders[Durable.Aardvark.Box3dArray.Id] = EncodeBox3dArray;
+                s_decoders[Durable.Aardvark.Box3dArray.Id] = DecodeBox3dArray;
+
+                #endregion
+
                 #region Durable.Aardvark.C3us
 
                 #if NETSTANDARD2_0 || NET472 || NET48
