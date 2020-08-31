@@ -2096,6 +2096,402 @@ namespace Aardvark.Data
                 false
                 );
 
+            /// <summary>
+            /// A capsule in 3-space represented by two points and a radius.
+            /// </summary>
+            public static readonly Def Capsule3d = new Def(
+                new Guid("8b563d8b-6502-4b3f-a217-cacad6d779ea"),
+                "Capsule3d",
+                "A capsule in 3-space represented by two points and a radius.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Capsule3d.
+            /// </summary>
+            public static readonly Def Capsule3dArray = new Def(
+                new Guid("aa31738b-2cab-4843-b189-f9d31550438f"),
+                "Capsule3d[]",
+                "Array of Capsule3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A two dimensional circle represented by center and radius.
+            /// </summary>
+            public static readonly Def Circle2d = new Def(
+                new Guid("32dffbbb-fd04-4e62-85ea-fc3ae8889c61"),
+                "Circle2d",
+                "A two dimensional circle represented by center and radius.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Circle2d.
+            /// </summary>
+            public static readonly Def Circle2dArray = new Def(
+                new Guid("6d7ce781-f3bb-4139-95ec-6cd885c36aee"),
+                "Circle2d[]",
+                "Array of Circle2d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A circle in 3-space represented by its center, normal (normalized), and a radius.
+            /// </summary>
+            public static readonly Def Circle3d = new Def(
+                new Guid("91265f74-e53b-4154-a370-e94796078a24"),
+                "Circle3d",
+                "A circle in 3-space represented by its center, normal (normalized), and a radius.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Circle3d.
+            /// </summary>
+            public static readonly Def Circle3dArray = new Def(
+                new Guid("0959298f-ca32-4b0f-9850-840fedd983ae"),
+                "Circle3d[]",
+                "Array of Circle3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// An oblique cone in 3-space represented by its origin (apex) and base circle.
+            /// </summary>
+            public static readonly Def ObliqueCone3d = new Def(
+                new Guid("cfb67319-ecdd-4642-b043-b0e41ce741db"),
+                "ObliqueCone3d",
+                "An oblique cone in 3-space represented by its origin (apex) and base circle.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of ObliqueCone3d.
+            /// </summary>
+            public static readonly Def ObliqueCone3dArray = new Def(
+                new Guid("d0e95202-005d-4795-b71f-8b406cf04a43"),
+                "ObliqueCone3d[]",
+                "Array of ObliqueCone3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A cone in 3-space represented by its origin, axis of revolution (Direction), and the angle between axis and outer edge.
+            /// </summary>
+            public static readonly Def Cone3d = new Def(
+                new Guid("b624ffb1-ef11-4776-b14a-4d34a5314230"),
+                "Cone3d",
+                "A cone in 3-space represented by its origin, axis of revolution (Direction), and the angle between axis and outer edge.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Cone3d.
+            /// </summary>
+            public static readonly Def Cone3dArray = new Def(
+                new Guid("38e3e52a-ac45-4697-83ea-86b580ff1596"),
+                "Cone3d[]",
+                "Array of Cone3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A cylinder in 3-space.
+            /// </summary>
+            public static readonly Def Cylinder3d = new Def(
+                new Guid("6982d0a3-1cb4-4c9f-b479-6ebd3926bf7b"),
+                "Cylinder3d",
+                "A cylinder in 3-space.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Cylinder3d.
+            /// </summary>
+            public static readonly Def Cylinder3dArray = new Def(
+                new Guid("8f3cbbad-9d20-4db2-9831-9644733a7bc5"),
+                "Cylinder3d[]",
+                "Array of Cylinder3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A line in 2-space with begin P0 and end P1.
+            /// </summary>
+            public static readonly Def Line2d = new Def(
+                new Guid("c0fb8306-e4b1-43c4-9236-a7eabbdfb245"),
+                "Line2d",
+                "A line in 2-space with begin P0 and end P1.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Line2d.
+            /// </summary>
+            public static readonly Def Line2dArray = new Def(
+                new Guid("01c73cac-5fe7-4ca2-9756-2e2ad33c6338"),
+                "Line2d[]",
+                "Array of Line2d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A line in 3-space with begin P0 and end P1.
+            /// </summary>
+            public static readonly Def Line3d = new Def(
+                new Guid("d3c05a9b-03f9-40f0-b169-401532c5d068"),
+                "Line3d",
+                "A line in 3-space with begin P0 and end P1.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Line3d.
+            /// </summary>
+            public static readonly Def Line3dArray = new Def(
+                new Guid("1ace6b08-0376-4c73-8479-3f4edcac48f1"),
+                "Line3d[]",
+                "Array of Line3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A triangle in 2-space with points defined by three points P0, P1, P2.
+            /// </summary>
+            public static readonly Def Triangle2d = new Def(
+                new Guid("37d849fc-e0c9-4d9f-8516-461123362692"),
+                "Triangle2d",
+                "A triangle in 2-space with points defined by three points P0, P1, P2.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Triangle2d.
+            /// </summary>
+            public static readonly Def Triangle2dArray = new Def(
+                new Guid("a08840e3-7c4c-4a59-8f30-45926c5e6663"),
+                "Triangle2d[]",
+                "Array of Triangle2d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A triangle in 3-space with points defined by three points P0, P1, P2.
+            /// </summary>
+            public static readonly Def Triangle3d = new Def(
+                new Guid("3a52c3ad-61b4-48a8-b402-97c654fe7f80"),
+                "Triangle3d",
+                "A triangle in 3-space with points defined by three points P0, P1, P2.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Triangle3d.
+            /// </summary>
+            public static readonly Def Triangle3dArray = new Def(
+                new Guid("2b17cea5-e8db-4e86-b5f5-8b401088ca58"),
+                "Triangle3d[]",
+                "Array of Triangle3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A quad in 2-space with points defined by four points P0, P1, P2, P3.
+            /// </summary>
+            public static readonly Def Quad2d = new Def(
+                new Guid("40dae3a2-0791-4533-8b69-882c3bbbaa6f"),
+                "Quad2d",
+                "A quad in 2-space with points defined by four points P0, P1, P2, P3.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Quad2d.
+            /// </summary>
+            public static readonly Def Quad2dArray = new Def(
+                new Guid("0d23983f-62a1-40d0-96e5-8864283877b9"),
+                "Quad2d[]",
+                "Array of Quad2d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A quad in 3-space with points defined by four points P0, P1, P2, P3.
+            /// </summary>
+            public static readonly Def Quad3d = new Def(
+                new Guid("e234f7f4-09af-4b00-b5cc-a2fad8447aa7"),
+                "Quad3d",
+                "A quad in 3-space with points defined by four points P0, P1, P2, P3.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Quad3d.
+            /// </summary>
+            public static readonly Def Quad3dArray = new Def(
+                new Guid("a0bd7233-a2b7-41e0-ab3e-5a142a67ce5e"),
+                "Quad3d[]",
+                "Array of Quad3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A three dimensional sphere represented by center and radius.
+            /// </summary>
+            public static readonly Def Sphere3d = new Def(
+                new Guid("2da2eae2-8fa5-4fe0-8987-0aa295cbe710"),
+                "Sphere3d",
+                "A three dimensional sphere represented by center and radius.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Sphere3d.
+            /// </summary>
+            public static readonly Def Sphere3dArray = new Def(
+                new Guid("7c755f28-1c40-4824-9502-95caf8bda3b9"),
+                "Sphere3d[]",
+                "Array of Sphere3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A line represented by a (possibly) normalized normal vector and the distance to the origin. Note that the plane does not enforce the normalized normal vector. Equation for points p on the plane: Normal dot p == Distance
+            /// </summary>
+            public static readonly Def Plane2d = new Def(
+                new Guid("d0293e58-b411-4cc4-b50f-05c6008c22af"),
+                "Plane2d",
+                "A line represented by a (possibly) normalized normal vector and the distance to the origin. Note that the plane does not enforce the normalized normal vector. Equation for points p on the plane: Normal dot p == Distance",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Plane2d.
+            /// </summary>
+            public static readonly Def Plane2dArray = new Def(
+                new Guid("c2e69c65-ea56-4052-8d0d-7fcaf31f5545"),
+                "Plane2d[]",
+                "Array of Plane2d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A plane represented by a (possibly) normalized normal vector and the distance to the origin. Note that the plane does not enforce the normalized normal vector. Equation for points p on the plane: Normal dot p == Distance
+            /// </summary>
+            public static readonly Def Plane3d = new Def(
+                new Guid("7f80cd19-9605-4143-8bdf-a707e0c29f3a"),
+                "Plane3d",
+                "A plane represented by a (possibly) normalized normal vector and the distance to the origin. Note that the plane does not enforce the normalized normal vector. Equation for points p on the plane: Normal dot p == Distance",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Plane3d.
+            /// </summary>
+            public static readonly Def Plane3dArray = new Def(
+                new Guid("4fa764ee-af38-4277-96b4-c9464e661d4f"),
+                "Plane3d[]",
+                "Array of Plane3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A two-dimensional ray with an origin and a direction.
+            /// </summary>
+            public static readonly Def Ray2d = new Def(
+                new Guid("2537391e-9afb-44d8-84c6-3ecce21e471e"),
+                "Ray2d",
+                "A two-dimensional ray with an origin and a direction.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Ray2d.
+            /// </summary>
+            public static readonly Def Ray2dArray = new Def(
+                new Guid("337352c0-318a-4b23-ad44-0f77e900f488"),
+                "Ray2d[]",
+                "Array of Ray2d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A three-dimensional ray with an origin and a direction.
+            /// </summary>
+            public static readonly Def Ray3d = new Def(
+                new Guid("48e07c48-46af-43b6-a611-78da1077e675"),
+                "Ray3d",
+                "A three-dimensional ray with an origin and a direction.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Ray3d.
+            /// </summary>
+            public static readonly Def Ray3dArray = new Def(
+                new Guid("3c4cecdf-e153-4a41-9d4a-b257c70562bc"),
+                "Ray3d[]",
+                "Array of Ray3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A three-dimensional torus.
+            /// </summary>
+            public static readonly Def Torus3d = new Def(
+                new Guid("86b425b6-62a3-4c1a-974c-b52f716f2994"),
+                "Torus3d",
+                "A three-dimensional torus.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Torus3d.
+            /// </summary>
+            public static readonly Def Torus3dArray = new Def(
+                new Guid("6778dd0c-4c92-4ae9-9925-a2ca2d8f554d"),
+                "Torus3d[]",
+                "Array of Torus3d.",
+                None,
+                true
+                );
+
         }
         /// <summary></summary>
         public static class Generic

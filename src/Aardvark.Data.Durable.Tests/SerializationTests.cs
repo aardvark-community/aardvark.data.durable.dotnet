@@ -67,67 +67,167 @@ namespace Aardvark.Data.Tests
         [Fact] public void Primitive_Float32() => Primitive(Durable.Primitives.Float32, 3.1415926f, 4);
         [Fact] public void Primitive_Float64() => Primitive(Durable.Primitives.Float64, 3.1415926, 8);
 
-        [Fact] public void Primitive_Cell() => Primitive(Durable.Aardvark.Cell, new Cell(2,11,-5,-6), 28);
-        [Fact] public void Primitive_CellPadded32() => Primitive(Durable.Aardvark.CellPadded32, new Cell(2, 11, -5, -6), 32);
-        [Fact] public void Primitive_Cell2d() => Primitive(Durable.Aardvark.Cell2d, new Cell2d(2, 11, -6), 20);
-        [Fact] public void Primitive_Cell2dPadded24() => Primitive(Durable.Aardvark.Cell2dPadded24, new Cell2d(2, 11, -6), 24);
+        [Fact] public void Aardvark_Cell() => Primitive(Durable.Aardvark.Cell, new Cell(2,11,-5,-6), 28);
+        [Fact] public void Aardvark_CellPadded32() => Primitive(Durable.Aardvark.CellPadded32, new Cell(2, 11, -5, -6), 32);
+        [Fact] public void Aardvark_Cell2d() => Primitive(Durable.Aardvark.Cell2d, new Cell2d(2, 11, -6), 20);
+        [Fact] public void Aardvark_Cell2dPadded24() => Primitive(Durable.Aardvark.Cell2dPadded24, new Cell2d(2, 11, -6), 24);
 
-        [Fact] public void Primitive_V2i() => Primitive(Durable.Aardvark.V2i, new V2i(4, -5), 8);
-        [Fact] public void Primitive_V3i() => Primitive(Durable.Aardvark.V3i, new V3i(2, 6, -4), 12);
-        [Fact] public void Primitive_V4i() => Primitive(Durable.Aardvark.V4i, new V4i(5, -3, 8, 34), 16);
-        [Fact] public void Primitive_V2l() => Primitive(Durable.Aardvark.V2l, new V2l(4, -5), 16);
-        [Fact] public void Primitive_V3l() => Primitive(Durable.Aardvark.V3l, new V3l(2, 6, -4), 24);
-        [Fact] public void Primitive_V4l() => Primitive(Durable.Aardvark.V4l, new V4l(5, -3, 8, 34), 32);
-        [Fact] public void Primitive_V2f() => Primitive(Durable.Aardvark.V2f, new V2f(1.2f, 3.4f), 8);
-        [Fact] public void Primitive_V3f() => Primitive(Durable.Aardvark.V3f, new V3f(1.2f, 3.4f, 5.6f), 12);
-        [Fact] public void Primitive_V4f() => Primitive(Durable.Aardvark.V4f, new V4f(1.2f, 3.4f, 5.6f, 7.8f), 16);
-        [Fact] public void Primitive_V2d() => Primitive(Durable.Aardvark.V2d, new V2d(1.2, 3.4), 16);
-        [Fact] public void Primitive_V3d() => Primitive(Durable.Aardvark.V3d, new V3d(1.2, 3.4, 5.6), 24);
-        [Fact] public void Primitive_V4d() => Primitive(Durable.Aardvark.V4d, new V4d(1.2, 3.4, 5.6, 7.8), 32);
-
-
-        [Fact] public void Primitive_Range1b()  => Primitive(Durable.Aardvark.Range1b,  new Range1b(byte.MinValue, byte.MaxValue), 2);
-        [Fact] public void Primitive_Range1d()  => Primitive(Durable.Aardvark.Range1d,  new Range1d(double.MinValue, double.MaxValue), 16);
-        [Fact] public void Primitive_Range1f()  => Primitive(Durable.Aardvark.Range1f,  new Range1f(float.MinValue, float.MaxValue), 8);
-        [Fact] public void Primitive_Range1i()  => Primitive(Durable.Aardvark.Range1i,  new Range1i(int.MinValue, int.MaxValue), 8);
-        [Fact] public void Primitive_Range1l()  => Primitive(Durable.Aardvark.Range1l,  new Range1l(long.MinValue, long.MaxValue), 16);
-        [Fact] public void Primitive_Range1s()  => Primitive(Durable.Aardvark.Range1s,  new Range1s(short.MinValue, short.MaxValue), 4);
-        [Fact] public void Primitive_Range1sb() => Primitive(Durable.Aardvark.Range1sb, new Range1sb(sbyte.MinValue, sbyte.MaxValue), 2);
-        [Fact] public void Primitive_Rangeui()  => Primitive(Durable.Aardvark.Range1ui, new Range1ui(uint.MinValue, uint.MaxValue), 8);
-        [Fact] public void Primitive_Rangeul()  => Primitive(Durable.Aardvark.Range1ul, new Range1ul(ulong.MinValue, ulong.MaxValue), 16);
-        [Fact] public void Primitive_Rangeus()  => Primitive(Durable.Aardvark.Range1us, new Range1us(ushort.MinValue, ushort.MaxValue), 4);
-
-        [Fact] public void Primitive_Box2i() => Primitive(Durable.Aardvark.Box2i, new Box2i(new V2i(1, 3), new V2i(5, 7)), 16);
-        [Fact] public void Primitive_Box2l() => Primitive(Durable.Aardvark.Box2l, new Box2l(new V2l(1, 3), new V2l(5, 7)), 32);
-        [Fact] public void Primitive_Box2f() => Primitive(Durable.Aardvark.Box2f, new Box2f(new V2f(1.2f, 3.4f), new V2f(5.6f, 7.8f)), 16);
-        [Fact] public void Primitive_Box2d() => Primitive(Durable.Aardvark.Box2d, new Box2d(new V2d(1.2, 3.4), new V2d(5.6, 7.8)), 32);
-        [Fact] public void Primitive_Box3i() => Primitive(Durable.Aardvark.Box3i, new Box3i(new V3i(1, 3, 5), new V3i(6, 8, 9)), 24);
-        [Fact] public void Primitive_Box3l() => Primitive(Durable.Aardvark.Box3l, new Box3l(new V3l(1, 3, 5), new V3l(6, 8, 9)), 48);
-        [Fact] public void Primitive_Box3f() => Primitive(Durable.Aardvark.Box3f, new Box3f(new V3f(1.2f, 3.4f, 5.6f), new V3f(6.7f, 8.9f, 9.0f)), 24);
-        [Fact] public void Primitive_Box3d() => Primitive(Durable.Aardvark.Box3d, new Box3d(new V3d(1.2, 3.4, 5.6), new V3d(6.7, 8.9, 9.0)), 48);
+        [Fact] public void Aardvark_V2i() => Primitive(Durable.Aardvark.V2i, new V2i(4, -5), 8);
+        [Fact] public void Aardvark_V3i() => Primitive(Durable.Aardvark.V3i, new V3i(2, 6, -4), 12);
+        [Fact] public void Aardvark_V4i() => Primitive(Durable.Aardvark.V4i, new V4i(5, -3, 8, 34), 16);
+        [Fact] public void Aardvark_V2l() => Primitive(Durable.Aardvark.V2l, new V2l(4, -5), 16);
+        [Fact] public void Aardvark_V3l() => Primitive(Durable.Aardvark.V3l, new V3l(2, 6, -4), 24);
+        [Fact] public void Aardvark_V4l() => Primitive(Durable.Aardvark.V4l, new V4l(5, -3, 8, 34), 32);
+        [Fact] public void Aardvark_V2f() => Primitive(Durable.Aardvark.V2f, new V2f(1.2f, 3.4f), 8);
+        [Fact] public void Aardvark_V3f() => Primitive(Durable.Aardvark.V3f, new V3f(1.2f, 3.4f, 5.6f), 12);
+        [Fact] public void Aardvark_V4f() => Primitive(Durable.Aardvark.V4f, new V4f(1.2f, 3.4f, 5.6f, 7.8f), 16);
+        [Fact] public void Aardvark_V2d() => Primitive(Durable.Aardvark.V2d, new V2d(1.2, 3.4), 16);
+        [Fact] public void Aardvark_V3d() => Primitive(Durable.Aardvark.V3d, new V3d(1.2, 3.4, 5.6), 24);
+        [Fact] public void Aardvark_V4d() => Primitive(Durable.Aardvark.V4d, new V4d(1.2, 3.4, 5.6, 7.8), 32);
 
 
-        [Fact] public void Primitive_C3b() => Primitive(Durable.Aardvark.C3b, new C3b(17, 42, 253), 3);
-        [Fact] public void Primitive_C3d() => Primitive(Durable.Aardvark.C3d, new C3d(0.1, 0.2, 0.3), 24);
-        [Fact] public void Primitive_C3f() => Primitive(Durable.Aardvark.C3f, new C3f(0.1f, 0.2f, 0.3f), 12);
-        [Fact] public void Primitive_C3ui() => Primitive(Durable.Aardvark.C3ui, new C3ui(5, 15, 155), 12);
-        [Fact] public void Primitive_C3us() => Primitive(Durable.Aardvark.C3us, new C3us(5, 15, 155), 6);
+        [Fact] public void Aardvark_Range1b()  => Primitive(Durable.Aardvark.Range1b,  new Range1b(byte.MinValue, byte.MaxValue), 2);
+        [Fact] public void Aardvark_Range1d()  => Primitive(Durable.Aardvark.Range1d,  new Range1d(double.MinValue, double.MaxValue), 16);
+        [Fact] public void Aardvark_Range1f()  => Primitive(Durable.Aardvark.Range1f,  new Range1f(float.MinValue, float.MaxValue), 8);
+        [Fact] public void Aardvark_Range1i()  => Primitive(Durable.Aardvark.Range1i,  new Range1i(int.MinValue, int.MaxValue), 8);
+        [Fact] public void Aardvark_Range1l()  => Primitive(Durable.Aardvark.Range1l,  new Range1l(long.MinValue, long.MaxValue), 16);
+        [Fact] public void Aardvark_Range1s()  => Primitive(Durable.Aardvark.Range1s,  new Range1s(short.MinValue, short.MaxValue), 4);
+        [Fact] public void Aardvark_Range1sb() => Primitive(Durable.Aardvark.Range1sb, new Range1sb(sbyte.MinValue, sbyte.MaxValue), 2);
+        [Fact] public void Aardvark_Rangeui()  => Primitive(Durable.Aardvark.Range1ui, new Range1ui(uint.MinValue, uint.MaxValue), 8);
+        [Fact] public void Aardvark_Rangeul()  => Primitive(Durable.Aardvark.Range1ul, new Range1ul(ulong.MinValue, ulong.MaxValue), 16);
+        [Fact] public void Aardvark_Rangeus()  => Primitive(Durable.Aardvark.Range1us, new Range1us(ushort.MinValue, ushort.MaxValue), 4);
 
-        [Fact] public void Primitive_C4b() => Primitive(Durable.Aardvark.C4b, new C4b(17, 42, 253, 128), 4);
-        [Fact] public void Primitive_C4d() => Primitive(Durable.Aardvark.C4d, new C4d(0.3, 0.4, 0.5, 0.6), 32);
-        [Fact] public void Primitive_C4f() => Primitive(Durable.Aardvark.C4f, new C4f(0.3f, 0.4f, 0.5f, 0.6f), 16);
-        [Fact] public void Primitive_C4ui() => Primitive(Durable.Aardvark.C4ui, new C4ui(5, 15, 155, 127), 16);
-        [Fact] public void Primitive_C4us() => Primitive(Durable.Aardvark.C4us, new C4us(5, 15, 155, 127), 8);
+        [Fact] public void Aardvark_Box2i() => Primitive(Durable.Aardvark.Box2i, new Box2i(new V2i(1, 3), new V2i(5, 7)), 16);
+        [Fact] public void Aardvark_Box2l() => Primitive(Durable.Aardvark.Box2l, new Box2l(new V2l(1, 3), new V2l(5, 7)), 32);
+        [Fact] public void Aardvark_Box2f() => Primitive(Durable.Aardvark.Box2f, new Box2f(new V2f(1.2f, 3.4f), new V2f(5.6f, 7.8f)), 16);
+        [Fact] public void Aardvark_Box2d() => Primitive(Durable.Aardvark.Box2d, new Box2d(new V2d(1.2, 3.4), new V2d(5.6, 7.8)), 32);
+        [Fact] public void Aardvark_Box3i() => Primitive(Durable.Aardvark.Box3i, new Box3i(new V3i(1, 3, 5), new V3i(6, 8, 9)), 24);
+        [Fact] public void Aardvark_Box3l() => Primitive(Durable.Aardvark.Box3l, new Box3l(new V3l(1, 3, 5), new V3l(6, 8, 9)), 48);
+        [Fact] public void Aardvark_Box3f() => Primitive(Durable.Aardvark.Box3f, new Box3f(new V3f(1.2f, 3.4f, 5.6f), new V3f(6.7f, 8.9f, 9.0f)), 24);
+        [Fact] public void Aardvark_Box3d() => Primitive(Durable.Aardvark.Box3d, new Box3d(new V3d(1.2, 3.4, 5.6), new V3d(6.7, 8.9, 9.0)), 48);
 
-        [Fact] public void Primitive_CieLabf() => Primitive(Durable.Aardvark.CieLabf, new CieLabf(0.1f, 0.2f, 0.3f), 12);
-        [Fact] public void Primitive_CIeLuvf() => Primitive(Durable.Aardvark.CIeLuvf, new CIeLuvf(0.1f, 0.2f, 0.3f), 12);
-        [Fact] public void Primitive_CieXYZf() => Primitive(Durable.Aardvark.CieXYZf, new CieXYZf(0.1f, 0.2f, 0.3f), 12);
-        [Fact] public void Primitive_CieYxyf() => Primitive(Durable.Aardvark.CieYxyf, new CieYxyf(0.1f, 0.2f, 0.3f), 12);
-        [Fact] public void Primitive_CMYKf() => Primitive(Durable.Aardvark.CMYKf, new CMYKf(0.1f, 0.2f, 0.3f, 0.4f), 16);
-        [Fact] public void Primitive_HSLf() => Primitive(Durable.Aardvark.HSLf, new HSLf(0.1f, 0.2f, 0.3f), 12);
-        [Fact] public void Primitive_HSVf() => Primitive(Durable.Aardvark.HSVf, new HSVf(0.1f, 0.2f, 0.3f), 12);
-        [Fact] public void Primitive_Yuvf() => Primitive(Durable.Aardvark.Yuvf, new Yuvf(0.1f, 0.2f, 0.3f), 12);
 
+        [Fact] public void Aardvark_C3b() => Primitive(Durable.Aardvark.C3b, new C3b(17, 42, 253), 3);
+        [Fact] public void Aardvark_C3d() => Primitive(Durable.Aardvark.C3d, new C3d(0.1, 0.2, 0.3), 24);
+        [Fact] public void Aardvark_C3f() => Primitive(Durable.Aardvark.C3f, new C3f(0.1f, 0.2f, 0.3f), 12);
+        [Fact] public void Aardvark_C3ui() => Primitive(Durable.Aardvark.C3ui, new C3ui(5, 15, 155), 12);
+        [Fact] public void Aardvark_C3us() => Primitive(Durable.Aardvark.C3us, new C3us(5, 15, 155), 6);
+
+        [Fact] public void Aardvark_C4b() => Primitive(Durable.Aardvark.C4b, new C4b(17, 42, 253, 128), 4);
+        [Fact] public void Aardvark_C4d() => Primitive(Durable.Aardvark.C4d, new C4d(0.3, 0.4, 0.5, 0.6), 32);
+        [Fact] public void Aardvark_C4f() => Primitive(Durable.Aardvark.C4f, new C4f(0.3f, 0.4f, 0.5f, 0.6f), 16);
+        [Fact] public void Aardvark_C4ui() => Primitive(Durable.Aardvark.C4ui, new C4ui(5, 15, 155, 127), 16);
+        [Fact] public void Aardvark_C4us() => Primitive(Durable.Aardvark.C4us, new C4us(5, 15, 155, 127), 8);
+
+        [Fact] public void Aardvark_CieLabf() => Primitive(Durable.Aardvark.CieLabf, new CieLabf(0.1f, 0.2f, 0.3f), 12);
+        [Fact] public void Aardvark_CIeLuvf() => Primitive(Durable.Aardvark.CIeLuvf, new CIeLuvf(0.1f, 0.2f, 0.3f), 12);
+        [Fact] public void Aardvark_CieXYZf() => Primitive(Durable.Aardvark.CieXYZf, new CieXYZf(0.1f, 0.2f, 0.3f), 12);
+        [Fact] public void Aardvark_CieYxyf() => Primitive(Durable.Aardvark.CieYxyf, new CieYxyf(0.1f, 0.2f, 0.3f), 12);
+        [Fact] public void Aardvark_CMYKf() => Primitive(Durable.Aardvark.CMYKf, new CMYKf(0.1f, 0.2f, 0.3f, 0.4f), 16);
+        [Fact] public void Aardvark_HSLf() => Primitive(Durable.Aardvark.HSLf, new HSLf(0.1f, 0.2f, 0.3f), 12);
+        [Fact] public void Aardvark_HSVf() => Primitive(Durable.Aardvark.HSVf, new HSVf(0.1f, 0.2f, 0.3f), 12);
+        [Fact] public void Aardvark_Yuvf() => Primitive(Durable.Aardvark.Yuvf, new Yuvf(0.1f, 0.2f, 0.3f), 12);
+
+
+
+        [Fact]
+        public void Aardvark_Capsule3d() => Primitive(Durable.Aardvark.Capsule3d,
+            new Capsule3d(p0: new V3d(3.14, 2.71, 1.23), p1: new V3d(13.14, 22.71, 31.23), radius: 0.99),
+            (3 + 3 + 1) * 8, (a, b) => a.P0 == b.P0 && a.P1 == b.P1 && a.Radius == b.Radius
+            );
+        [Fact] public void Aardvark_Circle2d() => Primitive(Durable.Aardvark.Circle2d,
+            new Circle2d(center: new V2d(3.14, 2.71), radius: 0.99),
+            24, (a, b) => a == b
+            );
+        [Fact] public void Aardvark_Circle3d() => Primitive(Durable.Aardvark.Circle3d, 
+            new Circle3d(center: new V3d(3.14, 2.71, 0.123), normal: new V3d(2,3,4).Normalized, radius: 0.99),
+            (3 + 3 + 1) * 8, (a, b) => a == b
+            );
+        [Fact]
+        public void Aardvark_ObliqueCone3d() => Primitive(Durable.Aardvark.ObliqueCone3d,
+            new ObliqueCone3d(
+                o: new V3d(101.2, 202.3, 303.4),
+                c: new Circle3d(center: new V3d(3.14, 2.71, 0.123), normal: new V3d(2, 3, 4).Normalized, radius: 0.99)
+                ),
+            3 * 8 + (3 + 3 + 1) * 8, (a, b) => a == b
+            );
+        [Fact]
+        public void Aardvark_Cone3d() => Primitive(Durable.Aardvark.Cone3d,
+            new Cone3d(
+                origin: new V3d(101.2, 202.3, 303.4),
+                dir: new V3d(2, 3, 4).Normalized,
+                angle: 0.12345
+                ),
+            (3 + 3 + 1) * 8, (a, b) => a == b
+            );
+        [Fact]
+        public void Aardvark_Cylinder3d() => Primitive(Durable.Aardvark.Cylinder3d,
+           new Cylinder3d(
+               p0: new V3d(3.14, 2.71, 1.23), p1: new V3d(13.14, 22.71, 31.23),
+               radius: 0.12345, distanceScale: 0.555
+               ),
+           (3 + 3 + 1 + 1) * 8, (a, b) => a == b
+           );
+        [Fact]
+        public void Aardvark_Sphere3d() => Primitive(Durable.Aardvark.Sphere3d,
+            new Sphere3d(center: new V3d(3.14, 2.71, 0.123), radius: 0.99),
+            (3 + 1) * 8, (a, b) => a == b
+            );
+        [Fact]
+        public void Aardvark_Line2d() => Primitive(Durable.Aardvark.Line2d,
+            new Line2d(p0: new V2d(3.14, 2.71), p1: new V2d(1003.14, 1002.71)),
+            2 * 2 * 8, (a, b) => a == b
+            );
+        [Fact]
+        public void Aardvark_Line3d() => Primitive(Durable.Aardvark.Line3d,
+            new Line3d(p0: new V3d(3.14, 2.71, 123.456), p1: new V3d(1003.14, 1002.71, 789.012)),
+            2 * 3 * 8, (a, b) => a == b
+            );
+        [Fact]
+        public void Aardvark_Triangle2d() => Primitive(Durable.Aardvark.Triangle2d,
+            new Triangle2d(p0: new V2d(3.14, 2.71), p1: new V2d(1003.14, 1002.71), p2: new V2d(-1003.14, -1002.71)),
+            3 * 2 * 8, (a, b) => a == b
+            );
+        [Fact]
+        public void Aardvark_Triangle3d() => Primitive(Durable.Aardvark.Triangle3d,
+           new Triangle3d(p0: new V3d(3.14, 2.71, 123.456), p1: new V3d(1003.14, 1002.71, 789.012), p2: new V3d(-1003.14, -1002.71, -789.012)),
+           3 * 3 * 8, (a, b) => a == b
+           );
+        [Fact]
+        public void Aardvark_Quad2d() => Primitive(Durable.Aardvark.Quad2d,
+            new Quad2d(p0: new V2d(3.14, 2.71), p1: new V2d(1003.14, 1002.71), p2: new V2d(-1003.14, -1002.71), p3: new V2d(345, -435)),
+            4 * 2 * 8, (a, b) => a == b
+            );
+        [Fact]
+        public void Aardvark_Quad3d() => Primitive(Durable.Aardvark.Quad3d,
+            new Quad3d(p0: new V3d(3.14, 2.71, 123.456), p1: new V3d(1003.14, 1002.71, 789.012), p2: new V3d(-1003.14, -1002.71, -789.012), p3: new V3d(345, -435, -0.123)),
+            4 * 3 * 8, (a, b) => a == b
+            );
+        [Fact]
+        public void Aardvark_Plane2d() => Primitive(Durable.Aardvark.Plane2d,
+            new Plane2d(new V2d(3.14, 2.71), distance: 1003.14),
+            (2 + 1) * 8, (a, b) => a == b
+            );
+        [Fact]
+        public void Aardvark_Plane3d() => Primitive(Durable.Aardvark.Plane3d,
+            new Plane3d(new V3d(3.14, 2.71, -123), distance: 1003.14),
+            (3 + 1) * 8, (a, b) => a == b
+            );
+        [Fact]
+        public void Aardvark_Ray2d() => Primitive(Durable.Aardvark.Ray2d,
+            new Ray2d(new V2d(3.14, 2.71), new V2d(1003.14, 1002.71)),
+            2 * 2 * 8, (a, b) => a == b
+            );
+        [Fact]
+        public void Aardvark_Ray3d() => Primitive(Durable.Aardvark.Ray3d,
+            new Ray3d(new V3d(3.14, 2.71, -123), new V3d(1003.14, 1002.71, 456)),
+            2 * 3 * 8, (a, b) => a == b
+            );
+        [Fact]
+        public void Aardvark_Torus3d() => Primitive(Durable.Aardvark.Torus3d,
+            new Torus3d(position: new V3d(3.14, 2.71, -123), direction: new V3d(1003.14, 1002.71, 456), majorRadius: 500.005, minorRadius: 200.002),
+            (3 + 3 + 1 + 1) * 8, (a, b) => a == b
+            );
 
         [Fact]
         public void Primitive_M22f() => Primitive(Durable.Aardvark.M22f, new M22f(1, 2, 3, 4), 16);
