@@ -1900,6 +1900,182 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
+            /// A color in CIELAB color space with channels L,a,b. (Float32).
+            /// </summary>
+            public static readonly Def CieLabf = new Def(
+                new Guid("8f96c96e-7912-4d21-83d5-2e2b0e54ff99"),
+                "CieLabf",
+                "A color in CIELAB color space with channels L,a,b. (Float32).",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of CieLabf.
+            /// </summary>
+            public static readonly Def CieLabfArray = new Def(
+                new Guid("527572b6-70eb-416a-a91a-1750c19b419a"),
+                "CieLabf[]",
+                "Array of CieLabf.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A color in CIELUV color space with channels L,u,v (Float32).
+            /// </summary>
+            public static readonly Def CieLuvf = new Def(
+                new Guid("972c001e-a7a8-45ea-a234-f4788489d6e7"),
+                "CieLuvf",
+                "A color in CIELUV color space with channels L,u,v (Float32).",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of CieLuvf.
+            /// </summary>
+            public static readonly Def CieLuvfArray = new Def(
+                new Guid("edb50004-8a3f-4267-bb4a-30e060042b00"),
+                "CieLuvf[]",
+                "Array of CieLuvf.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A color in CIEXYZ color space with channels X,Y,Z (Float32).
+            /// </summary>
+            public static readonly Def CieXYZf = new Def(
+                new Guid("055d4fae-6935-479d-9b8d-04ca1e5cf51d"),
+                "CieXYZf",
+                "A color in CIEXYZ color space with channels X,Y,Z (Float32).",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of CieXYZf.
+            /// </summary>
+            public static readonly Def CieXYZfArray = new Def(
+                new Guid("fb71984f-08ff-4e85-b3d8-015302f03f46"),
+                "CieXYZf[]",
+                "Array of CieXYZf.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A color in CIE Yxy color space with channels Y,x,y (Float32).
+            /// </summary>
+            public static readonly Def CieYxyf = new Def(
+                new Guid("ce20671f-b5da-4c32-9bd0-efff870cf6fd"),
+                "CieYxyf",
+                "A color in CIE Yxy color space with channels Y,x,y (Float32).",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of CieYxyf.
+            /// </summary>
+            public static readonly Def CieYxyfArray = new Def(
+                new Guid("0b86f282-a051-41a5-848b-5ca82eab5e1d"),
+                "CieYxyf[]",
+                "Array of CieYxyf.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A color in CMYK color space with channels C,M,Y,K (Float32).
+            /// </summary>
+            public static readonly Def CMYKf = new Def(
+                new Guid("5f97105d-9d07-4149-86b5-0efc23b5be5b"),
+                "CMYKf",
+                "A color in CMYK color space with channels C,M,Y,K (Float32).",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of CMYKf.
+            /// </summary>
+            public static readonly Def CMYKfArray = new Def(
+                new Guid("af1055e0-b898-45aa-908c-87fbe6a54609"),
+                "CMYKf[]",
+                "Array of CMYKf.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A color in HSL color space (hue, saturation, value) with channels H,S,L (Float32).
+            /// </summary>
+            public static readonly Def HSLf = new Def(
+                new Guid("2cc70bfc-a983-4558-92ce-ab0abb3ffa0c"),
+                "HSLf",
+                "A color in HSL color space (hue, saturation, value) with channels H,S,L (Float32).",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of HSLf.
+            /// </summary>
+            public static readonly Def HSLfArray = new Def(
+                new Guid("c12d9316-b9ca-432a-b95b-d3638bff2f41"),
+                "HSLf[]",
+                "Array of HSLf.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A color in HSV color space (hue, saturation, lightness) with channels H,S,V (Float32).
+            /// </summary>
+            public static readonly Def HSVf = new Def(
+                new Guid("7ab91015-ecf2-4dd2-9690-5ea33efcdbd9"),
+                "HSVf",
+                "A color in HSV color space (hue, saturation, lightness) with channels H,S,V (Float32).",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of HSVf.
+            /// </summary>
+            public static readonly Def HSVfArray = new Def(
+                new Guid("6a658149-2348-4fc4-b572-686555022ff0"),
+                "HSVf[]",
+                "Array of HSVf.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A color in Yuv color space with channels Y,u,v (Float32).
+            /// </summary>
+            public static readonly Def Yuvf = new Def(
+                new Guid("41e1befe-4d13-4ef5-a654-8b9b3b740a6f"),
+                "Yuvf",
+                "A color in Yuv color space with channels Y,u,v (Float32).",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Yuvf.
+            /// </summary>
+            public static readonly Def YuvfArray = new Def(
+                new Guid("62c46940-8b06-484e-b447-f4e29b74a596"),
+                "Yuvf[]",
+                "Array of Yuvf.",
+                None,
+                true
+                );
+
+            /// <summary>
             /// Data of an Aardvark.Geometry.PointRkdTreeF.
             /// </summary>
             public static readonly Def PointRkdTreeFData = new Def(
