@@ -210,7 +210,7 @@ namespace Aardvark.Data
                         yield sprintf "                #region %s" defName
                         yield ""
 
-                        yield sprintf "                #if NETSTANDARD2_0 || NET472 || NET48"
+                        yield sprintf "                #if NETSTANDARD2_0 || NET472"
                         let writes = String.Join("", layout |> Array.map (fun (k,v) -> sprintf "s.Write(x.%s); " k))
                         yield String.Format("                Action<BinaryWriter, object> {0} = (s, o) => {{ var x = ({1})o; {2}}};", nameEncodeFun, entry.LetName, writes)
                         yield String.Format("                Action<BinaryWriter, object> {0}Array = (s, o) => EncodeArray(s, ({1}[])o);", nameEncodeFun, entry.LetName)

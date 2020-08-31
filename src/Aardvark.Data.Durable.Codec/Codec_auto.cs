@@ -37,7 +37,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.V2i
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeV2i = (s, o) => { var x = (V2i)o; s.Write(x.X); s.Write(x.Y); };
                 Action<BinaryWriter, object> EncodeV2iArray = (s, o) => EncodeArray(s, (V2i[])o);
                 Func<BinaryReader, object> DecodeV2i = s => new V2i(s.ReadInt32(), s.ReadInt32());
@@ -58,7 +58,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.V2l
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeV2l = (s, o) => { var x = (V2l)o; s.Write(x.X); s.Write(x.Y); };
                 Action<BinaryWriter, object> EncodeV2lArray = (s, o) => EncodeArray(s, (V2l[])o);
                 Func<BinaryReader, object> DecodeV2l = s => new V2l(s.ReadInt64(), s.ReadInt64());
@@ -79,7 +79,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.V2f
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeV2f = (s, o) => { var x = (V2f)o; s.Write(x.X); s.Write(x.Y); };
                 Action<BinaryWriter, object> EncodeV2fArray = (s, o) => EncodeArray(s, (V2f[])o);
                 Func<BinaryReader, object> DecodeV2f = s => new V2f(s.ReadSingle(), s.ReadSingle());
@@ -100,7 +100,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.V2d
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeV2d = (s, o) => { var x = (V2d)o; s.Write(x.X); s.Write(x.Y); };
                 Action<BinaryWriter, object> EncodeV2dArray = (s, o) => EncodeArray(s, (V2d[])o);
                 Func<BinaryReader, object> DecodeV2d = s => new V2d(s.ReadDouble(), s.ReadDouble());
@@ -121,7 +121,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.V3i
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeV3i = (s, o) => { var x = (V3i)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); };
                 Action<BinaryWriter, object> EncodeV3iArray = (s, o) => EncodeArray(s, (V3i[])o);
                 Func<BinaryReader, object> DecodeV3i = s => new V3i(s.ReadInt32(), s.ReadInt32(), s.ReadInt32());
@@ -142,7 +142,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.V3l
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeV3l = (s, o) => { var x = (V3l)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); };
                 Action<BinaryWriter, object> EncodeV3lArray = (s, o) => EncodeArray(s, (V3l[])o);
                 Func<BinaryReader, object> DecodeV3l = s => new V3l(s.ReadInt64(), s.ReadInt64(), s.ReadInt64());
@@ -163,7 +163,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.V3f
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeV3f = (s, o) => { var x = (V3f)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); };
                 Action<BinaryWriter, object> EncodeV3fArray = (s, o) => EncodeArray(s, (V3f[])o);
                 Func<BinaryReader, object> DecodeV3f = s => new V3f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
@@ -184,7 +184,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.V3d
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeV3d = (s, o) => { var x = (V3d)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); };
                 Action<BinaryWriter, object> EncodeV3dArray = (s, o) => EncodeArray(s, (V3d[])o);
                 Func<BinaryReader, object> DecodeV3d = s => new V3d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
@@ -205,7 +205,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.V4i
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeV4i = (s, o) => { var x = (V4i)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); s.Write(x.W); };
                 Action<BinaryWriter, object> EncodeV4iArray = (s, o) => EncodeArray(s, (V4i[])o);
                 Func<BinaryReader, object> DecodeV4i = s => new V4i(s.ReadInt32(), s.ReadInt32(), s.ReadInt32(), s.ReadInt32());
@@ -226,7 +226,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.V4l
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeV4l = (s, o) => { var x = (V4l)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); s.Write(x.W); };
                 Action<BinaryWriter, object> EncodeV4lArray = (s, o) => EncodeArray(s, (V4l[])o);
                 Func<BinaryReader, object> DecodeV4l = s => new V4l(s.ReadInt64(), s.ReadInt64(), s.ReadInt64(), s.ReadInt64());
@@ -247,7 +247,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.V4f
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeV4f = (s, o) => { var x = (V4f)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); s.Write(x.W); };
                 Action<BinaryWriter, object> EncodeV4fArray = (s, o) => EncodeArray(s, (V4f[])o);
                 Func<BinaryReader, object> DecodeV4f = s => new V4f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
@@ -268,7 +268,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.V4d
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeV4d = (s, o) => { var x = (V4d)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); s.Write(x.W); };
                 Action<BinaryWriter, object> EncodeV4dArray = (s, o) => EncodeArray(s, (V4d[])o);
                 Func<BinaryReader, object> DecodeV4d = s => new V4d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
@@ -289,7 +289,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.M22f
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeM22f = (s, o) => { var x = (M22f)o; s.Write(x.M00); s.Write(x.M01); s.Write(x.M10); s.Write(x.M11); };
                 Action<BinaryWriter, object> EncodeM22fArray = (s, o) => EncodeArray(s, (M22f[])o);
                 Func<BinaryReader, object> DecodeM22f = s => new M22f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
@@ -310,7 +310,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.M22d
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeM22d = (s, o) => { var x = (M22d)o; s.Write(x.M00); s.Write(x.M01); s.Write(x.M10); s.Write(x.M11); };
                 Action<BinaryWriter, object> EncodeM22dArray = (s, o) => EncodeArray(s, (M22d[])o);
                 Func<BinaryReader, object> DecodeM22d = s => new M22d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
@@ -331,7 +331,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.M33f
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeM33f = (s, o) => { var x = (M33f)o; s.Write(x.M00); s.Write(x.M01); s.Write(x.M02); s.Write(x.M10); s.Write(x.M11); s.Write(x.M12); s.Write(x.M20); s.Write(x.M21); s.Write(x.M22); };
                 Action<BinaryWriter, object> EncodeM33fArray = (s, o) => EncodeArray(s, (M33f[])o);
                 Func<BinaryReader, object> DecodeM33f = s => new M33f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
@@ -352,7 +352,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.M33d
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeM33d = (s, o) => { var x = (M33d)o; s.Write(x.M00); s.Write(x.M01); s.Write(x.M02); s.Write(x.M10); s.Write(x.M11); s.Write(x.M12); s.Write(x.M20); s.Write(x.M21); s.Write(x.M22); };
                 Action<BinaryWriter, object> EncodeM33dArray = (s, o) => EncodeArray(s, (M33d[])o);
                 Func<BinaryReader, object> DecodeM33d = s => new M33d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
@@ -373,7 +373,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.M44f
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeM44f = (s, o) => { var x = (M44f)o; s.Write(x.M00); s.Write(x.M01); s.Write(x.M02); s.Write(x.M03); s.Write(x.M10); s.Write(x.M11); s.Write(x.M12); s.Write(x.M13); s.Write(x.M20); s.Write(x.M21); s.Write(x.M22); s.Write(x.M23); s.Write(x.M30); s.Write(x.M31); s.Write(x.M32); s.Write(x.M33); };
                 Action<BinaryWriter, object> EncodeM44fArray = (s, o) => EncodeArray(s, (M44f[])o);
                 Func<BinaryReader, object> DecodeM44f = s => new M44f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
@@ -394,7 +394,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.M44d
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeM44d = (s, o) => { var x = (M44d)o; s.Write(x.M00); s.Write(x.M01); s.Write(x.M02); s.Write(x.M03); s.Write(x.M10); s.Write(x.M11); s.Write(x.M12); s.Write(x.M13); s.Write(x.M20); s.Write(x.M21); s.Write(x.M22); s.Write(x.M23); s.Write(x.M30); s.Write(x.M31); s.Write(x.M32); s.Write(x.M33); };
                 Action<BinaryWriter, object> EncodeM44dArray = (s, o) => EncodeArray(s, (M44d[])o);
                 Func<BinaryReader, object> DecodeM44d = s => new M44d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
@@ -415,7 +415,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Range1b
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeRange1b = (s, o) => { var x = (Range1b)o; s.Write(x.Min); s.Write(x.Max); };
                 Action<BinaryWriter, object> EncodeRange1bArray = (s, o) => EncodeArray(s, (Range1b[])o);
                 Func<BinaryReader, object> DecodeRange1b = s => new Range1b(s.ReadByte(), s.ReadByte());
@@ -436,7 +436,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Range1sb
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeRange1sb = (s, o) => { var x = (Range1sb)o; s.Write(x.Min); s.Write(x.Max); };
                 Action<BinaryWriter, object> EncodeRange1sbArray = (s, o) => EncodeArray(s, (Range1sb[])o);
                 Func<BinaryReader, object> DecodeRange1sb = s => new Range1sb(s.ReadSByte(), s.ReadSByte());
@@ -457,7 +457,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Range1s
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeRange1s = (s, o) => { var x = (Range1s)o; s.Write(x.Min); s.Write(x.Max); };
                 Action<BinaryWriter, object> EncodeRange1sArray = (s, o) => EncodeArray(s, (Range1s[])o);
                 Func<BinaryReader, object> DecodeRange1s = s => new Range1s(s.ReadInt16(), s.ReadInt16());
@@ -478,7 +478,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Range1us
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeRange1us = (s, o) => { var x = (Range1us)o; s.Write(x.Min); s.Write(x.Max); };
                 Action<BinaryWriter, object> EncodeRange1usArray = (s, o) => EncodeArray(s, (Range1us[])o);
                 Func<BinaryReader, object> DecodeRange1us = s => new Range1us(s.ReadUInt16(), s.ReadUInt16());
@@ -499,7 +499,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Range1i
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeRange1i = (s, o) => { var x = (Range1i)o; s.Write(x.Min); s.Write(x.Max); };
                 Action<BinaryWriter, object> EncodeRange1iArray = (s, o) => EncodeArray(s, (Range1i[])o);
                 Func<BinaryReader, object> DecodeRange1i = s => new Range1i(s.ReadInt32(), s.ReadInt32());
@@ -520,7 +520,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Range1ui
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeRange1ui = (s, o) => { var x = (Range1ui)o; s.Write(x.Min); s.Write(x.Max); };
                 Action<BinaryWriter, object> EncodeRange1uiArray = (s, o) => EncodeArray(s, (Range1ui[])o);
                 Func<BinaryReader, object> DecodeRange1ui = s => new Range1ui(s.ReadUInt32(), s.ReadUInt32());
@@ -541,7 +541,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Range1l
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeRange1l = (s, o) => { var x = (Range1l)o; s.Write(x.Min); s.Write(x.Max); };
                 Action<BinaryWriter, object> EncodeRange1lArray = (s, o) => EncodeArray(s, (Range1l[])o);
                 Func<BinaryReader, object> DecodeRange1l = s => new Range1l(s.ReadInt64(), s.ReadInt64());
@@ -562,7 +562,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Range1ul
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeRange1ul = (s, o) => { var x = (Range1ul)o; s.Write(x.Min); s.Write(x.Max); };
                 Action<BinaryWriter, object> EncodeRange1ulArray = (s, o) => EncodeArray(s, (Range1ul[])o);
                 Func<BinaryReader, object> DecodeRange1ul = s => new Range1ul(s.ReadUInt64(), s.ReadUInt64());
@@ -583,7 +583,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Range1f
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeRange1f = (s, o) => { var x = (Range1f)o; s.Write(x.Min); s.Write(x.Max); };
                 Action<BinaryWriter, object> EncodeRange1fArray = (s, o) => EncodeArray(s, (Range1f[])o);
                 Func<BinaryReader, object> DecodeRange1f = s => new Range1f(s.ReadSingle(), s.ReadSingle());
@@ -604,7 +604,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Range1d
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeRange1d = (s, o) => { var x = (Range1d)o; s.Write(x.Min); s.Write(x.Max); };
                 Action<BinaryWriter, object> EncodeRange1dArray = (s, o) => EncodeArray(s, (Range1d[])o);
                 Func<BinaryReader, object> DecodeRange1d = s => new Range1d(s.ReadDouble(), s.ReadDouble());
@@ -625,7 +625,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Box2i
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeBox2i = (s, o) => { var x = (Box2i)o; s.Write(x.Min.X); s.Write(x.Min.Y); s.Write(x.Max.X); s.Write(x.Max.Y); };
                 Action<BinaryWriter, object> EncodeBox2iArray = (s, o) => EncodeArray(s, (Box2i[])o);
                 Func<BinaryReader, object> DecodeBox2i = s => new Box2i(s.ReadInt32(), s.ReadInt32(), s.ReadInt32(), s.ReadInt32());
@@ -646,7 +646,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Box2l
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeBox2l = (s, o) => { var x = (Box2l)o; s.Write(x.Min.X); s.Write(x.Min.Y); s.Write(x.Max.X); s.Write(x.Max.Y); };
                 Action<BinaryWriter, object> EncodeBox2lArray = (s, o) => EncodeArray(s, (Box2l[])o);
                 Func<BinaryReader, object> DecodeBox2l = s => new Box2l(s.ReadInt64(), s.ReadInt64(), s.ReadInt64(), s.ReadInt64());
@@ -667,7 +667,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Box2f
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeBox2f = (s, o) => { var x = (Box2f)o; s.Write(x.Min.X); s.Write(x.Min.Y); s.Write(x.Max.X); s.Write(x.Max.Y); };
                 Action<BinaryWriter, object> EncodeBox2fArray = (s, o) => EncodeArray(s, (Box2f[])o);
                 Func<BinaryReader, object> DecodeBox2f = s => new Box2f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
@@ -688,7 +688,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Box2d
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeBox2d = (s, o) => { var x = (Box2d)o; s.Write(x.Min.X); s.Write(x.Min.Y); s.Write(x.Max.X); s.Write(x.Max.Y); };
                 Action<BinaryWriter, object> EncodeBox2dArray = (s, o) => EncodeArray(s, (Box2d[])o);
                 Func<BinaryReader, object> DecodeBox2d = s => new Box2d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
@@ -709,7 +709,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Box3i
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeBox3i = (s, o) => { var x = (Box3i)o; s.Write(x.Min.X); s.Write(x.Min.Y); s.Write(x.Min.Z); s.Write(x.Max.X); s.Write(x.Max.Y); s.Write(x.Max.Z); };
                 Action<BinaryWriter, object> EncodeBox3iArray = (s, o) => EncodeArray(s, (Box3i[])o);
                 Func<BinaryReader, object> DecodeBox3i = s => new Box3i(s.ReadInt32(), s.ReadInt32(), s.ReadInt32(), s.ReadInt32(), s.ReadInt32(), s.ReadInt32());
@@ -730,7 +730,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Box3l
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeBox3l = (s, o) => { var x = (Box3l)o; s.Write(x.Min.X); s.Write(x.Min.Y); s.Write(x.Min.Z); s.Write(x.Max.X); s.Write(x.Max.Y); s.Write(x.Max.Z); };
                 Action<BinaryWriter, object> EncodeBox3lArray = (s, o) => EncodeArray(s, (Box3l[])o);
                 Func<BinaryReader, object> DecodeBox3l = s => new Box3l(s.ReadInt64(), s.ReadInt64(), s.ReadInt64(), s.ReadInt64(), s.ReadInt64(), s.ReadInt64());
@@ -751,7 +751,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Box3f
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeBox3f = (s, o) => { var x = (Box3f)o; s.Write(x.Min.X); s.Write(x.Min.Y); s.Write(x.Min.Z); s.Write(x.Max.X); s.Write(x.Max.Y); s.Write(x.Max.Z); };
                 Action<BinaryWriter, object> EncodeBox3fArray = (s, o) => EncodeArray(s, (Box3f[])o);
                 Func<BinaryReader, object> DecodeBox3f = s => new Box3f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
@@ -772,7 +772,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Box3d
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeBox3d = (s, o) => { var x = (Box3d)o; s.Write(x.Min.X); s.Write(x.Min.Y); s.Write(x.Min.Z); s.Write(x.Max.X); s.Write(x.Max.Y); s.Write(x.Max.Z); };
                 Action<BinaryWriter, object> EncodeBox3dArray = (s, o) => EncodeArray(s, (Box3d[])o);
                 Func<BinaryReader, object> DecodeBox3d = s => new Box3d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
@@ -793,7 +793,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.C3us
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeC3us = (s, o) => { var x = (C3us)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); };
                 Action<BinaryWriter, object> EncodeC3usArray = (s, o) => EncodeArray(s, (C3us[])o);
                 Func<BinaryReader, object> DecodeC3us = s => new C3us(s.ReadUInt16(), s.ReadUInt16(), s.ReadUInt16());
@@ -814,7 +814,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.C3ui
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeC3ui = (s, o) => { var x = (C3ui)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); };
                 Action<BinaryWriter, object> EncodeC3uiArray = (s, o) => EncodeArray(s, (C3ui[])o);
                 Func<BinaryReader, object> DecodeC3ui = s => new C3ui(s.ReadUInt32(), s.ReadUInt32(), s.ReadUInt32());
@@ -835,7 +835,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.C3f
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeC3f = (s, o) => { var x = (C3f)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); };
                 Action<BinaryWriter, object> EncodeC3fArray = (s, o) => EncodeArray(s, (C3f[])o);
                 Func<BinaryReader, object> DecodeC3f = s => new C3f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
@@ -856,7 +856,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.C3d
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeC3d = (s, o) => { var x = (C3d)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); };
                 Action<BinaryWriter, object> EncodeC3dArray = (s, o) => EncodeArray(s, (C3d[])o);
                 Func<BinaryReader, object> DecodeC3d = s => new C3d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
@@ -877,7 +877,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.C4us
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeC4us = (s, o) => { var x = (C4us)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); s.Write(x.A); };
                 Action<BinaryWriter, object> EncodeC4usArray = (s, o) => EncodeArray(s, (C4us[])o);
                 Func<BinaryReader, object> DecodeC4us = s => new C4us(s.ReadUInt16(), s.ReadUInt16(), s.ReadUInt16(), s.ReadUInt16());
@@ -898,7 +898,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.C4ui
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeC4ui = (s, o) => { var x = (C4ui)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); s.Write(x.A); };
                 Action<BinaryWriter, object> EncodeC4uiArray = (s, o) => EncodeArray(s, (C4ui[])o);
                 Func<BinaryReader, object> DecodeC4ui = s => new C4ui(s.ReadUInt32(), s.ReadUInt32(), s.ReadUInt32(), s.ReadUInt32());
@@ -919,7 +919,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.C4f
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeC4f = (s, o) => { var x = (C4f)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); s.Write(x.A); };
                 Action<BinaryWriter, object> EncodeC4fArray = (s, o) => EncodeArray(s, (C4f[])o);
                 Func<BinaryReader, object> DecodeC4f = s => new C4f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
@@ -940,7 +940,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.C4d
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeC4d = (s, o) => { var x = (C4d)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); s.Write(x.A); };
                 Action<BinaryWriter, object> EncodeC4dArray = (s, o) => EncodeArray(s, (C4d[])o);
                 Func<BinaryReader, object> DecodeC4d = s => new C4d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
@@ -961,7 +961,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.CieLabf
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeCieLabf = (s, o) => { var x = (CieLabf)o; s.Write(x.L); s.Write(x.a); s.Write(x.b); };
                 Action<BinaryWriter, object> EncodeCieLabfArray = (s, o) => EncodeArray(s, (CieLabf[])o);
                 Func<BinaryReader, object> DecodeCieLabf = s => new CieLabf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
@@ -982,7 +982,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.CIeLuvf
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeCIeLuvf = (s, o) => { var x = (CIeLuvf)o; s.Write(x.L); s.Write(x.u); s.Write(x.v); };
                 Action<BinaryWriter, object> EncodeCIeLuvfArray = (s, o) => EncodeArray(s, (CIeLuvf[])o);
                 Func<BinaryReader, object> DecodeCIeLuvf = s => new CIeLuvf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
@@ -1003,7 +1003,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.CieXYZf
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeCieXYZf = (s, o) => { var x = (CieXYZf)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); };
                 Action<BinaryWriter, object> EncodeCieXYZfArray = (s, o) => EncodeArray(s, (CieXYZf[])o);
                 Func<BinaryReader, object> DecodeCieXYZf = s => new CieXYZf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
@@ -1024,7 +1024,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.CieYxyf
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeCieYxyf = (s, o) => { var x = (CieYxyf)o; s.Write(x.Y); s.Write(x.x); s.Write(x.y); };
                 Action<BinaryWriter, object> EncodeCieYxyfArray = (s, o) => EncodeArray(s, (CieYxyf[])o);
                 Func<BinaryReader, object> DecodeCieYxyf = s => new CieYxyf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
@@ -1045,7 +1045,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.CMYKf
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeCMYKf = (s, o) => { var x = (CMYKf)o; s.Write(x.C); s.Write(x.M); s.Write(x.Y); s.Write(x.K); };
                 Action<BinaryWriter, object> EncodeCMYKfArray = (s, o) => EncodeArray(s, (CMYKf[])o);
                 Func<BinaryReader, object> DecodeCMYKf = s => new CMYKf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
@@ -1066,7 +1066,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.HSLf
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeHSLf = (s, o) => { var x = (HSLf)o; s.Write(x.H); s.Write(x.S); s.Write(x.L); };
                 Action<BinaryWriter, object> EncodeHSLfArray = (s, o) => EncodeArray(s, (HSLf[])o);
                 Func<BinaryReader, object> DecodeHSLf = s => new HSLf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
@@ -1087,7 +1087,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.HSVf
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeHSVf = (s, o) => { var x = (HSVf)o; s.Write(x.H); s.Write(x.S); s.Write(x.V); };
                 Action<BinaryWriter, object> EncodeHSVfArray = (s, o) => EncodeArray(s, (HSVf[])o);
                 Func<BinaryReader, object> DecodeHSVf = s => new HSVf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
@@ -1108,7 +1108,7 @@ namespace Aardvark.Data
 
                 #region Durable.Aardvark.Yuvf
 
-                #if NETSTANDARD2_0 || NET472 || NET48
+                #if NETSTANDARD2_0 || NET472
                 Action<BinaryWriter, object> EncodeYuvf = (s, o) => { var x = (Yuvf)o; s.Write(x.Y); s.Write(x.u); s.Write(x.v); };
                 Action<BinaryWriter, object> EncodeYuvfArray = (s, o) => EncodeArray(s, (Yuvf[])o);
                 Func<BinaryReader, object> DecodeYuvf = s => new Yuvf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
