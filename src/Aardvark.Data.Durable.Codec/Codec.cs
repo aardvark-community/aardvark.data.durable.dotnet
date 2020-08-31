@@ -104,9 +104,13 @@ namespace Aardvark.Data
 
                 [Durable.Aardvark.C3b.Id] = EncodeC3b,
                 [Durable.Aardvark.C3bArray.Id] = EncodeC3bArray,
-
                 [Durable.Aardvark.C4b.Id] = EncodeC4b,
                 [Durable.Aardvark.C4bArray.Id] = EncodeC4bArray,
+
+                [Durable.Aardvark.Polygon2d.Id] = EncodePolygon2d,
+                [Durable.Aardvark.Polygon2dArray.Id] = EncodePolygon2dArray,
+                [Durable.Aardvark.Polygon3d.Id] = EncodePolygon3d,
+                [Durable.Aardvark.Polygon3dArray.Id] = EncodePolygon3dArray,
             };
 
             s_decoders = new Dictionary<Guid, object>
@@ -154,9 +158,13 @@ namespace Aardvark.Data
 
                 [Durable.Aardvark.C3b.Id] = DecodeC3b,
                 [Durable.Aardvark.C3bArray.Id] = DecodeC3bArray,
-
                 [Durable.Aardvark.C4b.Id] = DecodeC4b,
                 [Durable.Aardvark.C4bArray.Id] = DecodeC4bArray,
+
+                [Durable.Aardvark.Polygon2d.Id] = DecodePolygon2d,
+                [Durable.Aardvark.Polygon2dArray.Id] = DecodePolygon2dArray,
+                [Durable.Aardvark.Polygon3d.Id] = DecodePolygon3d,
+                [Durable.Aardvark.Polygon3dArray.Id] = DecodePolygon3dArray,
             };
 
             Init();

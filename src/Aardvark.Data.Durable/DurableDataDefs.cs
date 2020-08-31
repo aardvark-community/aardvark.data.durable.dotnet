@@ -2492,6 +2492,50 @@ namespace Aardvark.Data
                 true
                 );
 
+            /// <summary>
+            /// A two-dimensional polygon.
+            /// </summary>
+            public static readonly Def Polygon2d = new Def(
+                new Guid("ed49d9d5-398c-415f-9dd9-85bb9902cf97"),
+                "Polygon2d",
+                "A two-dimensional polygon.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Polygon2d.
+            /// </summary>
+            public static readonly Def Polygon2dArray = new Def(
+                new Guid("2cd7815f-d8b9-488a-b506-adf02ce3b6da"),
+                "Polygon2d[]",
+                "Array of Polygon2d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A three-dimensional polygon.
+            /// </summary>
+            public static readonly Def Polygon3d = new Def(
+                new Guid("4da0c246-8d1d-44a0-ad7a-49522eee8d6e"),
+                "Polygon3d",
+                "A three-dimensional polygon.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Polygon3d.
+            /// </summary>
+            public static readonly Def Polygon3dArray = new Def(
+                new Guid("7d1c8157-c0a7-49f7-9ed7-e99e0160daad"),
+                "Polygon3d[]",
+                "Array of Polygon3d.",
+                None,
+                true
+                );
+
         }
         /// <summary></summary>
         public static class Generic

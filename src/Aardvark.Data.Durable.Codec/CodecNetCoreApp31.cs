@@ -206,11 +206,35 @@ namespace Aardvark.Data
         private static readonly Action<Stream, object> EncodeCell2dPadded24 = (s, o) => Write<Cell2d>(s, o);
         private static readonly Action<Stream, object> EncodeCell2dPadded24Array = (s, o) => EncodeArray(s, (Cell2d[])o);
 
+
+
         private static readonly Action<Stream, object> EncodeC3b = Write<C3b>;
         private static readonly Action<Stream, object> EncodeC3bArray = (s, o) => EncodeArray(s, (C3b[])o);
 
         private static readonly Action<Stream, object> EncodeC4b = Write<C4b>;
         private static readonly Action<Stream, object> EncodeC4bArray = (s, o) => EncodeArray(s, (C4b[])o);
+
+
+
+        private static readonly Action<Stream, object> EncodePolygon2d = (s, o) => EncodeArray(s, ((Polygon2d)o).Points.ToArray());
+        private static readonly Action<Stream, object> EncodePolygon2dArray = (s, o) =>
+        {
+            var xs = (Polygon2d[])o;
+            var length = xs.Length;
+            s.Write(ref length);
+            foreach (var x in xs) EncodeArray(s, x.Points.ToArray());
+        };
+
+        private static readonly Action<Stream, object> EncodePolygon3d = (s, o) => EncodeArray(s, ((Polygon3d)o).Points.ToArray());
+        private static readonly Action<Stream, object> EncodePolygon3dArray = (s, o) =>
+        {
+            var xs = (Polygon3d[])o;
+            var length = xs.Length;
+            s.Write(ref length);
+            foreach (var x in xs) EncodeArray(s, x.Points.ToArray());
+        };
+
+
 
         private static unsafe void EncodeArray<T>(Stream s, params T[] xs) where T : struct
         {
@@ -421,11 +445,37 @@ namespace Aardvark.Data
         private static readonly Func<Stream, object> DecodeCell2dPadded24 = s => ReadBoxed<Cell2d>(s);
         private static readonly Func<Stream, object> DecodeCell2dPadded24Array = DecodeArray<Cell2d>;
 
+
+
         private static readonly Func<Stream, object> DecodeC3b = ReadBoxed<C3b>;
         private static readonly Func<Stream, object> DecodeC3bArray = DecodeArray<C3b>;
 
         private static readonly Func<Stream, object> DecodeC4b = ReadBoxed<C4b>;
         private static readonly Func<Stream, object> DecodeC4bArray = DecodeArray<C4b>;
+
+
+
+        private static readonly Func<Stream, object> DecodePolygon2d = s => new Polygon2d(DecodeArray<V2d>(s));
+        private static readonly Func<Stream, object> DecodePolygon2dArray = s =>
+        {
+            var count = s.Read<int>();
+            var xs = new Polygon2d[count];
+            for (var i = 0; i < count; i++)
+                xs[i] = new Polygon2d(DecodeArray<V2d>(s));
+            return xs;
+        };
+
+        private static readonly Func<Stream, object> DecodePolygon3d = s => new Polygon3d(DecodeArray<V3d>(s));
+        private static readonly Func<Stream, object> DecodePolygon3dArray = s =>
+        {
+            var count = s.Read<int>();
+            var xs = new Polygon3d[count];
+            for (var i = 0; i < count; i++)
+                xs[i] = new Polygon3d(DecodeArray<V3d>(s));
+            return xs;
+        };
+
+
 
         private static unsafe T[] DecodeArray<T>(Stream s) where T : struct
         {

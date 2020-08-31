@@ -33,10 +33,20 @@ module Codegen =
     let doNotGenerateCodecFor = Set.ofList <| [
         Guid("bb9da8cb-c9d6-43dd-95d6-f569c82d9af6") // Aardvark.Cell
         Guid("8665c4d4-69c1-4b47-a493-ce452e075643") // Aardvark.CellPadded32
+        Guid("9c2e3d4f-7a40-4266-a2dc-bfbde780260a") // Aardvark.CellPadded32[]
+        Guid("2732639f-20b2-46dc-8d54-007a2ef2d2ea") // Aardvark.Cell[]
         Guid("9d580e5d-a559-4c5e-9413-7675f1dfe93c") // Aardvark.Cell2d
         Guid("3b022668-faa8-47a9-b622-a7a26060c620") // Aardvark.Cell2dPadded24
+        Guid("269f0837-a71f-4967-a323-96ccfabbb184") // Aardvark.Cell2dPadded24[]
+        Guid("5c23fd56-3736-4a95-ab74-52b26a711e0e") // Aardvark.Cell2d[]
         Guid("73656667-ea6a-468f-962c-64cd4e24f409") // Aardvark.C3b
+        Guid("41dde1c8-2b63-4a18-90c8-8f0c67c685b7") // Aardvark.C3b[]
         Guid("3f34792b-e03d-4d21-a4a6-4890d5f3f67f") // Aardvark.C4b
+        Guid("06318db7-1518-43eb-97c4-ba13c83fc64b") // Aardvark.C4b[]
+        Guid("ed49d9d5-398c-415f-9dd9-85bb9902cf97") // Aardvark.Polygon2d
+        Guid("2cd7815f-d8b9-488a-b506-adf02ce3b6da") // Aardvark.Polygon2d[]
+        Guid("4da0c246-8d1d-44a0-ad7a-49522eee8d6e") // Aardvark.Polygon3d
+        Guid("7d1c8157-c0a7-49f7-9ed7-e99e0160daad") // Aardvark.Polygon3d[]
         ]
 
     let binaryWriterAllowedWriteTypes = Set.ofList <| [
@@ -46,8 +56,14 @@ module Codegen =
         ]
 
     let binaryWriterAllowedAardvarkEncodeTypes = Set.ofList <| [
-        "Aardvark.V2i"; "Aardvark.V2l"; "Aardvark.V2f"; "Aardvark.V2d"
-        "Aardvark.V3i"; "Aardvark.V3l"; "Aardvark.V3f"; "Aardvark.V3d"
+        "Aardvark.V2i"; "Aardvark.V2iArray"
+        "Aardvark.V2l"; "Aardvark.V2lArray"
+        "Aardvark.V2f"; "Aardvark.V2fArray"
+        "Aardvark.V2d"; "Aardvark.V2dArray"
+        "Aardvark.V3i"; "Aardvark.V3iArray"
+        "Aardvark.V3l"; "Aardvark.V3lArray"
+        "Aardvark.V3f"; "Aardvark.V3fArray"
+        "Aardvark.V3d"; "Aardvark.V3dArray"
         "Aardvark.Circle2d"; "Aardvark.Circle3d"
         "Aardvark.ObliqueCone3d"; "Aardvark.Cone3d"
         "Aardvark.Sphere3d"

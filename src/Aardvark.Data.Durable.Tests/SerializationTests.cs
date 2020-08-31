@@ -228,6 +228,16 @@ namespace Aardvark.Data.Tests
             new Torus3d(position: new V3d(3.14, 2.71, -123), direction: new V3d(1003.14, 1002.71, 456), majorRadius: 500.005, minorRadius: 200.002),
             (3 + 3 + 1 + 1) * 8, (a, b) => a == b
             );
+        [Fact]
+        public void Aardvark_Polygon2d() => Primitive(Durable.Aardvark.Polygon2d,
+            new Polygon2d(new V2d(3.14, 2.71), new V2d(1003.14, 1002.71), new V2d(-1003.14, -1002.71), new V2d(345, -435)),
+            4 + 4 * 2 * 8, (a, b) => a == b
+            );
+        [Fact]
+        public void Aardvark_Polygon3d() => Primitive(Durable.Aardvark.Polygon3d,
+            new Polygon3d(new V3d(3.14, 2.71, 123.456), new V3d(1003.14, 1002.71, 789.012), new V3d(-1003.14, -1002.71, -789.012), new V3d(345, -435, -0.123)),
+            4 + 4 * 3 * 8, (a, b) => a == b
+            );
 
         [Fact]
         public void Primitive_M22f() => Primitive(Durable.Aardvark.M22f, new M22f(1, 2, 3, 4), 16);
@@ -596,6 +606,19 @@ namespace Aardvark.Data.Tests
 
 
         [Fact]
+        public void Aardvark_Polygon2dArray() => PrimitiveArray(Durable.Aardvark.Polygon2dArray,
+            new[] { new Polygon2d(new V2d(3.14, 2.71), new V2d(1003.14, 1002.71), new V2d(-1003.14, -1002.71), new V2d(345, -435)) },
+            4 + (4 + 4 * 2 * 8), (a, b) => a == b
+            );
+        [Fact]
+        public void Aardvark_Polygon3dArray() => PrimitiveArray(Durable.Aardvark.Polygon3dArray,
+            new[] { new Polygon3d(new V3d(3.14, 2.71, 123.456), new V3d(1003.14, 1002.71, 789.012), new V3d(-1003.14, -1002.71, -789.012), new V3d(345, -435, -0.123)) },
+            4 + (4 + 4 * 3 * 8), (a, b) => a == b
+            );
+
+
+
+        [Fact]
         public void Primitive_DurableMap()
         {
             var id = Guid.NewGuid();
@@ -794,5 +817,7 @@ namespace Aardvark.Data.Tests
             //Assert.True(ps[0] == V3f.IOO);
             //Assert.True(ps[1] == V3f.OIO);
         }
+
+
     }
 }

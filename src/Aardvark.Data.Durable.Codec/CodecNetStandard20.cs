@@ -185,16 +185,37 @@ namespace Aardvark.Data
         private static readonly Action<BinaryWriter, object> EncodeCell2dPadded24Array =
             (s, o) => EncodeArray(s, (Cell2d[])o);
 
+
+
         private static readonly Action<BinaryWriter, object> EncodeC3b =
             (s, o) => { var x = (C3b)o; s.Write(x.B); s.Write(x.G); s.Write(x.R); };
         private static readonly Action<BinaryWriter, object> EncodeC3bArray =
             (s, o) => EncodeArray(s, (C3b[])o);
 
-
         private static readonly Action<BinaryWriter, object> EncodeC4b =
             (s, o) => { var x = (C4b)o; s.Write(x.B); s.Write(x.G); s.Write(x.R); s.Write(x.A); };
         private static readonly Action<BinaryWriter, object> EncodeC4bArray =
             (s, o) => EncodeArray(s, (C4b[])o);
+
+
+
+        private static readonly Action<BinaryWriter, object> EncodePolygon2d =
+            (s, o) => { var x = (Polygon2d)o; EncodeArray(s, x.Points.ToArray()); };
+        private static readonly Action<BinaryWriter, object> EncodePolygon2dArray =
+            (s, o) => {
+                var xs = (Polygon2d[])o;
+                s.Write(xs.Length);
+                foreach (var x in xs) EncodeArray(s, x.Points.ToArray());
+            };
+
+        private static readonly Action<BinaryWriter, object> EncodePolygon3d =
+            (s, o) => { var x = (Polygon3d)o; EncodeArray(s, x.Points.ToArray()); };
+        private static readonly Action<BinaryWriter, object> EncodePolygon3dArray =
+            (s, o) => {
+                var xs = (Polygon3d[])o;
+                s.Write(xs.Length);
+                foreach (var x in xs) EncodeArray(s, x.Points.ToArray());
+            };
 
 
         private static unsafe void EncodeArray<T>(BinaryWriter s, params T[] xs) where T : struct
@@ -429,6 +450,9 @@ namespace Aardvark.Data
         };
         private static readonly Func<BinaryReader, object> DecodeCell2dPadded24Array = DecodeArray<Cell2d>;
 
+
+
+
         private static readonly Func<BinaryReader, object> DecodeC3b = s =>
         {
             var b = s.ReadByte();
@@ -447,6 +471,30 @@ namespace Aardvark.Data
             return new C4b(r, g, b, a);
         };
         private static readonly Func<BinaryReader, object> DecodeC4bArray = DecodeArray<C4b>;
+
+
+
+        private static readonly Func<BinaryReader, object> DecodePolygon2d = s => new Polygon2d(DecodeArray<V2d>(s));
+        private static readonly Func<BinaryReader, object> DecodePolygon2dArray = s =>
+        {
+            var count = s.ReadInt32();
+            var xs = new Polygon2d[count];
+            for (var i = 0; i < count; i++)
+                xs[i] = new Polygon2d(DecodeArray<V2d>(s));
+            return xs;
+        };
+
+        private static readonly Func<BinaryReader, object> DecodePolygon3d = s => new Polygon3d(DecodeArray<V3d>(s));
+        private static readonly Func<BinaryReader, object> DecodePolygon3dArray = s =>
+        {
+            var count = s.ReadInt32();
+            var xs = new Polygon3d[count];
+            for (var i = 0; i < count; i++)
+                xs[i] = new Polygon3d(DecodeArray<V3d>(s));
+            return xs;
+        };
+
+
 
         private static unsafe T[] DecodeArray<T>(BinaryReader s) where T : struct
         {
