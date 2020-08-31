@@ -21,7 +21,6 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
-
 using System;
 using System.Collections.Generic;
 
@@ -1924,21 +1923,21 @@ namespace Aardvark.Data
             /// <summary>
             /// A color in CIELUV color space with channels L,u,v (Float32).
             /// </summary>
-            public static readonly Def CieLuvf = new Def(
+            public static readonly Def CIeLuvf = new Def(
                 new Guid("972c001e-a7a8-45ea-a234-f4788489d6e7"),
-                "CieLuvf",
+                "CIeLuvf",
                 "A color in CIELUV color space with channels L,u,v (Float32).",
                 None,
                 false
                 );
 
             /// <summary>
-            /// Array of CieLuvf.
+            /// Array of CIeLuvf.
             /// </summary>
-            public static readonly Def CieLuvfArray = new Def(
+            public static readonly Def CIeLuvfArray = new Def(
                 new Guid("edb50004-8a3f-4267-bb4a-30e060042b00"),
-                "CieLuvf[]",
-                "Array of CieLuvf.",
+                "CIeLuvf[]",
+                "Array of CIeLuvf.",
                 None,
                 true
                 );

@@ -22,7 +22,7 @@
     SOFTWARE.
 */
 
-#if NETSTANDARD2_0 || NET472
+#if NETSTANDARD2_0 || NET472 || NET48
 
 using Aardvark.Base;
 using System;
@@ -30,7 +30,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -214,43 +213,19 @@ namespace Aardvark.Data
 
         private static readonly Action<BinaryWriter, object> EncodeV2f =
             (s, o) => { var x = (V2f)o; s.Write(x.X); s.Write(x.Y); };
-        private static readonly Action<BinaryWriter, object> EncodeV2fArray =
-            (s, o) => EncodeArray(s, (V2f[])o);
         private static readonly Action<BinaryWriter, object> EncodeV3f =
             (s, o) => { var x = (V3f)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); };
-        private static readonly Action<BinaryWriter, object> EncodeV3fArray =
-            (s, o) => EncodeArray(s, (V3f[])o);
-        private static readonly Action<BinaryWriter, object> EncodeV4f =
-            (s, o) => { var x = (V4f)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); s.Write(x.W); };
-        private static readonly Action<BinaryWriter, object> EncodeV4fArray =
-            (s, o) => EncodeArray(s, (V4f[])o);
 
 
         private static readonly Action<BinaryWriter, object> EncodeV2d =
             (s, o) => { var x = (V2d)o; s.Write(x.X); s.Write(x.Y); };
-        private static readonly Action<BinaryWriter, object> EncodeV2dArray =
-            (s, o) => EncodeArray(s, (V2d[])o);
         private static readonly Action<BinaryWriter, object> EncodeV3d =
             (s, o) => { var x = (V3d)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); };
-        private static readonly Action<BinaryWriter, object> EncodeV3dArray =
-            (s, o) => EncodeArray(s, (V3d[])o);
-        private static readonly Action<BinaryWriter, object> EncodeV4d =
-            (s, o) => { var x = (V4d)o; s.Write(x.X); s.Write(x.Y); s.Write(x.Z); s.Write(x.W); };
-        private static readonly Action<BinaryWriter, object> EncodeV4dArray =
-            (s, o) => EncodeArray(s, (V4d[])o);
 
         private static readonly Action<BinaryWriter, object> EncodeRange1b =
             (s, o) => { var x = (Range1b)o; s.Write(x.Min); s.Write(x.Max); };
         private static readonly Action<BinaryWriter, object> EncodeRange1bArray =
             (s, o) => EncodeArray(s, (Range1b[])o);
-        private static readonly Action<BinaryWriter, object> EncodeRange1d =
-            (s, o) => { var x = (Range1d)o; s.Write(x.Min); s.Write(x.Max); };
-        private static readonly Action<BinaryWriter, object> EncodeRange1dArray =
-            (s, o) => EncodeArray(s, (Range1d[])o);
-        private static readonly Action<BinaryWriter, object> EncodeRange1f =
-            (s, o) => { var x = (Range1f)o; s.Write(x.Min); s.Write(x.Max); };
-        private static readonly Action<BinaryWriter, object> EncodeRange1fArray =
-            (s, o) => EncodeArray(s, (Range1f[])o); 
         private static readonly Action<BinaryWriter, object> EncodeRange1i =
              (s, o) => { var x = (Range1i)o; s.Write(x.Min); s.Write(x.Max); };
         private static readonly Action<BinaryWriter, object> EncodeRange1iArray =
@@ -317,45 +292,10 @@ namespace Aardvark.Data
             (s, o) => EncodeArray(s, (Box3d[])o);
 
 
-        private static readonly Action<BinaryWriter, object> EncodeM22f =
-            (s, o) => { var x = (M22f)o; s.Write(x.M00); s.Write(x.M01); s.Write(x.M10); s.Write(x.M11); };
-        private static readonly Action<BinaryWriter, object> EncodeM22fArray =
-            (s, o) => EncodeArray(s, (M22f[])o);
-        private static readonly Action<BinaryWriter, object> EncodeM33f =
-            (s, o) => { var x = (M33f)o; s.Write(x.M00); s.Write(x.M01); s.Write(x.M02); s.Write(x.M10); s.Write(x.M11); s.Write(x.M12); s.Write(x.M20); s.Write(x.M21); s.Write(x.M22); };
-        private static readonly Action<BinaryWriter, object> EncodeM33fArray =
-            (s, o) => EncodeArray(s, (M33f[])o);
-        private static readonly Action<BinaryWriter, object> EncodeM44f =
-            (s, o) => { var x = (M44f)o; s.Write(x.M00); s.Write(x.M01); s.Write(x.M02); s.Write(x.M03); s.Write(x.M10); s.Write(x.M11); s.Write(x.M12); s.Write(x.M13); s.Write(x.M20); s.Write(x.M21); s.Write(x.M22); s.Write(x.M23); s.Write(x.M30); s.Write(x.M31); s.Write(x.M32); s.Write(x.M33); };
-        private static readonly Action<BinaryWriter, object> EncodeM44fArray =
-            (s, o) => EncodeArray(s, (M44f[])o);
-
-        private static readonly Action<BinaryWriter, object> EncodeM22d =
-            (s, o) => { var x = (M22d)o; s.Write(x.M00); s.Write(x.M01); s.Write(x.M10); s.Write(x.M11); };
-        private static readonly Action<BinaryWriter, object> EncodeM22dArray =
-            (s, o) => EncodeArray(s, (M22d[])o);
-        private static readonly Action<BinaryWriter, object> EncodeM33d =
-            (s, o) => { var x = (M33d)o; s.Write(x.M00); s.Write(x.M01); s.Write(x.M02); s.Write(x.M10); s.Write(x.M11); s.Write(x.M12); s.Write(x.M20); s.Write(x.M21); s.Write(x.M22); };
-        private static readonly Action<BinaryWriter, object> EncodeM33dArray =
-            (s, o) => EncodeArray(s, (M33d[])o);
-        private static readonly Action<BinaryWriter, object> EncodeM44d =
-            (s, o) => { var x = (M44d)o; s.Write(x.M00); s.Write(x.M01); s.Write(x.M02); s.Write(x.M03); s.Write(x.M10); s.Write(x.M11); s.Write(x.M12); s.Write(x.M13); s.Write(x.M20); s.Write(x.M21); s.Write(x.M22); s.Write(x.M23); s.Write(x.M30); s.Write(x.M31); s.Write(x.M32); s.Write(x.M33); };
-        private static readonly Action<BinaryWriter, object> EncodeM44dArray =
-            (s, o) => EncodeArray(s, (M44d[])o);
-
-
         private static readonly Action<BinaryWriter, object> EncodeC3b =
             (s, o) => { var x = (C3b)o; s.Write(x.B); s.Write(x.G); s.Write(x.R); };
         private static readonly Action<BinaryWriter, object> EncodeC3bArray =
             (s, o) => EncodeArray(s, (C3b[])o);
-        private static readonly Action<BinaryWriter, object> EncodeC3d =
-            (s, o) => { var x = (C3d)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); };
-        private static readonly Action<BinaryWriter, object> EncodeC3dArray =
-            (s, o) => EncodeArray(s, (C3d[])o);
-        private static readonly Action<BinaryWriter, object> EncodeC3f =
-            (s, o) => { var x = (C3f)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); };
-        private static readonly Action<BinaryWriter, object> EncodeC3fArray =
-            (s, o) => EncodeArray(s, (C3f[])o);
         private static readonly Action<BinaryWriter, object> EncodeC3ui =
             (s, o) => { var x = (C3ui)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); };
         private static readonly Action<BinaryWriter, object> EncodeC3uiArray =
@@ -365,18 +305,11 @@ namespace Aardvark.Data
         private static readonly Action<BinaryWriter, object> EncodeC3usArray =
             (s, o) => EncodeArray(s, (C3us[])o);
 
+
         private static readonly Action<BinaryWriter, object> EncodeC4b =
             (s, o) => { var x = (C4b)o; s.Write(x.B); s.Write(x.G); s.Write(x.R); s.Write(x.A); };
         private static readonly Action<BinaryWriter, object> EncodeC4bArray =
             (s, o) => EncodeArray(s, (C4b[])o);
-        private static readonly Action<BinaryWriter, object> EncodeC4d =
-            (s, o) => { var x = (C4d)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); s.Write(x.A); };
-        private static readonly Action<BinaryWriter, object> EncodeC4dArray =
-            (s, o) => EncodeArray(s, (C4d[])o);
-        private static readonly Action<BinaryWriter, object> EncodeC4f =
-            (s, o) => { var x = (C4f)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); s.Write(x.A); };
-        private static readonly Action<BinaryWriter, object> EncodeC4fArray =
-            (s, o) => EncodeArray(s, (C4f[])o);
         private static readonly Action<BinaryWriter, object> EncodeC4ui =
             (s, o) => { var x = (C4ui)o; s.Write(x.R); s.Write(x.G); s.Write(x.B); s.Write(x.A); };
         private static readonly Action<BinaryWriter, object> EncodeC4uiArray =
@@ -634,25 +567,13 @@ namespace Aardvark.Data
         private static readonly Func<BinaryReader, object> DecodeV4lArray = DecodeArray<V4l>;
 
         private static readonly Func<BinaryReader, object> DecodeV2f = s => new V2f(s.ReadSingle(), s.ReadSingle());
-        private static readonly Func<BinaryReader, object> DecodeV2fArray = DecodeArray<V2f>;
         private static readonly Func<BinaryReader, object> DecodeV3f = s => new V3f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
-        private static readonly Func<BinaryReader, object> DecodeV3fArray = DecodeArray<V3f>;
-        private static readonly Func<BinaryReader, object> DecodeV4f = s => new V4f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
-        private static readonly Func<BinaryReader, object> DecodeV4fArray = DecodeArray<V4f>;
 
         private static readonly Func<BinaryReader, object> DecodeV2d = s => new V2d(s.ReadDouble(), s.ReadDouble());
-        private static readonly Func<BinaryReader, object> DecodeV2dArray = DecodeArray<V2d>;
         private static readonly Func<BinaryReader, object> DecodeV3d = s => new V3d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
-        private static readonly Func<BinaryReader, object> DecodeV3dArray = DecodeArray<V3d>;
-        private static readonly Func<BinaryReader, object> DecodeV4d = s => new V4d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
-        private static readonly Func<BinaryReader, object> DecodeV4dArray = DecodeArray<V4d>;
 
         private static readonly Func<BinaryReader, object> DecodeRange1b = s => new Range1b(s.ReadByte(), s.ReadByte());
         private static readonly Func<BinaryReader, object> DecodeRange1bArray = DecodeArray<Range1b>;
-        private static readonly Func<BinaryReader, object> DecodeRange1d = s => new Range1d(s.ReadDouble(), s.ReadDouble());
-        private static readonly Func<BinaryReader, object> DecodeRange1dArray = DecodeArray<Range1d>;
-        private static readonly Func<BinaryReader, object> DecodeRange1f = s => new Range1f(s.ReadSingle(), s.ReadSingle());
-        private static readonly Func<BinaryReader, object> DecodeRange1fArray = DecodeArray<Range1f>;
         private static readonly Func<BinaryReader, object> DecodeRange1i = s => new Range1i(s.ReadInt32(), s.ReadInt32());
         private static readonly Func<BinaryReader, object> DecodeRange1iArray = DecodeArray<Range1i>;
         private static readonly Func<BinaryReader, object> DecodeRange1l = s => new Range1l(s.ReadInt64(), s.ReadInt64());
@@ -686,20 +607,6 @@ namespace Aardvark.Data
         private static readonly Func<BinaryReader, object> DecodeBox3d = s => new Box3d((V3d)DecodeV3d(s), (V3d)DecodeV3d(s));
         private static readonly Func<BinaryReader, object> DecodeBox3dArray = DecodeArray<Box3d>;
 
-        private static readonly Func<BinaryReader, object> DecodeM22f = s => new M22f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
-        private static readonly Func<BinaryReader, object> DecodeM22fArray = DecodeArray<M22f>;
-        private static readonly Func<BinaryReader, object> DecodeM33f = s => new M33f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
-        private static readonly Func<BinaryReader, object> DecodeM33fArray = DecodeArray<M33f>;
-        private static readonly Func<BinaryReader, object> DecodeM44f = s => new M44f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
-        private static readonly Func<BinaryReader, object> DecodeM44fArray = DecodeArray<M44f>;
-
-        private static readonly Func<BinaryReader, object> DecodeM22d = s => new M22d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
-        private static readonly Func<BinaryReader, object> DecodeM22dArray = DecodeArray<M22d>;
-        private static readonly Func<BinaryReader, object> DecodeM33d = s => new M33d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
-        private static readonly Func<BinaryReader, object> DecodeM33dArray = DecodeArray<M33d>;
-        private static readonly Func<BinaryReader, object> DecodeM44d = s => new M44d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
-        private static readonly Func<BinaryReader, object> DecodeM44dArray = DecodeArray<M44d>;
-
         private static readonly Func<BinaryReader, object> DecodeC3b = s =>
         {
             var b = s.ReadByte();
@@ -708,10 +615,6 @@ namespace Aardvark.Data
             return new C3b(r, g, b);
         };
         private static readonly Func<BinaryReader, object> DecodeC3bArray = DecodeArray<C3b>;
-        private static readonly Func<BinaryReader, object> DecodeC3d = s => new C3d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
-        private static readonly Func<BinaryReader, object> DecodeC3dArray = DecodeArray<C3d>;
-        private static readonly Func<BinaryReader, object> DecodeC3f = s => new C3f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
-        private static readonly Func<BinaryReader, object> DecodeC3fArray = DecodeArray<C3f>;
         private static readonly Func<BinaryReader, object> DecodeC3ui = s => new C3ui(s.ReadUInt32(), s.ReadUInt32(), s.ReadUInt32());
         private static readonly Func<BinaryReader, object> DecodeC3uiArray = DecodeArray<C3ui>;
         private static readonly Func<BinaryReader, object> DecodeC3us = s => new C3us(s.ReadUInt16(), s.ReadUInt16(), s.ReadUInt16());
@@ -726,10 +629,6 @@ namespace Aardvark.Data
             return new C4b(r, g, b, a);
         };
         private static readonly Func<BinaryReader, object> DecodeC4bArray = DecodeArray<C4b>;
-        private static readonly Func<BinaryReader, object> DecodeC4d = s => new C4d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
-        private static readonly Func<BinaryReader, object> DecodeC4dArray = DecodeArray<C4d>;
-        private static readonly Func<BinaryReader, object> DecodeC4f = s => new C4f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
-        private static readonly Func<BinaryReader, object> DecodeC4fArray = DecodeArray<C4f>;
         private static readonly Func<BinaryReader, object> DecodeC4ui = s => new C4ui(s.ReadUInt32(), s.ReadUInt32(), s.ReadUInt32(), s.ReadUInt32());
         private static readonly Func<BinaryReader, object> DecodeC4uiArray = DecodeArray<C4ui>;
         private static readonly Func<BinaryReader, object> DecodeC4us = s => new C4us(s.ReadUInt16(), s.ReadUInt16(), s.ReadUInt16(), s.ReadUInt16());
