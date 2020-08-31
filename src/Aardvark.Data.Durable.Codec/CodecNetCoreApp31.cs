@@ -254,41 +254,11 @@ namespace Aardvark.Data
         private static readonly Action<Stream, object> EncodeBox3d = Write<Box3d>;
         private static readonly Action<Stream, object> EncodeBox3dArray = (s, o) => EncodeArray(s, (Box3d[])o);
 
-
-        private static readonly Action<Stream, object> EncodeRange1b = Write<Range1b>;
-        private static readonly Action<Stream, object> EncodeRange1bArray = (s, o) => EncodeArray(s, (Range1b[])o);
-        private static readonly Action<Stream, object> EncodeRange1d = Write<Range1d>;
-        private static readonly Action<Stream, object> EncodeRange1dArray = (s, o) => EncodeArray(s, (Range1d[])o);
-        private static readonly Action<Stream, object> EncodeRange1f = Write<Range1f>;
-        private static readonly Action<Stream, object> EncodeRange1fArray = (s, o) => EncodeArray(s, (Range1f[])o);
-        private static readonly Action<Stream, object> EncodeRange1i = Write<Range1i>;
-        private static readonly Action<Stream, object> EncodeRange1iArray = (s, o) => EncodeArray(s, (Range1i[])o);
-        private static readonly Action<Stream, object> EncodeRange1l = Write<Range1l>;
-        private static readonly Action<Stream, object> EncodeRange1lArray = (s, o) => EncodeArray(s, (Range1l[])o);
-        private static readonly Action<Stream, object> EncodeRange1s = Write<Range1s>;
-        private static readonly Action<Stream, object> EncodeRange1sArray = (s, o) => EncodeArray(s, (Range1s[])o);
-        private static readonly Action<Stream, object> EncodeRange1sb = Write<Range1sb>;
-        private static readonly Action<Stream, object> EncodeRange1sbArray = (s, o) => EncodeArray(s, (Range1sb[])o);
-        private static readonly Action<Stream, object> EncodeRange1ui = Write<Range1ui>;
-        private static readonly Action<Stream, object> EncodeRange1uiArray = (s, o) => EncodeArray(s, (Range1ui[])o);
-        private static readonly Action<Stream, object> EncodeRange1ul = Write<Range1ul>;
-        private static readonly Action<Stream, object> EncodeRange1ulArray = (s, o) => EncodeArray(s, (Range1ul[])o);
-        private static readonly Action<Stream, object> EncodeRange1us = Write<Range1us>;
-        private static readonly Action<Stream, object> EncodeRange1usArray = (s, o) => EncodeArray(s, (Range1us[])o);
-
         private static readonly Action<Stream, object> EncodeC3b = Write<C3b>;
         private static readonly Action<Stream, object> EncodeC3bArray = (s, o) => EncodeArray(s, (C3b[])o);
-        private static readonly Action<Stream, object> EncodeC3ui = Write<C3ui>;
-        private static readonly Action<Stream, object> EncodeC3uiArray = (s, o) => EncodeArray(s, (C3ui[])o);
-        private static readonly Action<Stream, object> EncodeC3us = Write<C3us>;
-        private static readonly Action<Stream, object> EncodeC3usArray = (s, o) => EncodeArray(s, (C3us[])o);
 
         private static readonly Action<Stream, object> EncodeC4b = Write<C4b>;
         private static readonly Action<Stream, object> EncodeC4bArray = (s, o) => EncodeArray(s, (C4b[])o);
-        private static readonly Action<Stream, object> EncodeC4ui = Write<C4ui>;
-        private static readonly Action<Stream, object> EncodeC4uiArray = (s, o) => EncodeArray(s, (C4ui[])o);
-        private static readonly Action<Stream, object> EncodeC4us = Write<C4us>;
-        private static readonly Action<Stream, object> EncodeC4usArray = (s, o) => EncodeArray(s, (C4us[])o);
 
         private static unsafe void EncodeArray<T>(Stream s, params T[] xs) where T : struct
         {
@@ -545,40 +515,11 @@ namespace Aardvark.Data
         private static readonly Func<Stream, object> DecodeBox3d = ReadBoxed<Box3d>;
         private static readonly Func<Stream, object> DecodeBox3dArray = DecodeArray<Box3d>;
 
-        private static readonly Func<Stream, object> DecodeRange1b = ReadBoxed<Range1b>;
-        private static readonly Func<Stream, object> DecodeRange1bArray = DecodeArray<Range1b>;
-        private static readonly Func<Stream, object> DecodeRange1d = ReadBoxed<Range1d>;
-        private static readonly Func<Stream, object> DecodeRange1dArray = DecodeArray<Range1d>;
-        private static readonly Func<Stream, object> DecodeRange1f = ReadBoxed<Range1f>;
-        private static readonly Func<Stream, object> DecodeRange1fArray = DecodeArray<Range1f>;
-        private static readonly Func<Stream, object> DecodeRange1i = ReadBoxed<Range1i>;
-        private static readonly Func<Stream, object> DecodeRange1iArray = DecodeArray<Range1i>;
-        private static readonly Func<Stream, object> DecodeRange1l = ReadBoxed<Range1l>;
-        private static readonly Func<Stream, object> DecodeRange1lArray = DecodeArray<Range1l>;
-        private static readonly Func<Stream, object> DecodeRange1s = ReadBoxed<Range1s>;
-        private static readonly Func<Stream, object> DecodeRange1sArray = DecodeArray<Range1s>;
-        private static readonly Func<Stream, object> DecodeRange1sb = ReadBoxed<Range1sb>;
-        private static readonly Func<Stream, object> DecodeRange1sbArray = DecodeArray<Range1sb>;
-        private static readonly Func<Stream, object> DecodeRange1ui = ReadBoxed<Range1ui>;
-        private static readonly Func<Stream, object> DecodeRange1uiArray = DecodeArray<Range1ui>;
-        private static readonly Func<Stream, object> DecodeRange1ul = ReadBoxed<Range1ul>;
-        private static readonly Func<Stream, object> DecodeRange1ulArray = DecodeArray<Range1ul>;
-        private static readonly Func<Stream, object> DecodeRange1us = ReadBoxed<Range1us>;
-        private static readonly Func<Stream, object> DecodeRange1usArray = DecodeArray<Range1us>;
-
         private static readonly Func<Stream, object> DecodeC3b = ReadBoxed<C3b>;
         private static readonly Func<Stream, object> DecodeC3bArray = DecodeArray<C3b>;
-        private static readonly Func<Stream, object> DecodeC3ui = ReadBoxed<C3ui>;
-        private static readonly Func<Stream, object> DecodeC3uiArray = DecodeArray<C3ui>;
-        private static readonly Func<Stream, object> DecodeC3us = ReadBoxed<C3us>;
-        private static readonly Func<Stream, object> DecodeC3usArray = DecodeArray<C3us>;
 
         private static readonly Func<Stream, object> DecodeC4b = ReadBoxed<C4b>;
         private static readonly Func<Stream, object> DecodeC4bArray = DecodeArray<C4b>;
-        private static readonly Func<Stream, object> DecodeC4ui = ReadBoxed<C4ui>;
-        private static readonly Func<Stream, object> DecodeC4uiArray = DecodeArray<C4ui>;
-        private static readonly Func<Stream, object> DecodeC4us = ReadBoxed<C4us>;
-        private static readonly Func<Stream, object> DecodeC4usArray = DecodeArray<C4us>;
 
         private static unsafe T[] DecodeArray<T>(Stream s) where T : struct
         {

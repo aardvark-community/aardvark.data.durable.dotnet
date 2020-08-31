@@ -115,23 +115,6 @@ namespace Aardvark.Data
                 [Durable.Aardvark.V4l.Id] = EncodeV4l,
                 [Durable.Aardvark.V4lArray.Id] = EncodeV4lArray,
 
-                [Durable.Aardvark.Range1b.Id] = EncodeRange1b,
-                [Durable.Aardvark.Range1bArray.Id] = EncodeRange1bArray,
-                [Durable.Aardvark.Range1i.Id] = EncodeRange1i,
-                [Durable.Aardvark.Range1iArray.Id] = EncodeRange1iArray,
-                [Durable.Aardvark.Range1l.Id] = EncodeRange1l,
-                [Durable.Aardvark.Range1lArray.Id] = EncodeRange1lArray,
-                [Durable.Aardvark.Range1s.Id] = EncodeRange1s,
-                [Durable.Aardvark.Range1sArray.Id] = EncodeRange1sArray,
-                [Durable.Aardvark.Range1sb.Id] = EncodeRange1sb,
-                [Durable.Aardvark.Range1sbArray.Id] = EncodeRange1sbArray,
-                [Durable.Aardvark.Range1ui.Id] = EncodeRange1ui,
-                [Durable.Aardvark.Range1uiArray.Id] = EncodeRange1uiArray,
-                [Durable.Aardvark.Range1ul.Id] = EncodeRange1ul,
-                [Durable.Aardvark.Range1ulArray.Id] = EncodeRange1ulArray,
-                [Durable.Aardvark.Range1us.Id] = EncodeRange1us,
-                [Durable.Aardvark.Range1usArray.Id] = EncodeRange1usArray,
-
                 [Durable.Aardvark.Box2i.Id] = EncodeBox2i,
                 [Durable.Aardvark.Box2iArray.Id] = EncodeBox2iArray,
                 [Durable.Aardvark.Box2l.Id] = EncodeBox2l,
@@ -152,17 +135,9 @@ namespace Aardvark.Data
 
                 [Durable.Aardvark.C3b.Id] = EncodeC3b,
                 [Durable.Aardvark.C3bArray.Id] = EncodeC3bArray,
-                [Durable.Aardvark.C3ui.Id] = EncodeC3ui,
-                [Durable.Aardvark.C3uiArray.Id] = EncodeC3uiArray,
-                [Durable.Aardvark.C3us.Id] = EncodeC3us,
-                [Durable.Aardvark.C3usArray.Id] = EncodeC3usArray,
 
                 [Durable.Aardvark.C4b.Id] = EncodeC4b,
                 [Durable.Aardvark.C4bArray.Id] = EncodeC4bArray,
-                [Durable.Aardvark.C4ui.Id] = EncodeC4ui,
-                [Durable.Aardvark.C4uiArray.Id] = EncodeC4uiArray,
-                [Durable.Aardvark.C4us.Id] = EncodeC4us,
-                [Durable.Aardvark.C4usArray.Id] = EncodeC4usArray,
             };
 
             s_decoders = new Dictionary<Guid, object>
@@ -221,23 +196,6 @@ namespace Aardvark.Data
                 [Durable.Aardvark.V4l.Id] = DecodeV4l,
                 [Durable.Aardvark.V4lArray.Id] = DecodeV4lArray,
 
-                [Durable.Aardvark.Range1b.Id] = DecodeRange1b,
-                [Durable.Aardvark.Range1bArray.Id] = DecodeRange1bArray,
-                [Durable.Aardvark.Range1i.Id] = DecodeRange1i,
-                [Durable.Aardvark.Range1iArray.Id] = DecodeRange1iArray,
-                [Durable.Aardvark.Range1l.Id] = DecodeRange1l,
-                [Durable.Aardvark.Range1lArray.Id] = DecodeRange1lArray,
-                [Durable.Aardvark.Range1s.Id] = DecodeRange1s,
-                [Durable.Aardvark.Range1sArray.Id] = DecodeRange1sArray,
-                [Durable.Aardvark.Range1sb.Id] = DecodeRange1sb,
-                [Durable.Aardvark.Range1sbArray.Id] = DecodeRange1sbArray,
-                [Durable.Aardvark.Range1ui.Id] = DecodeRange1ui,
-                [Durable.Aardvark.Range1uiArray.Id] = DecodeRange1uiArray,
-                [Durable.Aardvark.Range1ul.Id] = DecodeRange1ul,
-                [Durable.Aardvark.Range1ulArray.Id] = DecodeRange1ulArray,
-                [Durable.Aardvark.Range1us.Id] = DecodeRange1us,
-                [Durable.Aardvark.Range1usArray.Id] = DecodeRange1usArray,
-
                 [Durable.Aardvark.Box2i.Id] = DecodeBox2i,
                 [Durable.Aardvark.Box2iArray.Id] = DecodeBox2iArray,
                 [Durable.Aardvark.Box2l.Id] = DecodeBox2l,
@@ -257,17 +215,9 @@ namespace Aardvark.Data
 
                 [Durable.Aardvark.C3b.Id] = DecodeC3b,
                 [Durable.Aardvark.C3bArray.Id] = DecodeC3bArray,
-                [Durable.Aardvark.C3ui.Id] = DecodeC3ui,
-                [Durable.Aardvark.C3uiArray.Id] = DecodeC3uiArray,
-                [Durable.Aardvark.C3us.Id] = DecodeC3us,
-                [Durable.Aardvark.C3usArray.Id] = DecodeC3usArray,
 
                 [Durable.Aardvark.C4b.Id] = DecodeC4b,
                 [Durable.Aardvark.C4bArray.Id] = DecodeC4bArray,
-                [Durable.Aardvark.C4ui.Id] = DecodeC4ui,
-                [Durable.Aardvark.C4uiArray.Id] = DecodeC4uiArray,
-                [Durable.Aardvark.C4us.Id] = DecodeC4us,
-                [Durable.Aardvark.C4usArray.Id] = DecodeC4usArray,
             };
 
             Init();

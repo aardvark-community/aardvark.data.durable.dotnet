@@ -31,6 +31,10 @@ open System.Collections.Generic
 module Codegen = 
 
     let doNotGenerateCodecFor = Set.ofList <| [
+        Guid("bb9da8cb-c9d6-43dd-95d6-f569c82d9af6") // Aardvark.Cell
+        Guid("8665c4d4-69c1-4b47-a493-ce452e075643") // Aardvark.CellPadded32
+        Guid("9d580e5d-a559-4c5e-9413-7675f1dfe93c") // Aardvark.Cell2d
+        Guid("3b022668-faa8-47a9-b622-a7a26060c620") // Aardvark.Cell2dPadded24
         Guid("73656667-ea6a-468f-962c-64cd4e24f409") // Aardvark.C3b
         Guid("3f34792b-e03d-4d21-a4a6-4890d5f3f67f") // Aardvark.C4b
         ]
@@ -38,6 +42,14 @@ module Codegen =
     let binaryReaderReadFuns = Map.ofList <| [
         ("Float32", "ReadSingle")
         ("Float64", "ReadDouble")
+        ("Int8", "ReadSByte")
+        ("Int16", "ReadInt16")
+        ("Int32", "ReadInt32")
+        ("Int64", "ReadInt64")
+        ("UInt8", "ReadByte")
+        ("UInt16", "ReadUInt16")
+        ("UInt32", "ReadUInt32")
+        ("UInt64", "ReadUInt64")
         ]
 
     type Entry = {
