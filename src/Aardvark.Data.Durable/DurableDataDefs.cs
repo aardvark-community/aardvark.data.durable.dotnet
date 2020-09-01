@@ -1195,6 +1195,622 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
+            /// Struct to represent an affine transformation in 2-dimensional space. It consists of a linear tranformation (invertible 2x2 matrix) and a translational component (2d vector).
+            /// </summary>
+            public static readonly Def Affine2f = new Def(
+                new Guid("2e90e758-ff1b-4805-84cf-2d382c8b95fc"),
+                "Affine2f",
+                "Struct to represent an affine transformation in 2-dimensional space. It consists of a linear tranformation (invertible 2x2 matrix) and a translational component (2d vector).",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Affine2f.
+            /// </summary>
+            public static readonly Def Affine2fArray = new Def(
+                new Guid("6e5ae9e5-ccf4-4b75-acec-9e6da550ab68"),
+                "Affine2f[]",
+                "Array of Affine2f.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Struct to represent an affine transformation in 2-dimensional space. It consists of a linear tranformation (invertible 2x2 matrix) and a translational component (2d vector).
+            /// </summary>
+            public static readonly Def Affine2d = new Def(
+                new Guid("13862bf0-30fd-4ae5-9f3d-2b18f7820f18"),
+                "Affine2d",
+                "Struct to represent an affine transformation in 2-dimensional space. It consists of a linear tranformation (invertible 2x2 matrix) and a translational component (2d vector).",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Affine2d.
+            /// </summary>
+            public static readonly Def Affine2dArray = new Def(
+                new Guid("6781406b-c840-4633-aa65-9692722dbe12"),
+                "Affine2d[]",
+                "Array of Affine2d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Struct to represent an affine transformation in 3-dimensional space. It consists of a linear tranformation (invertible 3x3 matrix) and a translational component (3d vector).
+            /// </summary>
+            public static readonly Def Affine3f = new Def(
+                new Guid("157595e2-7c63-4aa3-87c0-25163b91778a"),
+                "Affine3f",
+                "Struct to represent an affine transformation in 3-dimensional space. It consists of a linear tranformation (invertible 3x3 matrix) and a translational component (3d vector).",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Affine3f.
+            /// </summary>
+            public static readonly Def Affine3fArray = new Def(
+                new Guid("6d300cd7-ef29-4dcf-80d5-71e879f7b1e9"),
+                "Affine3f[]",
+                "Array of Affine3f.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Struct to represent an affine transformation in 3-dimensional space. It consists of a linear tranformation (invertible 3x3 matrix) and a translational component (3d vector).
+            /// </summary>
+            public static readonly Def Affine3d = new Def(
+                new Guid("ef0c8ace-2d14-4909-88b1-0d46d7ece477"),
+                "Affine3d",
+                "Struct to represent an affine transformation in 3-dimensional space. It consists of a linear tranformation (invertible 3x3 matrix) and a translational component (3d vector).",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Affine3d.
+            /// </summary>
+            public static readonly Def Affine3dArray = new Def(
+                new Guid("71cb8459-317e-46e9-b751-ae63e0ed4aef"),
+                "Affine3d[]",
+                "Array of Affine3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Represents a 2D rotation counterclockwise around the origin.
+            /// </summary>
+            public static readonly Def Rot2f = new Def(
+                new Guid("d390ffc0-33e9-4465-ad08-1041aa4984f7"),
+                "Rot2f",
+                "Represents a 2D rotation counterclockwise around the origin.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Rot2f.
+            /// </summary>
+            public static readonly Def Rot2fArray = new Def(
+                new Guid("5a4f8839-e124-4c38-9e65-fed679bc6e9e"),
+                "Rot2f[]",
+                "Array of Rot2f.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Represents a 2D rotation counterclockwise around the origin.
+            /// </summary>
+            public static readonly Def Rot2d = new Def(
+                new Guid("1a92edf5-9d85-4aec-8ee4-5bc82671680a"),
+                "Rot2d",
+                "Represents a 2D rotation counterclockwise around the origin.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Rot2d.
+            /// </summary>
+            public static readonly Def Rot2dArray = new Def(
+                new Guid("ebd26aa1-53ad-4d9a-ab64-2c3a7c11008b"),
+                "Rot2d[]",
+                "Array of Rot2d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Represents a rotation in three dimensions using a unit quaternion (W,X,Y,Z).
+            /// </summary>
+            public static readonly Def Rot3f = new Def(
+                new Guid("0ab5cb52-ee7b-42e6-8d36-1b0ff024b9c5"),
+                "Rot3f",
+                "Represents a rotation in three dimensions using a unit quaternion (W,X,Y,Z).",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Rot3f.
+            /// </summary>
+            public static readonly Def Rot3fArray = new Def(
+                new Guid("89379679-6395-4046-8100-ce4f675aa910"),
+                "Rot3f[]",
+                "Array of Rot3f.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Represents a rotation in three dimensions using a unit quaternion (W,X,Y,Z).
+            /// </summary>
+            public static readonly Def Rot3d = new Def(
+                new Guid("fbf5aacb-ed37-4784-a756-1365df952374"),
+                "Rot3d",
+                "Represents a rotation in three dimensions using a unit quaternion (W,X,Y,Z).",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Rot3d.
+            /// </summary>
+            public static readonly Def Rot3dArray = new Def(
+                new Guid("23d04982-4838-4802-9405-b5e05f24d18a"),
+                "Rot3d[]",
+                "Array of Rot3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Represents a Rigid Transformation (or Rigid Body Transformation) in 2D that is composed of a 2D rotation Rot and a subsequent translation by a 2D vector Trans. This is also called an Euclidean Transformation and is a length preserving Transformation.
+            /// </summary>
+            public static readonly Def Euclidean2f = new Def(
+                new Guid("28355b4e-63f8-45b4-8b54-97bd7c1bee7e"),
+                "Euclidean2f",
+                "Represents a Rigid Transformation (or Rigid Body Transformation) in 2D that is composed of a 2D rotation Rot and a subsequent translation by a 2D vector Trans. This is also called an Euclidean Transformation and is a length preserving Transformation.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Euclidean2f.
+            /// </summary>
+            public static readonly Def Euclidean2fArray = new Def(
+                new Guid("128891b0-ebf6-4a86-8115-a5cb55fedeca"),
+                "Euclidean2f[]",
+                "Array of Euclidean2f.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Represents a Rigid Transformation (or Rigid Body Transformation) in 2D that is composed of a 2D rotation Rot and a subsequent translation by a 2D vector Trans. This is also called an Euclidean Transformation and is a length preserving Transformation.
+            /// </summary>
+            public static readonly Def Euclidean2d = new Def(
+                new Guid("7ecf1964-cbcb-4cb5-b3df-74c5cce8b3c6"),
+                "Euclidean2d",
+                "Represents a Rigid Transformation (or Rigid Body Transformation) in 2D that is composed of a 2D rotation Rot and a subsequent translation by a 2D vector Trans. This is also called an Euclidean Transformation and is a length preserving Transformation.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Euclidean2d.
+            /// </summary>
+            public static readonly Def Euclidean2dArray = new Def(
+                new Guid("2fe8f0eb-b782-4380-b103-b7ca1de71009"),
+                "Euclidean2d[]",
+                "Array of Euclidean2d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Represents a Rigid Transformation (or Rigid Body Transformation) in 2D that is composed of a 2D rotation Rot and a subsequent translation by a 2D vector Trans. This is also called an Euclidean Transformation and is a length preserving Transformation.
+            /// </summary>
+            public static readonly Def Euclidean3f = new Def(
+                new Guid("ff4550c6-e6ba-4b5a-9144-47ec189cf0be"),
+                "Euclidean3f",
+                "Represents a Rigid Transformation (or Rigid Body Transformation) in 2D that is composed of a 2D rotation Rot and a subsequent translation by a 2D vector Trans. This is also called an Euclidean Transformation and is a length preserving Transformation.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Euclidean3f.
+            /// </summary>
+            public static readonly Def Euclidean3fArray = new Def(
+                new Guid("870f9f7d-981a-4b52-aacb-f1d02b276c94"),
+                "Euclidean3f[]",
+                "Array of Euclidean3f.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Represents a Rigid Transformation (or Rigid Body Transformation) in 2D that is composed of a 2D rotation Rot and a subsequent translation by a 2D vector Trans. This is also called an Euclidean Transformation and is a length preserving Transformation.
+            /// </summary>
+            public static readonly Def Euclidean3d = new Def(
+                new Guid("278f920c-c165-4ad0-8cec-7b3b4c0ff9a0"),
+                "Euclidean3d",
+                "Represents a Rigid Transformation (or Rigid Body Transformation) in 2D that is composed of a 2D rotation Rot and a subsequent translation by a 2D vector Trans. This is also called an Euclidean Transformation and is a length preserving Transformation.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Euclidean3d.
+            /// </summary>
+            public static readonly Def Euclidean3dArray = new Def(
+                new Guid("18e1c88c-580a-4a9f-a1c4-849a9f0f0a95"),
+                "Euclidean3d[]",
+                "Array of Euclidean3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A 2-dimensional scaling transform with different scaling values in each dimension.
+            /// </summary>
+            public static readonly Def Scale2f = new Def(
+                new Guid("cc6813f4-ce18-4a97-8ca1-d892ce394a1d"),
+                "Scale2f",
+                "A 2-dimensional scaling transform with different scaling values in each dimension.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Scale2f.
+            /// </summary>
+            public static readonly Def Scale2fArray = new Def(
+                new Guid("56c296c0-1a02-4e25-848b-b4c17ef194de"),
+                "Scale2f[]",
+                "Array of Scale2f.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A 2-dimensional scaling transform with different scaling values in each dimension.
+            /// </summary>
+            public static readonly Def Scale2d = new Def(
+                new Guid("f4e0a9ad-2e42-41d7-831d-21d008ed431a"),
+                "Scale2d",
+                "A 2-dimensional scaling transform with different scaling values in each dimension.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Scale2d.
+            /// </summary>
+            public static readonly Def Scale2dArray = new Def(
+                new Guid("a6abe320-021b-491e-89a1-72286d3c2b28"),
+                "Scale2d[]",
+                "Array of Scale2d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A 3-dimensional scaling transform with different scaling values in each dimension.
+            /// </summary>
+            public static readonly Def Scale3f = new Def(
+                new Guid("42465d9c-3f2e-4d3b-abee-2df2779157e8"),
+                "Scale3f",
+                "A 3-dimensional scaling transform with different scaling values in each dimension.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Scale3f.
+            /// </summary>
+            public static readonly Def Scale3fArray = new Def(
+                new Guid("20b5b745-a5a6-4eab-80a5-201953b22f1f"),
+                "Scale3f[]",
+                "Array of Scale3f.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A 3-dimensional scaling transform with different scaling values in each dimension.
+            /// </summary>
+            public static readonly Def Scale3d = new Def(
+                new Guid("49d4b715-69a1-440c-88ca-13d9046d0715"),
+                "Scale3d",
+                "A 3-dimensional scaling transform with different scaling values in each dimension.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Scale3d.
+            /// </summary>
+            public static readonly Def Scale3dArray = new Def(
+                new Guid("77d2eba3-d7a4-4084-91af-15d18bbaa081"),
+                "Scale3d[]",
+                "Array of Scale3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A 2-dimensional translational transform with different translation values in each dimension.
+            /// </summary>
+            public static readonly Def Shift2f = new Def(
+                new Guid("dab91ada-116a-4feb-adb5-8c6fb2bdfa09"),
+                "Shift2f",
+                "A 2-dimensional translational transform with different translation values in each dimension.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Shift2f.
+            /// </summary>
+            public static readonly Def Shift2fArray = new Def(
+                new Guid("fb665b60-b2be-45c0-a2ef-f5e2163d1025"),
+                "Shift2f[]",
+                "Array of Shift2f.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A 2-dimensional translational transform with different translation values in each dimension.
+            /// </summary>
+            public static readonly Def Shift2d = new Def(
+                new Guid("1440f172-847e-4d20-9c80-3c2862b40e45"),
+                "Shift2d",
+                "A 2-dimensional translational transform with different translation values in each dimension.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Shift2d.
+            /// </summary>
+            public static readonly Def Shift2dArray = new Def(
+                new Guid("8888fe11-34d7-423b-952f-756921eaf234"),
+                "Shift2d[]",
+                "Array of Shift2d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A 2-dimensional translational transform with different translation values in each dimension.
+            /// </summary>
+            public static readonly Def Shift3f = new Def(
+                new Guid("b278f244-0717-49a8-9a0a-193b571a6fee"),
+                "Shift3f",
+                "A 2-dimensional translational transform with different translation values in each dimension.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Shift3f.
+            /// </summary>
+            public static readonly Def Shift3fArray = new Def(
+                new Guid("6e49c963-c3d1-4b84-8ee8-a5374b04fae5"),
+                "Shift3f[]",
+                "Array of Shift3f.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A 2-dimensional translational transform with different translation values in each dimension.
+            /// </summary>
+            public static readonly Def Shift3d = new Def(
+                new Guid("a35e085b-5b24-46ec-9e8d-268c9b16371f"),
+                "Shift3d",
+                "A 2-dimensional translational transform with different translation values in each dimension.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Shift3d.
+            /// </summary>
+            public static readonly Def Shift3dArray = new Def(
+                new Guid("4fa7fb3c-bfd5-4507-ab11-0672517a870d"),
+                "Shift3d[]",
+                "Array of Shift3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Represents a Similarity Transformation in 2D that is composed of a Uniform Scale and a subsequent Euclidean transformation (2D rotation Rot and a subsequent translation by a 2D vector Trans). This is an angle preserving Transformation.
+            /// </summary>
+            public static readonly Def Similarity2f = new Def(
+                new Guid("b2fae9eb-6237-4b4c-8e8f-87daf2a2a9ce"),
+                "Similarity2f",
+                "Represents a Similarity Transformation in 2D that is composed of a Uniform Scale and a subsequent Euclidean transformation (2D rotation Rot and a subsequent translation by a 2D vector Trans). This is an angle preserving Transformation.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Similarity2f.
+            /// </summary>
+            public static readonly Def Similarity2fArray = new Def(
+                new Guid("1269612a-f81f-47db-993b-5182e5d735e3"),
+                "Similarity2f[]",
+                "Array of Similarity2f.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Represents a Similarity Transformation in 2D that is composed of a Uniform Scale and a subsequent Euclidean transformation (2D rotation Rot and a subsequent translation by a 2D vector Trans). This is an angle preserving Transformation.
+            /// </summary>
+            public static readonly Def Similarity2d = new Def(
+                new Guid("a8d1bca8-eb17-4a0a-8f05-1910bb98e3cf"),
+                "Similarity2d",
+                "Represents a Similarity Transformation in 2D that is composed of a Uniform Scale and a subsequent Euclidean transformation (2D rotation Rot and a subsequent translation by a 2D vector Trans). This is an angle preserving Transformation.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Similarity2d.
+            /// </summary>
+            public static readonly Def Similarity2dArray = new Def(
+                new Guid("697fd675-ab04-477a-a620-00d32a986503"),
+                "Similarity2d[]",
+                "Array of Similarity2d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Represents a Similarity Transformation in 3D that is composed of a Uniform Scale and a subsequent Euclidean transformation (3D rotation Rot and a subsequent translation by a 3D vector Trans). This is an angle preserving Transformation.
+            /// </summary>
+            public static readonly Def Similarity3f = new Def(
+                new Guid("c6c9f2ee-4429-4260-a086-66538d43aaad"),
+                "Similarity3f",
+                "Represents a Similarity Transformation in 3D that is composed of a Uniform Scale and a subsequent Euclidean transformation (3D rotation Rot and a subsequent translation by a 3D vector Trans). This is an angle preserving Transformation.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Similarity3f.
+            /// </summary>
+            public static readonly Def Similarity3fArray = new Def(
+                new Guid("92c53833-8e7c-41dc-a4b5-582c848bb67b"),
+                "Similarity3f[]",
+                "Array of Similarity3f.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// Represents a Similarity Transformation in 3D that is composed of a Uniform Scale and a subsequent Euclidean transformation (3D rotation Rot and a subsequent translation by a 3D vector Trans). This is an angle preserving Transformation.
+            /// </summary>
+            public static readonly Def Similarity3d = new Def(
+                new Guid("ede4cbad-f68b-4c8e-bd72-119025bd4e5d"),
+                "Similarity3d",
+                "Represents a Similarity Transformation in 3D that is composed of a Uniform Scale and a subsequent Euclidean transformation (3D rotation Rot and a subsequent translation by a 3D vector Trans). This is an angle preserving Transformation.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Similarity3d.
+            /// </summary>
+            public static readonly Def Similarity3dArray = new Def(
+                new Guid("a4033261-f55f-48e9-868a-ef70e4603126"),
+                "Similarity3d[]",
+                "Array of Similarity3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A trafo is a container for a forward and a backward matrix.
+            /// </summary>
+            public static readonly Def Trafo2f = new Def(
+                new Guid("8b7ac8b3-0981-48da-ac07-f372e7b5840f"),
+                "Trafo2f",
+                "A trafo is a container for a forward and a backward matrix.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Trafo2f.
+            /// </summary>
+            public static readonly Def Trafo2fArray = new Def(
+                new Guid("9aa73160-6a95-42d6-beac-258c27023449"),
+                "Trafo2f[]",
+                "Array of Trafo2f.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A trafo is a container for a forward and a backward matrix.
+            /// </summary>
+            public static readonly Def Trafo2d = new Def(
+                new Guid("d8cf8bc2-54e0-4aba-9d76-c7741824e20e"),
+                "Trafo2d",
+                "A trafo is a container for a forward and a backward matrix.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Trafo2d.
+            /// </summary>
+            public static readonly Def Trafo2dArray = new Def(
+                new Guid("406a6e3e-e266-44dc-93fa-2d5896b49f40"),
+                "Trafo2d[]",
+                "Array of Trafo2d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A trafo is a container for a forward and a backward matrix.
+            /// </summary>
+            public static readonly Def Trafo3f = new Def(
+                new Guid("57b5db05-9ee7-4318-b533-a69890d3796e"),
+                "Trafo3f",
+                "A trafo is a container for a forward and a backward matrix.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Trafo3f.
+            /// </summary>
+            public static readonly Def Trafo3fArray = new Def(
+                new Guid("88cf99c1-33f2-429a-826e-155f1ba85703"),
+                "Trafo3f[]",
+                "Array of Trafo3f.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A trafo is a container for a forward and a backward matrix.
+            /// </summary>
+            public static readonly Def Trafo3d = new Def(
+                new Guid("fcec8029-b8b0-432d-990d-2bd3683b53c5"),
+                "Trafo3d",
+                "A trafo is a container for a forward and a backward matrix.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Trafo3d.
+            /// </summary>
+            public static readonly Def Trafo3dArray = new Def(
+                new Guid("6400725a-1e2a-4653-a5f7-e6116157618f"),
+                "Trafo3d[]",
+                "Array of Trafo3d.",
+                None,
+                true
+                );
+
+            /// <summary>
             /// A 1-dim range with limits [Min, Max] of UInt8.
             /// </summary>
             public static readonly Def Range1b = new Def(
@@ -2356,6 +2972,50 @@ namespace Aardvark.Data
                 new Guid("a0bd7233-a2b7-41e0-ab3e-5a142a67ce5e"),
                 "Quad3d[]",
                 "Array of Quad3d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A 2D ellipse is defined by its center and two half-axes. Note that in principle any two conjugate half-diameters can be used as axes, however some algorithms require that the major and minor half axes are known. By convention in this case, axis0 is the major half axis.
+            /// </summary>
+            public static readonly Def Ellipse2d = new Def(
+                new Guid("b82f02a5-d0a8-4804-958e-441dab5189d1"),
+                "Ellipse2d",
+                "A 2D ellipse is defined by its center and two half-axes. Note that in principle any two conjugate half-diameters can be used as axes, however some algorithms require that the major and minor half axes are known. By convention in this case, axis0 is the major half axis.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Ellipse2d.
+            /// </summary>
+            public static readonly Def Ellipse2dArray = new Def(
+                new Guid("863d9c94-8594-4f47-adcf-0f2e5cbbe309"),
+                "Ellipse2d[]",
+                "Array of Ellipse2d.",
+                None,
+                true
+                );
+
+            /// <summary>
+            /// A 3D ellipse is defined by its center, its plane normal, and two half-axes. Note that in principle any two conjugate half-diameters can be used as axes, however some algorithms require that the major and minor half axes are known. By convention in this case, axis0 is the major half axis.
+            /// </summary>
+            public static readonly Def Ellipse3d = new Def(
+                new Guid("f8784424-7d25-4c8a-85bf-370a4452612c"),
+                "Ellipse3d",
+                "A 3D ellipse is defined by its center, its plane normal, and two half-axes. Note that in principle any two conjugate half-diameters can be used as axes, however some algorithms require that the major and minor half axes are known. By convention in this case, axis0 is the major half axis.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Array of Ellipse3d.
+            /// </summary>
+            public static readonly Def Ellipse3dArray = new Def(
+                new Guid("19b7fd2b-7bc5-47cb-92fd-5c2898885499"),
+                "Ellipse3d[]",
+                "Array of Ellipse3d.",
                 None,
                 true
                 );

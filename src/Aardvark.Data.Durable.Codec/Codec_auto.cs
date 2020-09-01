@@ -411,6 +411,594 @@ namespace Aardvark.Data
 
                 #endregion
 
+                #region Durable.Aardvark.Affine2f
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeAffine2f = (s, o) => { var x = (Affine2f)o; EncodeM22f(s, x.Linear); EncodeV2f(s, x.Trans); };
+                Action<BinaryWriter, object> EncodeAffine2fArray = (s, o) => EncodeArray(s, (Affine2f[])o);
+                Func<BinaryReader, object> DecodeAffine2f = s => new Affine2f((M22f)DecodeM22f(s), (V2f)DecodeV2f(s));
+                Func<BinaryReader, object> DecodeAffine2fArray = DecodeArray<Affine2f>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeAffine2f = Write<Affine2f>;
+                Action<Stream, object> EncodeAffine2fArray = (s, o) => EncodeArray(s, (Affine2f[])o);
+                Func<Stream, object> DecodeAffine2f = ReadBoxed<Affine2f>;
+                Func<Stream, object> DecodeAffine2fArray = DecodeArray<Affine2f>;
+                #endif
+                s_encoders[Durable.Aardvark.Affine2f.Id] = EncodeAffine2f;
+                s_decoders[Durable.Aardvark.Affine2f.Id] = DecodeAffine2f;
+                s_encoders[Durable.Aardvark.Affine2fArray.Id] = EncodeAffine2fArray;
+                s_decoders[Durable.Aardvark.Affine2fArray.Id] = DecodeAffine2fArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Affine2d
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeAffine2d = (s, o) => { var x = (Affine2d)o; EncodeM22d(s, x.Linear); EncodeV2d(s, x.Trans); };
+                Action<BinaryWriter, object> EncodeAffine2dArray = (s, o) => EncodeArray(s, (Affine2d[])o);
+                Func<BinaryReader, object> DecodeAffine2d = s => new Affine2d((M22d)DecodeM22d(s), (V2d)DecodeV2d(s));
+                Func<BinaryReader, object> DecodeAffine2dArray = DecodeArray<Affine2d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeAffine2d = Write<Affine2d>;
+                Action<Stream, object> EncodeAffine2dArray = (s, o) => EncodeArray(s, (Affine2d[])o);
+                Func<Stream, object> DecodeAffine2d = ReadBoxed<Affine2d>;
+                Func<Stream, object> DecodeAffine2dArray = DecodeArray<Affine2d>;
+                #endif
+                s_encoders[Durable.Aardvark.Affine2d.Id] = EncodeAffine2d;
+                s_decoders[Durable.Aardvark.Affine2d.Id] = DecodeAffine2d;
+                s_encoders[Durable.Aardvark.Affine2dArray.Id] = EncodeAffine2dArray;
+                s_decoders[Durable.Aardvark.Affine2dArray.Id] = DecodeAffine2dArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Affine3f
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeAffine3f = (s, o) => { var x = (Affine3f)o; EncodeM33f(s, x.Linear); EncodeV3f(s, x.Trans); };
+                Action<BinaryWriter, object> EncodeAffine3fArray = (s, o) => EncodeArray(s, (Affine3f[])o);
+                Func<BinaryReader, object> DecodeAffine3f = s => new Affine3f((M33f)DecodeM33f(s), (V3f)DecodeV3f(s));
+                Func<BinaryReader, object> DecodeAffine3fArray = DecodeArray<Affine3f>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeAffine3f = Write<Affine3f>;
+                Action<Stream, object> EncodeAffine3fArray = (s, o) => EncodeArray(s, (Affine3f[])o);
+                Func<Stream, object> DecodeAffine3f = ReadBoxed<Affine3f>;
+                Func<Stream, object> DecodeAffine3fArray = DecodeArray<Affine3f>;
+                #endif
+                s_encoders[Durable.Aardvark.Affine3f.Id] = EncodeAffine3f;
+                s_decoders[Durable.Aardvark.Affine3f.Id] = DecodeAffine3f;
+                s_encoders[Durable.Aardvark.Affine3fArray.Id] = EncodeAffine3fArray;
+                s_decoders[Durable.Aardvark.Affine3fArray.Id] = DecodeAffine3fArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Affine3d
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeAffine3d = (s, o) => { var x = (Affine3d)o; EncodeM33d(s, x.Linear); EncodeV3d(s, x.Trans); };
+                Action<BinaryWriter, object> EncodeAffine3dArray = (s, o) => EncodeArray(s, (Affine3d[])o);
+                Func<BinaryReader, object> DecodeAffine3d = s => new Affine3d((M33d)DecodeM33d(s), (V3d)DecodeV3d(s));
+                Func<BinaryReader, object> DecodeAffine3dArray = DecodeArray<Affine3d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeAffine3d = Write<Affine3d>;
+                Action<Stream, object> EncodeAffine3dArray = (s, o) => EncodeArray(s, (Affine3d[])o);
+                Func<Stream, object> DecodeAffine3d = ReadBoxed<Affine3d>;
+                Func<Stream, object> DecodeAffine3dArray = DecodeArray<Affine3d>;
+                #endif
+                s_encoders[Durable.Aardvark.Affine3d.Id] = EncodeAffine3d;
+                s_decoders[Durable.Aardvark.Affine3d.Id] = DecodeAffine3d;
+                s_encoders[Durable.Aardvark.Affine3dArray.Id] = EncodeAffine3dArray;
+                s_decoders[Durable.Aardvark.Affine3dArray.Id] = DecodeAffine3dArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Rot2f
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeRot2f = (s, o) => { var x = (Rot2f)o; s.Write(x.Angle); };
+                Action<BinaryWriter, object> EncodeRot2fArray = (s, o) => EncodeArray(s, (Rot2f[])o);
+                Func<BinaryReader, object> DecodeRot2f = s => new Rot2f(s.ReadSingle());
+                Func<BinaryReader, object> DecodeRot2fArray = DecodeArray<Rot2f>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeRot2f = Write<Rot2f>;
+                Action<Stream, object> EncodeRot2fArray = (s, o) => EncodeArray(s, (Rot2f[])o);
+                Func<Stream, object> DecodeRot2f = ReadBoxed<Rot2f>;
+                Func<Stream, object> DecodeRot2fArray = DecodeArray<Rot2f>;
+                #endif
+                s_encoders[Durable.Aardvark.Rot2f.Id] = EncodeRot2f;
+                s_decoders[Durable.Aardvark.Rot2f.Id] = DecodeRot2f;
+                s_encoders[Durable.Aardvark.Rot2fArray.Id] = EncodeRot2fArray;
+                s_decoders[Durable.Aardvark.Rot2fArray.Id] = DecodeRot2fArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Rot2d
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeRot2d = (s, o) => { var x = (Rot2d)o; s.Write(x.Angle); };
+                Action<BinaryWriter, object> EncodeRot2dArray = (s, o) => EncodeArray(s, (Rot2d[])o);
+                Func<BinaryReader, object> DecodeRot2d = s => new Rot2d(s.ReadDouble());
+                Func<BinaryReader, object> DecodeRot2dArray = DecodeArray<Rot2d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeRot2d = Write<Rot2d>;
+                Action<Stream, object> EncodeRot2dArray = (s, o) => EncodeArray(s, (Rot2d[])o);
+                Func<Stream, object> DecodeRot2d = ReadBoxed<Rot2d>;
+                Func<Stream, object> DecodeRot2dArray = DecodeArray<Rot2d>;
+                #endif
+                s_encoders[Durable.Aardvark.Rot2d.Id] = EncodeRot2d;
+                s_decoders[Durable.Aardvark.Rot2d.Id] = DecodeRot2d;
+                s_encoders[Durable.Aardvark.Rot2dArray.Id] = EncodeRot2dArray;
+                s_decoders[Durable.Aardvark.Rot2dArray.Id] = DecodeRot2dArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Rot3f
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeRot3f = (s, o) => { var x = (Rot3f)o; s.Write(x.W); s.Write(x.X); s.Write(x.Y); s.Write(x.Z); };
+                Action<BinaryWriter, object> EncodeRot3fArray = (s, o) => EncodeArray(s, (Rot3f[])o);
+                Func<BinaryReader, object> DecodeRot3f = s => new Rot3f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
+                Func<BinaryReader, object> DecodeRot3fArray = DecodeArray<Rot3f>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeRot3f = Write<Rot3f>;
+                Action<Stream, object> EncodeRot3fArray = (s, o) => EncodeArray(s, (Rot3f[])o);
+                Func<Stream, object> DecodeRot3f = ReadBoxed<Rot3f>;
+                Func<Stream, object> DecodeRot3fArray = DecodeArray<Rot3f>;
+                #endif
+                s_encoders[Durable.Aardvark.Rot3f.Id] = EncodeRot3f;
+                s_decoders[Durable.Aardvark.Rot3f.Id] = DecodeRot3f;
+                s_encoders[Durable.Aardvark.Rot3fArray.Id] = EncodeRot3fArray;
+                s_decoders[Durable.Aardvark.Rot3fArray.Id] = DecodeRot3fArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Rot3d
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeRot3d = (s, o) => { var x = (Rot3d)o; s.Write(x.W); s.Write(x.X); s.Write(x.Y); s.Write(x.Z); };
+                Action<BinaryWriter, object> EncodeRot3dArray = (s, o) => EncodeArray(s, (Rot3d[])o);
+                Func<BinaryReader, object> DecodeRot3d = s => new Rot3d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
+                Func<BinaryReader, object> DecodeRot3dArray = DecodeArray<Rot3d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeRot3d = Write<Rot3d>;
+                Action<Stream, object> EncodeRot3dArray = (s, o) => EncodeArray(s, (Rot3d[])o);
+                Func<Stream, object> DecodeRot3d = ReadBoxed<Rot3d>;
+                Func<Stream, object> DecodeRot3dArray = DecodeArray<Rot3d>;
+                #endif
+                s_encoders[Durable.Aardvark.Rot3d.Id] = EncodeRot3d;
+                s_decoders[Durable.Aardvark.Rot3d.Id] = DecodeRot3d;
+                s_encoders[Durable.Aardvark.Rot3dArray.Id] = EncodeRot3dArray;
+                s_decoders[Durable.Aardvark.Rot3dArray.Id] = DecodeRot3dArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Euclidean2f
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeEuclidean2f = (s, o) => { var x = (Euclidean2f)o; EncodeRot2f(s, x.Rot); EncodeV2f(s, x.Trans); };
+                Action<BinaryWriter, object> EncodeEuclidean2fArray = (s, o) => EncodeArray(s, (Euclidean2f[])o);
+                Func<BinaryReader, object> DecodeEuclidean2f = s => new Euclidean2f((Rot2f)DecodeRot2f(s), (V2f)DecodeV2f(s));
+                Func<BinaryReader, object> DecodeEuclidean2fArray = DecodeArray<Euclidean2f>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeEuclidean2f = Write<Euclidean2f>;
+                Action<Stream, object> EncodeEuclidean2fArray = (s, o) => EncodeArray(s, (Euclidean2f[])o);
+                Func<Stream, object> DecodeEuclidean2f = ReadBoxed<Euclidean2f>;
+                Func<Stream, object> DecodeEuclidean2fArray = DecodeArray<Euclidean2f>;
+                #endif
+                s_encoders[Durable.Aardvark.Euclidean2f.Id] = EncodeEuclidean2f;
+                s_decoders[Durable.Aardvark.Euclidean2f.Id] = DecodeEuclidean2f;
+                s_encoders[Durable.Aardvark.Euclidean2fArray.Id] = EncodeEuclidean2fArray;
+                s_decoders[Durable.Aardvark.Euclidean2fArray.Id] = DecodeEuclidean2fArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Euclidean2d
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeEuclidean2d = (s, o) => { var x = (Euclidean2d)o; EncodeRot2d(s, x.Rot); EncodeV2d(s, x.Trans); };
+                Action<BinaryWriter, object> EncodeEuclidean2dArray = (s, o) => EncodeArray(s, (Euclidean2d[])o);
+                Func<BinaryReader, object> DecodeEuclidean2d = s => new Euclidean2d((Rot2d)DecodeRot2d(s), (V2d)DecodeV2d(s));
+                Func<BinaryReader, object> DecodeEuclidean2dArray = DecodeArray<Euclidean2d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeEuclidean2d = Write<Euclidean2d>;
+                Action<Stream, object> EncodeEuclidean2dArray = (s, o) => EncodeArray(s, (Euclidean2d[])o);
+                Func<Stream, object> DecodeEuclidean2d = ReadBoxed<Euclidean2d>;
+                Func<Stream, object> DecodeEuclidean2dArray = DecodeArray<Euclidean2d>;
+                #endif
+                s_encoders[Durable.Aardvark.Euclidean2d.Id] = EncodeEuclidean2d;
+                s_decoders[Durable.Aardvark.Euclidean2d.Id] = DecodeEuclidean2d;
+                s_encoders[Durable.Aardvark.Euclidean2dArray.Id] = EncodeEuclidean2dArray;
+                s_decoders[Durable.Aardvark.Euclidean2dArray.Id] = DecodeEuclidean2dArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Euclidean3f
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeEuclidean3f = (s, o) => { var x = (Euclidean3f)o; EncodeRot3f(s, x.Rot); EncodeV3f(s, x.Trans); };
+                Action<BinaryWriter, object> EncodeEuclidean3fArray = (s, o) => EncodeArray(s, (Euclidean3f[])o);
+                Func<BinaryReader, object> DecodeEuclidean3f = s => new Euclidean3f((Rot3f)DecodeRot3f(s), (V3f)DecodeV3f(s));
+                Func<BinaryReader, object> DecodeEuclidean3fArray = DecodeArray<Euclidean3f>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeEuclidean3f = Write<Euclidean3f>;
+                Action<Stream, object> EncodeEuclidean3fArray = (s, o) => EncodeArray(s, (Euclidean3f[])o);
+                Func<Stream, object> DecodeEuclidean3f = ReadBoxed<Euclidean3f>;
+                Func<Stream, object> DecodeEuclidean3fArray = DecodeArray<Euclidean3f>;
+                #endif
+                s_encoders[Durable.Aardvark.Euclidean3f.Id] = EncodeEuclidean3f;
+                s_decoders[Durable.Aardvark.Euclidean3f.Id] = DecodeEuclidean3f;
+                s_encoders[Durable.Aardvark.Euclidean3fArray.Id] = EncodeEuclidean3fArray;
+                s_decoders[Durable.Aardvark.Euclidean3fArray.Id] = DecodeEuclidean3fArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Euclidean3d
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeEuclidean3d = (s, o) => { var x = (Euclidean3d)o; EncodeRot3d(s, x.Rot); EncodeV3d(s, x.Trans); };
+                Action<BinaryWriter, object> EncodeEuclidean3dArray = (s, o) => EncodeArray(s, (Euclidean3d[])o);
+                Func<BinaryReader, object> DecodeEuclidean3d = s => new Euclidean3d((Rot3d)DecodeRot3d(s), (V3d)DecodeV3d(s));
+                Func<BinaryReader, object> DecodeEuclidean3dArray = DecodeArray<Euclidean3d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeEuclidean3d = Write<Euclidean3d>;
+                Action<Stream, object> EncodeEuclidean3dArray = (s, o) => EncodeArray(s, (Euclidean3d[])o);
+                Func<Stream, object> DecodeEuclidean3d = ReadBoxed<Euclidean3d>;
+                Func<Stream, object> DecodeEuclidean3dArray = DecodeArray<Euclidean3d>;
+                #endif
+                s_encoders[Durable.Aardvark.Euclidean3d.Id] = EncodeEuclidean3d;
+                s_decoders[Durable.Aardvark.Euclidean3d.Id] = DecodeEuclidean3d;
+                s_encoders[Durable.Aardvark.Euclidean3dArray.Id] = EncodeEuclidean3dArray;
+                s_decoders[Durable.Aardvark.Euclidean3dArray.Id] = DecodeEuclidean3dArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Scale2f
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeScale2f = (s, o) => { var x = (Scale2f)o; EncodeV2f(s, x.V); };
+                Action<BinaryWriter, object> EncodeScale2fArray = (s, o) => EncodeArray(s, (Scale2f[])o);
+                Func<BinaryReader, object> DecodeScale2f = s => new Scale2f((V2f)DecodeV2f(s));
+                Func<BinaryReader, object> DecodeScale2fArray = DecodeArray<Scale2f>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeScale2f = Write<Scale2f>;
+                Action<Stream, object> EncodeScale2fArray = (s, o) => EncodeArray(s, (Scale2f[])o);
+                Func<Stream, object> DecodeScale2f = ReadBoxed<Scale2f>;
+                Func<Stream, object> DecodeScale2fArray = DecodeArray<Scale2f>;
+                #endif
+                s_encoders[Durable.Aardvark.Scale2f.Id] = EncodeScale2f;
+                s_decoders[Durable.Aardvark.Scale2f.Id] = DecodeScale2f;
+                s_encoders[Durable.Aardvark.Scale2fArray.Id] = EncodeScale2fArray;
+                s_decoders[Durable.Aardvark.Scale2fArray.Id] = DecodeScale2fArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Scale2d
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeScale2d = (s, o) => { var x = (Scale2d)o; EncodeV2d(s, x.V); };
+                Action<BinaryWriter, object> EncodeScale2dArray = (s, o) => EncodeArray(s, (Scale2d[])o);
+                Func<BinaryReader, object> DecodeScale2d = s => new Scale2d((V2d)DecodeV2d(s));
+                Func<BinaryReader, object> DecodeScale2dArray = DecodeArray<Scale2d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeScale2d = Write<Scale2d>;
+                Action<Stream, object> EncodeScale2dArray = (s, o) => EncodeArray(s, (Scale2d[])o);
+                Func<Stream, object> DecodeScale2d = ReadBoxed<Scale2d>;
+                Func<Stream, object> DecodeScale2dArray = DecodeArray<Scale2d>;
+                #endif
+                s_encoders[Durable.Aardvark.Scale2d.Id] = EncodeScale2d;
+                s_decoders[Durable.Aardvark.Scale2d.Id] = DecodeScale2d;
+                s_encoders[Durable.Aardvark.Scale2dArray.Id] = EncodeScale2dArray;
+                s_decoders[Durable.Aardvark.Scale2dArray.Id] = DecodeScale2dArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Scale3f
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeScale3f = (s, o) => { var x = (Scale3f)o; EncodeV3f(s, x.V); };
+                Action<BinaryWriter, object> EncodeScale3fArray = (s, o) => EncodeArray(s, (Scale3f[])o);
+                Func<BinaryReader, object> DecodeScale3f = s => new Scale3f((V3f)DecodeV3f(s));
+                Func<BinaryReader, object> DecodeScale3fArray = DecodeArray<Scale3f>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeScale3f = Write<Scale3f>;
+                Action<Stream, object> EncodeScale3fArray = (s, o) => EncodeArray(s, (Scale3f[])o);
+                Func<Stream, object> DecodeScale3f = ReadBoxed<Scale3f>;
+                Func<Stream, object> DecodeScale3fArray = DecodeArray<Scale3f>;
+                #endif
+                s_encoders[Durable.Aardvark.Scale3f.Id] = EncodeScale3f;
+                s_decoders[Durable.Aardvark.Scale3f.Id] = DecodeScale3f;
+                s_encoders[Durable.Aardvark.Scale3fArray.Id] = EncodeScale3fArray;
+                s_decoders[Durable.Aardvark.Scale3fArray.Id] = DecodeScale3fArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Scale3d
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeScale3d = (s, o) => { var x = (Scale3d)o; EncodeV3d(s, x.V); };
+                Action<BinaryWriter, object> EncodeScale3dArray = (s, o) => EncodeArray(s, (Scale3d[])o);
+                Func<BinaryReader, object> DecodeScale3d = s => new Scale3d((V3d)DecodeV3d(s));
+                Func<BinaryReader, object> DecodeScale3dArray = DecodeArray<Scale3d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeScale3d = Write<Scale3d>;
+                Action<Stream, object> EncodeScale3dArray = (s, o) => EncodeArray(s, (Scale3d[])o);
+                Func<Stream, object> DecodeScale3d = ReadBoxed<Scale3d>;
+                Func<Stream, object> DecodeScale3dArray = DecodeArray<Scale3d>;
+                #endif
+                s_encoders[Durable.Aardvark.Scale3d.Id] = EncodeScale3d;
+                s_decoders[Durable.Aardvark.Scale3d.Id] = DecodeScale3d;
+                s_encoders[Durable.Aardvark.Scale3dArray.Id] = EncodeScale3dArray;
+                s_decoders[Durable.Aardvark.Scale3dArray.Id] = DecodeScale3dArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Shift2f
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeShift2f = (s, o) => { var x = (Shift2f)o; EncodeV2f(s, x.V); };
+                Action<BinaryWriter, object> EncodeShift2fArray = (s, o) => EncodeArray(s, (Shift2f[])o);
+                Func<BinaryReader, object> DecodeShift2f = s => new Shift2f((V2f)DecodeV2f(s));
+                Func<BinaryReader, object> DecodeShift2fArray = DecodeArray<Shift2f>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeShift2f = Write<Shift2f>;
+                Action<Stream, object> EncodeShift2fArray = (s, o) => EncodeArray(s, (Shift2f[])o);
+                Func<Stream, object> DecodeShift2f = ReadBoxed<Shift2f>;
+                Func<Stream, object> DecodeShift2fArray = DecodeArray<Shift2f>;
+                #endif
+                s_encoders[Durable.Aardvark.Shift2f.Id] = EncodeShift2f;
+                s_decoders[Durable.Aardvark.Shift2f.Id] = DecodeShift2f;
+                s_encoders[Durable.Aardvark.Shift2fArray.Id] = EncodeShift2fArray;
+                s_decoders[Durable.Aardvark.Shift2fArray.Id] = DecodeShift2fArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Shift2d
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeShift2d = (s, o) => { var x = (Shift2d)o; EncodeV2d(s, x.V); };
+                Action<BinaryWriter, object> EncodeShift2dArray = (s, o) => EncodeArray(s, (Shift2d[])o);
+                Func<BinaryReader, object> DecodeShift2d = s => new Shift2d((V2d)DecodeV2d(s));
+                Func<BinaryReader, object> DecodeShift2dArray = DecodeArray<Shift2d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeShift2d = Write<Shift2d>;
+                Action<Stream, object> EncodeShift2dArray = (s, o) => EncodeArray(s, (Shift2d[])o);
+                Func<Stream, object> DecodeShift2d = ReadBoxed<Shift2d>;
+                Func<Stream, object> DecodeShift2dArray = DecodeArray<Shift2d>;
+                #endif
+                s_encoders[Durable.Aardvark.Shift2d.Id] = EncodeShift2d;
+                s_decoders[Durable.Aardvark.Shift2d.Id] = DecodeShift2d;
+                s_encoders[Durable.Aardvark.Shift2dArray.Id] = EncodeShift2dArray;
+                s_decoders[Durable.Aardvark.Shift2dArray.Id] = DecodeShift2dArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Shift3f
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeShift3f = (s, o) => { var x = (Shift3f)o; EncodeV3f(s, x.V); };
+                Action<BinaryWriter, object> EncodeShift3fArray = (s, o) => EncodeArray(s, (Shift3f[])o);
+                Func<BinaryReader, object> DecodeShift3f = s => new Shift3f((V3f)DecodeV3f(s));
+                Func<BinaryReader, object> DecodeShift3fArray = DecodeArray<Shift3f>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeShift3f = Write<Shift3f>;
+                Action<Stream, object> EncodeShift3fArray = (s, o) => EncodeArray(s, (Shift3f[])o);
+                Func<Stream, object> DecodeShift3f = ReadBoxed<Shift3f>;
+                Func<Stream, object> DecodeShift3fArray = DecodeArray<Shift3f>;
+                #endif
+                s_encoders[Durable.Aardvark.Shift3f.Id] = EncodeShift3f;
+                s_decoders[Durable.Aardvark.Shift3f.Id] = DecodeShift3f;
+                s_encoders[Durable.Aardvark.Shift3fArray.Id] = EncodeShift3fArray;
+                s_decoders[Durable.Aardvark.Shift3fArray.Id] = DecodeShift3fArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Shift3d
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeShift3d = (s, o) => { var x = (Shift3d)o; EncodeV3d(s, x.V); };
+                Action<BinaryWriter, object> EncodeShift3dArray = (s, o) => EncodeArray(s, (Shift3d[])o);
+                Func<BinaryReader, object> DecodeShift3d = s => new Shift3d((V3d)DecodeV3d(s));
+                Func<BinaryReader, object> DecodeShift3dArray = DecodeArray<Shift3d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeShift3d = Write<Shift3d>;
+                Action<Stream, object> EncodeShift3dArray = (s, o) => EncodeArray(s, (Shift3d[])o);
+                Func<Stream, object> DecodeShift3d = ReadBoxed<Shift3d>;
+                Func<Stream, object> DecodeShift3dArray = DecodeArray<Shift3d>;
+                #endif
+                s_encoders[Durable.Aardvark.Shift3d.Id] = EncodeShift3d;
+                s_decoders[Durable.Aardvark.Shift3d.Id] = DecodeShift3d;
+                s_encoders[Durable.Aardvark.Shift3dArray.Id] = EncodeShift3dArray;
+                s_decoders[Durable.Aardvark.Shift3dArray.Id] = DecodeShift3dArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Similarity2f
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeSimilarity2f = (s, o) => { var x = (Similarity2f)o; s.Write(x.Scale); EncodeEuclidean2f(s, x.Euclidean); };
+                Action<BinaryWriter, object> EncodeSimilarity2fArray = (s, o) => EncodeArray(s, (Similarity2f[])o);
+                Func<BinaryReader, object> DecodeSimilarity2f = s => new Similarity2f(s.ReadSingle(), (Euclidean2f)DecodeEuclidean2f(s));
+                Func<BinaryReader, object> DecodeSimilarity2fArray = DecodeArray<Similarity2f>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeSimilarity2f = Write<Similarity2f>;
+                Action<Stream, object> EncodeSimilarity2fArray = (s, o) => EncodeArray(s, (Similarity2f[])o);
+                Func<Stream, object> DecodeSimilarity2f = ReadBoxed<Similarity2f>;
+                Func<Stream, object> DecodeSimilarity2fArray = DecodeArray<Similarity2f>;
+                #endif
+                s_encoders[Durable.Aardvark.Similarity2f.Id] = EncodeSimilarity2f;
+                s_decoders[Durable.Aardvark.Similarity2f.Id] = DecodeSimilarity2f;
+                s_encoders[Durable.Aardvark.Similarity2fArray.Id] = EncodeSimilarity2fArray;
+                s_decoders[Durable.Aardvark.Similarity2fArray.Id] = DecodeSimilarity2fArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Similarity2d
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeSimilarity2d = (s, o) => { var x = (Similarity2d)o; s.Write(x.Scale); EncodeEuclidean2d(s, x.Euclidean); };
+                Action<BinaryWriter, object> EncodeSimilarity2dArray = (s, o) => EncodeArray(s, (Similarity2d[])o);
+                Func<BinaryReader, object> DecodeSimilarity2d = s => new Similarity2d(s.ReadDouble(), (Euclidean2d)DecodeEuclidean2d(s));
+                Func<BinaryReader, object> DecodeSimilarity2dArray = DecodeArray<Similarity2d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeSimilarity2d = Write<Similarity2d>;
+                Action<Stream, object> EncodeSimilarity2dArray = (s, o) => EncodeArray(s, (Similarity2d[])o);
+                Func<Stream, object> DecodeSimilarity2d = ReadBoxed<Similarity2d>;
+                Func<Stream, object> DecodeSimilarity2dArray = DecodeArray<Similarity2d>;
+                #endif
+                s_encoders[Durable.Aardvark.Similarity2d.Id] = EncodeSimilarity2d;
+                s_decoders[Durable.Aardvark.Similarity2d.Id] = DecodeSimilarity2d;
+                s_encoders[Durable.Aardvark.Similarity2dArray.Id] = EncodeSimilarity2dArray;
+                s_decoders[Durable.Aardvark.Similarity2dArray.Id] = DecodeSimilarity2dArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Similarity3f
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeSimilarity3f = (s, o) => { var x = (Similarity3f)o; s.Write(x.Scale); EncodeEuclidean3f(s, x.Euclidean); };
+                Action<BinaryWriter, object> EncodeSimilarity3fArray = (s, o) => EncodeArray(s, (Similarity3f[])o);
+                Func<BinaryReader, object> DecodeSimilarity3f = s => new Similarity3f(s.ReadSingle(), (Euclidean3f)DecodeEuclidean3f(s));
+                Func<BinaryReader, object> DecodeSimilarity3fArray = DecodeArray<Similarity3f>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeSimilarity3f = Write<Similarity3f>;
+                Action<Stream, object> EncodeSimilarity3fArray = (s, o) => EncodeArray(s, (Similarity3f[])o);
+                Func<Stream, object> DecodeSimilarity3f = ReadBoxed<Similarity3f>;
+                Func<Stream, object> DecodeSimilarity3fArray = DecodeArray<Similarity3f>;
+                #endif
+                s_encoders[Durable.Aardvark.Similarity3f.Id] = EncodeSimilarity3f;
+                s_decoders[Durable.Aardvark.Similarity3f.Id] = DecodeSimilarity3f;
+                s_encoders[Durable.Aardvark.Similarity3fArray.Id] = EncodeSimilarity3fArray;
+                s_decoders[Durable.Aardvark.Similarity3fArray.Id] = DecodeSimilarity3fArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Similarity3d
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeSimilarity3d = (s, o) => { var x = (Similarity3d)o; s.Write(x.Scale); EncodeEuclidean3d(s, x.Euclidean); };
+                Action<BinaryWriter, object> EncodeSimilarity3dArray = (s, o) => EncodeArray(s, (Similarity3d[])o);
+                Func<BinaryReader, object> DecodeSimilarity3d = s => new Similarity3d(s.ReadDouble(), (Euclidean3d)DecodeEuclidean3d(s));
+                Func<BinaryReader, object> DecodeSimilarity3dArray = DecodeArray<Similarity3d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeSimilarity3d = Write<Similarity3d>;
+                Action<Stream, object> EncodeSimilarity3dArray = (s, o) => EncodeArray(s, (Similarity3d[])o);
+                Func<Stream, object> DecodeSimilarity3d = ReadBoxed<Similarity3d>;
+                Func<Stream, object> DecodeSimilarity3dArray = DecodeArray<Similarity3d>;
+                #endif
+                s_encoders[Durable.Aardvark.Similarity3d.Id] = EncodeSimilarity3d;
+                s_decoders[Durable.Aardvark.Similarity3d.Id] = DecodeSimilarity3d;
+                s_encoders[Durable.Aardvark.Similarity3dArray.Id] = EncodeSimilarity3dArray;
+                s_decoders[Durable.Aardvark.Similarity3dArray.Id] = DecodeSimilarity3dArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Trafo2f
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeTrafo2f = (s, o) => { var x = (Trafo2f)o; EncodeM33f(s, x.Forward); EncodeM33f(s, x.Backward); };
+                Action<BinaryWriter, object> EncodeTrafo2fArray = (s, o) => EncodeArray(s, (Trafo2f[])o);
+                Func<BinaryReader, object> DecodeTrafo2f = s => new Trafo2f((M33f)DecodeM33f(s), (M33f)DecodeM33f(s));
+                Func<BinaryReader, object> DecodeTrafo2fArray = DecodeArray<Trafo2f>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeTrafo2f = Write<Trafo2f>;
+                Action<Stream, object> EncodeTrafo2fArray = (s, o) => EncodeArray(s, (Trafo2f[])o);
+                Func<Stream, object> DecodeTrafo2f = ReadBoxed<Trafo2f>;
+                Func<Stream, object> DecodeTrafo2fArray = DecodeArray<Trafo2f>;
+                #endif
+                s_encoders[Durable.Aardvark.Trafo2f.Id] = EncodeTrafo2f;
+                s_decoders[Durable.Aardvark.Trafo2f.Id] = DecodeTrafo2f;
+                s_encoders[Durable.Aardvark.Trafo2fArray.Id] = EncodeTrafo2fArray;
+                s_decoders[Durable.Aardvark.Trafo2fArray.Id] = DecodeTrafo2fArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Trafo2d
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeTrafo2d = (s, o) => { var x = (Trafo2d)o; EncodeM33d(s, x.Forward); EncodeM33d(s, x.Backward); };
+                Action<BinaryWriter, object> EncodeTrafo2dArray = (s, o) => EncodeArray(s, (Trafo2d[])o);
+                Func<BinaryReader, object> DecodeTrafo2d = s => new Trafo2d((M33d)DecodeM33d(s), (M33d)DecodeM33d(s));
+                Func<BinaryReader, object> DecodeTrafo2dArray = DecodeArray<Trafo2d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeTrafo2d = Write<Trafo2d>;
+                Action<Stream, object> EncodeTrafo2dArray = (s, o) => EncodeArray(s, (Trafo2d[])o);
+                Func<Stream, object> DecodeTrafo2d = ReadBoxed<Trafo2d>;
+                Func<Stream, object> DecodeTrafo2dArray = DecodeArray<Trafo2d>;
+                #endif
+                s_encoders[Durable.Aardvark.Trafo2d.Id] = EncodeTrafo2d;
+                s_decoders[Durable.Aardvark.Trafo2d.Id] = DecodeTrafo2d;
+                s_encoders[Durable.Aardvark.Trafo2dArray.Id] = EncodeTrafo2dArray;
+                s_decoders[Durable.Aardvark.Trafo2dArray.Id] = DecodeTrafo2dArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Trafo3f
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeTrafo3f = (s, o) => { var x = (Trafo3f)o; EncodeM44f(s, x.Forward); EncodeM44f(s, x.Backward); };
+                Action<BinaryWriter, object> EncodeTrafo3fArray = (s, o) => EncodeArray(s, (Trafo3f[])o);
+                Func<BinaryReader, object> DecodeTrafo3f = s => new Trafo3f((M44f)DecodeM44f(s), (M44f)DecodeM44f(s));
+                Func<BinaryReader, object> DecodeTrafo3fArray = DecodeArray<Trafo3f>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeTrafo3f = Write<Trafo3f>;
+                Action<Stream, object> EncodeTrafo3fArray = (s, o) => EncodeArray(s, (Trafo3f[])o);
+                Func<Stream, object> DecodeTrafo3f = ReadBoxed<Trafo3f>;
+                Func<Stream, object> DecodeTrafo3fArray = DecodeArray<Trafo3f>;
+                #endif
+                s_encoders[Durable.Aardvark.Trafo3f.Id] = EncodeTrafo3f;
+                s_decoders[Durable.Aardvark.Trafo3f.Id] = DecodeTrafo3f;
+                s_encoders[Durable.Aardvark.Trafo3fArray.Id] = EncodeTrafo3fArray;
+                s_decoders[Durable.Aardvark.Trafo3fArray.Id] = DecodeTrafo3fArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Trafo3d
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeTrafo3d = (s, o) => { var x = (Trafo3d)o; EncodeM44d(s, x.Forward); EncodeM44d(s, x.Backward); };
+                Action<BinaryWriter, object> EncodeTrafo3dArray = (s, o) => EncodeArray(s, (Trafo3d[])o);
+                Func<BinaryReader, object> DecodeTrafo3d = s => new Trafo3d((M44d)DecodeM44d(s), (M44d)DecodeM44d(s));
+                Func<BinaryReader, object> DecodeTrafo3dArray = DecodeArray<Trafo3d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeTrafo3d = Write<Trafo3d>;
+                Action<Stream, object> EncodeTrafo3dArray = (s, o) => EncodeArray(s, (Trafo3d[])o);
+                Func<Stream, object> DecodeTrafo3d = ReadBoxed<Trafo3d>;
+                Func<Stream, object> DecodeTrafo3dArray = DecodeArray<Trafo3d>;
+                #endif
+                s_encoders[Durable.Aardvark.Trafo3d.Id] = EncodeTrafo3d;
+                s_decoders[Durable.Aardvark.Trafo3d.Id] = DecodeTrafo3d;
+                s_encoders[Durable.Aardvark.Trafo3dArray.Id] = EncodeTrafo3dArray;
+                s_decoders[Durable.Aardvark.Trafo3dArray.Id] = DecodeTrafo3dArray;
+
+                #endregion
+
                 #region Durable.Aardvark.Range1b
 
                 #if NETSTANDARD2_0 || NET472
@@ -1374,6 +1962,48 @@ namespace Aardvark.Data
                 s_decoders[Durable.Aardvark.Quad3d.Id] = DecodeQuad3d;
                 s_encoders[Durable.Aardvark.Quad3dArray.Id] = EncodeQuad3dArray;
                 s_decoders[Durable.Aardvark.Quad3dArray.Id] = DecodeQuad3dArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Ellipse2d
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeEllipse2d = (s, o) => { var x = (Ellipse2d)o; EncodeV2d(s, x.Center); EncodeV2d(s, x.Axis0); EncodeV2d(s, x.Axis1); };
+                Action<BinaryWriter, object> EncodeEllipse2dArray = (s, o) => EncodeArray(s, (Ellipse2d[])o);
+                Func<BinaryReader, object> DecodeEllipse2d = s => new Ellipse2d((V2d)DecodeV2d(s), (V2d)DecodeV2d(s), (V2d)DecodeV2d(s));
+                Func<BinaryReader, object> DecodeEllipse2dArray = DecodeArray<Ellipse2d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeEllipse2d = Write<Ellipse2d>;
+                Action<Stream, object> EncodeEllipse2dArray = (s, o) => EncodeArray(s, (Ellipse2d[])o);
+                Func<Stream, object> DecodeEllipse2d = ReadBoxed<Ellipse2d>;
+                Func<Stream, object> DecodeEllipse2dArray = DecodeArray<Ellipse2d>;
+                #endif
+                s_encoders[Durable.Aardvark.Ellipse2d.Id] = EncodeEllipse2d;
+                s_decoders[Durable.Aardvark.Ellipse2d.Id] = DecodeEllipse2d;
+                s_encoders[Durable.Aardvark.Ellipse2dArray.Id] = EncodeEllipse2dArray;
+                s_decoders[Durable.Aardvark.Ellipse2dArray.Id] = DecodeEllipse2dArray;
+
+                #endregion
+
+                #region Durable.Aardvark.Ellipse3d
+
+                #if NETSTANDARD2_0 || NET472
+                Action<BinaryWriter, object> EncodeEllipse3d = (s, o) => { var x = (Ellipse3d)o; EncodeV3d(s, x.Center); EncodeV3d(s, x.Normal); EncodeV3d(s, x.Axis0); EncodeV3d(s, x.Axis1); };
+                Action<BinaryWriter, object> EncodeEllipse3dArray = (s, o) => EncodeArray(s, (Ellipse3d[])o);
+                Func<BinaryReader, object> DecodeEllipse3d = s => new Ellipse3d((V3d)DecodeV3d(s), (V3d)DecodeV3d(s), (V3d)DecodeV3d(s), (V3d)DecodeV3d(s));
+                Func<BinaryReader, object> DecodeEllipse3dArray = DecodeArray<Ellipse3d>;
+                #endif
+                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                Action<Stream, object> EncodeEllipse3d = Write<Ellipse3d>;
+                Action<Stream, object> EncodeEllipse3dArray = (s, o) => EncodeArray(s, (Ellipse3d[])o);
+                Func<Stream, object> DecodeEllipse3d = ReadBoxed<Ellipse3d>;
+                Func<Stream, object> DecodeEllipse3dArray = DecodeArray<Ellipse3d>;
+                #endif
+                s_encoders[Durable.Aardvark.Ellipse3d.Id] = EncodeEllipse3d;
+                s_decoders[Durable.Aardvark.Ellipse3d.Id] = DecodeEllipse3d;
+                s_encoders[Durable.Aardvark.Ellipse3dArray.Id] = EncodeEllipse3dArray;
+                s_decoders[Durable.Aardvark.Ellipse3dArray.Id] = DecodeEllipse3dArray;
 
                 #endregion
 

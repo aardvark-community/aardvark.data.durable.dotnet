@@ -33,7 +33,7 @@ let main argv =
 
     let address = @"https://raw.githubusercontent.com/aardvark-community/aardvark.data.durable.definitions/master/definitions.json"
     let json = JObject.Parse((new WebClient()).DownloadString(address))
-    let json = JObject.Parse(System.IO.File.ReadAllText(@"..\..\..\..\aardvark.data.durable.definitions\definitions.json"))
+    //let json = JObject.Parse(System.IO.File.ReadAllText(@"..\..\..\..\aardvark.data.durable.definitions\definitions.json"))
 
 
 
