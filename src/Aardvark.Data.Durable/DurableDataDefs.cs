@@ -3590,6 +3590,94 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
+            /// Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where 0 is cell.Min and 255 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt8[].
+            /// </summary>
+            public static readonly Def PositionsLocal3b = new Def(
+                new Guid("c965597a-e2f8-4f1a-bef4-a0071c32e220"),
+                "Octree.PositionsLocal3b",
+                "Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where 0 is cell.Min and 255 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt8[].",
+                Primitives.UInt8Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Reference to Octree.PositionsLocal3b. Guid.
+            /// </summary>
+            public static readonly Def PositionsLocal3bReference = new Def(
+                new Guid("52aa381e-ddf2-4d77-a746-5cacaa1d10a9"),
+                "Octree.PositionsLocal3b.Reference",
+                "Octree. Reference to Octree.PositionsLocal3b. Guid.",
+                Primitives.GuidDef.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where 0 is cell.Min and UInt16.Max is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt16[].
+            /// </summary>
+            public static readonly Def PositionsLocal3us = new Def(
+                new Guid("f3c29fdb-5067-42c2-9809-0f8c103fcb82"),
+                "Octree.PositionsLocal3us",
+                "Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where 0 is cell.Min and UInt16.Max is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt16[].",
+                Primitives.UInt16Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Reference to Octree.PositionsLocal3us. Guid.
+            /// </summary>
+            public static readonly Def PositionsLocal3usReference = new Def(
+                new Guid("8a2ef1f6-179d-4ddb-a342-4d7ae4a1f69f"),
+                "Octree.PositionsLocal3us.Reference",
+                "Octree. Reference to Octree.PositionsLocal3us. Guid.",
+                Primitives.GuidDef.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where 0 is cell.Min and UInt32.Max is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt32[].
+            /// </summary>
+            public static readonly Def PositionsLocal3ui = new Def(
+                new Guid("f251364f-d6d2-49e0-8095-45314fe2e80c"),
+                "Octree.PositionsLocal3ui",
+                "Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where 0 is cell.Min and UInt32.Max is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt32[].",
+                Primitives.UInt32Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Reference to Octree.PositionsLocal3ui. Guid.
+            /// </summary>
+            public static readonly Def PositionsLocal3uiReference = new Def(
+                new Guid("6cfa3f22-27bc-4b86-917c-98f92f38bc46"),
+                "Octree.PositionsLocal3ui.Reference",
+                "Octree. Reference to Octree.PositionsLocal3ui. Guid.",
+                Primitives.GuidDef.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where 0 is cell.Min and UInt64.Max is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt64[].
+            /// </summary>
+            public static readonly Def PositionsLocal3ul = new Def(
+                new Guid("f256c25e-f599-4135-b3a6-18e811925625"),
+                "Octree.PositionsLocal3ul",
+                "Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where 0 is cell.Min and UInt64.Max is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt64[].",
+                Primitives.UInt64Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Reference to Octree.PositionsLocal3ul. Guid.
+            /// </summary>
+            public static readonly Def PositionsLocal3ulReference = new Def(
+                new Guid("286b881a-6f4e-4bcf-bb90-dd6b0bd16232"),
+                "Octree.PositionsLocal3ul.Reference",
+                "Octree. Reference to Octree.PositionsLocal3ul. Guid.",
+                Primitives.GuidDef.Id,
+                false
+                );
+
+            /// <summary>
             /// Octree. Per-point positions in global space. V3f[].
             /// </summary>
             public static readonly Def PositionsGlobal3f = new Def(
