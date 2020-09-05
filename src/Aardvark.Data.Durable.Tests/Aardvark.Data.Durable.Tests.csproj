@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.2;netcoreapp3.1;netcoreapp5.0;net472</TargetFrameworks>
     <IsPackable>false</IsPackable>
+	<LangVersion>8</LangVersion>
     <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

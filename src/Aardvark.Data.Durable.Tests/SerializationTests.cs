@@ -2,6 +2,7 @@ using Aardvark.Base;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.IO;
 using System.Runtime.InteropServices;
 using Xunit;
 
@@ -819,5 +820,53 @@ namespace Aardvark.Data.Tests
         }
 
 
+
+
+        [Fact]
+        public void DurableCodec_Serialize_WithStream_NonPrimitive()
+        {
+            var id = Guid.NewGuid();
+
+            var map = ImmutableDictionary<Durable.Def, object>.Empty
+                .Add(Durable.Octree.NodeId, id)
+                .Add(Durable.Octree.NodeCountTotal, 123L)
+                .Add(Durable.Octree.Colors3b, new[] { C3b.Red, C3b.Green, C3b.Blue })
+                .Add(Durable.Octree.PositionsLocal3f, new[] { V3f.IOO, V3f.OIO })
+                ;
+
+            using var ms = new MemoryStream();
+#if NETCOREAPP3_1 || NETCOREAPP5_0
+            var bw = (Stream)ms;
+#else
+            using var bw = new BinaryWriter(ms);
+#endif
+            DurableCodec.Serialize(bw, Durable.Octree.Node, map);
+            bw.Close();
+            var buffer = ms.ToArray();
+            var l = 16 + 4 + (16 + 16) + (16 + 8) + (16 + 4 + 3 * 3) + (16 + 4 + 2 * 12);
+            Assert.True(buffer.Length == l);
+
+            var (def, o) = DurableCodec.Deserialize(buffer);
+            Assert.True(def == Durable.Octree.Node);
+
+            var m = o as ImmutableDictionary<Durable.Def, object>;
+            Assert.True(m != null);
+            Assert.True(m.Count == 4);
+
+            Assert.True(((Guid)m[Durable.Octree.NodeId]) == id);
+
+            Assert.True(((long)m[Durable.Octree.NodeCountTotal]) == 123L);
+
+            var cs = (C3b[])m[Durable.Octree.Colors3b];
+            Assert.True(cs.Length == 3);
+            Assert.True(cs[0] == C3b.Red);
+            Assert.True(cs[1] == C3b.Green);
+            Assert.True(cs[2] == C3b.Blue);
+
+            var ps = (V3f[])m[Durable.Octree.PositionsLocal3f];
+            Assert.True(ps.Length == 2);
+            Assert.True(ps[0] == V3f.IOO);
+            Assert.True(ps[1] == V3f.OIO);
+        }
     }
 }

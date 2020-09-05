@@ -560,7 +560,7 @@ namespace Aardvark.Data
                 EncodeGuid(stream, def.Id);
             }
 
-            Serialize(stream, def, x);
+            EncodeWithoutTypeForPrimitives(stream, def, x);
         }
 
 
