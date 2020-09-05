@@ -93,6 +93,9 @@ namespace Aardvark.Data
                 [Durable.Primitives.Float64.Id] = EncodeFloat64,
                 [Durable.Primitives.Float64Array.Id] = EncodeFloat64Array,
 
+                // Cell and Cell2d structs are padded to 8-byte boundary by the compiler,
+                // so there are some custom implementations to ensure compatibility
+                // to data written (in the past) in different ways
                 [Durable.Aardvark.Cell.Id] = EncodeCell,
                 [Durable.Aardvark.CellArray.Id] = EncodeCellArray,
                 [Durable.Aardvark.CellPadded32.Id] = EncodeCellPadded32,
@@ -102,11 +105,15 @@ namespace Aardvark.Data
                 [Durable.Aardvark.Cell2dPadded24.Id] = EncodeCell2dPadded24,
                 [Durable.Aardvark.Cell2dPadded24Array.Id] = EncodeCell2dPadded24Array,
 
+                // C3b and C4b have memory layout BGR(A) but constructors taking r,g,b,
+                // so we need a custom implementation
                 [Durable.Aardvark.C3b.Id] = EncodeC3b,
                 [Durable.Aardvark.C3bArray.Id] = EncodeC3bArray,
                 [Durable.Aardvark.C4b.Id] = EncodeC4b,
                 [Durable.Aardvark.C4bArray.Id] = EncodeC4bArray,
 
+                // polygons do not expose their underlying points array (only as IEnumerable)
+                // so we need a custom implementation
                 [Durable.Aardvark.Polygon2d.Id] = EncodePolygon2d,
                 [Durable.Aardvark.Polygon2dArray.Id] = EncodePolygon2dArray,
                 [Durable.Aardvark.Polygon3d.Id] = EncodePolygon3d,
