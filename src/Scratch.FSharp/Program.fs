@@ -17,8 +17,8 @@ let main argv =
     printfn "NETCOREAPP3_1"
     #endif
 
-    #if NETCOREAPP5_0
-    printfn "NETCOREAPP5_0"
+    #if NET5_0
+    printfn "NET5_0"
     #endif
 
     let buffer = DurableCodec.Serialize(Durable.Aardvark.Cell2d, Cell2d(1, 2, 3));

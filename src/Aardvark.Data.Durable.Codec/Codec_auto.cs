@@ -41,7 +41,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeV2i = s => new V2i(s.ReadInt32(), s.ReadInt32());
                 Func<BinaryReader, object> DecodeV2iArray = DecodeArray<V2i>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeV2i = Write<V2i>;
                 Action<Stream, object> EncodeV2iArray = (s, o) => EncodeArray(s, (V2i[])o);
                 Func<Stream, object> DecodeV2i = ReadBoxed<V2i>;
@@ -62,7 +62,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeV2l = s => new V2l(s.ReadInt64(), s.ReadInt64());
                 Func<BinaryReader, object> DecodeV2lArray = DecodeArray<V2l>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeV2l = Write<V2l>;
                 Action<Stream, object> EncodeV2lArray = (s, o) => EncodeArray(s, (V2l[])o);
                 Func<Stream, object> DecodeV2l = ReadBoxed<V2l>;
@@ -83,7 +83,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeV2f = s => new V2f(s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeV2fArray = DecodeArray<V2f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeV2f = Write<V2f>;
                 Action<Stream, object> EncodeV2fArray = (s, o) => EncodeArray(s, (V2f[])o);
                 Func<Stream, object> DecodeV2f = ReadBoxed<V2f>;
@@ -104,7 +104,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeV2d = s => new V2d(s.ReadDouble(), s.ReadDouble());
                 Func<BinaryReader, object> DecodeV2dArray = DecodeArray<V2d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeV2d = Write<V2d>;
                 Action<Stream, object> EncodeV2dArray = (s, o) => EncodeArray(s, (V2d[])o);
                 Func<Stream, object> DecodeV2d = ReadBoxed<V2d>;
@@ -125,7 +125,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeV3i = s => new V3i(s.ReadInt32(), s.ReadInt32(), s.ReadInt32());
                 Func<BinaryReader, object> DecodeV3iArray = DecodeArray<V3i>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeV3i = Write<V3i>;
                 Action<Stream, object> EncodeV3iArray = (s, o) => EncodeArray(s, (V3i[])o);
                 Func<Stream, object> DecodeV3i = ReadBoxed<V3i>;
@@ -146,7 +146,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeV3l = s => new V3l(s.ReadInt64(), s.ReadInt64(), s.ReadInt64());
                 Func<BinaryReader, object> DecodeV3lArray = DecodeArray<V3l>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeV3l = Write<V3l>;
                 Action<Stream, object> EncodeV3lArray = (s, o) => EncodeArray(s, (V3l[])o);
                 Func<Stream, object> DecodeV3l = ReadBoxed<V3l>;
@@ -167,7 +167,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeV3f = s => new V3f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeV3fArray = DecodeArray<V3f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeV3f = Write<V3f>;
                 Action<Stream, object> EncodeV3fArray = (s, o) => EncodeArray(s, (V3f[])o);
                 Func<Stream, object> DecodeV3f = ReadBoxed<V3f>;
@@ -188,7 +188,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeV3d = s => new V3d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
                 Func<BinaryReader, object> DecodeV3dArray = DecodeArray<V3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeV3d = Write<V3d>;
                 Action<Stream, object> EncodeV3dArray = (s, o) => EncodeArray(s, (V3d[])o);
                 Func<Stream, object> DecodeV3d = ReadBoxed<V3d>;
@@ -209,7 +209,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeV4i = s => new V4i(s.ReadInt32(), s.ReadInt32(), s.ReadInt32(), s.ReadInt32());
                 Func<BinaryReader, object> DecodeV4iArray = DecodeArray<V4i>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeV4i = Write<V4i>;
                 Action<Stream, object> EncodeV4iArray = (s, o) => EncodeArray(s, (V4i[])o);
                 Func<Stream, object> DecodeV4i = ReadBoxed<V4i>;
@@ -230,7 +230,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeV4l = s => new V4l(s.ReadInt64(), s.ReadInt64(), s.ReadInt64(), s.ReadInt64());
                 Func<BinaryReader, object> DecodeV4lArray = DecodeArray<V4l>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeV4l = Write<V4l>;
                 Action<Stream, object> EncodeV4lArray = (s, o) => EncodeArray(s, (V4l[])o);
                 Func<Stream, object> DecodeV4l = ReadBoxed<V4l>;
@@ -251,7 +251,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeV4f = s => new V4f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeV4fArray = DecodeArray<V4f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeV4f = Write<V4f>;
                 Action<Stream, object> EncodeV4fArray = (s, o) => EncodeArray(s, (V4f[])o);
                 Func<Stream, object> DecodeV4f = ReadBoxed<V4f>;
@@ -272,7 +272,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeV4d = s => new V4d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
                 Func<BinaryReader, object> DecodeV4dArray = DecodeArray<V4d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeV4d = Write<V4d>;
                 Action<Stream, object> EncodeV4dArray = (s, o) => EncodeArray(s, (V4d[])o);
                 Func<Stream, object> DecodeV4d = ReadBoxed<V4d>;
@@ -293,7 +293,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeM22f = s => new M22f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeM22fArray = DecodeArray<M22f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeM22f = Write<M22f>;
                 Action<Stream, object> EncodeM22fArray = (s, o) => EncodeArray(s, (M22f[])o);
                 Func<Stream, object> DecodeM22f = ReadBoxed<M22f>;
@@ -314,7 +314,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeM22d = s => new M22d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
                 Func<BinaryReader, object> DecodeM22dArray = DecodeArray<M22d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeM22d = Write<M22d>;
                 Action<Stream, object> EncodeM22dArray = (s, o) => EncodeArray(s, (M22d[])o);
                 Func<Stream, object> DecodeM22d = ReadBoxed<M22d>;
@@ -335,7 +335,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeM33f = s => new M33f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeM33fArray = DecodeArray<M33f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeM33f = Write<M33f>;
                 Action<Stream, object> EncodeM33fArray = (s, o) => EncodeArray(s, (M33f[])o);
                 Func<Stream, object> DecodeM33f = ReadBoxed<M33f>;
@@ -356,7 +356,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeM33d = s => new M33d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
                 Func<BinaryReader, object> DecodeM33dArray = DecodeArray<M33d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeM33d = Write<M33d>;
                 Action<Stream, object> EncodeM33dArray = (s, o) => EncodeArray(s, (M33d[])o);
                 Func<Stream, object> DecodeM33d = ReadBoxed<M33d>;
@@ -377,7 +377,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeM44f = s => new M44f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeM44fArray = DecodeArray<M44f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeM44f = Write<M44f>;
                 Action<Stream, object> EncodeM44fArray = (s, o) => EncodeArray(s, (M44f[])o);
                 Func<Stream, object> DecodeM44f = ReadBoxed<M44f>;
@@ -398,7 +398,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeM44d = s => new M44d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
                 Func<BinaryReader, object> DecodeM44dArray = DecodeArray<M44d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeM44d = Write<M44d>;
                 Action<Stream, object> EncodeM44dArray = (s, o) => EncodeArray(s, (M44d[])o);
                 Func<Stream, object> DecodeM44d = ReadBoxed<M44d>;
@@ -419,7 +419,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeAffine2f = s => new Affine2f((M22f)DecodeM22f(s), (V2f)DecodeV2f(s));
                 Func<BinaryReader, object> DecodeAffine2fArray = DecodeArray<Affine2f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeAffine2f = Write<Affine2f>;
                 Action<Stream, object> EncodeAffine2fArray = (s, o) => EncodeArray(s, (Affine2f[])o);
                 Func<Stream, object> DecodeAffine2f = ReadBoxed<Affine2f>;
@@ -440,7 +440,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeAffine2d = s => new Affine2d((M22d)DecodeM22d(s), (V2d)DecodeV2d(s));
                 Func<BinaryReader, object> DecodeAffine2dArray = DecodeArray<Affine2d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeAffine2d = Write<Affine2d>;
                 Action<Stream, object> EncodeAffine2dArray = (s, o) => EncodeArray(s, (Affine2d[])o);
                 Func<Stream, object> DecodeAffine2d = ReadBoxed<Affine2d>;
@@ -461,7 +461,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeAffine3f = s => new Affine3f((M33f)DecodeM33f(s), (V3f)DecodeV3f(s));
                 Func<BinaryReader, object> DecodeAffine3fArray = DecodeArray<Affine3f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeAffine3f = Write<Affine3f>;
                 Action<Stream, object> EncodeAffine3fArray = (s, o) => EncodeArray(s, (Affine3f[])o);
                 Func<Stream, object> DecodeAffine3f = ReadBoxed<Affine3f>;
@@ -482,7 +482,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeAffine3d = s => new Affine3d((M33d)DecodeM33d(s), (V3d)DecodeV3d(s));
                 Func<BinaryReader, object> DecodeAffine3dArray = DecodeArray<Affine3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeAffine3d = Write<Affine3d>;
                 Action<Stream, object> EncodeAffine3dArray = (s, o) => EncodeArray(s, (Affine3d[])o);
                 Func<Stream, object> DecodeAffine3d = ReadBoxed<Affine3d>;
@@ -503,7 +503,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeRot2f = s => new Rot2f(s.ReadSingle());
                 Func<BinaryReader, object> DecodeRot2fArray = DecodeArray<Rot2f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeRot2f = Write<Rot2f>;
                 Action<Stream, object> EncodeRot2fArray = (s, o) => EncodeArray(s, (Rot2f[])o);
                 Func<Stream, object> DecodeRot2f = ReadBoxed<Rot2f>;
@@ -524,7 +524,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeRot2d = s => new Rot2d(s.ReadDouble());
                 Func<BinaryReader, object> DecodeRot2dArray = DecodeArray<Rot2d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeRot2d = Write<Rot2d>;
                 Action<Stream, object> EncodeRot2dArray = (s, o) => EncodeArray(s, (Rot2d[])o);
                 Func<Stream, object> DecodeRot2d = ReadBoxed<Rot2d>;
@@ -545,7 +545,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeRot3f = s => new Rot3f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeRot3fArray = DecodeArray<Rot3f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeRot3f = Write<Rot3f>;
                 Action<Stream, object> EncodeRot3fArray = (s, o) => EncodeArray(s, (Rot3f[])o);
                 Func<Stream, object> DecodeRot3f = ReadBoxed<Rot3f>;
@@ -566,7 +566,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeRot3d = s => new Rot3d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
                 Func<BinaryReader, object> DecodeRot3dArray = DecodeArray<Rot3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeRot3d = Write<Rot3d>;
                 Action<Stream, object> EncodeRot3dArray = (s, o) => EncodeArray(s, (Rot3d[])o);
                 Func<Stream, object> DecodeRot3d = ReadBoxed<Rot3d>;
@@ -587,7 +587,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeEuclidean2f = s => new Euclidean2f((Rot2f)DecodeRot2f(s), (V2f)DecodeV2f(s));
                 Func<BinaryReader, object> DecodeEuclidean2fArray = DecodeArray<Euclidean2f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeEuclidean2f = Write<Euclidean2f>;
                 Action<Stream, object> EncodeEuclidean2fArray = (s, o) => EncodeArray(s, (Euclidean2f[])o);
                 Func<Stream, object> DecodeEuclidean2f = ReadBoxed<Euclidean2f>;
@@ -608,7 +608,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeEuclidean2d = s => new Euclidean2d((Rot2d)DecodeRot2d(s), (V2d)DecodeV2d(s));
                 Func<BinaryReader, object> DecodeEuclidean2dArray = DecodeArray<Euclidean2d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeEuclidean2d = Write<Euclidean2d>;
                 Action<Stream, object> EncodeEuclidean2dArray = (s, o) => EncodeArray(s, (Euclidean2d[])o);
                 Func<Stream, object> DecodeEuclidean2d = ReadBoxed<Euclidean2d>;
@@ -629,7 +629,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeEuclidean3f = s => new Euclidean3f((Rot3f)DecodeRot3f(s), (V3f)DecodeV3f(s));
                 Func<BinaryReader, object> DecodeEuclidean3fArray = DecodeArray<Euclidean3f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeEuclidean3f = Write<Euclidean3f>;
                 Action<Stream, object> EncodeEuclidean3fArray = (s, o) => EncodeArray(s, (Euclidean3f[])o);
                 Func<Stream, object> DecodeEuclidean3f = ReadBoxed<Euclidean3f>;
@@ -650,7 +650,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeEuclidean3d = s => new Euclidean3d((Rot3d)DecodeRot3d(s), (V3d)DecodeV3d(s));
                 Func<BinaryReader, object> DecodeEuclidean3dArray = DecodeArray<Euclidean3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeEuclidean3d = Write<Euclidean3d>;
                 Action<Stream, object> EncodeEuclidean3dArray = (s, o) => EncodeArray(s, (Euclidean3d[])o);
                 Func<Stream, object> DecodeEuclidean3d = ReadBoxed<Euclidean3d>;
@@ -671,7 +671,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeScale2f = s => new Scale2f((V2f)DecodeV2f(s));
                 Func<BinaryReader, object> DecodeScale2fArray = DecodeArray<Scale2f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeScale2f = Write<Scale2f>;
                 Action<Stream, object> EncodeScale2fArray = (s, o) => EncodeArray(s, (Scale2f[])o);
                 Func<Stream, object> DecodeScale2f = ReadBoxed<Scale2f>;
@@ -692,7 +692,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeScale2d = s => new Scale2d((V2d)DecodeV2d(s));
                 Func<BinaryReader, object> DecodeScale2dArray = DecodeArray<Scale2d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeScale2d = Write<Scale2d>;
                 Action<Stream, object> EncodeScale2dArray = (s, o) => EncodeArray(s, (Scale2d[])o);
                 Func<Stream, object> DecodeScale2d = ReadBoxed<Scale2d>;
@@ -713,7 +713,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeScale3f = s => new Scale3f((V3f)DecodeV3f(s));
                 Func<BinaryReader, object> DecodeScale3fArray = DecodeArray<Scale3f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeScale3f = Write<Scale3f>;
                 Action<Stream, object> EncodeScale3fArray = (s, o) => EncodeArray(s, (Scale3f[])o);
                 Func<Stream, object> DecodeScale3f = ReadBoxed<Scale3f>;
@@ -734,7 +734,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeScale3d = s => new Scale3d((V3d)DecodeV3d(s));
                 Func<BinaryReader, object> DecodeScale3dArray = DecodeArray<Scale3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeScale3d = Write<Scale3d>;
                 Action<Stream, object> EncodeScale3dArray = (s, o) => EncodeArray(s, (Scale3d[])o);
                 Func<Stream, object> DecodeScale3d = ReadBoxed<Scale3d>;
@@ -755,7 +755,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeShift2f = s => new Shift2f((V2f)DecodeV2f(s));
                 Func<BinaryReader, object> DecodeShift2fArray = DecodeArray<Shift2f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeShift2f = Write<Shift2f>;
                 Action<Stream, object> EncodeShift2fArray = (s, o) => EncodeArray(s, (Shift2f[])o);
                 Func<Stream, object> DecodeShift2f = ReadBoxed<Shift2f>;
@@ -776,7 +776,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeShift2d = s => new Shift2d((V2d)DecodeV2d(s));
                 Func<BinaryReader, object> DecodeShift2dArray = DecodeArray<Shift2d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeShift2d = Write<Shift2d>;
                 Action<Stream, object> EncodeShift2dArray = (s, o) => EncodeArray(s, (Shift2d[])o);
                 Func<Stream, object> DecodeShift2d = ReadBoxed<Shift2d>;
@@ -797,7 +797,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeShift3f = s => new Shift3f((V3f)DecodeV3f(s));
                 Func<BinaryReader, object> DecodeShift3fArray = DecodeArray<Shift3f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeShift3f = Write<Shift3f>;
                 Action<Stream, object> EncodeShift3fArray = (s, o) => EncodeArray(s, (Shift3f[])o);
                 Func<Stream, object> DecodeShift3f = ReadBoxed<Shift3f>;
@@ -818,7 +818,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeShift3d = s => new Shift3d((V3d)DecodeV3d(s));
                 Func<BinaryReader, object> DecodeShift3dArray = DecodeArray<Shift3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeShift3d = Write<Shift3d>;
                 Action<Stream, object> EncodeShift3dArray = (s, o) => EncodeArray(s, (Shift3d[])o);
                 Func<Stream, object> DecodeShift3d = ReadBoxed<Shift3d>;
@@ -839,7 +839,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeSimilarity2f = s => new Similarity2f(s.ReadSingle(), (Euclidean2f)DecodeEuclidean2f(s));
                 Func<BinaryReader, object> DecodeSimilarity2fArray = DecodeArray<Similarity2f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeSimilarity2f = Write<Similarity2f>;
                 Action<Stream, object> EncodeSimilarity2fArray = (s, o) => EncodeArray(s, (Similarity2f[])o);
                 Func<Stream, object> DecodeSimilarity2f = ReadBoxed<Similarity2f>;
@@ -860,7 +860,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeSimilarity2d = s => new Similarity2d(s.ReadDouble(), (Euclidean2d)DecodeEuclidean2d(s));
                 Func<BinaryReader, object> DecodeSimilarity2dArray = DecodeArray<Similarity2d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeSimilarity2d = Write<Similarity2d>;
                 Action<Stream, object> EncodeSimilarity2dArray = (s, o) => EncodeArray(s, (Similarity2d[])o);
                 Func<Stream, object> DecodeSimilarity2d = ReadBoxed<Similarity2d>;
@@ -881,7 +881,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeSimilarity3f = s => new Similarity3f(s.ReadSingle(), (Euclidean3f)DecodeEuclidean3f(s));
                 Func<BinaryReader, object> DecodeSimilarity3fArray = DecodeArray<Similarity3f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeSimilarity3f = Write<Similarity3f>;
                 Action<Stream, object> EncodeSimilarity3fArray = (s, o) => EncodeArray(s, (Similarity3f[])o);
                 Func<Stream, object> DecodeSimilarity3f = ReadBoxed<Similarity3f>;
@@ -902,7 +902,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeSimilarity3d = s => new Similarity3d(s.ReadDouble(), (Euclidean3d)DecodeEuclidean3d(s));
                 Func<BinaryReader, object> DecodeSimilarity3dArray = DecodeArray<Similarity3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeSimilarity3d = Write<Similarity3d>;
                 Action<Stream, object> EncodeSimilarity3dArray = (s, o) => EncodeArray(s, (Similarity3d[])o);
                 Func<Stream, object> DecodeSimilarity3d = ReadBoxed<Similarity3d>;
@@ -923,7 +923,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeTrafo2f = s => new Trafo2f((M33f)DecodeM33f(s), (M33f)DecodeM33f(s));
                 Func<BinaryReader, object> DecodeTrafo2fArray = DecodeArray<Trafo2f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeTrafo2f = Write<Trafo2f>;
                 Action<Stream, object> EncodeTrafo2fArray = (s, o) => EncodeArray(s, (Trafo2f[])o);
                 Func<Stream, object> DecodeTrafo2f = ReadBoxed<Trafo2f>;
@@ -944,7 +944,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeTrafo2d = s => new Trafo2d((M33d)DecodeM33d(s), (M33d)DecodeM33d(s));
                 Func<BinaryReader, object> DecodeTrafo2dArray = DecodeArray<Trafo2d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeTrafo2d = Write<Trafo2d>;
                 Action<Stream, object> EncodeTrafo2dArray = (s, o) => EncodeArray(s, (Trafo2d[])o);
                 Func<Stream, object> DecodeTrafo2d = ReadBoxed<Trafo2d>;
@@ -965,7 +965,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeTrafo3f = s => new Trafo3f((M44f)DecodeM44f(s), (M44f)DecodeM44f(s));
                 Func<BinaryReader, object> DecodeTrafo3fArray = DecodeArray<Trafo3f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeTrafo3f = Write<Trafo3f>;
                 Action<Stream, object> EncodeTrafo3fArray = (s, o) => EncodeArray(s, (Trafo3f[])o);
                 Func<Stream, object> DecodeTrafo3f = ReadBoxed<Trafo3f>;
@@ -986,7 +986,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeTrafo3d = s => new Trafo3d((M44d)DecodeM44d(s), (M44d)DecodeM44d(s));
                 Func<BinaryReader, object> DecodeTrafo3dArray = DecodeArray<Trafo3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeTrafo3d = Write<Trafo3d>;
                 Action<Stream, object> EncodeTrafo3dArray = (s, o) => EncodeArray(s, (Trafo3d[])o);
                 Func<Stream, object> DecodeTrafo3d = ReadBoxed<Trafo3d>;
@@ -1007,7 +1007,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeRange1b = s => new Range1b(s.ReadByte(), s.ReadByte());
                 Func<BinaryReader, object> DecodeRange1bArray = DecodeArray<Range1b>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeRange1b = Write<Range1b>;
                 Action<Stream, object> EncodeRange1bArray = (s, o) => EncodeArray(s, (Range1b[])o);
                 Func<Stream, object> DecodeRange1b = ReadBoxed<Range1b>;
@@ -1028,7 +1028,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeRange1sb = s => new Range1sb(s.ReadSByte(), s.ReadSByte());
                 Func<BinaryReader, object> DecodeRange1sbArray = DecodeArray<Range1sb>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeRange1sb = Write<Range1sb>;
                 Action<Stream, object> EncodeRange1sbArray = (s, o) => EncodeArray(s, (Range1sb[])o);
                 Func<Stream, object> DecodeRange1sb = ReadBoxed<Range1sb>;
@@ -1049,7 +1049,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeRange1s = s => new Range1s(s.ReadInt16(), s.ReadInt16());
                 Func<BinaryReader, object> DecodeRange1sArray = DecodeArray<Range1s>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeRange1s = Write<Range1s>;
                 Action<Stream, object> EncodeRange1sArray = (s, o) => EncodeArray(s, (Range1s[])o);
                 Func<Stream, object> DecodeRange1s = ReadBoxed<Range1s>;
@@ -1070,7 +1070,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeRange1us = s => new Range1us(s.ReadUInt16(), s.ReadUInt16());
                 Func<BinaryReader, object> DecodeRange1usArray = DecodeArray<Range1us>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeRange1us = Write<Range1us>;
                 Action<Stream, object> EncodeRange1usArray = (s, o) => EncodeArray(s, (Range1us[])o);
                 Func<Stream, object> DecodeRange1us = ReadBoxed<Range1us>;
@@ -1091,7 +1091,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeRange1i = s => new Range1i(s.ReadInt32(), s.ReadInt32());
                 Func<BinaryReader, object> DecodeRange1iArray = DecodeArray<Range1i>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeRange1i = Write<Range1i>;
                 Action<Stream, object> EncodeRange1iArray = (s, o) => EncodeArray(s, (Range1i[])o);
                 Func<Stream, object> DecodeRange1i = ReadBoxed<Range1i>;
@@ -1112,7 +1112,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeRange1ui = s => new Range1ui(s.ReadUInt32(), s.ReadUInt32());
                 Func<BinaryReader, object> DecodeRange1uiArray = DecodeArray<Range1ui>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeRange1ui = Write<Range1ui>;
                 Action<Stream, object> EncodeRange1uiArray = (s, o) => EncodeArray(s, (Range1ui[])o);
                 Func<Stream, object> DecodeRange1ui = ReadBoxed<Range1ui>;
@@ -1133,7 +1133,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeRange1l = s => new Range1l(s.ReadInt64(), s.ReadInt64());
                 Func<BinaryReader, object> DecodeRange1lArray = DecodeArray<Range1l>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeRange1l = Write<Range1l>;
                 Action<Stream, object> EncodeRange1lArray = (s, o) => EncodeArray(s, (Range1l[])o);
                 Func<Stream, object> DecodeRange1l = ReadBoxed<Range1l>;
@@ -1154,7 +1154,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeRange1ul = s => new Range1ul(s.ReadUInt64(), s.ReadUInt64());
                 Func<BinaryReader, object> DecodeRange1ulArray = DecodeArray<Range1ul>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeRange1ul = Write<Range1ul>;
                 Action<Stream, object> EncodeRange1ulArray = (s, o) => EncodeArray(s, (Range1ul[])o);
                 Func<Stream, object> DecodeRange1ul = ReadBoxed<Range1ul>;
@@ -1175,7 +1175,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeRange1f = s => new Range1f(s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeRange1fArray = DecodeArray<Range1f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeRange1f = Write<Range1f>;
                 Action<Stream, object> EncodeRange1fArray = (s, o) => EncodeArray(s, (Range1f[])o);
                 Func<Stream, object> DecodeRange1f = ReadBoxed<Range1f>;
@@ -1196,7 +1196,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeRange1d = s => new Range1d(s.ReadDouble(), s.ReadDouble());
                 Func<BinaryReader, object> DecodeRange1dArray = DecodeArray<Range1d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeRange1d = Write<Range1d>;
                 Action<Stream, object> EncodeRange1dArray = (s, o) => EncodeArray(s, (Range1d[])o);
                 Func<Stream, object> DecodeRange1d = ReadBoxed<Range1d>;
@@ -1217,7 +1217,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeBox2i = s => new Box2i((V2i)DecodeV2i(s), (V2i)DecodeV2i(s));
                 Func<BinaryReader, object> DecodeBox2iArray = DecodeArray<Box2i>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeBox2i = Write<Box2i>;
                 Action<Stream, object> EncodeBox2iArray = (s, o) => EncodeArray(s, (Box2i[])o);
                 Func<Stream, object> DecodeBox2i = ReadBoxed<Box2i>;
@@ -1238,7 +1238,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeBox2l = s => new Box2l((V2l)DecodeV2l(s), (V2l)DecodeV2l(s));
                 Func<BinaryReader, object> DecodeBox2lArray = DecodeArray<Box2l>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeBox2l = Write<Box2l>;
                 Action<Stream, object> EncodeBox2lArray = (s, o) => EncodeArray(s, (Box2l[])o);
                 Func<Stream, object> DecodeBox2l = ReadBoxed<Box2l>;
@@ -1259,7 +1259,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeBox2f = s => new Box2f((V2f)DecodeV2f(s), (V2f)DecodeV2f(s));
                 Func<BinaryReader, object> DecodeBox2fArray = DecodeArray<Box2f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeBox2f = Write<Box2f>;
                 Action<Stream, object> EncodeBox2fArray = (s, o) => EncodeArray(s, (Box2f[])o);
                 Func<Stream, object> DecodeBox2f = ReadBoxed<Box2f>;
@@ -1280,7 +1280,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeBox2d = s => new Box2d((V2d)DecodeV2d(s), (V2d)DecodeV2d(s));
                 Func<BinaryReader, object> DecodeBox2dArray = DecodeArray<Box2d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeBox2d = Write<Box2d>;
                 Action<Stream, object> EncodeBox2dArray = (s, o) => EncodeArray(s, (Box2d[])o);
                 Func<Stream, object> DecodeBox2d = ReadBoxed<Box2d>;
@@ -1301,7 +1301,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeBox3i = s => new Box3i((V3i)DecodeV3i(s), (V3i)DecodeV3i(s));
                 Func<BinaryReader, object> DecodeBox3iArray = DecodeArray<Box3i>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeBox3i = Write<Box3i>;
                 Action<Stream, object> EncodeBox3iArray = (s, o) => EncodeArray(s, (Box3i[])o);
                 Func<Stream, object> DecodeBox3i = ReadBoxed<Box3i>;
@@ -1322,7 +1322,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeBox3l = s => new Box3l((V3l)DecodeV3l(s), (V3l)DecodeV3l(s));
                 Func<BinaryReader, object> DecodeBox3lArray = DecodeArray<Box3l>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeBox3l = Write<Box3l>;
                 Action<Stream, object> EncodeBox3lArray = (s, o) => EncodeArray(s, (Box3l[])o);
                 Func<Stream, object> DecodeBox3l = ReadBoxed<Box3l>;
@@ -1343,7 +1343,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeBox3f = s => new Box3f((V3f)DecodeV3f(s), (V3f)DecodeV3f(s));
                 Func<BinaryReader, object> DecodeBox3fArray = DecodeArray<Box3f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeBox3f = Write<Box3f>;
                 Action<Stream, object> EncodeBox3fArray = (s, o) => EncodeArray(s, (Box3f[])o);
                 Func<Stream, object> DecodeBox3f = ReadBoxed<Box3f>;
@@ -1364,7 +1364,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeBox3d = s => new Box3d((V3d)DecodeV3d(s), (V3d)DecodeV3d(s));
                 Func<BinaryReader, object> DecodeBox3dArray = DecodeArray<Box3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeBox3d = Write<Box3d>;
                 Action<Stream, object> EncodeBox3dArray = (s, o) => EncodeArray(s, (Box3d[])o);
                 Func<Stream, object> DecodeBox3d = ReadBoxed<Box3d>;
@@ -1385,7 +1385,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeC3us = s => new C3us(s.ReadUInt16(), s.ReadUInt16(), s.ReadUInt16());
                 Func<BinaryReader, object> DecodeC3usArray = DecodeArray<C3us>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeC3us = Write<C3us>;
                 Action<Stream, object> EncodeC3usArray = (s, o) => EncodeArray(s, (C3us[])o);
                 Func<Stream, object> DecodeC3us = ReadBoxed<C3us>;
@@ -1406,7 +1406,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeC3ui = s => new C3ui(s.ReadUInt32(), s.ReadUInt32(), s.ReadUInt32());
                 Func<BinaryReader, object> DecodeC3uiArray = DecodeArray<C3ui>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeC3ui = Write<C3ui>;
                 Action<Stream, object> EncodeC3uiArray = (s, o) => EncodeArray(s, (C3ui[])o);
                 Func<Stream, object> DecodeC3ui = ReadBoxed<C3ui>;
@@ -1427,7 +1427,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeC3f = s => new C3f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeC3fArray = DecodeArray<C3f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeC3f = Write<C3f>;
                 Action<Stream, object> EncodeC3fArray = (s, o) => EncodeArray(s, (C3f[])o);
                 Func<Stream, object> DecodeC3f = ReadBoxed<C3f>;
@@ -1448,7 +1448,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeC3d = s => new C3d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
                 Func<BinaryReader, object> DecodeC3dArray = DecodeArray<C3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeC3d = Write<C3d>;
                 Action<Stream, object> EncodeC3dArray = (s, o) => EncodeArray(s, (C3d[])o);
                 Func<Stream, object> DecodeC3d = ReadBoxed<C3d>;
@@ -1469,7 +1469,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeC4us = s => new C4us(s.ReadUInt16(), s.ReadUInt16(), s.ReadUInt16(), s.ReadUInt16());
                 Func<BinaryReader, object> DecodeC4usArray = DecodeArray<C4us>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeC4us = Write<C4us>;
                 Action<Stream, object> EncodeC4usArray = (s, o) => EncodeArray(s, (C4us[])o);
                 Func<Stream, object> DecodeC4us = ReadBoxed<C4us>;
@@ -1490,7 +1490,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeC4ui = s => new C4ui(s.ReadUInt32(), s.ReadUInt32(), s.ReadUInt32(), s.ReadUInt32());
                 Func<BinaryReader, object> DecodeC4uiArray = DecodeArray<C4ui>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeC4ui = Write<C4ui>;
                 Action<Stream, object> EncodeC4uiArray = (s, o) => EncodeArray(s, (C4ui[])o);
                 Func<Stream, object> DecodeC4ui = ReadBoxed<C4ui>;
@@ -1511,7 +1511,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeC4f = s => new C4f(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeC4fArray = DecodeArray<C4f>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeC4f = Write<C4f>;
                 Action<Stream, object> EncodeC4fArray = (s, o) => EncodeArray(s, (C4f[])o);
                 Func<Stream, object> DecodeC4f = ReadBoxed<C4f>;
@@ -1532,7 +1532,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeC4d = s => new C4d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
                 Func<BinaryReader, object> DecodeC4dArray = DecodeArray<C4d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeC4d = Write<C4d>;
                 Action<Stream, object> EncodeC4dArray = (s, o) => EncodeArray(s, (C4d[])o);
                 Func<Stream, object> DecodeC4d = ReadBoxed<C4d>;
@@ -1553,7 +1553,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeCieLabf = s => new CieLabf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeCieLabfArray = DecodeArray<CieLabf>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeCieLabf = Write<CieLabf>;
                 Action<Stream, object> EncodeCieLabfArray = (s, o) => EncodeArray(s, (CieLabf[])o);
                 Func<Stream, object> DecodeCieLabf = ReadBoxed<CieLabf>;
@@ -1574,7 +1574,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeCIeLuvf = s => new CIeLuvf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeCIeLuvfArray = DecodeArray<CIeLuvf>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeCIeLuvf = Write<CIeLuvf>;
                 Action<Stream, object> EncodeCIeLuvfArray = (s, o) => EncodeArray(s, (CIeLuvf[])o);
                 Func<Stream, object> DecodeCIeLuvf = ReadBoxed<CIeLuvf>;
@@ -1595,7 +1595,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeCieXYZf = s => new CieXYZf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeCieXYZfArray = DecodeArray<CieXYZf>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeCieXYZf = Write<CieXYZf>;
                 Action<Stream, object> EncodeCieXYZfArray = (s, o) => EncodeArray(s, (CieXYZf[])o);
                 Func<Stream, object> DecodeCieXYZf = ReadBoxed<CieXYZf>;
@@ -1616,7 +1616,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeCieYxyf = s => new CieYxyf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeCieYxyfArray = DecodeArray<CieYxyf>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeCieYxyf = Write<CieYxyf>;
                 Action<Stream, object> EncodeCieYxyfArray = (s, o) => EncodeArray(s, (CieYxyf[])o);
                 Func<Stream, object> DecodeCieYxyf = ReadBoxed<CieYxyf>;
@@ -1637,7 +1637,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeCMYKf = s => new CMYKf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeCMYKfArray = DecodeArray<CMYKf>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeCMYKf = Write<CMYKf>;
                 Action<Stream, object> EncodeCMYKfArray = (s, o) => EncodeArray(s, (CMYKf[])o);
                 Func<Stream, object> DecodeCMYKf = ReadBoxed<CMYKf>;
@@ -1658,7 +1658,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeHSLf = s => new HSLf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeHSLfArray = DecodeArray<HSLf>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeHSLf = Write<HSLf>;
                 Action<Stream, object> EncodeHSLfArray = (s, o) => EncodeArray(s, (HSLf[])o);
                 Func<Stream, object> DecodeHSLf = ReadBoxed<HSLf>;
@@ -1679,7 +1679,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeHSVf = s => new HSVf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeHSVfArray = DecodeArray<HSVf>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeHSVf = Write<HSVf>;
                 Action<Stream, object> EncodeHSVfArray = (s, o) => EncodeArray(s, (HSVf[])o);
                 Func<Stream, object> DecodeHSVf = ReadBoxed<HSVf>;
@@ -1700,7 +1700,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeYuvf = s => new Yuvf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
                 Func<BinaryReader, object> DecodeYuvfArray = DecodeArray<Yuvf>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeYuvf = Write<Yuvf>;
                 Action<Stream, object> EncodeYuvfArray = (s, o) => EncodeArray(s, (Yuvf[])o);
                 Func<Stream, object> DecodeYuvf = ReadBoxed<Yuvf>;
@@ -1721,7 +1721,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeCapsule3d = s => new Capsule3d((V3d)DecodeV3d(s), (V3d)DecodeV3d(s), s.ReadDouble());
                 Func<BinaryReader, object> DecodeCapsule3dArray = DecodeArray<Capsule3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeCapsule3d = Write<Capsule3d>;
                 Action<Stream, object> EncodeCapsule3dArray = (s, o) => EncodeArray(s, (Capsule3d[])o);
                 Func<Stream, object> DecodeCapsule3d = ReadBoxed<Capsule3d>;
@@ -1742,7 +1742,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeCircle2d = s => new Circle2d((V2d)DecodeV2d(s), s.ReadDouble());
                 Func<BinaryReader, object> DecodeCircle2dArray = DecodeArray<Circle2d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeCircle2d = Write<Circle2d>;
                 Action<Stream, object> EncodeCircle2dArray = (s, o) => EncodeArray(s, (Circle2d[])o);
                 Func<Stream, object> DecodeCircle2d = ReadBoxed<Circle2d>;
@@ -1763,7 +1763,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeCircle3d = s => new Circle3d((V3d)DecodeV3d(s), (V3d)DecodeV3d(s), s.ReadDouble());
                 Func<BinaryReader, object> DecodeCircle3dArray = DecodeArray<Circle3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeCircle3d = Write<Circle3d>;
                 Action<Stream, object> EncodeCircle3dArray = (s, o) => EncodeArray(s, (Circle3d[])o);
                 Func<Stream, object> DecodeCircle3d = ReadBoxed<Circle3d>;
@@ -1784,7 +1784,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeObliqueCone3d = s => new ObliqueCone3d((V3d)DecodeV3d(s), (Circle3d)DecodeCircle3d(s));
                 Func<BinaryReader, object> DecodeObliqueCone3dArray = DecodeArray<ObliqueCone3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeObliqueCone3d = Write<ObliqueCone3d>;
                 Action<Stream, object> EncodeObliqueCone3dArray = (s, o) => EncodeArray(s, (ObliqueCone3d[])o);
                 Func<Stream, object> DecodeObliqueCone3d = ReadBoxed<ObliqueCone3d>;
@@ -1805,7 +1805,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeCone3d = s => new Cone3d((V3d)DecodeV3d(s), (V3d)DecodeV3d(s), s.ReadDouble());
                 Func<BinaryReader, object> DecodeCone3dArray = DecodeArray<Cone3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeCone3d = Write<Cone3d>;
                 Action<Stream, object> EncodeCone3dArray = (s, o) => EncodeArray(s, (Cone3d[])o);
                 Func<Stream, object> DecodeCone3d = ReadBoxed<Cone3d>;
@@ -1826,7 +1826,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeCylinder3d = s => new Cylinder3d((V3d)DecodeV3d(s), (V3d)DecodeV3d(s), s.ReadDouble(), s.ReadDouble());
                 Func<BinaryReader, object> DecodeCylinder3dArray = DecodeArray<Cylinder3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeCylinder3d = Write<Cylinder3d>;
                 Action<Stream, object> EncodeCylinder3dArray = (s, o) => EncodeArray(s, (Cylinder3d[])o);
                 Func<Stream, object> DecodeCylinder3d = ReadBoxed<Cylinder3d>;
@@ -1847,7 +1847,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeLine2d = s => new Line2d((V2d)DecodeV2d(s), (V2d)DecodeV2d(s));
                 Func<BinaryReader, object> DecodeLine2dArray = DecodeArray<Line2d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeLine2d = Write<Line2d>;
                 Action<Stream, object> EncodeLine2dArray = (s, o) => EncodeArray(s, (Line2d[])o);
                 Func<Stream, object> DecodeLine2d = ReadBoxed<Line2d>;
@@ -1868,7 +1868,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeLine3d = s => new Line3d((V3d)DecodeV3d(s), (V3d)DecodeV3d(s));
                 Func<BinaryReader, object> DecodeLine3dArray = DecodeArray<Line3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeLine3d = Write<Line3d>;
                 Action<Stream, object> EncodeLine3dArray = (s, o) => EncodeArray(s, (Line3d[])o);
                 Func<Stream, object> DecodeLine3d = ReadBoxed<Line3d>;
@@ -1889,7 +1889,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeTriangle2d = s => new Triangle2d((V2d)DecodeV2d(s), (V2d)DecodeV2d(s), (V2d)DecodeV2d(s));
                 Func<BinaryReader, object> DecodeTriangle2dArray = DecodeArray<Triangle2d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeTriangle2d = Write<Triangle2d>;
                 Action<Stream, object> EncodeTriangle2dArray = (s, o) => EncodeArray(s, (Triangle2d[])o);
                 Func<Stream, object> DecodeTriangle2d = ReadBoxed<Triangle2d>;
@@ -1910,7 +1910,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeTriangle3d = s => new Triangle3d((V3d)DecodeV3d(s), (V3d)DecodeV3d(s), (V3d)DecodeV3d(s));
                 Func<BinaryReader, object> DecodeTriangle3dArray = DecodeArray<Triangle3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeTriangle3d = Write<Triangle3d>;
                 Action<Stream, object> EncodeTriangle3dArray = (s, o) => EncodeArray(s, (Triangle3d[])o);
                 Func<Stream, object> DecodeTriangle3d = ReadBoxed<Triangle3d>;
@@ -1931,7 +1931,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeQuad2d = s => new Quad2d((V2d)DecodeV2d(s), (V2d)DecodeV2d(s), (V2d)DecodeV2d(s), (V2d)DecodeV2d(s));
                 Func<BinaryReader, object> DecodeQuad2dArray = DecodeArray<Quad2d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeQuad2d = Write<Quad2d>;
                 Action<Stream, object> EncodeQuad2dArray = (s, o) => EncodeArray(s, (Quad2d[])o);
                 Func<Stream, object> DecodeQuad2d = ReadBoxed<Quad2d>;
@@ -1952,7 +1952,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeQuad3d = s => new Quad3d((V3d)DecodeV3d(s), (V3d)DecodeV3d(s), (V3d)DecodeV3d(s), (V3d)DecodeV3d(s));
                 Func<BinaryReader, object> DecodeQuad3dArray = DecodeArray<Quad3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeQuad3d = Write<Quad3d>;
                 Action<Stream, object> EncodeQuad3dArray = (s, o) => EncodeArray(s, (Quad3d[])o);
                 Func<Stream, object> DecodeQuad3d = ReadBoxed<Quad3d>;
@@ -1973,7 +1973,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeEllipse2d = s => new Ellipse2d((V2d)DecodeV2d(s), (V2d)DecodeV2d(s), (V2d)DecodeV2d(s));
                 Func<BinaryReader, object> DecodeEllipse2dArray = DecodeArray<Ellipse2d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeEllipse2d = Write<Ellipse2d>;
                 Action<Stream, object> EncodeEllipse2dArray = (s, o) => EncodeArray(s, (Ellipse2d[])o);
                 Func<Stream, object> DecodeEllipse2d = ReadBoxed<Ellipse2d>;
@@ -1994,7 +1994,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeEllipse3d = s => new Ellipse3d((V3d)DecodeV3d(s), (V3d)DecodeV3d(s), (V3d)DecodeV3d(s), (V3d)DecodeV3d(s));
                 Func<BinaryReader, object> DecodeEllipse3dArray = DecodeArray<Ellipse3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeEllipse3d = Write<Ellipse3d>;
                 Action<Stream, object> EncodeEllipse3dArray = (s, o) => EncodeArray(s, (Ellipse3d[])o);
                 Func<Stream, object> DecodeEllipse3d = ReadBoxed<Ellipse3d>;
@@ -2015,7 +2015,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeSphere3d = s => new Sphere3d((V3d)DecodeV3d(s), s.ReadDouble());
                 Func<BinaryReader, object> DecodeSphere3dArray = DecodeArray<Sphere3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeSphere3d = Write<Sphere3d>;
                 Action<Stream, object> EncodeSphere3dArray = (s, o) => EncodeArray(s, (Sphere3d[])o);
                 Func<Stream, object> DecodeSphere3d = ReadBoxed<Sphere3d>;
@@ -2036,7 +2036,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodePlane2d = s => new Plane2d((V2d)DecodeV2d(s), s.ReadDouble());
                 Func<BinaryReader, object> DecodePlane2dArray = DecodeArray<Plane2d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodePlane2d = Write<Plane2d>;
                 Action<Stream, object> EncodePlane2dArray = (s, o) => EncodeArray(s, (Plane2d[])o);
                 Func<Stream, object> DecodePlane2d = ReadBoxed<Plane2d>;
@@ -2057,7 +2057,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodePlane3d = s => new Plane3d((V3d)DecodeV3d(s), s.ReadDouble());
                 Func<BinaryReader, object> DecodePlane3dArray = DecodeArray<Plane3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodePlane3d = Write<Plane3d>;
                 Action<Stream, object> EncodePlane3dArray = (s, o) => EncodeArray(s, (Plane3d[])o);
                 Func<Stream, object> DecodePlane3d = ReadBoxed<Plane3d>;
@@ -2078,7 +2078,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeRay2d = s => new Ray2d((V2d)DecodeV2d(s), (V2d)DecodeV2d(s));
                 Func<BinaryReader, object> DecodeRay2dArray = DecodeArray<Ray2d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeRay2d = Write<Ray2d>;
                 Action<Stream, object> EncodeRay2dArray = (s, o) => EncodeArray(s, (Ray2d[])o);
                 Func<Stream, object> DecodeRay2d = ReadBoxed<Ray2d>;
@@ -2099,7 +2099,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeRay3d = s => new Ray3d((V3d)DecodeV3d(s), (V3d)DecodeV3d(s));
                 Func<BinaryReader, object> DecodeRay3dArray = DecodeArray<Ray3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeRay3d = Write<Ray3d>;
                 Action<Stream, object> EncodeRay3dArray = (s, o) => EncodeArray(s, (Ray3d[])o);
                 Func<Stream, object> DecodeRay3d = ReadBoxed<Ray3d>;
@@ -2120,7 +2120,7 @@ namespace Aardvark.Data
                 Func<BinaryReader, object> DecodeTorus3d = s => new Torus3d((V3d)DecodeV3d(s), (V3d)DecodeV3d(s), s.ReadDouble(), s.ReadDouble());
                 Func<BinaryReader, object> DecodeTorus3dArray = DecodeArray<Torus3d>;
                 #endif
-                #if NETCOREAPP2_2 || NETCOREAPP3_1 || NETCOREAPP5_0
+                #if NETCOREAPP3_1 || NET5_0
                 Action<Stream, object> EncodeTorus3d = Write<Torus3d>;
                 Action<Stream, object> EncodeTorus3dArray = (s, o) => EncodeArray(s, (Torus3d[])o);
                 Func<Stream, object> DecodeTorus3d = ReadBoxed<Torus3d>;
