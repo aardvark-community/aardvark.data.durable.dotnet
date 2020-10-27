@@ -39,7 +39,7 @@ namespace Aardvark.Data
     {
 #region Encode
 
-#region DurableMap
+        #region DurableMap
 
         private static void EncodeDurableMapEntry(BinaryWriter stream, Durable.Def def, object x)
         {
@@ -112,7 +112,93 @@ namespace Aardvark.Data
         private static readonly Action<BinaryWriter, object> EncodeDurableMap16WithoutHeader =
             CreateEncodeDurableMapAlignedWithoutHeader(16);
 
-#endregion
+        #endregion
+
+        #region DurableNamedMap
+
+        private static void EncodeDurableNamedMapEntry(BinaryWriter stream, string name, Durable.Def def, object x)
+        {
+            if (string.IsNullOrWhiteSpace(name)) throw new InvalidOperationException(
+                $"Empty names are not allowed. Invariant 48ff333e-250b-48f1-ae56-2129e9370d70."
+                );
+
+            var key = (def.Type != Durable.Primitives.Unit.Id) ? def.Type : def.Id;
+
+            if (s_encoders.TryGetValue(key, out var encoder))
+            {
+                EncodeStringUtf8(stream, name);
+                EncodeGuid(stream, def.Id);
+                ((Action<BinaryWriter, object>)encoder)(stream, x);
+            }
+            else
+            {
+                var unknownDef = Durable.Get(key);
+                throw new InvalidOperationException(
+                    $"No encoder for {unknownDef}. Invariant b5a5a7d1-1c3c-4b63-ad97-0f072b513446."
+                    );
+            }
+        }
+
+        private static readonly Action<BinaryWriter, object> EncodeDurableNamedMapWithoutHeader =
+            (s, o) =>
+            {
+                var xs = (IEnumerable<KeyValuePair<string, (Durable.Def, object)>>)o;
+                var count = xs.Count();
+                s.Write(count);
+                foreach (var kv in xs) EncodeDurableNamedMapEntry(s, kv.Key, kv.Value.Item1, kv.Value.Item2);
+            };
+
+        private static Action<BinaryWriter, object> CreateEncodeDurableNamedMapAlignedWithoutHeader(int alignmentInBytes)
+            => (bw, o) =>
+            {
+                var s = bw.BaseStream;
+
+                var xs = (IEnumerable<KeyValuePair<string, (Durable.Def, object)>>)o;
+
+                // number of entries (int + padding)
+                var count = xs.Count();
+                bw.Write(count); // 4 bytes
+                PadToNextMultipleOf(alignmentInBytes);
+#if DEBUG
+                if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant ae73a124-4d6f-47d0-88cf-ce3c730132e9.");
+#endif
+
+                // entries (+ padding after each entry)
+                foreach (var kv in xs)
+                {
+                    EncodeStringUtf8(bw, kv.Key);
+                    PadToNextMultipleOf(alignmentInBytes);
+
+                    EncodeDurableMapEntry(bw, kv.Value.Item1, kv.Value.Item2);
+                    PadToNextMultipleOf(alignmentInBytes);
+#if DEBUG
+                    if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant 815b4522-92d4-4ef8-b76b-c7ece5bd1a9b.");
+#endif
+                }
+
+                void PadToNextMultipleOf(int numberOfBytes)
+                {
+                    var m = (int)(s.Position % numberOfBytes);
+                    if (m > 0)
+                    {
+                        var size = numberOfBytes - m;
+                        var buffer = new byte[size];
+                        s.Write(buffer, 0, size);
+                    }
+                }
+
+            };
+        private static readonly Action<BinaryWriter, object> EncodeDurableNamedMap4WithoutHeader =
+            CreateEncodeDurableNamedMapAlignedWithoutHeader(4);
+
+        private static readonly Action<BinaryWriter, object> EncodeDurableNamedMap8WithoutHeader =
+            CreateEncodeDurableNamedMapAlignedWithoutHeader(8);
+
+        private static readonly Action<BinaryWriter, object> EncodeDurableNamedMap16WithoutHeader =
+            CreateEncodeDurableNamedMapAlignedWithoutHeader(16);
+
+        #endregion
+
 
         private static readonly Action<BinaryWriter, object> EncodeGZipped =
             (s, o) =>
@@ -307,9 +393,11 @@ namespace Aardvark.Data
             EncodeWithoutTypeForPrimitives(stream, def, x);
         }
 
-#endregion
+        #endregion
 
 #region Decode
+
+        #region NamedMap
 
         private static readonly Func<BinaryReader, object> DecodeDurableMapWithoutHeader =
             s =>
@@ -359,6 +447,67 @@ namespace Aardvark.Data
 
         private static readonly Func<BinaryReader, object> DecodeDurableMap16WithoutHeader =
             CreateDecodeDurableMapAlignedWithoutHeader(16);
+
+        #endregion
+
+        #region NamedNamedMap
+
+        private static readonly Func<BinaryReader, object> DecodeDurableNamedMapWithoutHeader =
+            s =>
+            {
+                var count = s.ReadInt32();
+                var entries = new KeyValuePair<string, (Durable.Def key, object value)>[count];
+                for (var i = 0; i < count; i++)
+                {
+                    var name = (string)DecodeStringUtf8(s);
+                    var e = Decode(s);
+                    entries[i] = new KeyValuePair<string, (Durable.Def key, object value)>(name, (e.Item1, e.Item2));
+                }
+                return ImmutableDictionary.CreateRange(entries);
+            };
+
+        private static Func<BinaryReader, object> CreateDecodeDurableNamedMapAlignedWithoutHeader(int alignmentInBytes)
+            => br =>
+            {
+                var s = br.BaseStream;
+
+                var count = br.ReadInt32();
+                SkipToNextMultipleOf(s, alignmentInBytes);
+#if DEBUG
+                if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant 7c1561a2-edb4-49c1-bf8e-5191c4635dea.");
+#endif
+
+                var map = ImmutableDictionary<string, (Durable.Def key, object value)>.Empty;
+                for (var i = 0; i < count; i++)
+                {
+                    var name = (string)DecodeStringUtf8(br);
+                    SkipToNextMultipleOf(s, alignmentInBytes);
+                    var (def, o) = Decode(br);
+                    map = map.Add(name, (def, o));
+                    SkipToNextMultipleOf(s, alignmentInBytes);
+#if DEBUG
+                    if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant 4cd7f7a1-bdf7-43ec-80c8-ae7314a25d2d.");
+#endif
+                }
+                return map;
+
+                static void SkipToNextMultipleOf(Stream s, int numberOfBytes)
+                {
+                    var m = (int)(s.Position % numberOfBytes);
+                    if (m > 0) s.Seek(numberOfBytes - m, SeekOrigin.Current);
+                }
+            };
+
+        private static readonly Func<BinaryReader, object> DecodeDurableNamedMap4WithoutHeader =
+            CreateDecodeDurableNamedMapAlignedWithoutHeader(4);
+
+        private static readonly Func<BinaryReader, object> DecodeDurableNamedMap8WithoutHeader =
+            CreateDecodeDurableNamedMapAlignedWithoutHeader(8);
+
+        private static readonly Func<BinaryReader, object> DecodeDurableNamedMap16WithoutHeader =
+            CreateDecodeDurableNamedMapAlignedWithoutHeader(16);
+
+        #endregion
 
         private static readonly Func<BinaryReader, object> DecodeGZipped =
             s =>

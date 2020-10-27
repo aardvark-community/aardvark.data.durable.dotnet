@@ -68,6 +68,8 @@ namespace Aardvark.Data
                 [Durable.Primitives.DurableMapAligned16.Id] = EncodeDurableMap16WithoutHeader,
                 [Durable.Primitives.GZipped.Id] = EncodeGZipped,
 
+                [Durable.Primitives.DurableNamedMap.Id] = EncodeDurableNamedMap4WithoutHeader,
+
                 [Durable.Primitives.StringUTF8.Id] = EncodeStringUtf8,
                 [Durable.Primitives.StringUTF8Array.Id] = EncodeStringUtf8Array,
                 [Durable.Primitives.GuidDef.Id] = EncodeGuid,
@@ -128,6 +130,8 @@ namespace Aardvark.Data
                 [Durable.Primitives.DurableMapAligned8.Id] = DecodeDurableMap8WithoutHeader,
                 [Durable.Primitives.DurableMapAligned16.Id] = DecodeDurableMap16WithoutHeader,
                 [Durable.Primitives.GZipped.Id] = DecodeGZipped,
+
+                [Durable.Primitives.DurableNamedMap.Id] = DecodeDurableNamedMap4WithoutHeader,
 
                 [Durable.Primitives.StringUTF8.Id] = DecodeStringUtf8,
                 [Durable.Primitives.StringUTF8Array.Id] = DecodeStringUtf8Array,

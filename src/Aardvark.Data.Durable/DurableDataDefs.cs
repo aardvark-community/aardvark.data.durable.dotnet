@@ -157,6 +157,17 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
+            /// A map of name/key/value entries, where names are strings, keys are durable IDs (Guid) with values of corresponding types. All names, keys, and values are 4-byte aligned.
+            /// </summary>
+            public static readonly Def DurableNamedMap = new Def(
+                new Guid("29de4f2f-90da-49ff-902c-3315e29457c9"),
+                "DurableNamedMap",
+                "A map of name/key/value entries, where names are strings, keys are durable IDs (Guid) with values of corresponding types. All names, keys, and values are 4-byte aligned.",
+                None,
+                false
+                );
+
+            /// <summary>
             /// A gzipped element.
             /// </summary>
             public static readonly Def GZipped = new Def(
@@ -3414,46 +3425,68 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// Octree. An octree node followed by all other nodes in depth first order. DurableMap.
+            /// Octree. An index for octree nodes stored in level order in a single blob. DurableMap.
             /// </summary>
-            public static readonly Def Tree = new Def(
-                new Guid("708b4b8e-286b-4658-82ac-dd8ea98d1b1c"),
-                "Octree.Tree",
-                "Octree. An octree node followed by all other nodes in depth first order. DurableMap.",
+            public static readonly Def MultiNodeIndex = new Def(
+                new Guid("53efc513-d4dd-43f5-908d-6cd73e90962f"),
+                "Octree.MultiNodeIndex",
+                "Octree. An index for octree nodes stored in level order in a single blob. DurableMap.",
                 Primitives.DurableMap.Id,
                 false
                 );
 
             /// <summary>
-            /// Octree. Node format specifier.
-            /// </summary>
-            public static readonly Def NodeFormat = new Def(
-                new Guid("7c1151c8-9d5f-406d-9c03-9778f657806b"),
-                "Octree.NodeFormat",
-                "Octree. Node format specifier.",
-                Primitives.GuidDef.Id,
-                false
-                );
-
-            /// <summary>
-            /// Octree. Node's unique id.
+            /// Octree. Node's unique id. Guid.
             /// </summary>
             public static readonly Def NodeId = new Def(
                 new Guid("1100ffd5-7789-4872-9ef2-67d45be0c489"),
                 "Octree.NodeId",
-                "Octree. Node's unique id.",
+                "Octree. Node's unique id. Guid.",
                 Primitives.GuidDef.Id,
                 false
                 );
 
             /// <summary>
-            /// Octree. Subnodes as array of guids. Array length is 8 for inner nodes (where Guid.Empty means no subnode) and no array for leaf nodes.
+            /// Octree. Node's unique id. StringUTF8.
+            /// </summary>
+            public static readonly Def NodeIdString = new Def(
+                new Guid("c0e3a799-d15f-4e0d-b90e-6924635b3f07"),
+                "Octree.NodeId.String",
+                "Octree. Node's unique id. StringUTF8.",
+                Primitives.StringUTF8.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Subnode IDs as array of guids. Array length is 8 for inner nodes (where Guid.Empty means no subnode) and no array for leaf nodes. Guid[8]
             /// </summary>
             public static readonly Def SubnodesGuids = new Def(
                 new Guid("eb44f9b0-3247-4426-b458-1b6e9880d466"),
                 "Octree.Subnodes.Guids",
-                "Octree. Subnodes as array of guids. Array length is 8 for inner nodes (where Guid.Empty means no subnode) and no array for leaf nodes.",
+                "Octree. Subnode IDs as array of guids. Array length is 8 for inner nodes (where Guid.Empty means no subnode) and no array for leaf nodes. Guid[8]",
                 Primitives.GuidArray.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Subnode IDs as array of strings. Array length is 8 for inner nodes (where null means no subnode) and no array for leaf nodes. StringUTF8[8]
+            /// </summary>
+            public static readonly Def SubnodesStrings = new Def(
+                new Guid("72b072ac-3973-49a5-b04f-436241b2107b"),
+                "Octree.Subnodes.Strings",
+                "Octree. Subnode IDs as array of strings. Array length is 8 for inner nodes (where null means no subnode) and no array for leaf nodes. StringUTF8[8]",
+                Primitives.StringUTF8Array.Id,
+                false
+                );
+
+            /// <summary>
+            /// Octree. Subnode IDs as array of multi-node references in format [nodeId]@[insideMultiNodeId] or [nodeId] if subnode is stand-alone. Array length is 8 for inner nodes (where null means no subnode) and no array for leaf nodes. StringUTF8[8]
+            /// </summary>
+            public static readonly Def SubnodesMultiNodeRefs = new Def(
+                new Guid("6d65a05b-8813-4ac0-ac78-f26bae0235b2"),
+                "Octree.Subnodes.MultiNodeRefs",
+                "Octree. Subnode IDs as array of multi-node references in format [nodeId]@[insideMultiNodeId] or [nodeId] if subnode is stand-alone. Array length is 8 for inner nodes (where null means no subnode) and no array for leaf nodes. StringUTF8[8]",
+                Primitives.StringUTF8Array.Id,
                 false
                 );
 

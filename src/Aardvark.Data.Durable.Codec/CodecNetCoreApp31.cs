@@ -66,7 +66,7 @@ namespace Aardvark.Data
             s.Write(p);
         }
 
-#region DurableMap
+        #region DurableMap
 
         private static void EncodeDurableMapEntry(Stream stream, Durable.Def def, object x)
         {
@@ -131,7 +131,84 @@ namespace Aardvark.Data
         private static readonly Action<Stream, object> EncodeDurableMap16WithoutHeader =
             CreateEncodeDurableMapAlignedWithoutHeader(16);
 
-#endregion
+        #endregion
+
+        #region DurableNamedMap
+
+        private static void EncodeDurableNamedMapEntry(Stream stream, string name, Durable.Def def, object x)
+        {
+            if (string.IsNullOrWhiteSpace(name)) throw new InvalidOperationException(
+                $"Empty names are not allowed. Invariant f3549a31-7d59-4701-b1c5-65f0db93fedd."
+                );
+
+            var key = (def.Type != Durable.Primitives.Unit.Id) ? def.Type : def.Id;
+
+            if (s_encoders.TryGetValue(key, out var encoder))
+            {
+                EncodeStringUtf8(stream, name);
+                EncodeGuid(stream, def.Id);
+                ((Action<Stream, object>)encoder)(stream, x);
+            }
+            else
+            {
+                var unknownDef = Durable.Get(key);
+                throw new InvalidOperationException(
+                    $"No encoder for {unknownDef}. Invariant d30925d5-2c7f-4f30-871a-9fca4413200c."
+                    );
+            }
+        }
+
+        private static readonly Action<Stream, object> EncodeDurableNamedMapWithoutHeader =
+            (s, o) =>
+            {
+                var xs = (IEnumerable<KeyValuePair<string, (Durable.Def, object)>>)o;
+                var count = xs.Count();
+                s.Write(ref count);
+                foreach (var kv in xs) EncodeDurableNamedMapEntry(s, kv.Key, kv.Value.Item1, kv.Value.Item2);
+            };
+
+        private static Action<Stream, object> CreateEncodeDurableNamedMapAlignedWithoutHeader(int alignmentInBytes)
+            => (s, o) =>
+            {
+                var xs = (IEnumerable<KeyValuePair<string, (Durable.Def, object)>>)o;
+
+                // number of entries (int + padding)
+                var count = xs.Count();
+                s.Write(ref count); // 4 bytes
+                PadToNextMultipleOf(alignmentInBytes);
+#if DEBUG
+                if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant 9e5adda5-10f5-4edf-ad4a-30e59ac19ea3.");
+#endif
+
+                // entries (+ padding after each entry)
+                foreach (var kv in xs)
+                {
+                    EncodeStringUtf8(s, kv.Key); 
+                    PadToNextMultipleOf(alignmentInBytes);
+                    EncodeWithoutTypeForPrimitives(s, kv.Value.Item1, kv.Value.Item2);
+                    PadToNextMultipleOf(alignmentInBytes);
+#if DEBUG
+                    if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant 8489c178-bb2c-4861-8c96-3a3f1a997f8b.");
+#endif
+                }
+
+                void PadToNextMultipleOf(int numberOfBytes)
+                {
+                    var m = (int)(s.Position % numberOfBytes);
+                    if (m > 0) s.Write(stackalloc byte[numberOfBytes - m]);
+                }
+            };
+
+        private static readonly Action<Stream, object> EncodeDurableNamedMap4WithoutHeader =
+            CreateEncodeDurableNamedMapAlignedWithoutHeader(4);
+
+        private static readonly Action<Stream, object> EncodeDurableNamedMap8WithoutHeader =
+            CreateEncodeDurableNamedMapAlignedWithoutHeader(8);
+
+        private static readonly Action<Stream, object> EncodeDurableNamedMap16WithoutHeader =
+            CreateEncodeDurableNamedMapAlignedWithoutHeader(16);
+
+        #endregion
 
         private static readonly Action<Stream, object> EncodeGZipped =
             (s, o) =>
@@ -324,6 +401,8 @@ namespace Aardvark.Data
             return x;
         }
 
+        #region DurableMap
+
         private static readonly Func<Stream, object> DecodeDurableMapWithoutHeader =
             s =>
             {
@@ -370,6 +449,65 @@ namespace Aardvark.Data
 
         private static readonly Func<Stream, object> DecodeDurableMap16WithoutHeader =
             CreateDecodeDurableMapAlignedWithoutHeader(16);
+
+        #endregion
+
+        #region DurableNamedMap
+
+        private static readonly Func<Stream, object> DecodeDurableNamedMapWithoutHeader =
+            s =>
+            {
+                var count = s.Read<int>();
+                var map = ImmutableDictionary<string, (Durable.Def key, object value)>.Empty;
+                for (var i = 0; i < count; i++)
+                {
+                    var name = (string)DecodeStringUtf8(s);
+                    var (def, o) = Decode(s);
+                    map = map.Add(name, (def, o));
+                }
+                return map;
+            };
+
+        private static Func<Stream, object> CreateDecodeDurableNamedMapAlignedWithoutHeader(int alignmentInBytes)
+            => s =>
+            {
+                var count = s.Read<int>();
+                SkipToNextMultipleOf(s, alignmentInBytes);
+#if DEBUG
+                if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant b5dc4067-7131-46fe-97da-da6551c4bf8a.");
+#endif
+
+                var map = ImmutableDictionary<string, (Durable.Def key, object value)>.Empty;
+                for (var i = 0; i < count; i++)
+                {
+                    var name = (string)DecodeStringUtf8(s);
+                    SkipToNextMultipleOf(s, alignmentInBytes);
+                    var (def, o) = Decode(s);
+                    map = map.Add(name, (def, o));
+                    SkipToNextMultipleOf(s, alignmentInBytes);
+#if DEBUG
+                    if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant b1c2dec4-6487-4888-abe1-08c6b9ac2bfb.");
+#endif
+                }
+                return map;
+
+                static void SkipToNextMultipleOf(Stream s, int numberOfBytes)
+                {
+                    var m = (int)(s.Position % numberOfBytes);
+                    if (m > 0) s.Seek(numberOfBytes - m, SeekOrigin.Current);
+                }
+            };
+
+        private static readonly Func<Stream, object> DecodeDurableNamedMap4WithoutHeader =
+            CreateDecodeDurableNamedMapAlignedWithoutHeader(4);
+
+        private static readonly Func<Stream, object> DecodeDurableNamedMap8WithoutHeader =
+            CreateDecodeDurableNamedMapAlignedWithoutHeader(8);
+
+        private static readonly Func<Stream, object> DecodeDurableNamedMap16WithoutHeader =
+            CreateDecodeDurableNamedMapAlignedWithoutHeader(16);
+
+        #endregion
 
         private static readonly Func<Stream, object> DecodeGZipped =
             s =>
