@@ -168,8 +168,8 @@ namespace Aardvark.Data
                 {
                     EncodeStringUtf8(bw, kv.Key);
                     PadToNextMultipleOf(alignmentInBytes);
-
-                    EncodeDurableMapEntry(bw, kv.Value.Item1, kv.Value.Item2);
+                    EncodeGuid(bw, kv.Value.Item1.Id);
+                    EncodeWithoutType(bw, kv.Value.Item1, kv.Value.Item2);
                     PadToNextMultipleOf(alignmentInBytes);
 #if DEBUG
                     if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant 815b4522-92d4-4ef8-b76b-c7ece5bd1a9b.");
@@ -354,6 +354,22 @@ namespace Aardvark.Data
                         $"Unknown definition {unknownDef}. Invariant 0de99f99-a339-421b-ac5d-4f55b71342de."
                         );
                 }
+            }
+        }
+
+        private static void EncodeWithoutType(BinaryWriter stream, Durable.Def def, object x)
+        {
+            var key = (def.Type != Durable.Primitives.Unit.Id) ? def.Type : def.Id;
+            if (s_encoders.TryGetValue(key, out var encoder))
+            {
+                ((Action<BinaryWriter, object>)encoder)(stream, x);
+            }
+            else
+            {
+                var unknownDef = Durable.Get(def.Id);
+                throw new InvalidOperationException(
+                    $"Unknown definition {unknownDef}. Invariant 0de99f99-a339-421b-ac5d-4f55b71342de."
+                    );
             }
         }
 

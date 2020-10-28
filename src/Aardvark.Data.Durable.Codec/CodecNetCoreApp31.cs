@@ -185,7 +185,8 @@ namespace Aardvark.Data
                 {
                     EncodeStringUtf8(s, kv.Key); 
                     PadToNextMultipleOf(alignmentInBytes);
-                    EncodeWithoutTypeForPrimitives(s, kv.Value.Item1, kv.Value.Item2);
+                    EncodeGuid(s, kv.Value.Item1.Id);
+                    EncodeWithoutType(s, kv.Value.Item1, kv.Value.Item2);
                     PadToNextMultipleOf(alignmentInBytes);
 #if DEBUG
                     if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant 8489c178-bb2c-4861-8c96-3a3f1a997f8b.");
@@ -367,9 +368,25 @@ namespace Aardvark.Data
             }
         }
 
-#endregion
+        private static void EncodeWithoutType(Stream stream, Durable.Def def, object x)
+        {
+            var key = (def.Type != Durable.Primitives.Unit.Id) ? def.Type : def.Id;
+            if (s_encoders.TryGetValue(key, out var encoder))
+            {
+                ((Action<Stream, object>)encoder)(stream, x);
+            }
+            else
+            {
+                var unknownDef = Durable.Get(def.Id);
+                throw new InvalidOperationException(
+                    $"Unknown definition {unknownDef}. Invariant c38b073e-4526-4984-bce6-d60a69a49286."
+                    );
+            }
+        }
 
-#region Decode
+        #endregion
+
+        #region Decode
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static T Read<T>(this Stream s) where T : struct
