@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 
 namespace Aardvark.Data
 {
@@ -181,7 +182,9 @@ namespace Aardvark.Data
             Init();
         }
 
-        private static byte[] GZipCompress(this byte[] buffer)
+        #region GZip
+
+        public static byte[] Gzip(this byte[] buffer)
         {
             using var ms = new MemoryStream();
             using var gz = new GZipStream(ms, CompressionMode.Compress);
@@ -191,14 +194,24 @@ namespace Aardvark.Data
             var compressedBuffer = ms.ToArray();
             return compressedBuffer;
         }
-
-        private static byte[] GZipDecompress(this byte[] buffer, int uncompressedLength)
+        public static byte[] Ungzip(this byte[] buffer, int uncompressedBufferLength)
         {
-            using var ms = new MemoryStream(buffer);
-            using var gz = new GZipStream(ms, CompressionMode.Decompress);
-            var uncompressed = new byte[uncompressedLength];
-            gz.Read(uncompressed, 0, uncompressedLength);
-            return uncompressed;
+            using var stream = new GZipStream(new MemoryStream(buffer), CompressionMode.Decompress);
+
+            int size = Math.Max(uncompressedBufferLength, 4096);
+            byte[] bs = new byte[size];
+            using var ms = new MemoryStream();
+
+            int count = 0;
+            do
+            {
+                count = stream.Read(bs, 0, size);
+                if (count > 0) ms.Write(bs, 0, count);
+            }
+            while (count > 0);
+            return ms.ToArray();
         }
+
+        #endregion
     }
 }

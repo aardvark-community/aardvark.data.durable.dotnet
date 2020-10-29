@@ -223,7 +223,7 @@ namespace Aardvark.Data
                 var buffer = ms.ToArray();
                 var bufferLength = buffer.Length;
 
-                var bufferGZipped = buffer.GZipCompress();
+                var bufferGZipped = buffer.Gzip();
                 var bufferGZippedLength = bufferGZipped.Length;
 
                 s.Write(ref bufferLength);
@@ -386,7 +386,7 @@ namespace Aardvark.Data
 
         #endregion
 
-        #region Decode
+#region Decode
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static T Read<T>(this Stream s) where T : struct
@@ -535,7 +535,7 @@ namespace Aardvark.Data
                 var compressedBuffer = new byte[compressedBufferSize];
                 s.Read(compressedBuffer, 0, compressedBufferSize);
 
-                var uncompressedBuffer = compressedBuffer.GZipDecompress(uncompressedBufferSize);
+                var uncompressedBuffer = compressedBuffer.Ungzip(uncompressedBufferSize);
 
                 using var ms = new MemoryStream(uncompressedBuffer);
 
@@ -685,7 +685,7 @@ namespace Aardvark.Data
 #region Serialization
 
         /// <summary>
-        /// Serializes value x to byte array. 
+        /// Serialize value x to byte array. 
         /// Can be deserialized with Deserialize.
         /// </summary>
         public static byte[] Serialize<T>(Durable.Def def, T x)
@@ -703,7 +703,7 @@ namespace Aardvark.Data
         }
 
         /// <summary>
-        /// Serializes value x to stream. 
+        /// Serialize value x to stream. 
         /// Can be deserialized with Deserialize.
         /// </summary>
         public static void Serialize<T>(Stream stream, Durable.Def def, T x)
@@ -719,14 +719,16 @@ namespace Aardvark.Data
         }
 
 
+
+
         /// <summary>
-        /// Deserializes value from byte array.
+        /// Deserialize value from byte array.
         /// </summary>
         public static (Durable.Def def, object obj) Deserialize(Stream stream)
             => Decode(stream);
 
         /// <summary>
-        /// Deserializes value from byte array.
+        /// Deserialize value from byte array.
         /// </summary>
 
         public static (Durable.Def def, object obj) Deserialize(byte[] buffer)
@@ -736,31 +738,192 @@ namespace Aardvark.Data
         }
 
         /// <summary>
-        /// Deserializes value from file.
+        /// Deserialize value from file.
         /// </summary>
         public static (Durable.Def dev, object obj) Deserialize(string filename)
         {
-            using var ms = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.Read);
-            return Decode(ms);
+            using var fs = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.Read);
+            return Decode(fs);
         }
 
 
+
+
+
+
         /// <summary>
-        /// Deserializes value from stream.
+        /// Deserialize value from stream.
         /// </summary>
         public static T DeserializeAs<T>(Stream stream) => (T)Deserialize(stream).obj;
 
         /// <summary>
-        /// Deserializes value from byte array.
+        /// Deserialize value from byte array.
         /// </summary>
         public static T DeserializeAs<T>(byte[] buffer) => (T)Deserialize(buffer).obj;
 
         /// <summary>
-        /// Deserializes value from file.
+        /// Deserialize value from file.
         /// </summary>
         public static T DeserializeAs<T>(string filename) => (T)Deserialize(filename).obj;
 
+
+
+        #region DurableMap
+
+        private static IEnumerable<KeyValuePair<string, (Durable.Def, object)>> ToValueTupleForm(
+            IEnumerable<KeyValuePair<string, Tuple<Durable.Def, object>>> xs
+            )
+            => xs.Select(kv => new KeyValuePair<string, (Durable.Def, object)>(kv.Key, (kv.Value.Item1, kv.Value.Item2)));
+
+        /// <summary>
+        /// Serialize DurableMap (dense, no padding) to byte array. 
+        /// Can be deserialized with DeserializeDurableMap.
+        /// </summary>
+        public static byte[] SerializeDurableMap(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        {
+            using var ms = new MemoryStream();
+            EncodeGuid(ms, Durable.Primitives.DurableMap.Id);
+            EncodeWithoutTypeForPrimitives(ms, Durable.Primitives.DurableMap, durableMap);
+            return ms.ToArray();
+        }
+
+        /// <summary>
+        /// Serialize DurableMap (dense, no padding) to stream. 
+        /// Can be deserialized with DeserializeDurableMap.
+        /// </summary>
+        public static void SerializeDurableMap(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        {
+            EncodeGuid(stream, Durable.Primitives.DurableMap.Id);
+            EncodeWithoutTypeForPrimitives(stream, Durable.Primitives.DurableMap, durableMap);
+        }
+
+        /// <summary>
+        /// Serialize DurableMap to byte array. 
+        /// Can be deserialized with DeserializeDurableMap.
+        /// </summary>
+        public static byte[] SerializeDurableMapAligned8(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        {
+            using var ms = new MemoryStream();
+            EncodeGuid(ms, Durable.Primitives.DurableMap.Id);
+            EncodeWithoutTypeForPrimitives(ms, Durable.Primitives.DurableMapAligned8, durableMap);
+            return ms.ToArray();
+        }
+
+        /// <summary>
+        /// Serialize DurableMap to stream. 
+        /// Can be deserialized with DeserializeDurableMap.
+        /// </summary>
+        public static void SerializeDurableMapAligned8(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        {
+            EncodeGuid(stream, Durable.Primitives.DurableMap.Id);
+            EncodeWithoutTypeForPrimitives(stream, Durable.Primitives.DurableMapAligned8, durableMap);
+        }
+
+        /// <summary>
+        /// Serialize DurableMap to byte array. 
+        /// Can be deserialized with DeserializeDurableMap.
+        /// </summary>
+        public static byte[] SerializeDurableMapAligned16(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        {
+            using var ms = new MemoryStream();
+            EncodeGuid(ms, Durable.Primitives.DurableMap.Id);
+            EncodeWithoutTypeForPrimitives(ms, Durable.Primitives.DurableMapAligned16, durableMap);
+            return ms.ToArray();
+        }
+
+        /// <summary>
+        /// Serialize DurableMap to stream. 
+        /// Can be deserialized with DeserializeDurableMap.
+        /// </summary>
+        public static void SerializeDurableMapAligned16(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        {
+            EncodeGuid(stream, Durable.Primitives.DurableMap.Id);
+            EncodeWithoutTypeForPrimitives(stream, Durable.Primitives.DurableMapAligned16, durableMap);
+        }
+
+
+        private static IDictionary<Durable.Def, object> DeserializeDurableMapHelper((Durable.Def def, object obj) x)
+        {
+            if (x.def == Durable.Primitives.DurableMap ||
+                x.def == Durable.Primitives.DurableMapAligned8 ||
+                x.def == Durable.Primitives.DurableMapAligned16
+                )
+            {
+                return (IDictionary<Durable.Def, object>)x.obj;
+            }
+
+            throw new Exception($"Expected durable map, but found {x.def}. Invariant 057a908d-6b9d-40b1-a157-1399c75f1f29.");
+        }
+        public static IDictionary<Durable.Def, object> DeserializeDurableMap(Stream stream)
+            => DeserializeDurableMapHelper(Deserialize(stream));
+        public static IDictionary<Durable.Def, object> DeserializeDurableMap(byte[] buffer)
+            => DeserializeDurableMapHelper(Deserialize(buffer));
+        public static IDictionary<Durable.Def, object> DeserializeDurableMap(string filename)
+            => DeserializeDurableMapHelper(Deserialize(filename));
+
+        #endregion
+
+        #region DurableNamedMap
+
+        /// <summary>
+        /// Serialize DurableNamedMap to byte array. 
+        /// Can be deserialized with DeserializeDurableNamedMap.
+        /// </summary>
+        public static byte[] SerializeDurableNamedMap(IEnumerable<KeyValuePair<string, (Durable.Def, object)>> durableNamedMap)
+        {
+            using var ms = new MemoryStream();
+            EncodeGuid(ms, Durable.Primitives.DurableNamedMap.Id);
+            EncodeWithoutTypeForPrimitives(ms, Durable.Primitives.DurableNamedMap, durableNamedMap);
+            return ms.ToArray();
+        }
+
+        /// <summary>
+        /// Serialize DurableNamedMap to byte array. 
+        /// Can be deserialized with DeserializeDurableNamedMap.
+        /// </summary>
+        public static byte[] SerializeDurableNamedMap(IEnumerable<KeyValuePair<string, Tuple<Durable.Def, object>>> durableNamedMap)
+            => SerializeDurableNamedMap(ToValueTupleForm(durableNamedMap));
+
+        /// <summary>
+        /// Serialize DurableNamedMap to stream. 
+        /// Can be deserialized with DeserializeDurableNamedMap.
+        /// </summary>
+        public static void SerializeDurableNamedMap(Stream stream, IEnumerable<KeyValuePair<string, (Durable.Def, object)>> durableNamedMap)
+        {
+            EncodeGuid(stream, Durable.Primitives.DurableNamedMap.Id);
+            EncodeWithoutTypeForPrimitives(stream, Durable.Primitives.DurableNamedMap, durableNamedMap);
+        }
+
+        /// <summary>
+        /// Serialize DurableNamedMap to stream. 
+        /// Can be deserialized with DeserializeDurableNamedMap.
+        /// </summary>
+        public static void SerializeDurableNamedMap(Stream stream, IEnumerable<KeyValuePair<string, Tuple<Durable.Def, object>>> durableNamedMap)
+            => SerializeDurableNamedMap(stream, ToValueTupleForm(durableNamedMap));
+
+
+        private static IDictionary<string, (Durable.Def def, object obj)> DeserializeDurableNamedMapHelper((Durable.Def def, object obj) x)
+        {
+            if (x.def == Durable.Primitives.DurableNamedMap)
+            {
+                return (IDictionary<string, (Durable.Def def, object obj)>)x.obj;
+            }
+
+            throw new Exception($"Expected durable named map, but found {x.def}. Invariant b4c6f202-f2a4-45fa-8a8f-440621cb5052.");
+        }
+        public static IDictionary<string, (Durable.Def def, object obj)> DeserializeDurableNamedMap(Stream stream)
+            => DeserializeDurableNamedMapHelper(Deserialize(stream));
+        public static IDictionary<string, (Durable.Def def, object obj)> DeserializeDurableNamedMap(byte[] buffer)
+            => DeserializeDurableNamedMapHelper(Deserialize(buffer));
+        public static IDictionary<string, (Durable.Def def, object obj)> DeserializeDurableNamedMap(string filename)
+            => DeserializeDurableNamedMapHelper(Deserialize(filename));
+
+        #endregion
+
+
+
 #endregion
+
     }
 }
 

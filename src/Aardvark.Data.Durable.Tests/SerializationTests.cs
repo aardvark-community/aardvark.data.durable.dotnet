@@ -618,7 +618,6 @@ namespace Aardvark.Data.Tests
             );
 
 
-
         [Fact]
         public void Primitive_DurableMap()
         {
@@ -738,20 +737,8 @@ namespace Aardvark.Data.Tests
 
 
 
-        [Fact]
-        public void Primitive_DurableNamedMap()
+        private void CheckDurableNamedMap(Guid id, byte[] buffer)
         {
-            var id = Guid.NewGuid();
-
-            var map = ImmutableDictionary<string, (Durable.Def, object)>.Empty
-                .Add("NodeId", (Durable.Octree.NodeId, id))
-                .Add("NodeCountTotal", (Durable.Octree.NodeCountTotal, 123L))
-                .Add("Colors3b", (Durable.Octree.Colors3b, new[] { C3b.Red, C3b.Green, C3b.Blue }))
-                .Add("PositionsLocal3f", (Durable.Octree.PositionsLocal3f, new[] { V3f.IOO, V3f.OIO }))
-                ;
-            var buffer = DurableCodec.Serialize(Durable.Primitives.DurableNamedMap, map);
-            //var l = 16 + 4 + 4 + (16 + 16) + (16 + 8) + (16 + 4 + 3 * 3 + 3) + (16 + 4 + 2 * 12 + 4);
-            //Assert.True(buffer.Length == l);
             Assert.True(buffer.Length % 4 == 0);
 
             var (def, o) = DurableCodec.Deserialize(buffer);
@@ -780,7 +767,34 @@ namespace Aardvark.Data.Tests
             Assert.True(ps[0] == V3f.IOO);
             Assert.True(ps[1] == V3f.OIO);
         }
+        [Fact]
+        public void Primitive_DurableNamedMap_ValueTuple()
+        {
+            var id = Guid.NewGuid();
 
+            var map = ImmutableDictionary<string, (Durable.Def, object)>.Empty
+                .Add("NodeId", (Durable.Octree.NodeId, id))
+                .Add("NodeCountTotal", (Durable.Octree.NodeCountTotal, 123L))
+                .Add("Colors3b", (Durable.Octree.Colors3b, new[] { C3b.Red, C3b.Green, C3b.Blue }))
+                .Add("PositionsLocal3f", (Durable.Octree.PositionsLocal3f, new[] { V3f.IOO, V3f.OIO }))
+                ;
+            var buffer = DurableCodec.SerializeDurableNamedMap(map);
+            CheckDurableNamedMap(id, buffer);
+        }
+        [Fact]
+        public void Primitive_DurableNamedMap_Tuple()
+        {
+            var id = Guid.NewGuid();
+
+            var map = ImmutableDictionary<string, Tuple<Durable.Def, object>>.Empty
+                .Add("NodeId", Tuple.Create(Durable.Octree.NodeId, (object)id))
+                .Add("NodeCountTotal", Tuple.Create(Durable.Octree.NodeCountTotal, (object)123L))
+                .Add("Colors3b", Tuple.Create(Durable.Octree.Colors3b, (object)new[] { C3b.Red, C3b.Green, C3b.Blue }))
+                .Add("PositionsLocal3f", Tuple.Create(Durable.Octree.PositionsLocal3f, (object)new[] { V3f.IOO, V3f.OIO }))
+                ;
+            var buffer = DurableCodec.SerializeDurableNamedMap(map);
+            CheckDurableNamedMap(id, buffer);
+        }
 
 
 
