@@ -3431,7 +3431,7 @@ namespace Aardvark.Data
                 new Guid("53efc513-d4dd-43f5-908d-6cd73e90962f"),
                 "Octree.MultiNodeIndex",
                 "Octree. An index for octree nodes stored in level order in a single blob. DurableMap.",
-                Primitives.DurableMap.Id,
+                Primitives.DurableNamedMap.Id,
                 false
                 );
 
