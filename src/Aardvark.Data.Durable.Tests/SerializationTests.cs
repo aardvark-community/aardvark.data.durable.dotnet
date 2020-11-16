@@ -10,7 +10,7 @@ namespace Aardvark.Data.Tests
 {
     public class SerializationTests
     {
-        private void Primitive<T>(Durable.Def def, T value, int size, Func<T, T, bool> eq)
+        private static void Primitive<T>(Durable.Def def, T value, int size, Func<T, T, bool> eq)
         {
             var buffer = DurableCodec.Serialize(def, value);
             if (size > 0) Assert.True(buffer.Length == 16 + size); // guid (16 bytes) + value (size bytes)
@@ -19,7 +19,7 @@ namespace Aardvark.Data.Tests
             Assert.True(o is T || def == Durable.Primitives.Unit);
             Assert.True(eq(value, (T)o));
         }
-        private void PrimitiveArray<T>(Durable.Def def, T[] value, int size, Func<T, T, bool> eq)
+        private static void PrimitiveArray<T>(Durable.Def def, T[] value, int size, Func<T, T, bool> eq)
         {
             var buffer = DurableCodec.Serialize(def, value);
             if (size > 0) Assert.True(buffer.Length == 16 + size); // guid (16 bytes) + value (size bytes)
@@ -31,9 +31,9 @@ namespace Aardvark.Data.Tests
             for (var i = 0; i < value.Length; i++)
                 Assert.True(eq(value[i], xs[i]));
         }
-        private void Primitive<T>(Durable.Def def, T value, int size) where T : IEquatable<T>
+        private static void Primitive<T>(Durable.Def def, T value, int size) where T : IEquatable<T>
             => Primitive(def, value, size, (a, b) => a.Equals(b));
-        private void PrimitiveArray<T>(Durable.Def def, T[] value, int size) where T : IEquatable<T>
+        private static void PrimitiveArray<T>(Durable.Def def, T[] value, int size) where T : IEquatable<T>
             => PrimitiveArray(def, value, size, (a, b) => a.Equals(b));
 
         [Fact]
@@ -737,7 +737,7 @@ namespace Aardvark.Data.Tests
 
 
 
-        private void CheckDurableNamedMap(Guid id, byte[] buffer)
+        private static void CheckDurableNamedMap(Guid id, byte[] buffer)
         {
             Assert.True(buffer.Length % 4 == 0);
 
@@ -748,8 +748,8 @@ namespace Aardvark.Data.Tests
             Assert.True(m != null);
             Assert.True(m.Count == 4);
 
-            var e0 = m["NodeId"];
-            Assert.True(((Guid)e0.value) == id);
+            var (_, value) = m["NodeId"];
+            Assert.True(((Guid)value) == id);
 
             var e1 = m["NodeCountTotal"];
             Assert.True(((long)e1.value) == 123L);

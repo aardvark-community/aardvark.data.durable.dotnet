@@ -89,7 +89,7 @@ module Codegen =
         if not (def.ContainsKey("name")) then failwith "Entry must contain field 'name'."
         let rawName = string def.["name"]
 
-        let isArray = rawName.EndsWith("[]")
+        let mutable isArray = rawName.EndsWith("[]")
 
         let name = rawName
 
@@ -124,6 +124,7 @@ module Codegen =
             else
                 match rawname2def |> Map.tryFind rawType with
                 | Some r ->
+                    isArray <- r.IsArray
                     if category = r.Category then
                         sprintf "%s.Id" r.LetName
                     else

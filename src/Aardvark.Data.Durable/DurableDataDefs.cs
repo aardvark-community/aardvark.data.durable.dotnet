@@ -3219,7 +3219,7 @@ namespace Aardvark.Data
                 "Generic.Positions3f",
                 "Generic positions. V3f[].",
                 Aardvark.V3fArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3230,7 +3230,7 @@ namespace Aardvark.Data
                 "Generic.Positions3d",
                 "Generic positions. V3d[].",
                 Aardvark.V3dArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3241,7 +3241,7 @@ namespace Aardvark.Data
                 "Generic.Normals3f",
                 "Generic normals. V3f[].",
                 Aardvark.V3fArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3252,7 +3252,7 @@ namespace Aardvark.Data
                 "Generic.Normals3sb",
                 "Generic normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0].",
                 Primitives.Int8Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3263,7 +3263,7 @@ namespace Aardvark.Data
                 "Generic.Normals.Oct16",
                 "Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf.",
                 Primitives.Int16Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3274,7 +3274,7 @@ namespace Aardvark.Data
                 "Generic.Normals.Oct16P",
                 "Octree. Per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf.",
                 Primitives.Int16Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3285,7 +3285,7 @@ namespace Aardvark.Data
                 "Generic.Colors3b",
                 "Generic colors. C3b[].",
                 Aardvark.C3bArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3296,7 +3296,7 @@ namespace Aardvark.Data
                 "Generic.Colors4b",
                 "Generic colors. C4b[].",
                 Aardvark.C3bArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3307,7 +3307,7 @@ namespace Aardvark.Data
                 "Generic.Colors.RGB565",
                 "Generic colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. UInt16[].",
                 Primitives.UInt16Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3318,7 +3318,7 @@ namespace Aardvark.Data
                 "Generic.Intensities1i",
                 "Generic intensities. Int32[].",
                 Primitives.Int32Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3329,7 +3329,7 @@ namespace Aardvark.Data
                 "Generic.Intensities1f",
                 "Generic intensities. Float32[].",
                 Primitives.Float32Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3340,7 +3340,7 @@ namespace Aardvark.Data
                 "Generic.Classifications1b",
                 "Generic classifications. UInt8[].",
                 Primitives.UInt8Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3351,7 +3351,7 @@ namespace Aardvark.Data
                 "Generic.Classifications1s",
                 "Generic classifications. UInt16[].",
                 Primitives.UInt16Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3362,7 +3362,7 @@ namespace Aardvark.Data
                 "Generic.Classifications1i",
                 "Generic classifications. Int32[].",
                 Primitives.Int32Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3373,7 +3373,7 @@ namespace Aardvark.Data
                 "Generic.Velocities3f",
                 "Generic velocities (V3f[]).",
                 Aardvark.V3fArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3384,7 +3384,7 @@ namespace Aardvark.Data
                 "Generic.Velocities3d",
                 "Generic velocities (V3d[]).",
                 Aardvark.V3dArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3395,7 +3395,7 @@ namespace Aardvark.Data
                 "Generic.Densities1f",
                 "Generic densities (float32[]).",
                 Primitives.Float32Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3406,7 +3406,7 @@ namespace Aardvark.Data
                 "Generic.Densities1d",
                 "Generic densities (float64[]).",
                 Primitives.Float64Array.Id,
-                false
+                true
                 );
 
         }
@@ -3465,7 +3465,7 @@ namespace Aardvark.Data
                 "Octree.Subnodes.Guids",
                 "Octree. Subnode IDs as array of guids. Array length is 8 for inner nodes (where Guid.Empty means no subnode) and no array for leaf nodes. Guid[8]",
                 Primitives.GuidArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3476,7 +3476,7 @@ namespace Aardvark.Data
                 "Octree.Subnodes.Strings",
                 "Octree. Subnode IDs as array of strings. Array length is 8 for inner nodes (where null means no subnode) and no array for leaf nodes. StringUTF8[8]",
                 Primitives.StringUTF8Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3487,7 +3487,7 @@ namespace Aardvark.Data
                 "Octree.Subnodes.MultiNodeRefs",
                 "Octree. Subnode IDs as array of multi-node references in format [nodeId]@[insideMultiNodeId] or [nodeId] if subnode is stand-alone. Array length is 8 for inner nodes (where null means no subnode) and no array for leaf nodes. StringUTF8[8]",
                 Primitives.StringUTF8Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3630,7 +3630,7 @@ namespace Aardvark.Data
                 "Octree.PositionsLocal3b",
                 "Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where 0 is cell.Min and 255 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt8[].",
                 Primitives.UInt8Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3652,7 +3652,7 @@ namespace Aardvark.Data
                 "Octree.PositionsLocal3us",
                 "Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where 0 is cell.Min and UInt16.Max is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt16[].",
                 Primitives.UInt16Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3674,7 +3674,7 @@ namespace Aardvark.Data
                 "Octree.PositionsLocal3ui",
                 "Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where 0 is cell.Min and UInt32.Max is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt32[].",
                 Primitives.UInt32Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3696,7 +3696,7 @@ namespace Aardvark.Data
                 "Octree.PositionsLocal3ul",
                 "Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where 0 is cell.Min and UInt64.Max is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt64[].",
                 Primitives.UInt64Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3718,7 +3718,7 @@ namespace Aardvark.Data
                 "Octree.PositionsGlobal3f",
                 "Octree. Per-point positions in global space. V3f[].",
                 Aardvark.V3fArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3773,7 +3773,7 @@ namespace Aardvark.Data
                 "Octree.PositionsGlobal3d",
                 "Octree. Per-point positions in global space. V3d[].",
                 Aardvark.V3dArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3828,7 +3828,7 @@ namespace Aardvark.Data
                 "Octree.PositionsLocal3f",
                 "Octree. Per-point positions in local cell space (as offsets from cell's center). V3f[].",
                 Aardvark.V3fArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3883,7 +3883,7 @@ namespace Aardvark.Data
                 "Octree.PositionsLocal3d",
                 "Octree. Per-point positions in local cell space (as offsets from cell's center). V3d[].",
                 Aardvark.V3dArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3938,7 +3938,7 @@ namespace Aardvark.Data
                 "Octree.Normals3f",
                 "Octree. Per-point normals (V3f[]).",
                 Aardvark.V3fArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3960,7 +3960,7 @@ namespace Aardvark.Data
                 "Octree.Normals3sb",
                 "Octree. Per-point normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0].",
                 Primitives.Int8Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -3982,7 +3982,7 @@ namespace Aardvark.Data
                 "Octree.Normals.Oct16",
                 "Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf.",
                 Primitives.Int16Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -4004,7 +4004,7 @@ namespace Aardvark.Data
                 "Octree.Normals.Oct16P",
                 "Octree. Per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf.",
                 Primitives.Int16Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -4026,7 +4026,7 @@ namespace Aardvark.Data
                 "Octree.Colors3b",
                 "Octree. Per-point colors. C3b[].",
                 Aardvark.C3bArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -4048,7 +4048,7 @@ namespace Aardvark.Data
                 "Octree.Colors4b",
                 "Octree. Per-point colors. C4b[].",
                 Aardvark.C3bArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -4070,7 +4070,7 @@ namespace Aardvark.Data
                 "Octree.Colors.RGB565",
                 "Octree. Per-point colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. UInt16[].",
                 Primitives.UInt16Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -4092,7 +4092,7 @@ namespace Aardvark.Data
                 "Octree.Intensities1i",
                 "Octree. Per-point intensities. Int32[].",
                 Primitives.Int32Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -4114,7 +4114,7 @@ namespace Aardvark.Data
                 "Octree.Intensities1f",
                 "Octree. Per-point intensities. Float32[].",
                 Primitives.Float32Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -4147,7 +4147,7 @@ namespace Aardvark.Data
                 "Octree.IntensitiesWithOffset1f",
                 "Octree. Per-point intensities with offset stored as Octree.IntensitiesWithOffset1f.Offset. Float32[].",
                 Primitives.Float32Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -4191,7 +4191,7 @@ namespace Aardvark.Data
                 "Octree.Classifications1b",
                 "Octree. Per-point classifications. UInt8[].",
                 Primitives.UInt8Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -4213,7 +4213,7 @@ namespace Aardvark.Data
                 "Octree.Classifications1s",
                 "Octree. Per-point classifications. UInt16[].",
                 Primitives.UInt16Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -4235,7 +4235,7 @@ namespace Aardvark.Data
                 "Octree.Classifications1i",
                 "Octree. Per-point classifications. Int32[].",
                 Primitives.Int32Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -4257,7 +4257,7 @@ namespace Aardvark.Data
                 "Octree.Velocities3f",
                 "Octree. Per-point velocities (V3f[]).",
                 Aardvark.V3fArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -4279,7 +4279,7 @@ namespace Aardvark.Data
                 "Octree.Velocities3d",
                 "Octree. Per-point velocities (V3d[]).",
                 Aardvark.V3dArray.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -4301,7 +4301,7 @@ namespace Aardvark.Data
                 "Octree.Densities1f",
                 "Octree. Per-point densities (float32[]).",
                 Primitives.Float32Array.Id,
-                false
+                true
                 );
 
             /// <summary>
@@ -4323,7 +4323,7 @@ namespace Aardvark.Data
                 "Octree.KdTreeIndexArray",
                 "Octree. Kd-tree index array. Int32[], where pivot is stored at index n/2 recursively.",
                 Primitives.Int32Array.Id,
-                false
+                true
                 );
 
             /// <summary>
