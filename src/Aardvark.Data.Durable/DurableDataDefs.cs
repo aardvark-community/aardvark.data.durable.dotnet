@@ -3289,13 +3289,24 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
+            /// Deprecated 2020-11-17. Wrong type. Use d60b86bf-724c-4d41-ac64-040374557d72 instead. Generic colors. C4b[].
+            /// </summary>
+            public static readonly Def Colors4bDeprecated20201117 = new Def(
+                new Guid("b18a2463-a821-4ae7-a259-9a7739257286"),
+                "Generic.Colors4b.Deprecated.20201117",
+                "Deprecated 2020-11-17. Wrong type. Use d60b86bf-724c-4d41-ac64-040374557d72 instead. Generic colors. C4b[].",
+                Aardvark.C3bArray.Id,
+                true
+                );
+
+            /// <summary>
             /// Generic colors. C4b[].
             /// </summary>
             public static readonly Def Colors4b = new Def(
-                new Guid("b18a2463-a821-4ae7-a259-9a7739257286"),
+                new Guid("d60b86bf-724c-4d41-ac64-040374557d72"),
                 "Generic.Colors4b",
                 "Generic colors. C4b[].",
-                Aardvark.C3bArray.Id,
+                Aardvark.C4bArray.Id,
                 true
                 );
 
@@ -4041,13 +4052,24 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
+            /// Deprecated 2020-11-17. Wrong type. Use 4f6144d1-c424-424c-9e02-915bf58087b2 instead. Octree. Per-point colors. C4b[].
+            /// </summary>
+            public static readonly Def Colors4bDeprecated20201117 = new Def(
+                new Guid("c91dfea3-243d-4272-9dba-b572931dba23"),
+                "Octree.Colors4b.Deprecated.20201117",
+                "Deprecated 2020-11-17. Wrong type. Use 4f6144d1-c424-424c-9e02-915bf58087b2 instead. Octree. Per-point colors. C4b[].",
+                Aardvark.C3bArray.Id,
+                true
+                );
+
+            /// <summary>
             /// Octree. Per-point colors. C4b[].
             /// </summary>
             public static readonly Def Colors4b = new Def(
-                new Guid("c91dfea3-243d-4272-9dba-b572931dba23"),
+                new Guid("4f6144d1-c424-424c-9e02-915bf58087b2"),
                 "Octree.Colors4b",
                 "Octree. Per-point colors. C4b[].",
-                Aardvark.C3bArray.Id,
+                Aardvark.C4bArray.Id,
                 true
                 );
 
