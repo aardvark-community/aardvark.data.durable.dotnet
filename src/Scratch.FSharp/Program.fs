@@ -24,6 +24,10 @@ let main argv =
     printfn "NET5_0"
     #endif
 
+    #if NET6_0
+    printfn "NET6_0"
+    #endif
+
     //let buffer = DurableCodec.Serialize(Durable.Aardvark.Cell2d, Cell2d(1, 2, 3));
     //printfn "buffer.Length = %d" buffer.Length
     //printfn "%s" (String.Join(" ", buffer |> Array.map (fun x -> x.ToString())))

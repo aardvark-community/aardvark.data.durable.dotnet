@@ -2438,12 +2438,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// A color with channels BGRA of UInt16.
+            /// A color with channels RGBA of UInt16.
             /// </summary>
             public static readonly Def C4us = new Def(
                 new Guid("85917bcd-00e9-4402-abc7-38c973c96ecc"),
                 "C4us",
-                "A color with channels BGRA of UInt16.",
+                "A color with channels RGBA of UInt16.",
                 None,
                 false
                 );
@@ -2460,12 +2460,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// A color with channels BGRA of UInt32.
+            /// A color with channels RGBA of UInt32.
             /// </summary>
             public static readonly Def C4ui = new Def(
                 new Guid("7018167d-2316-4ff0-a239-0ebf95c32adf"),
                 "C4ui",
-                "A color with channels BGRA of UInt32.",
+                "A color with channels RGBA of UInt32.",
                 None,
                 false
                 );
@@ -2482,12 +2482,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// A color with channels BGRA of Float32.
+            /// A color with channels RGBA of Float32.
             /// </summary>
             public static readonly Def C4f = new Def(
                 new Guid("e09cfff1-b186-42e8-9b3d-6a4325117ba4"),
                 "C4f",
-                "A color with channels BGRA of Float32.",
+                "A color with channels RGBA of Float32.",
                 None,
                 false
                 );
@@ -2504,12 +2504,12 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
-            /// A color with channels BGRA of Float64.
+            /// A color with channels RGBA of Float64.
             /// </summary>
             public static readonly Def C4d = new Def(
                 new Guid("fe74ea05-4b9a-4723-a075-eec853c9cc19"),
                 "C4d",
-                "A color with channels BGRA of Float64.",
+                "A color with channels RGBA of Float64.",
                 None,
                 false
                 );

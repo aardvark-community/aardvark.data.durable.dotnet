@@ -254,7 +254,7 @@ namespace Aardvark.Data
                     yield String.Format("                Func<BinaryReader, object> {0}Array = DecodeArray<{1}>;", nameDecodeFun, entry.LetName)
                     yield sprintf "                #endif"
 
-                    yield sprintf "                #if NETCOREAPP3_1 || NET5_0"
+                    yield sprintf "                #if NETCOREAPP3_1 || NET5_0_OR_GREATER"
                     yield String.Format("                Action<Stream, object> {0} = Write<{1}>;", nameEncodeFun, entry.LetName)
                     yield String.Format("                Action<Stream, object> {0}Array = (s, o) => EncodeArray(s, ({1}[])o);", nameEncodeFun, entry.LetName)
                     yield String.Format("                Func<Stream, object> {0} = ReadBoxed<{1}>;", nameDecodeFun, entry.LetName)
