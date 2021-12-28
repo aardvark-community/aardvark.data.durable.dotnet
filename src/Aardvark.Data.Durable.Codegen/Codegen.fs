@@ -25,7 +25,6 @@
 namespace Aardvark.Data.Durable
 
 open System
-open System.Collections.Generic
 open System.Text.Json
 
 module Codegen = 

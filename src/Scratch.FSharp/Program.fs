@@ -1,8 +1,4 @@
-﻿open System
-open Aardvark.Base
-open Aardvark.Data
-open System.IO
-open System.Collections.Immutable
+﻿open Aardvark.Data
 open System.Collections.Generic
 
 [<EntryPoint>]
@@ -27,10 +23,6 @@ let main argv =
     #if NET6_0
     printfn "NET6_0"
     #endif
-
-    //let buffer = DurableCodec.Serialize(Durable.Aardvark.Cell2d, Cell2d(1, 2, 3));
-    //printfn "buffer.Length = %d" buffer.Length
-    //printfn "%s" (String.Join(" ", buffer |> Array.map (fun x -> x.ToString())))
 
     let map = [|
         KeyValuePair<string, struct (Durable.Def * obj)>("NodeDataId", (Durable.Primitives.StringUTF8,      "babalu"     :> obj))
