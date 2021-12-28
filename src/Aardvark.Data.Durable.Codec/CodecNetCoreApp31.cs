@@ -1,7 +1,7 @@
 ﻿/*
     MIT License
 
-    Copyright (c) 2020 Aardworx GmbH (https://aardworx.com). All rights reserved.
+    Copyright (c) 2019-2021 Aardworx GmbH (https://aardworx.com). All rights reserved.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -66,7 +66,7 @@ namespace Aardvark.Data
             s.Write(p);
         }
 
-        #region DurableMap
+#region DurableMap
 
         private static void EncodeDurableMapEntry(Stream stream, Durable.Def def, object x)
         {
@@ -131,9 +131,9 @@ namespace Aardvark.Data
         private static readonly Action<Stream, object> EncodeDurableMap16WithoutHeader =
             CreateEncodeDurableMapAlignedWithoutHeader(16);
 
-        #endregion
+#endregion
 
-        #region DurableNamedMap
+#region DurableNamedMap
 
         private static void EncodeDurableNamedMapEntry(Stream stream, string name, Durable.Def def, object x)
         {
@@ -209,7 +209,7 @@ namespace Aardvark.Data
         private static readonly Action<Stream, object> EncodeDurableNamedMap16WithoutHeader =
             CreateEncodeDurableNamedMapAlignedWithoutHeader(16);
 
-        #endregion
+#endregion
 
         private static readonly Action<Stream, object> EncodeGZipped =
             (s, o) =>
@@ -384,7 +384,7 @@ namespace Aardvark.Data
             }
         }
 
-        #endregion
+#endregion
 
 #region Decode
 
@@ -418,7 +418,7 @@ namespace Aardvark.Data
             return x;
         }
 
-        #region DurableMap
+#region DurableMap
 
         private static readonly Func<Stream, object> DecodeDurableMapWithoutHeader =
             s =>
@@ -467,9 +467,9 @@ namespace Aardvark.Data
         private static readonly Func<Stream, object> DecodeDurableMap16WithoutHeader =
             CreateDecodeDurableMapAlignedWithoutHeader(16);
 
-        #endregion
+#endregion
 
-        #region DurableNamedMap
+#region DurableNamedMap
 
         private static readonly Func<Stream, object> DecodeDurableNamedMapWithoutHeader =
             s =>
@@ -524,7 +524,7 @@ namespace Aardvark.Data
         private static readonly Func<Stream, object> DecodeDurableNamedMap16WithoutHeader =
             CreateDecodeDurableNamedMapAlignedWithoutHeader(16);
 
-        #endregion
+#endregion
 
         private static readonly Func<Stream, object> DecodeGZipped =
             s =>
@@ -768,7 +768,7 @@ namespace Aardvark.Data
 
 
 
-        #region DurableMap
+#region DurableMap
 
         private static IEnumerable<KeyValuePair<string, (Durable.Def, object)>> ToValueTupleForm(
             IEnumerable<KeyValuePair<string, Tuple<Durable.Def, object>>> xs
@@ -854,16 +854,28 @@ namespace Aardvark.Data
 
             throw new Exception($"Expected durable map, but found {x.def}. Invariant 057a908d-6b9d-40b1-a157-1399c75f1f29.");
         }
+
+        /// <summary>
+        /// Deserialize DurableMap from stream.
+        /// </summary>
         public static IDictionary<Durable.Def, object> DeserializeDurableMap(Stream stream)
             => DeserializeDurableMapHelper(Deserialize(stream));
+
+        /// <summary>
+        /// Deserialize DurableMap from buffer.
+        /// </summary>
         public static IDictionary<Durable.Def, object> DeserializeDurableMap(byte[] buffer)
             => DeserializeDurableMapHelper(Deserialize(buffer));
+
+        /// <summary>
+        /// Deserialize DurableMap from file.
+        /// </summary>
         public static IDictionary<Durable.Def, object> DeserializeDurableMap(string filename)
             => DeserializeDurableMapHelper(Deserialize(filename));
 
-        #endregion
+#endregion
 
-        #region DurableNamedMap
+#region DurableNamedMap
 
         /// <summary>
         /// Serialize DurableNamedMap to byte array. 
@@ -911,14 +923,26 @@ namespace Aardvark.Data
 
             throw new Exception($"Expected durable named map, but found {x.def}. Invariant b4c6f202-f2a4-45fa-8a8f-440621cb5052.");
         }
+
+        /// <summary>
+        /// Deserialize DurableNamedMap from stream.
+        /// </summary>
         public static IDictionary<string, (Durable.Def def, object obj)> DeserializeDurableNamedMap(Stream stream)
             => DeserializeDurableNamedMapHelper(Deserialize(stream));
+
+        /// <summary>
+        /// Deserialize DurableNamedMap from buffer.
+        /// </summary>
         public static IDictionary<string, (Durable.Def def, object obj)> DeserializeDurableNamedMap(byte[] buffer)
             => DeserializeDurableNamedMapHelper(Deserialize(buffer));
+
+        /// <summary>
+        /// Deserialize DurableNamedMap from file.
+        /// </summary>
         public static IDictionary<string, (Durable.Def def, object obj)> DeserializeDurableNamedMap(string filename)
             => DeserializeDurableNamedMapHelper(Deserialize(filename));
 
-        #endregion
+#endregion
 
 
 

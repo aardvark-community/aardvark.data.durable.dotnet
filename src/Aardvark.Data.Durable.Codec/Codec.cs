@@ -1,7 +1,7 @@
 ﻿/*
     MIT License
 
-    Copyright (c) 2020 Aardworx GmbH (https://aardworx.com). All rights reserved.
+    Copyright (c) 2019-2021 Aardworx GmbH (https://aardworx.com). All rights reserved.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -184,6 +184,9 @@ namespace Aardvark.Data
 
         #region GZip
 
+        /// <summary>
+        /// Returns decompressed buffer.
+        /// </summary>
         public static byte[] Gzip(this byte[] buffer)
         {
             using var ms = new MemoryStream();
@@ -194,6 +197,10 @@ namespace Aardvark.Data
             var compressedBuffer = ms.ToArray();
             return compressedBuffer;
         }
+
+        /// <summary>
+        /// Returns compressed buffer.
+        /// </summary>
         public static byte[] Ungzip(this byte[] buffer, int uncompressedBufferLength)
         {
             using var stream = new GZipStream(new MemoryStream(buffer), CompressionMode.Decompress);

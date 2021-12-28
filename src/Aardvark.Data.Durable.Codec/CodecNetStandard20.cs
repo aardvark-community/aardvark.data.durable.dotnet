@@ -1,7 +1,7 @@
 ﻿/*
     MIT License
 
-    Copyright (c) 2020 Aardworx GmbH (https://aardworx.com). All rights reserved.
+    Copyright (c) 2019-2021 Aardworx GmbH (https://aardworx.com). All rights reserved.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -116,37 +116,37 @@ namespace Aardvark.Data
 
         #region DurableNamedMap
 
-        private static void EncodeDurableNamedMapEntry(BinaryWriter stream, string name, Durable.Def def, object x)
-        {
-            if (string.IsNullOrWhiteSpace(name)) throw new InvalidOperationException(
-                $"Empty names are not allowed. Invariant 48ff333e-250b-48f1-ae56-2129e9370d70."
-                );
+        //private static void EncodeDurableNamedMapEntry(BinaryWriter stream, string name, Durable.Def def, object x)
+        //{
+        //    if (string.IsNullOrWhiteSpace(name)) throw new InvalidOperationException(
+        //        $"Empty names are not allowed. Invariant 48ff333e-250b-48f1-ae56-2129e9370d70."
+        //        );
 
-            var key = (def.Type != Durable.Primitives.Unit.Id) ? def.Type : def.Id;
+        //    var key = (def.Type != Durable.Primitives.Unit.Id) ? def.Type : def.Id;
 
-            if (s_encoders.TryGetValue(key, out var encoder))
-            {
-                EncodeStringUtf8(stream, name);
-                EncodeGuid(stream, def.Id);
-                ((Action<BinaryWriter, object>)encoder)(stream, x);
-            }
-            else
-            {
-                var unknownDef = Durable.Get(key);
-                throw new InvalidOperationException(
-                    $"No encoder for {unknownDef}. Invariant b5a5a7d1-1c3c-4b63-ad97-0f072b513446."
-                    );
-            }
-        }
+        //    if (s_encoders.TryGetValue(key, out var encoder))
+        //    {
+        //        EncodeStringUtf8(stream, name);
+        //        EncodeGuid(stream, def.Id);
+        //        ((Action<BinaryWriter, object>)encoder)(stream, x);
+        //    }
+        //    else
+        //    {
+        //        var unknownDef = Durable.Get(key);
+        //        throw new InvalidOperationException(
+        //            $"No encoder for {unknownDef}. Invariant b5a5a7d1-1c3c-4b63-ad97-0f072b513446."
+        //            );
+        //    }
+        //}
 
-        private static readonly Action<BinaryWriter, object> EncodeDurableNamedMapWithoutHeader =
-            (s, o) =>
-            {
-                var xs = (IEnumerable<KeyValuePair<string, (Durable.Def, object)>>)o;
-                var count = xs.Count();
-                s.Write(count);
-                foreach (var kv in xs) EncodeDurableNamedMapEntry(s, kv.Key, kv.Value.Item1, kv.Value.Item2);
-            };
+        //private static readonly Action<BinaryWriter, object> EncodeDurableNamedMapWithoutHeader =
+        //    (s, o) =>
+        //    {
+        //        var xs = (IEnumerable<KeyValuePair<string, (Durable.Def, object)>>)o;
+        //        var count = xs.Count();
+        //        s.Write(count);
+        //        foreach (var kv in xs) EncodeDurableNamedMapEntry(s, kv.Key, kv.Value.Item1, kv.Value.Item2);
+        //    };
 
         private static Action<BinaryWriter, object> CreateEncodeDurableNamedMapAlignedWithoutHeader(int alignmentInBytes)
             => (bw, o) =>
@@ -191,11 +191,11 @@ namespace Aardvark.Data
         private static readonly Action<BinaryWriter, object> EncodeDurableNamedMap4WithoutHeader =
             CreateEncodeDurableNamedMapAlignedWithoutHeader(4);
 
-        private static readonly Action<BinaryWriter, object> EncodeDurableNamedMap8WithoutHeader =
-            CreateEncodeDurableNamedMapAlignedWithoutHeader(8);
+        //private static readonly Action<BinaryWriter, object> EncodeDurableNamedMap8WithoutHeader =
+        //    CreateEncodeDurableNamedMapAlignedWithoutHeader(8);
 
-        private static readonly Action<BinaryWriter, object> EncodeDurableNamedMap16WithoutHeader =
-            CreateEncodeDurableNamedMapAlignedWithoutHeader(16);
+        //private static readonly Action<BinaryWriter, object> EncodeDurableNamedMap16WithoutHeader =
+        //    CreateEncodeDurableNamedMapAlignedWithoutHeader(16);
 
         #endregion
 
@@ -468,19 +468,19 @@ namespace Aardvark.Data
 
         #region NamedNamedMap
 
-        private static readonly Func<BinaryReader, object> DecodeDurableNamedMapWithoutHeader =
-            s =>
-            {
-                var count = s.ReadInt32();
-                var entries = new KeyValuePair<string, (Durable.Def key, object value)>[count];
-                for (var i = 0; i < count; i++)
-                {
-                    var name = (string)DecodeStringUtf8(s);
-                    var e = Decode(s);
-                    entries[i] = new KeyValuePair<string, (Durable.Def key, object value)>(name, (e.Item1, e.Item2));
-                }
-                return ImmutableDictionary.CreateRange(entries);
-            };
+        //private static readonly Func<BinaryReader, object> DecodeDurableNamedMapWithoutHeader =
+        //    s =>
+        //    {
+        //        var count = s.ReadInt32();
+        //        var entries = new KeyValuePair<string, (Durable.Def key, object value)>[count];
+        //        for (var i = 0; i < count; i++)
+        //        {
+        //            var name = (string)DecodeStringUtf8(s);
+        //            var e = Decode(s);
+        //            entries[i] = new KeyValuePair<string, (Durable.Def key, object value)>(name, (e.Item1, e.Item2));
+        //        }
+        //        return ImmutableDictionary.CreateRange(entries);
+        //    };
 
         private static Func<BinaryReader, object> CreateDecodeDurableNamedMapAlignedWithoutHeader(int alignmentInBytes)
             => br =>
@@ -517,11 +517,11 @@ namespace Aardvark.Data
         private static readonly Func<BinaryReader, object> DecodeDurableNamedMap4WithoutHeader =
             CreateDecodeDurableNamedMapAlignedWithoutHeader(4);
 
-        private static readonly Func<BinaryReader, object> DecodeDurableNamedMap8WithoutHeader =
-            CreateDecodeDurableNamedMapAlignedWithoutHeader(8);
+        //private static readonly Func<BinaryReader, object> DecodeDurableNamedMap8WithoutHeader =
+        //    CreateDecodeDurableNamedMapAlignedWithoutHeader(8);
 
-        private static readonly Func<BinaryReader, object> DecodeDurableNamedMap16WithoutHeader =
-            CreateDecodeDurableNamedMapAlignedWithoutHeader(16);
+        //private static readonly Func<BinaryReader, object> DecodeDurableNamedMap16WithoutHeader =
+        //    CreateDecodeDurableNamedMapAlignedWithoutHeader(16);
 
         #endregion
 
@@ -843,10 +843,22 @@ namespace Aardvark.Data
 
             throw new Exception($"Expected durable map, but found {x.def}. Invariant 057a908d-6b9d-40b1-a157-1399c75f1f29.");
         }
+
+        /// <summary>
+        /// Deserialize DurableMap from stream.
+        /// </summary>
         public static IDictionary<Durable.Def, object> DeserializeDurableMap(Stream stream)
             => DeserializeDurableMapHelper(Deserialize(new BinaryReader(stream)));
+
+        /// <summary>
+        /// Deserialize DurableMap from buffer.
+        /// </summary>
         public static IDictionary<Durable.Def, object> DeserializeDurableMap(byte[] buffer)
             => DeserializeDurableMapHelper(Deserialize(buffer));
+
+        /// <summary>
+        /// Deserialize DurableMap from filename.
+        /// </summary>
         public static IDictionary<Durable.Def, object> DeserializeDurableMap(string filename)
             => DeserializeDurableMapHelper(Deserialize(filename));
 
@@ -902,10 +914,22 @@ namespace Aardvark.Data
 
             throw new Exception($"Expected durable named map, but found {x.def}. Invariant b4c6f202-f2a4-45fa-8a8f-440621cb5052.");
         }
+
+        /// <summary>
+        /// Deserialize DurableNamedMap from stream.
+        /// </summary>
         public static IDictionary<string, (Durable.Def def, object obj)> DeserializeDurableNamedMap(Stream stream)
             => DeserializeDurableNamedMapHelper(Deserialize(new BinaryReader(stream)));
+
+        /// <summary>
+        /// Deserialize DurableNamedMap from buffer.
+        /// </summary>
         public static IDictionary<string, (Durable.Def def, object obj)> DeserializeDurableNamedMap(byte[] buffer)
             => DeserializeDurableNamedMapHelper(Deserialize(buffer));
+
+        /// <summary>
+        /// Deserialize DurableNamedMap from file.
+        /// </summary>
         public static IDictionary<string, (Durable.Def def, object obj)> DeserializeDurableNamedMap(string filename)
             => DeserializeDurableNamedMapHelper(Deserialize(filename));
 

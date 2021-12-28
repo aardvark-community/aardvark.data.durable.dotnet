@@ -1,7 +1,7 @@
 ﻿(*
     MIT License
 
-    Copyright (c) 2020 Aardworx GmbH (https://aardworx.com). All rights reserved.
+    Copyright (c) 2019-2021 Aardworx GmbH (https://aardworx.com). All rights reserved.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -24,9 +24,9 @@
 
 namespace Aardvark.Data.Durable
 
-open Newtonsoft.Json.Linq
 open System
 open System.Collections.Generic
+open System.Text.Json
 
 module Codegen = 
 
@@ -84,19 +84,21 @@ module Codegen =
     let mutable defs = Map.empty<Guid, Entry>
     let mutable rawname2def = Map.empty<string, Entry>
 
-    let parseEntry category (id : string) (def : JObject) =
+    let parseEntry category (id : string) (def : JsonElement) =
     
-        if not (def.ContainsKey("name")) then failwith "Entry must contain field 'name'."
-        let rawName = string def.["name"]
+        let rawName = 
+            match def.TryGetProperty("name") with
+            | false, _ -> failwith "Entry must contain field 'name'."
+            | true, x -> x.GetString()
 
         let mutable isArray = rawName.EndsWith("[]")
 
         let name = rawName
 
         let description =
-            if def.ContainsKey("description") then
-                string def.["description"]
-            else
+            match def.TryGetProperty("description") with
+            | true, x -> x.GetString()
+            | false, _ ->
                 if isArray then
                     sprintf "Array of %s." (name.Replace("[]", ""))
                 else
@@ -116,7 +118,10 @@ module Codegen =
                 else
                     name
 
-        let rawType = if def.ContainsKey("type") then string def.["type"] else "None"
+        let rawType = 
+            match def.TryGetProperty("type") with
+            | true, x -> x.GetString()
+            | false, _ -> "None"
 
         let typ =
             if name = "Unit" || rawType = "None" then
@@ -132,10 +137,9 @@ module Codegen =
                 | None -> failwith (sprintf "Cannot find type '%s' (in \"%s\" : %s)." rawType id (def.ToString()))
 
         let layout = 
-            if def.ContainsKey("layout") then
-                def.["layout"].Values<JProperty>() |> Seq.map(fun x -> (x.Name, x.Value.ToString())) |> Seq.toArray |> Some
-            else
-                None
+            match def.TryGetProperty("layout") with
+            | true, x -> x.EnumerateObject() |> Seq.map(fun x -> (x.Name, x.Value.GetString())) |> Seq.toArray |> Some
+            | false, _ -> None
             
 
         let e = {
@@ -157,7 +161,7 @@ module Codegen =
     let header = """/*
     MIT License
 
-    Copyright (c) 2020 Aardworx GmbH (https://aardworx.com). All rights reserved.
+    Copyright (c) 2019-2021 Aardworx GmbH (https://aardworx.com). All rights reserved.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -178,7 +182,7 @@ module Codegen =
     SOFTWARE.
 */"""
 
-    let generateCodecAuto (json : JObject) : string seq = seq {
+    let generateCodecAuto (json : JsonElement) : string seq = seq {
 
         yield sprintf "%s%s" header """
 using Aardvark.Base;
@@ -195,10 +199,10 @@ namespace Aardvark.Data
 """
 
         let entries = [
-            for kv in json :> IEnumerable<KeyValuePair<string, JToken>> do
-                let category = kv.Key
-                for kv in kv.Value :?> JObject :> IEnumerable<KeyValuePair<string, JToken>> do
-                    parseEntry category kv.Key (kv.Value :?> JObject)
+            for kv in json.EnumerateObject() do
+                let category = kv.Name
+                for kv in kv.Value.EnumerateObject() do
+                    parseEntry category kv.Name kv.Value
             ]
 
         let names = Set.ofList [ for e in entries do yield e.LetName; yield sprintf "%s.%s" e.Category e.LetName ]
@@ -279,7 +283,7 @@ namespace Aardvark.Data
 """
     }
 
-    let generateDurableDataDefsCSharp (json : JObject) : string seq = seq {
+    let generateDurableDataDefsCSharp (json : JsonElement) : string seq = seq {
 
         yield sprintf "%s%s" header """
 using System;
@@ -349,7 +353,7 @@ namespace Aardvark.Data
             public int CompareTo(Def other) => other is null ? 1 : Id.CompareTo(other.Id);
         }
 
-        private static readonly Dictionary<Guid, Def> defs = new Dictionary<Guid, Def>();
+        private static readonly Dictionary<Guid, Def> defs = new();
 
         /// <summary></summary>
         public static Def Get(Guid key) => defs[key];
@@ -360,21 +364,21 @@ namespace Aardvark.Data
         private static readonly Guid None = Guid.Empty;
 """
     
-        for kv in json :> IEnumerable<KeyValuePair<string, JToken>> do
-            let category = kv.Key
+        for kv in json.EnumerateObject() do
+            let category = kv.Name
             yield sprintf "        /// <summary></summary>"
             yield sprintf "        public static class %s" category
             yield sprintf "        {"
-            for kv in kv.Value :?> JObject :> IEnumerable<KeyValuePair<string, JToken>> do
+            for kv in kv.Value.EnumerateObject() do
 
-                let entry = parseEntry category kv.Key (kv.Value :?> JObject)
+                let entry = parseEntry category kv.Name kv.Value
 
                 let formatGuid g = if g = Guid.Empty then "Guid.Empty" else sprintf "new Guid(\"%A\")" g
             
                 yield sprintf "            /// <summary>"
                 yield sprintf "            /// %s" (entry.Description)
                 yield sprintf "            /// </summary>"
-                yield sprintf "            public static readonly Def %s = new Def(" entry.LetName
+                yield sprintf "            public static readonly Def %s = new(" entry.LetName
                 yield sprintf "                %s," (formatGuid entry.Id)
                 yield sprintf "                \"%s\"," entry.Name
                 yield sprintf "                \"%s\"," (entry.Description)

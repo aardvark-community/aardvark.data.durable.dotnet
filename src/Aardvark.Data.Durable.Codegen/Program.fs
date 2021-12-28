@@ -1,7 +1,7 @@
 ﻿(*
 MIT License
 
-Copyright (c) 2020 Aardworx GmbH (https://aardworx.com). All rights reserved.
+Copyright (c) 2019-2021 Aardworx GmbH (https://aardworx.com). All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,21 +23,22 @@ SOFTWARE.
 *)
 
 open Aardvark.Data.Durable
-open Newtonsoft.Json.Linq
-open System.Net
 open System.IO
 open System
+open System.Net.Http
+open System.Text.Json
 
 [<EntryPoint>]
 let main argv =
 
     let address = @"https://raw.githubusercontent.com/aardvark-community/aardvark.data.durable.definitions/master/definitions.json"
-    let json = JObject.Parse((new WebClient()).DownloadString(address))
-    //let json = JObject.Parse(System.IO.File.ReadAllText(@"..\..\..\..\aardvark.data.durable.definitions\definitions.json"))
+    let jsonString = (new HttpClient()).GetStringAsync(address) |> Async.AwaitTask |> Async.RunSynchronously
+    //let jsonString = System.IO.File.ReadAllText(@"..\..\..\..\aardvark.data.durable.definitions\definitions.json")
+    let json = JsonSerializer.Deserialize(jsonString) 
 
 
 
-    let targetFileName = @"../../../src/Aardvark.Data.Durable/DurableDataDefs.cs"
+    let targetFileName = @"../../../../../src/Aardvark.Data.Durable/DurableDataDefs.cs"
     if File.Exists(targetFileName) then
 
         let durableDataDefsCSharp = json |> Codegen.generateDurableDataDefsCSharp |> Seq.toArray
@@ -56,7 +57,7 @@ let main argv =
 
 
 
-    let targetFileName = @"../../../src/Aardvark.Data.Durable.Codec/Codec_auto.cs"
+    let targetFileName = @"../../../../../src/Aardvark.Data.Durable.Codec/Codec_auto.cs"
     let durableCodecAutoCSharp = json |> Codegen.generateCodecAuto |> Seq.toArray
     File.WriteAllLines(targetFileName, durableCodecAutoCSharp)
     printfn "updated file %s" targetFileName

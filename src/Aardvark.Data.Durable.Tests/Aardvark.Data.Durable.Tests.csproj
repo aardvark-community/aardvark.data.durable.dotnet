@@ -6,12 +6,6 @@
 	<LangVersion>8</LangVersion>
     <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\bin\Debug</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\bin\Release</OutputPath>
-  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aardvark.Data.Durable.Codec\Aardvark.Data.Durable.Codec.csproj" />
     <ProjectReference Include="..\Aardvark.Data.Durable\Aardvark.Data.Durable.csproj" />
