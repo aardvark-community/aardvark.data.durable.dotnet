@@ -4,6 +4,8 @@ authors Aardworx GmbH
 owners Aardworx GmbH
 projectUrl https://github.com/aardvark-community/aardvark.data.durable.dotnet
 license https://github.com/aardvark-community/aardvark.data.durable.dotnet/blob/master/LICENSE
+repositoryType git
+repositoryUrl https://github.com/aardvark-community/aardvark.data.durable.dotnet
 description
     Aardvark durable data serialization.
     See https://github.com/aardvark-community/aardvark.data.durable.definitions.
