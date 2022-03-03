@@ -1,25 +1,18 @@
-name: windows
+name: Windows
 
-on:
+on: 
   push:
-    branches: [ master ]
+    paths-ignore:
+    - 'README.md'
   pull_request:
-    branches: [ master ]
-
+    paths-ignore:
+    - 'README.md'
+    
 jobs:
   build:
 
     runs-on: windows-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.100
-    - name: Setup Paket
-      run: dotnet tool restore
-    - name: Install dependencies
-      run: dotnet paket restore
-    - name: Build
-      run: dotnet build src/Aardvark.Data.Durable.sln --configuration Release
+    - uses: actions/checkout@v1
+    - name: build
+      run: .\build.cmd
