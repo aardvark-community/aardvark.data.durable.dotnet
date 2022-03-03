@@ -303,6 +303,10 @@ namespace Aardvark.Data
                 foreach (var x in xs) EncodeArray(s, x.Points.ToArray());
             };
 
+        private static readonly Action<BinaryWriter, object> EncodeCylinder3dDeprecated20220302 =
+            (s, o) => { throw new NotSupportedException("Type deprecated, use 0b0e6173-393a-4a85-855a-a5f4d5316b36 instead."); };
+        private static readonly Action<BinaryWriter, object> EncodeCylinder3dDeprecated20220302Array =
+            (s, o) => { throw new NotSupportedException("Type deprecated, use 95ada0ae-0243-43d2-8e99-d0aaea843ae8 instead."); };
 
         private static unsafe void EncodeArray<T>(BinaryWriter s, params T[] xs) where T : struct
         {
@@ -656,6 +660,34 @@ namespace Aardvark.Data
             var xs = new Polygon3d[count];
             for (var i = 0; i < count; i++)
                 xs[i] = new Polygon3d(DecodeArray<V3d>(s));
+            return xs;
+        };
+
+
+
+        private static readonly Func<BinaryReader, object> DecodeCylinder3dDeprecated20220302 = s =>
+        {
+            var p0 = new V3d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
+            var p1 = new V3d(s.ReadDouble(), s.ReadDouble(), s.ReadDouble());
+            var radius = s.ReadDouble();
+            var distanceScale = s.ReadDouble();
+
+            if (distanceScale == 0)
+            {
+                return new Cylinder3d(p0, p1, radius);
+            }
+            else
+            {
+                throw new NotSupportedException($"Cannot decode deprecated Cylinder3d with distanceScale != 0 (is {distanceScale})");
+            }
+        };
+
+        private static readonly Func<BinaryReader, object> DecodeCylinder3dDeprecated20220302Array = s =>
+        {
+            var count = s.ReadInt32();
+            var xs = new Cylinder3d[count];
+            for (var i = 0; i < count; i++)
+                xs[i] = (Cylinder3d)DecodeCylinder3dDeprecated20220302(s);
             return xs;
         };
 

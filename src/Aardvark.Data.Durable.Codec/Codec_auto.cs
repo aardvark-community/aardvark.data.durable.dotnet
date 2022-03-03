@@ -1821,9 +1821,9 @@ namespace Aardvark.Data
                 #region Durable.Aardvark.Cylinder3d
 
                 #if NETSTANDARD2_0 || NET472
-                Action<BinaryWriter, object> EncodeCylinder3d = (s, o) => { var x = (Cylinder3d)o; EncodeV3d(s, x.P0); EncodeV3d(s, x.P1); s.Write(x.Radius); s.Write(x.DistanceScale); };
+                Action<BinaryWriter, object> EncodeCylinder3d = (s, o) => { var x = (Cylinder3d)o; EncodeV3d(s, x.P0); EncodeV3d(s, x.P1); s.Write(x.Radius); };
                 Action<BinaryWriter, object> EncodeCylinder3dArray = (s, o) => EncodeArray(s, (Cylinder3d[])o);
-                Func<BinaryReader, object> DecodeCylinder3d = s => new Cylinder3d((V3d)DecodeV3d(s), (V3d)DecodeV3d(s), s.ReadDouble(), s.ReadDouble());
+                Func<BinaryReader, object> DecodeCylinder3d = s => new Cylinder3d((V3d)DecodeV3d(s), (V3d)DecodeV3d(s), s.ReadDouble());
                 Func<BinaryReader, object> DecodeCylinder3dArray = DecodeArray<Cylinder3d>;
                 #endif
                 #if NETCOREAPP3_1 || NET5_0_OR_GREATER

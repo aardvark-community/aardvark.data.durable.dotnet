@@ -8,6 +8,78 @@ using Xunit;
 
 namespace Aardvark.Data.Tests
 {
+#if NETCOREAPP3_1 || NET5_0_OR_GREATER
+    internal static class StreamExtensions
+    {
+        public static void Write<T>(this Stream s, T o) where T : struct
+        {
+            var ros = MemoryMarshal.CreateReadOnlySpan(ref o, 1);
+            var p = MemoryMarshal.Cast<T, byte>(ros);
+            s.Write(p);
+        }
+
+        private static void WriteCylinder3dDeprecated20220302WithoutId(this Stream s, Cylinder3d c, double distanceScale)
+        {
+            s.Write<V3d>(c.P0);
+            s.Write<V3d>(c.P1);
+            s.Write<double>(c.Radius);
+            s.Write<double>(distanceScale);
+        }
+
+        public static void WriteCylinder3dDeprecated20220302(this Stream s, Cylinder3d c, double distanceScale)
+        {
+            s.Write<Guid>(Durable.Aardvark.Cylinder3dDeprecated20220302.Id);
+            s.WriteCylinder3dDeprecated20220302WithoutId(c, distanceScale);
+        }
+
+        public static void WriteCylinder3dDeprecated20220302Array(this Stream s, (Cylinder3d, double)[] data)
+        {
+            s.Write<Guid>(Durable.Aardvark.Cylinder3dDeprecated20220302Array.Id);
+            s.Write<int>(data.Length);
+
+            foreach(var (c, ds) in data)
+            {
+                s.WriteCylinder3dDeprecated20220302WithoutId(c, ds);
+            }
+        }
+    }
+#else
+    internal static class BinaryWriterExtensions
+    {
+        public static void Write(this BinaryWriter bw, V3d v)
+        {
+            bw.Write(v.X);
+            bw.Write(v.Y);
+            bw.Write(v.Z);
+        }
+
+        private static void WriteCylinder3dDeprecated20220302WithoutId(this BinaryWriter bw, Cylinder3d c, double distanceScale)
+        {
+            bw.Write(c.P0);
+            bw.Write(c.P1);
+            bw.Write(c.Radius);
+            bw.Write(distanceScale);
+        }
+
+        public static void WriteCylinder3dDeprecated20220302(this BinaryWriter bw, Cylinder3d c, double distanceScale)
+        {
+            bw.Write(Durable.Aardvark.Cylinder3dDeprecated20220302.Id.ToByteArray(), 0, 16);
+            bw.WriteCylinder3dDeprecated20220302WithoutId(c, distanceScale);
+        }
+
+        public static void WriteCylinder3dDeprecated20220302Array(this BinaryWriter bw, (Cylinder3d, double)[] data)
+        {
+            bw.Write(Durable.Aardvark.Cylinder3dDeprecated20220302Array.Id.ToByteArray(), 0, 16);
+            bw.Write(data.Length);
+
+            foreach (var (c, ds) in data)
+            {
+                bw.WriteCylinder3dDeprecated20220302WithoutId(c, ds);
+            }
+        }
+    }
+#endif
+
     public class SerializationTests
     {
         private static void Primitive<T>(Durable.Def def, T value, int size, Func<T, T, bool> eq)
@@ -165,10 +237,133 @@ namespace Aardvark.Data.Tests
         public void Aardvark_Cylinder3d() => Primitive(Durable.Aardvark.Cylinder3d,
            new Cylinder3d(
                p0: new V3d(3.14, 2.71, 1.23), p1: new V3d(13.14, 22.71, 31.23),
-               radius: 0.12345, distanceScale: 0.555
+               radius: 0.12345
                ),
-           (3 + 3 + 1 + 1) * 8, (a, b) => a == b
+           (3 + 3 + 1) * 8, (a, b) => a == b
            );
+        private static byte[] SerializeCylinder3dDeprecated20220302(Cylinder3d c, double distanceScale)
+        {
+            using var ms = new MemoryStream();
+#if NETCOREAPP3_1 || NET5_0_OR_GREATER
+            ms.WriteCylinder3dDeprecated20220302(c, distanceScale);
+#else
+            using var bw = new BinaryWriter(ms);
+            bw.WriteCylinder3dDeprecated20220302(c, distanceScale);
+            bw.Flush();
+#endif
+            var buffer = ms.ToArray();
+            var size = (3 + 3 + 1 + 1) * 8;
+            if (size > 0) Assert.Equal(16 + size, buffer.Length); // guid (16 bytes) + value (size bytes)
+            return buffer;
+        }
+        [Fact]
+        public void Aardvark_Cylinder3dDeprecated20220302_WithDefaultDistanceScale()
+        {
+            var c =
+                new Cylinder3d(
+                    p0: new V3d(3.14, 2.71, 1.23), p1: new V3d(13.14, 22.71, 31.23),
+                    radius: 0.12345
+                );
+
+            var buffer = SerializeCylinder3dDeprecated20220302(c, 0.0);
+            var (d, o) = DurableCodec.Deserialize(buffer);
+            Assert.Equal(Durable.Aardvark.Cylinder3dDeprecated20220302, d);
+            Assert.True(o is Cylinder3d);
+            Assert.Equal(c, (Cylinder3d)o);
+        }
+        [Fact]
+        public void Aardvark_Cylinder3dDeprecated20220302_WithDistanceScale()
+        {
+            var c =
+                new Cylinder3d(
+                    p0: new V3d(3.14, 2.71, 1.23), p1: new V3d(13.14, 22.71, 31.23),
+                    radius: 0.12345
+                );
+
+            var buffer = SerializeCylinder3dDeprecated20220302(c, 0.5);
+            try
+            {
+                DurableCodec.Deserialize(buffer);
+            }
+            catch (NotSupportedException)
+            {
+                return;
+            }
+
+            Assert.True(false); // Should not happen
+        }
+        private static byte[] SerializeCylinder3dDeprecated20220302Array((Cylinder3d, double)[] data)
+        {
+            using var ms = new MemoryStream();
+#if NETCOREAPP3_1 || NET5_0_OR_GREATER
+            ms.WriteCylinder3dDeprecated20220302Array(data);
+#else
+            using var bw = new BinaryWriter(ms);
+            bw.WriteCylinder3dDeprecated20220302Array(data);
+            bw.Flush();
+#endif
+            var buffer = ms.ToArray();
+            var size = 4 + ((3 + 3 + 1 + 1) * 8) * data.Length;
+            if (size > 0) Assert.Equal(16 + size, buffer.Length); // guid (16 bytes) + value (size bytes)
+            return buffer;
+        }
+        [Fact]
+        public void Aardvark_Cylinder3dDeprecated20220302Array_WithDefaultDistanceScale()
+        {
+            var data =
+                new (Cylinder3d, double)[]
+                {
+                    (new Cylinder3d(
+                        p0: new V3d(3.14, 2.71, 1.23), p1: new V3d(13.14, 22.71, 31.23),
+                        radius: 0.12345
+                    ), 0.0),
+
+                    (new Cylinder3d(
+                        p0: new V3d(334.24, 4.62, -63.3), p1: new V3d(-0.04, 0.0, 14.66),
+                        radius: 0.51234
+                    ), 0.0)
+                };
+
+            var buffer = SerializeCylinder3dDeprecated20220302Array(data);
+            var (d, o) = DurableCodec.Deserialize(buffer);
+            Assert.Equal(Durable.Aardvark.Cylinder3dDeprecated20220302Array, d);
+            Assert.True(o is Cylinder3d[]);
+
+            Cylinder3d[] arr = (Cylinder3d[])o;
+            for(var i = 0; i < arr.Length; i++)
+            {
+                Assert.Equal(data[i].Item1, arr[i]);
+            }
+        }
+        [Fact]
+        public void Aardvark_Cylinder3dDeprecated20220302Array_WithDistanceScale()
+        {
+            var data =
+                new (Cylinder3d, double)[]
+                {
+                    (new Cylinder3d(
+                        p0: new V3d(3.14, 2.71, 1.23), p1: new V3d(13.14, 22.71, 31.23),
+                        radius: 0.12345
+                    ), 0.0),
+
+                    (new Cylinder3d(
+                        p0: new V3d(334.24, 4.62, -63.3), p1: new V3d(-0.04, 0.0, 14.66),
+                        radius: 0.51234
+                    ), 0.4543)
+                };
+
+            var buffer = SerializeCylinder3dDeprecated20220302Array(data);
+            try
+            {
+                DurableCodec.Deserialize(buffer);
+            }
+            catch (NotSupportedException)
+            {
+                return;
+            }
+
+            Assert.True(false); // Should not happen
+        }
         [Fact]
         public void Aardvark_Sphere3d() => Primitive(Durable.Aardvark.Sphere3d,
             new Sphere3d(center: new V3d(3.14, 2.71, 0.123), radius: 0.99),

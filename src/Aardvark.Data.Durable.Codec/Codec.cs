@@ -120,6 +120,12 @@ namespace Aardvark.Data
                 [Durable.Aardvark.Polygon2dArray.Id] = EncodePolygon2dArray,
                 [Durable.Aardvark.Polygon3d.Id] = EncodePolygon3d,
                 [Durable.Aardvark.Polygon3dArray.Id] = EncodePolygon3dArray,
+
+                // Cylinder3d with distanceScale field is deprecated
+                // custom implementation fails on encode but succeeds on decode when
+                // distanceScale == 0. Otherwise fails as well.
+                [Durable.Aardvark.Cylinder3dDeprecated20220302.Id] = EncodeCylinder3dDeprecated20220302,
+                [Durable.Aardvark.Cylinder3dDeprecated20220302Array.Id] = EncodeCylinder3dDeprecated20220302Array,
             };
 
             s_decoders = new Dictionary<Guid, object>
@@ -176,6 +182,9 @@ namespace Aardvark.Data
                 [Durable.Aardvark.Polygon2dArray.Id] = DecodePolygon2dArray,
                 [Durable.Aardvark.Polygon3d.Id] = DecodePolygon3d,
                 [Durable.Aardvark.Polygon3dArray.Id] = DecodePolygon3dArray,
+
+                [Durable.Aardvark.Cylinder3dDeprecated20220302.Id] = DecodeCylinder3dDeprecated20220302,
+                [Durable.Aardvark.Cylinder3dDeprecated20220302Array.Id] = DecodeCylinder3dDeprecated20220302Array,
             };
 
             Init();

@@ -2834,10 +2834,32 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
+            /// Deprecated 2022-03-02. Obsolete field DistanceScale. Use 0b0e6173-393a-4a85-855a-a5f4d5316b36 instead. A cylinder in 3-space.
+            /// </summary>
+            public static readonly Def Cylinder3dDeprecated20220302 = new(
+                new Guid("6982d0a3-1cb4-4c9f-b479-6ebd3926bf7b"),
+                "Aardvark.Cylinder3d.Deprecated.20220302",
+                "Deprecated 2022-03-02. Obsolete field DistanceScale. Use 0b0e6173-393a-4a85-855a-a5f4d5316b36 instead. A cylinder in 3-space.",
+                None,
+                false
+                );
+
+            /// <summary>
+            /// Deprecated 2022-03-02. Obsolete field DistanceScale. Use 95ada0ae-0243-43d2-8e99-d0aaea843ae8 instead.
+            /// </summary>
+            public static readonly Def Cylinder3dDeprecated20220302Array = new(
+                new Guid("8f3cbbad-9d20-4db2-9831-9644733a7bc5"),
+                "Aardvark.Cylinder3d.Deprecated.20220302[]",
+                "Deprecated 2022-03-02. Obsolete field DistanceScale. Use 95ada0ae-0243-43d2-8e99-d0aaea843ae8 instead.",
+                None,
+                true
+                );
+
+            /// <summary>
             /// A cylinder in 3-space.
             /// </summary>
             public static readonly Def Cylinder3d = new(
-                new Guid("6982d0a3-1cb4-4c9f-b479-6ebd3926bf7b"),
+                new Guid("0b0e6173-393a-4a85-855a-a5f4d5316b36"),
                 "Cylinder3d",
                 "A cylinder in 3-space.",
                 None,
@@ -2848,7 +2870,7 @@ namespace Aardvark.Data
             /// Array of Cylinder3d.
             /// </summary>
             public static readonly Def Cylinder3dArray = new(
-                new Guid("8f3cbbad-9d20-4db2-9831-9644733a7bc5"),
+                new Guid("95ada0ae-0243-43d2-8e99-d0aaea843ae8"),
                 "Cylinder3d[]",
                 "Array of Cylinder3d.",
                 None,
