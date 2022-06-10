@@ -4129,6 +4129,28 @@ namespace Aardvark.Data
                 );
 
             /// <summary>
+            /// Octree. Per-point intensities. UInt8[].
+            /// </summary>
+            public static readonly Def Intensities1b = new(
+                new Guid("3fa600f0-6e99-4c11-918b-810430bae0cb"),
+                "Octree.Intensities1b",
+                "Octree. Per-point intensities. UInt8[].",
+                Primitives.UInt8Array.Id,
+                true
+                );
+
+            /// <summary>
+            /// Octree. Reference to per-point intensities. Guid.
+            /// </summary>
+            public static readonly Def Intensities1bReference = new(
+                new Guid("56c02251-b860-40b4-a1d2-3570d1b9e62f"),
+                "Octree.Intensities1b.Reference",
+                "Octree. Reference to per-point intensities. Guid.",
+                Primitives.GuidDef.Id,
+                false
+                );
+
+            /// <summary>
             /// Octree. Per-point intensities. Int32[].
             /// </summary>
             public static readonly Def Intensities1i = new(
