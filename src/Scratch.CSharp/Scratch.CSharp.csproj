@@ -1,15 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;net5.0;net6.0;net472</TargetFrameworks>
-    <IsPackable>false</IsPackable>
-	  <LangVersion>latest</LangVersion>
-    <Configurations>Debug;Release</Configurations>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net6.0;net472</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Aardvark.Data.Durable.Codec\Aardvark.Data.Durable.Codec.csproj" />
     <ProjectReference Include="..\Aardvark.Data.Durable\Aardvark.Data.Durable.csproj" />
     <ProjectReference Include="..\Durable.Codec\Durable.Codec.csproj" />
   </ItemGroup>
-  <Import Project="..\..\.paket\Paket.Restore.targets" />
+
 </Project>

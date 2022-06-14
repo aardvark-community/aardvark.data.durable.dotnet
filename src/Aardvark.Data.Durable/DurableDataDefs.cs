@@ -66,6 +66,13 @@ namespace Aardvark.Data
             }
 
             /// <summary></summary>
+            public Guid PrimitiveType => Type == None 
+                ? Id 
+                : (defs.TryGetValue(Type, out var def) ? def.PrimitiveType : throw new Exception(
+                    $"Unknown durable type {Type}. Error 7a5da687-38af-45c3-8872-b8cf4b93b2a5."
+                    ));
+
+            /// <summary></summary>
             public override string ToString() => $"[{Name}, {Id}]";
 
             /// <summary></summary>
@@ -108,17 +115,6 @@ namespace Aardvark.Data
                 Guid.Empty,
                 "Unit",
                 "Unit (nothing, none, null, ...).",
-                None,
-                false
-                );
-
-            /// <summary>
-            /// A durable definition stored inline. [Id:Guid][Name:StringUTF8][Description:StringUTF8][Type:StringUTF8].
-            /// </summary>
-            public static readonly Def DurableDefinition = new(
-                new Guid("f924fd35-ae59-4b0e-a05b-e9c85536c52c"),
-                "DurableDefinition",
-                "A durable definition stored inline. [Id:Guid][Name:StringUTF8][Description:StringUTF8][Type:StringUTF8].",
                 None,
                 false
                 );

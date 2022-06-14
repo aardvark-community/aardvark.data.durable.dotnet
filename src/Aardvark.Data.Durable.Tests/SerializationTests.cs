@@ -80,6 +80,65 @@ namespace Aardvark.Data.Tests
     }
 #endif
 
+    public class DurableCodec2Tests
+    {
+        [Fact]
+        public void Codec2()
+        {
+            var child = new Durable2.Codec.Entry[]
+            {
+                new(Durable.Primitives.UInt8Array,   () => new byte  [] { 1, 2, 3, 4, 5 }),
+                new(Durable.Primitives.Int32Array,   () => new int   [] { 1, 2, 3, 4, 5, 6, 7 }),
+                new(Durable.Primitives.Float64Array, () => new double[] { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 3.1415 }),
+            };
+
+            var m = new Durable2.Codec.Entry[]
+            {
+                new(Durable.Primitives.UInt8Array,   () => new byte  [] { 1, 2, 3, 4, 5 }),
+                new(Durable2.Defs.DurableMap2,       () => child),
+                new(Durable.Primitives.Float64Array, () => new double[] { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 3.1415 }),
+            };
+
+            // encode
+            var ms = new MemoryStream();
+            Durable2.Codec.Encode(ms, Durable2.Defs.DurableMap2, m);
+            var buffer = ms.ToArray();
+
+            // decode
+            var (def, o) = Durable2.Codec.Decode(buffer);
+            var m2 = (IReadOnlyDictionary<Durable.Def, object>)o;
+
+            Assert.True(m2.Count == m.Length);
+            Assert.True(m2.ContainsKey(Durable.Primitives.UInt8Array));
+            Assert.True(PerValueEquals(m2[Durable.Primitives.UInt8Array], new byte[] { 1, 2, 3, 4, 5 }));
+
+            Assert.True(m2.ContainsKey(Durable2.Defs.DurableMap2));
+
+            Assert.True(m2.ContainsKey(Durable.Primitives.Float64Array)); 
+            Assert.True(PerValueEquals(m2[Durable.Primitives.Float64Array], new double[] { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 3.1415 }));
+
+            var child2 = (IReadOnlyDictionary<Durable.Def, object>)m2[Durable2.Defs.DurableMap2];
+
+            Assert.True(child2.Count == child.Length);
+            Assert.True(child2.ContainsKey(Durable.Primitives.UInt8Array));
+            Assert.True(PerValueEquals(child2[Durable.Primitives.UInt8Array], new byte[] { 1, 2, 3, 4, 5 }));
+
+            Assert.True(child2.ContainsKey(Durable.Primitives.Int32Array));
+            Assert.True(PerValueEquals(child2[Durable.Primitives.Int32Array], new int[] { 1, 2, 3, 4, 5, 6, 7 }));
+
+            Assert.True(child2.ContainsKey(Durable.Primitives.Float64Array));
+            Assert.True(PerValueEquals(child2[Durable.Primitives.Float64Array], new double[] { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 3.1415 }));
+
+            static bool PerValueEquals<T>(object o, T[] xs)
+            {
+                var ys = (T[])o;
+                if (xs.Length != ys.Length) return false;
+                for (var i = 0; i < xs.Length; i++) if (!xs[i].Equals(ys[i])) return false;
+                return true;
+            }
+        }
+    }
+
     public class SerializationTests
     {
         private static void Primitive<T>(Durable.Def def, T value, int size, Func<T, T, bool> eq)
