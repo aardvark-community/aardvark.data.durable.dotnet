@@ -79,7 +79,7 @@ namespace Aardvark.Data
             }
             else
             {
-                var unknownDef = Durable.Get(key);
+                var unknownDef = Durable.Def.Get(key);
                 throw new InvalidOperationException(
                     $"No encoder for {unknownDef}. Invariant 63e28e62-1c7b-4ed6-9945-f6d469bee271."
                     );
@@ -151,7 +151,7 @@ namespace Aardvark.Data
             }
             else
             {
-                var unknownDef = Durable.Get(key);
+                var unknownDef = Durable.Def.Get(key);
                 throw new InvalidOperationException(
                     $"No encoder for {unknownDef}. Invariant d30925d5-2c7f-4f30-871a-9fca4413200c."
                     );
@@ -350,7 +350,7 @@ namespace Aardvark.Data
                 }
                 else
                 {
-                    var unknownDef = Durable.Get(def.Type);
+                    var unknownDef = Durable.Def.Get(def.Type);
                     throw new InvalidOperationException(
                         $"Unknown definition {unknownDef}. Invariant 009acad8-31bc-48fa-b0ad-0ccb1da4b26d."
                         );
@@ -364,7 +364,7 @@ namespace Aardvark.Data
                 }
                 else
                 {
-                    var unknownDef = Durable.Get(def.Id);
+                    var unknownDef = Durable.Def.Get(def.Id);
                     throw new InvalidOperationException(
                         $"Unknown definition {unknownDef}. Invariant 4ae8b2d1-2a5d-4d87-9ddc-3d780de516fc."
                         );
@@ -381,7 +381,7 @@ namespace Aardvark.Data
             }
             else
             {
-                var unknownDef = Durable.Get(def.Id);
+                var unknownDef = Durable.Def.Get(def.Id);
                 throw new InvalidOperationException(
                     $"Unknown definition {unknownDef}. Invariant c38b073e-4526-4984-bce6-d60a69a49286."
                     );
@@ -675,10 +675,10 @@ namespace Aardvark.Data
         private static (Durable.Def, object) Decode(Stream stream)
         {
             var key = (Guid)DecodeGuid(stream);
-            if (!Durable.TryGet(key, out var def))
+            if (!Durable.Def.TryGet(key, out var def))
             {
                 stream.Position -= 16;
-                def = Durable.Get(Durable.Primitives.DurableMap.Id);
+                def = Durable.Def.Get(Durable.Primitives.DurableMap.Id);
             }
 
             if (def.Type != Durable.Primitives.Unit.Id)
@@ -690,7 +690,7 @@ namespace Aardvark.Data
                 }
                 else
                 {
-                    var unknownDef = Durable.Get(def.Type);
+                    var unknownDef = Durable.Def.Get(def.Type);
                     throw new InvalidOperationException($"Unknown definition {unknownDef}. Invariant 07f5aa80-431a-4e21-9186-fcb9206248b7.");
                 }
             }
@@ -703,7 +703,7 @@ namespace Aardvark.Data
                 }
                 else
                 {
-                    var unknownDef = Durable.Get(def.Id);
+                    var unknownDef = Durable.Def.Get(def.Id);
                     throw new InvalidOperationException($"Unknown definition {unknownDef}. Invariant e5938812-3f34-4dfd-b0f1-ea247cd88ad8.");
                 }
             }

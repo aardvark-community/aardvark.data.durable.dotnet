@@ -33,7 +33,7 @@ let main argv =
 
     let address = @"https://raw.githubusercontent.com/aardvark-community/aardvark.data.durable.definitions/main/definitions.json"
     let jsonString = (new HttpClient()).GetStringAsync(address) |> Async.AwaitTask |> Async.RunSynchronously
-    //let jsonString = System.IO.File.ReadAllText(@"..\..\..\..\..\..\aardvark.data.durable.definitions\definitions.json")
+    let jsonString = System.IO.File.ReadAllText(@"..\..\..\..\..\..\aardvark.data.durable.definitions\definitions.json")
     let json = JsonSerializer.Deserialize(jsonString) 
 
 

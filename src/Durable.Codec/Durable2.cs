@@ -2,29 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
-using Aardvark.Data;
 
-namespace Durable2;
+namespace Durable;
 
-public static class Defs
+public static class Codec2
 {
-    /// <summary>
-    /// A map of key/value pairs, where keys are durable IDs with values of corresponding types.
-    /// </summary>
-    public static readonly Durable.Def DurableMap2 = new(
-        new Guid("1aeb96fc-6f6d-4186-b9d5-987db1afbd18"),
-        "Durable2Map",
-        "A map of durable IDs to corresponding data, with encoding optimized for random access on read.",
-        Guid.Empty,
-        false
-        );
-}
+    public record Entry(Def Key, Func<object> GetValue);
 
-public static class Codec
-{
-    public record Entry(Durable.Def Key, Func<object> GetValue);
-
-    public static void Encode(Stream stream, Durable.Def def, object o)
+    public static void Encode(Stream stream, Def def, object o)
     {
         if (_encoders.TryGetValue(def.PrimitiveType, out var encoder))
         {
@@ -36,13 +21,13 @@ public static class Codec
         }
     }
 
-    public static (Durable.Def def, object o) Decode(byte[] buffer) => Decode(new MemoryStream(buffer));
-    public static (Durable.Def def, object o) Decode(Stream stream)
+    public static (Def def, object o) Decode(byte[] buffer) => Decode(new MemoryStream(buffer));
+    public static (Def def, object o) Decode(Stream stream)
     {
         var buffer = new byte[16];
         if (stream.Read(buffer, 0, 16) != 16) throw new Exception($"Failed to read durable def from stream. Error 095c9b0a-8cb6-4d58-b695-c2c30b6d88de.");
         var id = new Guid(buffer);
-        if (Durable.TryGet(id, out var def))
+        if (Def.TryGet(id, out var def))
         {
             if (_decoders.TryGetValue(def.Id, out var decoder))
             {
@@ -61,46 +46,46 @@ public static class Codec
 
     #region Encoders
 
-    private delegate void Encoder(Stream stream, in Durable.Def def, in object o);
-    private delegate (Durable.Def def, object o) Decoder(Stream stream, in Durable.Def def);
+    private delegate void Encoder(Stream stream, in Def def, in object o);
+    private delegate (Def def, object o) Decoder(Stream stream, in Def def);
 
     private static readonly Dictionary<Guid, Encoder> _encoders = new()
     {
-        { Defs.DurableMap2.Id                       , EncodeDurableMap2       },
+        { Primitives.DurableMap2.Id         , EncodeDurableMap2       },
 
-        { Durable.Primitives.Int8Array.Id           , EncodeArray<sbyte>      },
-        { Durable.Primitives.Int16Array.Id          , EncodeArray<short>      },
-        { Durable.Primitives.Int32Array.Id          , EncodeArray<int>        },
-        { Durable.Primitives.Int64Array.Id          , EncodeArray<long>       },
-        { Durable.Primitives.UInt8Array.Id          , EncodeArray<byte>       },
-        { Durable.Primitives.UInt16Array.Id         , EncodeArray<ushort>     },
-        { Durable.Primitives.UInt32Array.Id         , EncodeArray<uint>       },
-        { Durable.Primitives.UInt64Array.Id         , EncodeArray<ulong>      },
-        { Durable.Primitives.Float32Array.Id        , EncodeArray<float>      },
-        { Durable.Primitives.Float64Array.Id        , EncodeArray<double>     },
-        { Durable.Primitives.DecimalDotnetArray.Id  , EncodeArray<decimal>    },
+        { Primitives.Int8Array.Id           , EncodeArray<sbyte>      },
+        { Primitives.Int16Array.Id          , EncodeArray<short>      },
+        { Primitives.Int32Array.Id          , EncodeArray<int>        },
+        { Primitives.Int64Array.Id          , EncodeArray<long>       },
+        { Primitives.UInt8Array.Id          , EncodeArray<byte>       },
+        { Primitives.UInt16Array.Id         , EncodeArray<ushort>     },
+        { Primitives.UInt32Array.Id         , EncodeArray<uint>       },
+        { Primitives.UInt64Array.Id         , EncodeArray<ulong>      },
+        { Primitives.Float32Array.Id        , EncodeArray<float>      },
+        { Primitives.Float64Array.Id        , EncodeArray<double>     },
+        { Primitives.DecimalDotnetArray.Id  , EncodeArray<decimal>    },
     };
 
     private static readonly Dictionary<Guid, Decoder> _decoders = new()
     {
-        { Defs.DurableMap2.Id                       , DecodeDurableMap2       },
+        { Primitives.DurableMap2.Id         , DecodeDurableMap2       },
 
-        { Durable.Primitives.Int8Array.Id           , DecodeArray<sbyte>      },
-        { Durable.Primitives.Int16Array.Id          , DecodeArray<short>      },
-        { Durable.Primitives.Int32Array.Id          , DecodeArray<int>        },
-        { Durable.Primitives.Int64Array.Id          , DecodeArray<long>       },
-        { Durable.Primitives.UInt8Array.Id          , DecodeArray<byte>       },
-        { Durable.Primitives.UInt16Array.Id         , DecodeArray<ushort>     },
-        { Durable.Primitives.UInt32Array.Id         , DecodeArray<uint>       },
-        { Durable.Primitives.UInt64Array.Id         , DecodeArray<ulong>      },
-        { Durable.Primitives.Float32Array.Id        , DecodeArray<float>      },
-        { Durable.Primitives.Float64Array.Id        , DecodeArray<double>     },
-        { Durable.Primitives.DecimalDotnetArray.Id  , DecodeArray<decimal>    },
+        { Primitives.Int8Array.Id           , DecodeArray<sbyte>      },
+        { Primitives.Int16Array.Id          , DecodeArray<short>      },
+        { Primitives.Int32Array.Id          , DecodeArray<int>        },
+        { Primitives.Int64Array.Id          , DecodeArray<long>       },
+        { Primitives.UInt8Array.Id          , DecodeArray<byte>       },
+        { Primitives.UInt16Array.Id         , DecodeArray<ushort>     },
+        { Primitives.UInt32Array.Id         , DecodeArray<uint>       },
+        { Primitives.UInt64Array.Id         , DecodeArray<ulong>      },
+        { Primitives.Float32Array.Id        , DecodeArray<float>      },
+        { Primitives.Float64Array.Id        , DecodeArray<double>     },
+        { Primitives.DecimalDotnetArray.Id  , DecodeArray<decimal>    },
     };
 
     private record struct DurableMapLutEntry(Guid Key, long RelativeOffset);
 
-    private static void EncodeDurableMap2(Stream stream, in Durable.Def def, in object o)
+    private static void EncodeDurableMap2(Stream stream, in Def def, in object o)
     {
         var data = (IReadOnlyList<Entry>)o;
 
@@ -126,10 +111,10 @@ public static class Codec
             var header = new byte[headerSizeInBytes];
             fixed (byte* h = header)
             {
-                *(Guid*)(h + 0) = Defs.DurableMap2.Id;  // [origin +  0]   Guid       16 bytes
-                var pTotalBytes = (long*)(h + 16);      // [       + 16]   uint64      8 bytes      // to skip this map goto [origin + totalBytes]
-                *(int*)(h + 24) = data.Count;           // [       + 24]   int32       4 bytes
-                *(int*)(h + 28) = 0;                    // [       + 28]   int32       4 bytes      // not used
+                *(Guid*)(h + 0) = def.Id;           // [origin +  0]   Guid       16 bytes
+                var pTotalBytes = (long*)(h + 16);  // [       + 16]   uint64      8 bytes      // to skip this map goto [origin + totalBytes]
+                *(int*)(h + 24) = data.Count;       // [       + 24]   int32       4 bytes
+                *(int*)(h + 28) = 0;                // [       + 28]   int32       4 bytes      // not used
                 var lut = (DurableMapLutEntry*)(h + 32);
 
                 stream.Position += headerSizeInBytes;
@@ -165,7 +150,7 @@ public static class Codec
     /// <summary>
     /// Stream is positioned at (origin + 16), that means AFTER the durable type guid.
     /// </summary>
-    private static (Durable.Def def, object o) DecodeDurableMap2(Stream stream, in Durable.Def def)
+    private static (Def def, object o) DecodeDurableMap2(Stream stream, in Def def)
     {
         var origin = stream.Position - 16;
 
@@ -183,7 +168,7 @@ public static class Codec
             var lutBuffer = MemoryMarshal.Cast<DurableMapLutEntry, byte>(lut);
             if (stream.Read(lutBuffer) != lutBuffer.Length) throw new Exception($"Failed to read lookup table from DurableMap2. Error 75c27a6d-1a07-4e8b-b7fa-041e8d727ac4.");
 
-            var data = new Dictionary<Durable.Def, object>();
+            var data = new Dictionary<Def, object>();
             for (var i = 0; i < lut.Length; i++)
             {
                 stream.Position = origin + lut[i].RelativeOffset;
@@ -207,7 +192,7 @@ public static class Codec
 
                 var lut = MemoryMarshal.Cast<byte, DurableMapLutEntry>(lutBuffer);
 
-                var data = new Dictionary<Durable.Def, object>();
+                var data = new Dictionary<Def, object>();
                 for (var i = 0; i < lut.Length; i++)
                 {
                     stream.Position = origin + lut[i].RelativeOffset;
@@ -222,7 +207,7 @@ public static class Codec
         }
     }
 
-    private static void EncodeArray<T>(Stream stream, in Durable.Def def, in object o) where T : unmanaged
+    private static void EncodeArray<T>(Stream stream, in Def def, in object o) where T : unmanaged
     {
         var xs = (T[])o;
 
@@ -250,7 +235,7 @@ public static class Codec
     /// <summary>
     /// Stream is positioned at (origin + 16), that means AFTER the durable type guid.
     /// </summary>
-    private static (Durable.Def def, object o) DecodeArray<T>(Stream stream, in Durable.Def def) where T : unmanaged
+    private static (Def def, object o) DecodeArray<T>(Stream stream, in Def def) where T : unmanaged
     {
         unsafe
         {

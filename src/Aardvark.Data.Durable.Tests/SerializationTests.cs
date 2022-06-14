@@ -85,39 +85,39 @@ namespace Aardvark.Data.Tests
         [Fact]
         public void Codec2()
         {
-            var child = new Durable2.Codec.Entry[]
+            var child = new Durable.Codec2.Entry[]
             {
                 new(Durable.Primitives.UInt8Array,   () => new byte  [] { 1, 2, 3, 4, 5 }),
                 new(Durable.Primitives.Int32Array,   () => new int   [] { 1, 2, 3, 4, 5, 6, 7 }),
                 new(Durable.Primitives.Float64Array, () => new double[] { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 3.1415 }),
             };
 
-            var m = new Durable2.Codec.Entry[]
+            var m = new Durable.Codec2.Entry[]
             {
                 new(Durable.Primitives.UInt8Array,   () => new byte  [] { 1, 2, 3, 4, 5 }),
-                new(Durable2.Defs.DurableMap2,       () => child),
+                new(Durable.Primitives.DurableMap2,  () => child),
                 new(Durable.Primitives.Float64Array, () => new double[] { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 3.1415 }),
             };
 
             // encode
             var ms = new MemoryStream();
-            Durable2.Codec.Encode(ms, Durable2.Defs.DurableMap2, m);
+            Durable.Codec2.Encode(ms, Durable.Primitives.DurableMap2, m);
             var buffer = ms.ToArray();
 
             // decode
-            var (def, o) = Durable2.Codec.Decode(buffer);
+            var (def, o) = Durable.Codec2.Decode(buffer);
             var m2 = (IReadOnlyDictionary<Durable.Def, object>)o;
 
             Assert.True(m2.Count == m.Length);
             Assert.True(m2.ContainsKey(Durable.Primitives.UInt8Array));
             Assert.True(PerValueEquals(m2[Durable.Primitives.UInt8Array], new byte[] { 1, 2, 3, 4, 5 }));
 
-            Assert.True(m2.ContainsKey(Durable2.Defs.DurableMap2));
+            Assert.True(m2.ContainsKey(Durable.Primitives.DurableMap2));
 
             Assert.True(m2.ContainsKey(Durable.Primitives.Float64Array)); 
             Assert.True(PerValueEquals(m2[Durable.Primitives.Float64Array], new double[] { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 3.1415 }));
 
-            var child2 = (IReadOnlyDictionary<Durable.Def, object>)m2[Durable2.Defs.DurableMap2];
+            var child2 = (IReadOnlyDictionary<Durable.Def, object>)m2[Durable.Primitives.DurableMap2];
 
             Assert.True(child2.Count == child.Length);
             Assert.True(child2.ContainsKey(Durable.Primitives.UInt8Array));

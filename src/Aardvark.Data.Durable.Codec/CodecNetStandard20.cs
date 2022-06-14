@@ -52,7 +52,7 @@ namespace Aardvark.Data
             }
             else
             {
-                var unknownDef = Durable.Get(key);
+                var unknownDef = Durable.Def.Get(key);
                 throw new InvalidOperationException(
                     $"No encoder for {unknownDef}. Invariant 723c80aa-dfe4-4da9-9922-1f3c3c39aac0."
                     );
@@ -339,7 +339,7 @@ namespace Aardvark.Data
                 }
                 else
                 {
-                    var unknownDef = Durable.Get(def.Type);
+                    var unknownDef = Durable.Def.Get(def.Type);
                     throw new InvalidOperationException(
                         $"Unknown definition {unknownDef}. Invariant 4619ee6d-81e7-4212-b813-bfe2178d906f."
                         );
@@ -353,7 +353,7 @@ namespace Aardvark.Data
                 }
                 else
                 {
-                    var unknownDef = Durable.Get(def.Id);
+                    var unknownDef = Durable.Def.Get(def.Id);
                     throw new InvalidOperationException(
                         $"Unknown definition {unknownDef}. Invariant 0de99f99-a339-421b-ac5d-4f55b71342de."
                         );
@@ -370,7 +370,7 @@ namespace Aardvark.Data
             }
             else
             {
-                var unknownDef = Durable.Get(def.Id);
+                var unknownDef = Durable.Def.Get(def.Id);
                 throw new InvalidOperationException(
                     $"Unknown definition {unknownDef}. Invariant 0de99f99-a339-421b-ac5d-4f55b71342de."
                     );
@@ -716,10 +716,10 @@ namespace Aardvark.Data
         private static (Durable.Def, object) Decode(BinaryReader stream)
         {
             var key = (Guid)DecodeGuid(stream);
-            if (!Durable.TryGet(key, out var def))
+            if (!Durable.Def.TryGet(key, out var def))
             {
                 stream.BaseStream.Position -= 16;
-                def = Durable.Get(Durable.Primitives.DurableMap.Id);
+                def = Durable.Def.Get(Durable.Primitives.DurableMap.Id);
             }
 
             if (def.Type != Durable.Primitives.Unit.Id)
@@ -731,7 +731,7 @@ namespace Aardvark.Data
                 }
                 else
                 {
-                    var unknownDef = Durable.Get(def.Type);
+                    var unknownDef = Durable.Def.Get(def.Type);
                     throw new InvalidOperationException(
                         $"Unknown definition {unknownDef}. Invariant bcdd79e9-06dd-42d1-9906-9974d49e8dd8."
                         );
@@ -746,7 +746,7 @@ namespace Aardvark.Data
                 }
                 else
                 {
-                    var unknownDef = Durable.Get(def.Id);
+                    var unknownDef = Durable.Def.Get(def.Id);
                     throw new InvalidOperationException(
                         $"Unknown definition {unknownDef}. Invariant 9d4570d5-b9ef-404f-a247-9b571cd4f1f6."
                         );

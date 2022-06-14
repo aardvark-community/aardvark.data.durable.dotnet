@@ -161,7 +161,7 @@ module Codegen =
     let header = """/*
     MIT License
 
-    Copyright (c) 2019-2021 Aardworx GmbH (https://aardworx.com). All rights reserved.
+    Copyright (c) 2019-2022 Aardworx GmbH (https://aardworx.com). All rights reserved.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -289,69 +289,72 @@ namespace Aardvark.Data
 using System;
 using System.Collections.Generic;
 
-namespace Aardvark.Data
+namespace Durable
 {
     /// <summary></summary>
-    public static class Durable
+    public class Def : IEquatable<Def>, IComparable, IComparable<Def>
     {
         /// <summary></summary>
-        public class Def : IEquatable<Def>, IComparable, IComparable<Def>
+        public readonly Guid Id;
+        /// <summary></summary>
+        public readonly string Name;
+        /// <summary></summary>
+        public readonly string Description;
+        /// <summary></summary>
+        public readonly Guid Type;
+        /// <summary></summary>
+        public readonly bool IsArray;
+
+        /// <summary></summary>
+        public Def(Guid id, string name, string description, Guid type, bool isArray)
         {
-            /// <summary></summary>
-            public readonly Guid Id;
-            /// <summary></summary>
-            public readonly string Name;
-            /// <summary></summary>
-            public readonly string Description;
-            /// <summary></summary>
-            public readonly Guid Type;
-            /// <summary></summary>
-            public readonly bool IsArray;
-
-            /// <summary></summary>
-            public Def(Guid id, string name, string description, Guid type, bool isArray)
+            lock (defs)
             {
-                lock (defs)
+                if (defs.ContainsKey(id))
                 {
-                    if (defs.ContainsKey(id))
-                    {
-                        throw new InvalidOperationException(
-                            $"Duplicate Def(id: {id}, name: {name}, description: {description}, type: {type}, isArray: {isArray})."
-                            );
-                    }
-
-                    Id = id;
-                    Name = name;
-                    Description = description;
-                    Type = type;
-                    IsArray = isArray;
-
-                    defs[id] = this;
+                    throw new InvalidOperationException(
+                        $"Duplicate Def(id: {id}, name: {name}, description: {description}, type: {type}, isArray: {isArray})."
+                        );
                 }
+
+                Id = id;
+                Name = name;
+                Description = description;
+                Type = type;
+                IsArray = isArray;
+
+                defs[id] = this;
             }
-
-            /// <summary></summary>
-            public override string ToString() => $"[{Name}, {Id}]";
-
-            /// <summary></summary>
-            public override int GetHashCode() => Id.GetHashCode();
-            
-            /// <summary></summary>
-            public override bool Equals(object obj) => obj is Def other && Id == other.Id;
-
-            /// <summary></summary>
-            public bool Equals(Def other) => !(other is null || Id != other.Id);
-
-            /// <summary></summary>
-            public int CompareTo(object obj)
-                => obj is Def other
-                    ? CompareTo(other)
-                    : throw new ArgumentException($"Can't compare Def with {obj?.GetType()}.", nameof(obj))
-                    ;
-
-            /// <summary></summary>
-            public int CompareTo(Def other) => other is null ? 1 : Id.CompareTo(other.Id);
         }
+
+        /// <summary></summary>
+        public Guid PrimitiveType => Type == Guid.Empty 
+            ? Id 
+            : (defs.TryGetValue(Type, out var def) ? def.PrimitiveType : throw new Exception(
+                $"Unknown durable type {Type}. Error 7a5da687-38af-45c3-8872-b8cf4b93b2a5."
+                ));
+
+        /// <summary></summary>
+        public override string ToString() => $"[{Name}, {Id}]";
+
+        /// <summary></summary>
+        public override int GetHashCode() => Id.GetHashCode();
+            
+        /// <summary></summary>
+        public override bool Equals(object obj) => obj is Def other && Id == other.Id;
+
+        /// <summary></summary>
+        public bool Equals(Def other) => !(other is null || Id != other.Id);
+
+        /// <summary></summary>
+        public int CompareTo(object obj)
+            => obj is Def other
+                ? CompareTo(other)
+                : throw new ArgumentException($"Can't compare Def with {obj?.GetType()}.", nameof(obj))
+                ;
+
+        /// <summary></summary>
+        public int CompareTo(Def other) => other is null ? 1 : Id.CompareTo(other.Id);
 
         private static readonly Dictionary<Guid, Def> defs = new();
 
@@ -360,35 +363,38 @@ namespace Aardvark.Data
 
         /// <summary></summary>
         public static bool TryGet(Guid key, out Def def) => defs.TryGetValue(key, out def);
+    }
 
-        private static readonly Guid None = Guid.Empty;
 """
     
         for kv in json.EnumerateObject() do
             let category = kv.Name
-            yield sprintf "        /// <summary></summary>"
-            yield sprintf "        public static class %s" category
-            yield sprintf "        {"
-            for kv in kv.Value.EnumerateObject() do
+            let entries = kv.Value.EnumerateObject() |> Seq.map (fun kv -> parseEntry category kv.Name kv.Value) |> Seq.toArray
+            let usesNone = entries |> Seq.exists (fun e -> e.Type = "None")
 
-                let entry = parseEntry category kv.Name kv.Value
+            yield sprintf "    /// <summary></summary>"
+            yield sprintf "    public static class %s" category
+            yield sprintf "    {"
+            if usesNone then
+                yield sprintf "        private static readonly Guid None = Guid.Empty;"
+            yield sprintf ""
+            for entry in entries do
 
                 let formatGuid g = if g = Guid.Empty then "Guid.Empty" else sprintf "new Guid(\"%A\")" g
             
-                yield sprintf "            /// <summary>"
-                yield sprintf "            /// %s" (entry.Description)
-                yield sprintf "            /// </summary>"
-                yield sprintf "            public static readonly Def %s = new(" entry.LetName
-                yield sprintf "                %s," (formatGuid entry.Id)
-                yield sprintf "                \"%s\"," entry.Name
-                yield sprintf "                \"%s\"," (entry.Description)
-                yield sprintf "                %s," entry.Type
-                yield sprintf "                %A" entry.IsArray
-                yield sprintf "                );"
+                yield sprintf "        /// <summary>"
+                yield sprintf "        /// %s" (entry.Description)
+                yield sprintf "        /// </summary>"
+                yield sprintf "        public static readonly Def %s = new(" entry.LetName
+                yield sprintf "            %s," (formatGuid entry.Id)
+                yield sprintf "            \"%s\"," entry.Name
+                yield sprintf "            \"%s\"," (entry.Description)
+                yield sprintf "            %s," entry.Type
+                yield sprintf "            %A" entry.IsArray
+                yield sprintf "            );"
                 yield sprintf ""
 
-            yield sprintf "        }"
+            yield sprintf "    }"
 
-        yield sprintf "    }"
         yield sprintf "}"
     }
