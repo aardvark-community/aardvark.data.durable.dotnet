@@ -85,19 +85,18 @@ namespace Aardvark.Data.Tests
         [Fact]
         public void Codec2()
         {
-            var child = new Durable.Codec2.Entry[]
+            var child = new (Durable.Def, object)[]
             {
-                new(Durable.Primitives.UInt8Array,   () => new byte  [] { 1, 2, 3, 4, 5 }),
-                new(Durable.Primitives.Int32Array,   () => new int   [] { 1, 2, 3, 4, 5, 6, 7 }),
-                new(Durable.Primitives.Float64Array, () => new double[] { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 3.1415 }),
+                (Durable.Primitives.UInt8Array,   new byte  [] { 1, 2, 3, 4, 5 }),
+                (Durable.Primitives.Int32Array,   new int   [] { 1, 2, 3, 4, 5, 6, 7 }),
+                (Durable.Primitives.Float64Array, new double[] { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 3.1415 }),
             };
 
-            var m = new Durable.Codec2.Entry[]
-            {
-                new(Durable.Primitives.UInt8Array,   () => new byte  [] { 1, 2, 3, 4, 5 }),
-                new(Durable.Primitives.DurableMap2,  () => child),
-                new(Durable.Primitives.Float64Array, () => new double[] { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 3.1415 }),
-            };
+            var m = ImmutableDictionary<Durable.Def, object>.Empty
+                .Add(Durable.Primitives.UInt8Array,   new byte  [] { 1, 2, 3, 4, 5 })
+                .Add(Durable.Primitives.DurableMap2,  child)
+                .Add(Durable.Primitives.Float64Array, new double[] { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 3.1415 })
+                ;
 
             // encode
             var ms = new MemoryStream();
@@ -105,10 +104,9 @@ namespace Aardvark.Data.Tests
             var buffer = ms.ToArray();
 
             // decode
-            var (def, o) = Durable.Codec2.Decode(buffer);
-            var m2 = (IReadOnlyDictionary<Durable.Def, object>)o;
+            var m2 = Durable.Codec2.Decode(buffer).AsMap();
 
-            Assert.True(m2.Count == m.Length);
+            Assert.True(m2.Count == m.Count);
             Assert.True(m2.ContainsKey(Durable.Primitives.UInt8Array));
             Assert.True(PerValueEquals(m2[Durable.Primitives.UInt8Array], new byte[] { 1, 2, 3, 4, 5 }));
 

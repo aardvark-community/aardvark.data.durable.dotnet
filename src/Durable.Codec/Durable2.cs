@@ -1,28 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace Durable;
 
+public readonly record struct Item(Def Def, object Data)
+{
+    public bool IsMap => Data is IReadOnlyDictionary<Def, object>;
+    public IReadOnlyDictionary<Def, object> AsMap() => (IReadOnlyDictionary<Def, object>)Data;
+}
+
 public static class Codec2
 {
-    public record Entry(Def Key, Func<object> GetValue);
-
-    public static void Encode(Stream stream, Def def, object o)
+    public static void Encode(Stream stream, Def def, object o) => Encode(stream, new(def, o));
+    public static void Encode(Stream stream, Item item)
     {
-        if (_encoders.TryGetValue(def.PrimitiveType, out var encoder))
+        if (_encoders.TryGetValue(item.Def.PrimitiveType, out var encoder))
         {
-            encoder(stream, def, o);
+            encoder(stream, item);
         }
         else
         {
-            throw new NotImplementedException($"{def}");
+            throw new NotImplementedException($"{item.Def}");
         }
     }
 
-    public static (Def def, object o) Decode(byte[] buffer) => Decode(new MemoryStream(buffer));
-    public static (Def def, object o) Decode(Stream stream)
+    public static Item Decode(byte[] buffer) => Decode(new MemoryStream(buffer));
+    public static Item Decode(Stream stream)
     {
         var buffer = new byte[16];
         if (stream.Read(buffer, 0, 16) != 16) throw new Exception($"Failed to read durable def from stream. Error 095c9b0a-8cb6-4d58-b695-c2c30b6d88de.");
@@ -46,8 +52,8 @@ public static class Codec2
 
     #region Encoders
 
-    private delegate void Encoder(Stream stream, in Def def, in object o);
-    private delegate (Def def, object o) Decoder(Stream stream, in Def def);
+    private delegate void Encoder(Stream stream, in Item item);
+    private delegate Item Decoder(Stream stream, in Def def);
 
     private static readonly Dictionary<Guid, Encoder> _encoders = new()
     {
@@ -83,11 +89,17 @@ public static class Codec2
         { Primitives.DecimalDotnetArray.Id  , DecodeArray<decimal>    },
     };
 
-    private record struct DurableMapLutEntry(Guid Key, long RelativeOffset);
+    private readonly record struct Entry(Def Key, object Value);
+    private readonly record struct DurableMapLutEntry(Guid Key, long RelativeOffset);
 
-    private static void EncodeDurableMap2(Stream stream, in Def def, in object o)
+    private static void EncodeDurableMap2(Stream stream, in Item item)
     {
-        var data = (IReadOnlyList<Entry>)o;
+        IReadOnlyList<Entry> data = item.Data switch
+        {
+            IEnumerable<(Def def, object o)> xs => xs.Select(x => new Entry(x.def, x.o)).ToList(),
+            IReadOnlyDictionary<Def, object> xs => xs.Select(x => new Entry(x.Key, x.Value)).ToList(),
+            _ => throw new NotImplementedException($"Unable to encode {item.Data.GetType()} as durable map. Error cd3ec158-68a4-4c83-94e7-fe231a08b403.")
+        };
 
         // Sets stream.Position to next multiple of n, where n is one of [1, 2, 4, 8, 16].
         // Does nothing, if stream.Position is already a multiple of n.
@@ -95,6 +107,7 @@ public static class Codec2
         {
             var r = (int)(stream.Position % 16);
             if (r > 0) stream.Write(_padding, 0, 16 - r);
+
 #if DEBUG
             if (stream.Position % 16 != 0) throw new Exception(
                 $"Assertion failed. Expected stream position to be multiple of 16, but found {stream.Position}. " +
@@ -111,7 +124,7 @@ public static class Codec2
             var header = new byte[headerSizeInBytes];
             fixed (byte* h = header)
             {
-                *(Guid*)(h + 0) = def.Id;           // [origin +  0]   Guid       16 bytes
+                *(Guid*)(h + 0) = item.Def.Id;      // [origin +  0]   Guid       16 bytes
                 var pTotalBytes = (long*)(h + 16);  // [       + 16]   uint64      8 bytes      // to skip this map goto [origin + totalBytes]
                 *(int*)(h + 24) = data.Count;       // [       + 24]   int32       4 bytes
                 *(int*)(h + 28) = 0;                // [       + 28]   int32       4 bytes      // not used
@@ -129,7 +142,7 @@ public static class Codec2
                     lut[i] = new(e.Key.Id, stream.Position - origin);
 
                     // write child entry
-                    Encode(stream, e.Key, e.GetValue());
+                    Encode(stream, e.Key, e.Value);
                 }
 
                 // align to 16-byte boundary
@@ -150,7 +163,7 @@ public static class Codec2
     /// <summary>
     /// Stream is positioned at (origin + 16), that means AFTER the durable type guid.
     /// </summary>
-    private static (Def def, object o) DecodeDurableMap2(Stream stream, in Def def)
+    private static Item DecodeDurableMap2(Stream stream, in Def def)
     {
         var origin = stream.Position - 16;
 
@@ -176,7 +189,7 @@ public static class Codec2
                 data[k] = v;
             }
 
-            return (def, data);
+            return new(def, data);
 
 #elif NETSTANDARD2_0
 
@@ -200,18 +213,18 @@ public static class Codec2
                     data[k] = v;
                 }
 
-                return (def, data);
+                return new(def, data);
             }
 
 #endif
         }
     }
 
-    private static void EncodeArray<T>(Stream stream, in Def def, in object o) where T : unmanaged
+    private static void EncodeArray<T>(Stream stream, in Item item) where T : unmanaged
     {
-        var xs = (T[])o;
+        var xs = (T[])item.Data;
 
-        var id = def.Id.ToByteArray();
+        var id = item.Def.Id.ToByteArray();
         stream.Write(id, 0, id.Length);
 
 #if NETSTANDARD2_1_OR_GREATER
@@ -235,7 +248,7 @@ public static class Codec2
     /// <summary>
     /// Stream is positioned at (origin + 16), that means AFTER the durable type guid.
     /// </summary>
-    private static (Def def, object o) DecodeArray<T>(Stream stream, in Def def) where T : unmanaged
+    private static Item DecodeArray<T>(Stream stream, in Def def) where T : unmanaged
     {
         unsafe
         {
@@ -248,7 +261,7 @@ public static class Codec2
             var buffer = MemoryMarshal.Cast<T, byte>(xs);
             if (stream.Read(buffer) != buffer.Length) throw new Exception($"Failed to read array data. Error 051399a7-5a46-4819-b958-fbc88c260984.");
 
-            return (def, xs);
+            return new(def, xs);
 
 #elif NETSTANDARD2_0
 
@@ -261,7 +274,7 @@ public static class Codec2
             var xs = new T[count];
             Buffer.BlockCopy(buffer, 0, xs, 0, buffer.Length);
 
-            return (def, xs);
+            return new(def, xs);
 
 #endif
 
