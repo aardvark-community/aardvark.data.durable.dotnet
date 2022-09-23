@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2019-2022 Aardworx GmbH (https://aardworx.com). All rights reserved.
+    Copyright (c) 2019-2022 Aardworx GmbH (https://aardworx.at). All rights reserved.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -3236,6 +3236,248 @@ namespace Durable
             true
             );
 
+        /// <summary>
+        /// Positions. V2f[].
+        /// </summary>
+        public static readonly Def ChunkPositions2f = new(
+            new Guid("30180c1c-1858-42f0-9440-004b4554db5a"),
+            "Aardvark.Chunk.Positions2f",
+            "Positions. V2f[].",
+            V2fArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Positions. V2d[].
+        /// </summary>
+        public static readonly Def ChunkPositions2d = new(
+            new Guid("1257e31f-58d1-47a2-8252-74a0b9686e29"),
+            "Aardvark.Chunk.Positions2d",
+            "Positions. V2d[].",
+            V2dArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Positions. V3f[].
+        /// </summary>
+        public static readonly Def ChunkPositions3f = new(
+            new Guid("1cc23a98-f387-4df6-a82f-1e73f87bd519"),
+            "Aardvark.Chunk.Positions3f",
+            "Positions. V3f[].",
+            V3fArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Positions. V3d[].
+        /// </summary>
+        public static readonly Def ChunkPositions3d = new(
+            new Guid("b72e1359-6d05-4b61-8546-575f5280675a"),
+            "Aardvark.Chunk.Positions3d",
+            "Positions. V3d[].",
+            V3dArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Colors. C3b[].
+        /// </summary>
+        public static readonly Def ChunkColors3b = new(
+            new Guid("52fa40ae-9a54-4a37-a2e3-4b46c78392e1"),
+            "Aardvark.Chunk.Colors3b",
+            "Colors. C3b[].",
+            C3bArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Colors. C3f[].
+        /// </summary>
+        public static readonly Def ChunkColors3f = new(
+            new Guid("eda92353-7e58-4898-b67c-812cb73a7184"),
+            "Aardvark.Chunk.Colors3f",
+            "Colors. C3f[].",
+            C3fArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Colors. C4b[].
+        /// </summary>
+        public static readonly Def ChunkColors4b = new(
+            new Guid("34d162f5-6462-4dd2-a8ec-36b1c326a6db"),
+            "Aardvark.Chunk.Colors4b",
+            "Colors. C4b[].",
+            C4bArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Colors. C4f[].
+        /// </summary>
+        public static readonly Def ChunkColors4f = new(
+            new Guid("47cae42a-26a9-403f-8a5a-34f63fb08eb1"),
+            "Aardvark.Chunk.Colors4f",
+            "Colors. C4f[].",
+            C4fArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Normals. V3f[].
+        /// </summary>
+        public static readonly Def ChunkNormals3f = new(
+            new Guid("a8ce542d-f810-4a34-8236-d39d5ceaa99c"),
+            "Aardvark.Chunk.Normals3f",
+            "Normals. V3f[].",
+            V3fArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Intensities. UInt8[].
+        /// </summary>
+        public static readonly Def ChunkIntensities1b = new(
+            new Guid("3b2dddb6-6d5e-4d92-877c-d046ed026b8a"),
+            "Aardvark.Chunk.Intensities1b",
+            "Intensities. UInt8[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Intensities. Int16[].
+        /// </summary>
+        public static readonly Def ChunkIntensities1s = new(
+            new Guid("71f63c81-9cd4-437d-801b-d2a012ea120c"),
+            "Aardvark.Chunk.Intensities1s",
+            "Intensities. Int16[].",
+            Primitives.Int16Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Intensities. UInt16[].
+        /// </summary>
+        public static readonly Def ChunkIntensities1us = new(
+            new Guid("75e9e5c3-b510-4e00-bb80-866976ef7df2"),
+            "Aardvark.Chunk.Intensities1us",
+            "Intensities. UInt16[].",
+            Primitives.UInt16Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Intensities. Int32[].
+        /// </summary>
+        public static readonly Def ChunkIntensities1i = new(
+            new Guid("d97c8f2e-8e47-4bea-a226-e655b8520dd7"),
+            "Aardvark.Chunk.Intensities1i",
+            "Intensities. Int32[].",
+            Primitives.Int32Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Intensities. UInt32[].
+        /// </summary>
+        public static readonly Def ChunkIntensities1ui = new(
+            new Guid("cc43d018-e67d-4d50-be74-989cb2a296c2"),
+            "Aardvark.Chunk.Intensities1ui",
+            "Intensities. UInt32[].",
+            Primitives.UInt32Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Intensities. Float32[].
+        /// </summary>
+        public static readonly Def ChunkIntensities1f = new(
+            new Guid("aee8ab41-0ae9-4987-9fd1-65ccef82f67b"),
+            "Aardvark.Chunk.Intensities1f",
+            "Intensities. Float32[].",
+            Primitives.Float32Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Intensities. Float64[].
+        /// </summary>
+        public static readonly Def ChunkIntensities1d = new(
+            new Guid("59daac88-bc42-4bc1-a76f-e777441efc21"),
+            "Aardvark.Chunk.Intensities1d",
+            "Intensities. Float64[].",
+            Primitives.Float64Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Classifications. UInt8[].
+        /// </summary>
+        public static readonly Def ChunkClassifications1b = new(
+            new Guid("3cf3a1b8-1000-4b2f-a674-f0718c60de72"),
+            "Aardvark.Chunk.Classifications1b",
+            "Classifications. UInt8[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Classifications. Int16[].
+        /// </summary>
+        public static readonly Def ChunkClassifications1s = new(
+            new Guid("8673504a-5100-4dbc-87b6-0ca4f2382bcc"),
+            "Aardvark.Chunk.Classifications1s",
+            "Classifications. Int16[].",
+            Primitives.Int16Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Classifications. UInt16[].
+        /// </summary>
+        public static readonly Def ChunkClassifications1us = new(
+            new Guid("4cae2709-c86e-4d24-bba8-086d4845c817"),
+            "Aardvark.Chunk.Classifications1us",
+            "Classifications. UInt16[].",
+            Primitives.UInt16Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Classifications. Int32[].
+        /// </summary>
+        public static readonly Def ChunkClassifications1i = new(
+            new Guid("61fea872-aa6e-4249-ae9f-ad8fe75f8638"),
+            "Aardvark.Chunk.Classifications1i",
+            "Classifications. Int32[].",
+            Primitives.Int32Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Classifications. UInt32[].
+        /// </summary>
+        public static readonly Def ChunkClassifications1ui = new(
+            new Guid("3434e3d8-8812-4f7f-9f35-8150de42922c"),
+            "Aardvark.Chunk.Classifications1ui",
+            "Classifications. UInt32[].",
+            Primitives.UInt32Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Classifications. StringUTF8[].
+        /// </summary>
+        public static readonly Def ChunkClassificationsString = new(
+            new Guid("05d57d11-86a1-4bd4-bb6d-219a47fd9193"),
+            "Aardvark.Chunk.ClassificationsString",
+            "Classifications. StringUTF8[].",
+            Primitives.StringUTF8Array.Id,
+            true
+            );
+
     }
     /// <summary></summary>
     public static class Generic
@@ -3786,6 +4028,17 @@ namespace Durable
             );
 
         /// <summary>
+        /// Octree. Average point distance to centroid (global space) in each dimension. V3f.
+        /// </summary>
+        public static readonly Def PositionsGlobal3fDistToCentroidAverage3d = new(
+            new Guid("fcb042a2-7f58-415c-b069-a8209cf8b1d1"),
+            "Octree.PositionsGlobal3f.DistToCentroid.Average3d",
+            "Octree. Average point distance to centroid (global space) in each dimension. V3f.",
+            Aardvark.V3f.Id,
+            false
+            );
+
+        /// <summary>
         /// Octree. Standard deviation of average point distance to centroid (global space). Float32.
         /// </summary>
         public static readonly Def PositionsGlobal3fDistToCentroidStdDev = new(
@@ -3793,6 +4046,17 @@ namespace Durable
             "Octree.PositionsGlobal3f.DistToCentroid.StdDev",
             "Octree. Standard deviation of average point distance to centroid (global space). Float32.",
             Primitives.Float32.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Standard deviation of average point distance to centroid (global space) in each dimension. V3f.
+        /// </summary>
+        public static readonly Def PositionsGlobal3fDistToCentroidStdDev3d = new(
+            new Guid("1aa277c0-239b-4765-b8be-acad2c4ded52"),
+            "Octree.PositionsGlobal3f.DistToCentroid.StdDev3d",
+            "Octree. Standard deviation of average point distance to centroid (global space) in each dimension. V3f.",
+            Aardvark.V3f.Id,
             false
             );
 
@@ -3841,6 +4105,17 @@ namespace Durable
             );
 
         /// <summary>
+        /// Octree. Average point distance to centroid (global space) in each dimension. V3d.
+        /// </summary>
+        public static readonly Def PositionsGlobal3dDistToCentroidAverage3d = new(
+            new Guid("74ea2eca-17e7-4481-9529-ae08f22fcd96"),
+            "Octree.PositionsGlobal3d.DistToCentroid.Average3d",
+            "Octree. Average point distance to centroid (global space) in each dimension. V3d.",
+            Aardvark.V3d.Id,
+            false
+            );
+
+        /// <summary>
         /// Octree. Standard deviation of average point distance to centroid (global space). Float64.
         /// </summary>
         public static readonly Def PositionsGlobal3dDistToCentroidStdDev = new(
@@ -3848,6 +4123,17 @@ namespace Durable
             "Octree.PositionsGlobal3d.DistToCentroid.StdDev",
             "Octree. Standard deviation of average point distance to centroid (global space). Float64.",
             Primitives.Float64.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Standard deviation of average point distance to centroid (global space) in each dimension. V3d.
+        /// </summary>
+        public static readonly Def PositionsGlobal3dDistToCentroidStdDev3d = new(
+            new Guid("d097de2b-1f7b-4e93-b3e5-04a82cbb42d2"),
+            "Octree.PositionsGlobal3d.DistToCentroid.StdDev3d",
+            "Octree. Standard deviation of average point distance to centroid (global space) in each dimension. V3d.",
+            Aardvark.V3d.Id,
             false
             );
 
@@ -4138,6 +4424,50 @@ namespace Durable
             );
 
         /// <summary>
+        /// Octree. Range of red values. Range1i.
+        /// </summary>
+        public static readonly Def ColorsRange1iRed = new(
+            new Guid("6b03b792-7740-4019-8cbc-68b572338d12"),
+            "Octree.Colors.Range1i.Red",
+            "Octree. Range of red values. Range1i.",
+            Aardvark.Range1i.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Range of green values. Range1i.
+        /// </summary>
+        public static readonly Def ColorsRange1iGreen = new(
+            new Guid("2701e940-22e3-4577-849f-dbe12ae54f6d"),
+            "Octree.Colors.Range1i.Green",
+            "Octree. Range of green values. Range1i.",
+            Aardvark.Range1i.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Range of blue values. Range1i.
+        /// </summary>
+        public static readonly Def ColorsRange1iBlue = new(
+            new Guid("5143c53a-47de-47a8-8a5b-5bc540a0bbd6"),
+            "Octree.Colors.Range1i.Blue",
+            "Octree. Range of blue values. Range1i.",
+            Aardvark.Range1i.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Range of alpha values. Range1i.
+        /// </summary>
+        public static readonly Def ColorsRange1iAlpha = new(
+            new Guid("50295570-9fa6-4e0d-9cae-90ca85802965"),
+            "Octree.Colors.Range1i.Alpha",
+            "Octree. Range of alpha values. Range1i.",
+            Aardvark.Range1i.Id,
+            false
+            );
+
+        /// <summary>
         /// Octree. Per-point intensities. UInt8[].
         /// </summary>
         public static readonly Def Intensities1b = new(
@@ -4254,6 +4584,28 @@ namespace Durable
             new Guid("435d8a84-c195-456c-b87b-ded2e5930134"),
             "Octree.IntensitiesWithOffset1f.Range",
             "Octree. Intensities range for Octree.IntensitiesWithOffset1f[.Reference]. Range1f.",
+            Aardvark.Range1f.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Range of intensitity values. Range1i.
+        /// </summary>
+        public static readonly Def IntensitiesRange1i = new(
+            new Guid("b4f1171d-ad11-40db-a5ce-2d0693145e4e"),
+            "Octree.Intensities.Range1i",
+            "Octree. Range of intensitity values. Range1i.",
+            Aardvark.Range1i.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Range of intensitity values. Range1f.
+        /// </summary>
+        public static readonly Def IntensitiesRange1f = new(
+            new Guid("ecf32f4d-9672-420d-98da-cda01b28dedd"),
+            "Octree.Intensities.Range1f",
+            "Octree. Range of intensitity values. Range1f.",
             Aardvark.Range1f.Id,
             false
             );
@@ -4387,6 +4739,17 @@ namespace Durable
             "Octree.Densities1f.Reference",
             "Octree. Reference to per-point densities (Guid).",
             Primitives.GuidDef.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Range of intensitity values. Range1f.
+        /// </summary>
+        public static readonly Def Densities1fRange = new(
+            new Guid("06eff9a9-c670-4998-ac57-5bfc3f9f022e"),
+            "Octree.Densities1f.Range",
+            "Octree. Range of intensitity values. Range1f.",
+            Aardvark.Range1f.Id,
             false
             );
 

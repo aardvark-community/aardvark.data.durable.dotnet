@@ -1,7 +1,7 @@
 ﻿(*
 MIT License
 
-Copyright (c) 2019-2021 Aardworx GmbH (https://aardworx.com). All rights reserved.
+Copyright (c) 2019-2022 Aardworx GmbH (https://aardworx.at). All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ let main argv =
     let address = @"https://raw.githubusercontent.com/aardvark-community/aardvark.data.durable.definitions/main/definitions.json"
     let jsonString = (new HttpClient()).GetStringAsync(address) |> Async.AwaitTask |> Async.RunSynchronously
     let jsonString = System.IO.File.ReadAllText(@"..\..\..\..\..\..\aardvark.data.durable.definitions\definitions.json")
-    let json = JsonSerializer.Deserialize(jsonString) 
+    let json = JsonSerializer.Deserialize(jsonString, JsonSerializerOptions(AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip) ) 
 
 
 

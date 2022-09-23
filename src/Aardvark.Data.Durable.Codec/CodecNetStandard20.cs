@@ -1,7 +1,7 @@
 ﻿/*
     MIT License
 
-    Copyright (c) 2019-2021 Aardworx GmbH (https://aardworx.com). All rights reserved.
+    Copyright (c) 2019-2022 Aardworx GmbH (https://aardworx.at). All rights reserved.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -39,7 +39,7 @@ namespace Aardvark.Data
     {
 #region Encode
 
-        #region DurableMap
+#region DurableMap
 
         private static void EncodeDurableMapEntry(BinaryWriter stream, Durable.Def def, object x)
         {
@@ -112,9 +112,9 @@ namespace Aardvark.Data
         private static readonly Action<BinaryWriter, object> EncodeDurableMap16WithoutHeader =
             CreateEncodeDurableMapAlignedWithoutHeader(16);
 
-        #endregion
+#endregion
 
-        #region DurableNamedMap
+#region DurableNamedMap
 
         //private static void EncodeDurableNamedMapEntry(BinaryWriter stream, string name, Durable.Def def, object x)
         //{
@@ -197,7 +197,7 @@ namespace Aardvark.Data
         //private static readonly Action<BinaryWriter, object> EncodeDurableNamedMap16WithoutHeader =
         //    CreateEncodeDurableNamedMapAlignedWithoutHeader(16);
 
-        #endregion
+#endregion
 
 
         private static readonly Action<BinaryWriter, object> EncodeGZipped =
@@ -413,11 +413,11 @@ namespace Aardvark.Data
             EncodeWithoutTypeForPrimitives(stream, def, x);
         }
 
-        #endregion
+#endregion
 
 #region Decode
 
-        #region NamedMap
+#region NamedMap
 
         private static readonly Func<BinaryReader, object> DecodeDurableMapWithoutHeader =
             s =>
@@ -468,9 +468,9 @@ namespace Aardvark.Data
         private static readonly Func<BinaryReader, object> DecodeDurableMap16WithoutHeader =
             CreateDecodeDurableMapAlignedWithoutHeader(16);
 
-        #endregion
+#endregion
 
-        #region NamedNamedMap
+#region NamedNamedMap
 
         //private static readonly Func<BinaryReader, object> DecodeDurableNamedMapWithoutHeader =
         //    s =>
@@ -527,7 +527,7 @@ namespace Aardvark.Data
         //private static readonly Func<BinaryReader, object> DecodeDurableNamedMap16WithoutHeader =
         //    CreateDecodeDurableNamedMapAlignedWithoutHeader(16);
 
-        #endregion
+#endregion
 
         private static readonly Func<BinaryReader, object> DecodeGZipped =
             s =>
@@ -781,7 +781,7 @@ namespace Aardvark.Data
         }
 
 
-        #region DurableMap
+#region DurableMap
 
         private static IEnumerable<KeyValuePair<string, (Durable.Def, object)>> ToValueTupleForm(
             IEnumerable<KeyValuePair<string, Tuple<Durable.Def, object>>> xs
@@ -894,9 +894,9 @@ namespace Aardvark.Data
         public static IDictionary<Durable.Def, object> DeserializeDurableMap(string filename)
             => DeserializeDurableMapHelper(Deserialize(filename));
 
-        #endregion
+#endregion
 
-        #region DurableNamedMap
+#region DurableNamedMap
 
         /// <summary>
         /// Serialize DurableNamedMap to byte array. 
@@ -965,12 +965,12 @@ namespace Aardvark.Data
         public static IDictionary<string, (Durable.Def def, object obj)> DeserializeDurableNamedMap(string filename)
             => DeserializeDurableNamedMapHelper(Deserialize(filename));
 
-        #endregion
+#endregion
 
 
 
 
-        #endregion
+#endregion
     }
 }
 
