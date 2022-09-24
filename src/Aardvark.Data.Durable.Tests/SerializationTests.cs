@@ -100,11 +100,11 @@ namespace Aardvark.Data.Tests
 
             // encode
             var ms = new MemoryStream();
-            Durable.Codec2.Encode(ms, Durable.Primitives.DurableMap2, m);
+            Data.DurableCodec2.Encode(ms, Durable.Primitives.DurableMap2, m);
             var buffer = ms.ToArray();
 
             // decode
-            var m2 = Durable.Codec2.Decode(buffer).AsMap();
+            var m2 = Data.DurableCodec2.Decode(buffer).AsMap();
 
             Assert.True(m2.Count == m.Count);
             Assert.True(m2.ContainsKey(Durable.Primitives.UInt8Array));
@@ -520,7 +520,7 @@ namespace Aardvark.Data.Tests
                 );
         [Fact]
         public void Primitive_UInt8Array() => PrimitiveArray(Durable.Primitives.UInt8Array,
-                new[] { (byte)42, (byte)43, (byte)44 }, 4 + 3 * 1
+                "*+,"u8.ToArray(), 4 + 3 * 1
                 );
         [Fact]
         public void Primitive_Int16Array() => PrimitiveArray(Durable.Primitives.Int16Array,

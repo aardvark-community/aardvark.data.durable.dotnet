@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using static Aardvark.Data.Durable;
 
-namespace Durable;
+namespace Aardvark.Data;
 
 public readonly record struct Item(Def Def, object Data)
 {
@@ -12,7 +13,7 @@ public readonly record struct Item(Def Def, object Data)
     public IReadOnlyDictionary<Def, object> AsMap() => (IReadOnlyDictionary<Def, object>)Data;
 }
 
-public static class Codec2
+public static class DurableCodec2
 {
     public static void Encode(Stream stream, Def def, object o) => Encode(stream, new(def, o));
     public static void Encode(Stream stream, Item item)
