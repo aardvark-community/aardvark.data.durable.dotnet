@@ -8,6 +8,12 @@ namespace Aardvark.Data
     public static partial class Durable
     {
         /// <summary></summary>
+        public static Def Get(Guid key) => Def.Get(key);
+
+        /// <summary></summary>
+        public static bool TryGet(Guid key, out Def def) => Def.TryGet(key, out def);
+
+        /// <summary></summary>
         public class Def : IEquatable<Def>, IComparable, IComparable<Def>
         {
             /// <summary></summary>
