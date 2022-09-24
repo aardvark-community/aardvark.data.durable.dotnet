@@ -520,7 +520,7 @@ namespace Aardvark.Data.Tests
                 );
         [Fact]
         public void Primitive_UInt8Array() => PrimitiveArray(Durable.Primitives.UInt8Array,
-                "*+,"u8.ToArray(), 4 + 3 * 1
+                new[] { (byte)42, (byte)43, (byte)44 }, 4 + 3 * 1
                 );
         [Fact]
         public void Primitive_Int16Array() => PrimitiveArray(Durable.Primitives.Int16Array,
