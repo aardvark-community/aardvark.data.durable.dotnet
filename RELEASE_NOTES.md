@@ -1,3 +1,6 @@
+### 0.3.4
+- Octree.Colors.[Range1f|Average|StdDev].[Red|Green|Blue|Alpha], Octree.[Intensities|Densitites].[Average|StdDev]
+
 ### 0.3.3
 - duplicate defs are ignored if semantically identical to simplify moving defs between libaries which might not be updated simultaniously
 - add `Aardvark.Chunk.*`, `Octree.PositionsGlobal3[fd].DistToCentroid.[Average3d|StdDev3d]`, `Octree.*.Range*`
