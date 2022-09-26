@@ -46,11 +46,11 @@ namespace Aardvark.Data
                         }
                         else
                         {
-                            Console.WriteLine(
-                                $"[WARNING] Redefinition of existing Durable.Def {id}.\n" +
-                                $"          NEW: Def(id: {id}, name: {name}, description: {description}, type: {type}, isArray: {isArray}).\n" +
-                                $"          OLD: Def(id: {x.Id}, name: {x.Name}, description: {x.Description}, type: {x.Type}, isArray: {x.IsArray})."
-                                );
+                            //Console.WriteLine(
+                            //    $"[WARNING] Redefinition of existing Durable.Def {id}.\n" +
+                            //    $"          NEW: Def(id: {id}, name: {name}, description: {description}, type: {type}, isArray: {isArray}).\n" +
+                            //    $"          OLD: Def(id: {x.Id}, name: {x.Name}, description: {x.Description}, type: {x.Type}, isArray: {x.IsArray})."
+                            //    );
                         }
                     }
 

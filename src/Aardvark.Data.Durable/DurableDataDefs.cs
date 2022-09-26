@@ -4361,6 +4361,39 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Range of red values. Range1f.
+        /// </summary>
+        public static readonly Def ColorsRange1fRed = new(
+            new Guid("2f1b31ab-8fa6-4890-83c4-1933fae6740a"),
+            "Octree.Colors.Range1f.Red",
+            "Octree. Range of red values. Range1f.",
+            Aardvark.Range1f.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Average of red values. Float32.
+        /// </summary>
+        public static readonly Def ColorsAverageRed = new(
+            new Guid("8bcf304b-5796-454c-aa73-f81cd4a48e60"),
+            "Octree.Colors.Average.Red",
+            "Octree. Average of red values. Float32.",
+            Primitives.Float32.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Standard deviation of red values. Float32.
+        /// </summary>
+        public static readonly Def ColorsStdDevRed = new(
+            new Guid("a837d484-41b9-4c61-b3f6-1eb5652fe687"),
+            "Octree.Colors.StdDev.Red",
+            "Octree. Standard deviation of red values. Float32.",
+            Primitives.Float32.Id,
+            false
+            );
+
+        /// <summary>
         /// Octree. Range of green values. Range1i.
         /// </summary>
         public static readonly Def ColorsRange1iGreen = new(
@@ -4368,6 +4401,39 @@ public static partial class Durable
             "Octree.Colors.Range1i.Green",
             "Octree. Range of green values. Range1i.",
             Aardvark.Range1i.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Range of green values. Range1f.
+        /// </summary>
+        public static readonly Def ColorsRange1fGreen = new(
+            new Guid("4fa8b054-437a-446f-8673-d64a2556de6f"),
+            "Octree.Colors.Range1f.Green",
+            "Octree. Range of green values. Range1f.",
+            Aardvark.Range1f.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Average of green values. Float32.
+        /// </summary>
+        public static readonly Def ColorsAverageGreen = new(
+            new Guid("33f8ee4c-cf66-4758-b618-1ccfedee9f72"),
+            "Octree.Colors.Average.Green",
+            "Octree. Average of green values. Float32.",
+            Primitives.Float32.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Standard deviation of green values. Float32.
+        /// </summary>
+        public static readonly Def ColorsStdDevGreen = new(
+            new Guid("cb172ff9-2242-49c4-9280-e758d5e134e2"),
+            "Octree.Colors.StdDev.Green",
+            "Octree. Standard deviation of green values. Float32.",
+            Primitives.Float32.Id,
             false
             );
 
@@ -4383,6 +4449,39 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Range of blue values. Range1f.
+        /// </summary>
+        public static readonly Def ColorsRange1fBlue = new(
+            new Guid("2dc6db38-d241-4a1a-8542-7380a30fa1f1"),
+            "Octree.Colors.Range1f.Blue",
+            "Octree. Range of blue values. Range1f.",
+            Aardvark.Range1f.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Average of blue values. Float32.
+        /// </summary>
+        public static readonly Def ColorsAverageBlue = new(
+            new Guid("cc676e85-941a-4b87-b043-2187e922c464"),
+            "Octree.Colors.Average.Blue",
+            "Octree. Average of blue values. Float32.",
+            Primitives.Float32.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Standard deviation of blue values. Float32.
+        /// </summary>
+        public static readonly Def ColorsStdDevBlue = new(
+            new Guid("6b70d9af-ad93-4126-8051-78c9296589ea"),
+            "Octree.Colors.StdDev.Blue",
+            "Octree. Standard deviation of blue values. Float32.",
+            Primitives.Float32.Id,
+            false
+            );
+
+        /// <summary>
         /// Octree. Range of alpha values. Range1i.
         /// </summary>
         public static readonly Def ColorsRange1iAlpha = new(
@@ -4390,6 +4489,39 @@ public static partial class Durable
             "Octree.Colors.Range1i.Alpha",
             "Octree. Range of alpha values. Range1i.",
             Aardvark.Range1i.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Range of alpha values. Range1f.
+        /// </summary>
+        public static readonly Def ColorsRange1fAlpha = new(
+            new Guid("060506f9-f528-4506-a195-aa4593ff45e7"),
+            "Octree.Colors.Range1f.Alpha",
+            "Octree. Range of alpha values. Range1f.",
+            Aardvark.Range1f.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Average of alpha values. Float32.
+        /// </summary>
+        public static readonly Def ColorsAverageAlpha = new(
+            new Guid("8e4e7522-b02b-46fb-be81-e92ded6bbe1d"),
+            "Octree.Colors.Average.Alpha",
+            "Octree. Average of alpha values. Float32.",
+            Primitives.Float32.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Standard deviation of alpha values. Float32.
+        /// </summary>
+        public static readonly Def ColorsStdDevAlpha = new(
+            new Guid("e1c0e969-3775-4940-93fd-0e14a66d775a"),
+            "Octree.Colors.StdDev.Alpha",
+            "Octree. Standard deviation of alpha values. Float32.",
+            Primitives.Float32.Id,
             false
             );
 
@@ -4460,17 +4592,6 @@ public static partial class Durable
             );
 
         /// <summary>
-        /// Octree. Intensities range for Octree.Intensities[.Reference]. Range1f[].
-        /// </summary>
-        public static readonly Def Intensities1fRange = new(
-            new Guid("2cb2501c-fc7e-450b-9926-fcb75677f08d"),
-            "Octree.Intensities1f.Range",
-            "Octree. Intensities range for Octree.Intensities[.Reference]. Range1f[].",
-            Aardvark.Range1f.Id,
-            false
-            );
-
-        /// <summary>
         /// Octree. Per-point intensities with offset stored as Octree.IntensitiesWithOffset1f.Offset. Float32[].
         /// </summary>
         public static readonly Def IntensitiesWithOffset1f = new(
@@ -4533,6 +4654,28 @@ public static partial class Durable
             "Octree.Intensities.Range1f",
             "Octree. Range of intensitity values. Range1f.",
             Aardvark.Range1f.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Average intensity value. Float32.
+        /// </summary>
+        public static readonly Def IntensitiesAverage = new(
+            new Guid("3e382a46-de9f-4f48-82e2-3c535687548a"),
+            "Octree.Intensities.Average",
+            "Octree. Average intensity value. Float32.",
+            Primitives.Float32.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Standard deviation of intensity values. Float32.
+        /// </summary>
+        public static readonly Def IntensitiesStdDev = new(
+            new Guid("2c693e28-08cf-4e0d-8f57-250420a2ea5c"),
+            "Octree.Intensities.StdDev",
+            "Octree. Standard deviation of intensity values. Float32.",
+            Primitives.Float32.Id,
             false
             );
 
@@ -4669,13 +4812,35 @@ public static partial class Durable
             );
 
         /// <summary>
-        /// Octree. Range of intensitity values. Range1f.
+        /// Octree. Range of density values. Range1f.
         /// </summary>
         public static readonly Def Densities1fRange = new(
             new Guid("06eff9a9-c670-4998-ac57-5bfc3f9f022e"),
             "Octree.Densities1f.Range",
-            "Octree. Range of intensitity values. Range1f.",
+            "Octree. Range of density values. Range1f.",
             Aardvark.Range1f.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Average density value. Float32.
+        /// </summary>
+        public static readonly Def DensititesAverage = new(
+            new Guid("3c5e57d2-1576-4bd5-a0fb-205c4d0ef5a7"),
+            "Octree.Densitites.Average",
+            "Octree. Average density value. Float32.",
+            Primitives.Float32.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Standard deviation of density values. Float32.
+        /// </summary>
+        public static readonly Def DensititesStdDev = new(
+            new Guid("2b89a1d9-06cd-4e7f-8343-05b049b525d5"),
+            "Octree.Densitites.StdDev",
+            "Octree. Standard deviation of density values. Float32.",
+            Primitives.Float32.Id,
             false
             );
 
