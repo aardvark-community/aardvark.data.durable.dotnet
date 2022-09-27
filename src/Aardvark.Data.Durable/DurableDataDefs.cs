@@ -3756,6 +3756,28 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Number of bytes (approx.) of this node blob. Int32.
+        /// </summary>
+        public static readonly Def NodeBlobBytesApprox = new(
+            new Guid("605c7db1-80bd-4f4f-bb4b-2b4bf974bc9d"),
+            "Octree.NodeBlobBytesApprox",
+            "Octree. Number of bytes (approx.) of this node blob. Int32.",
+            Primitives.Int32.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Total number of bytes (approx.) of all octree blobs. Int64.
+        /// </summary>
+        public static readonly Def TreeBlobsTotalBytesApprox = new(
+            new Guid("acdb8562-8fe9-48a5-b92b-0a54b782616c"),
+            "Octree.TreeBlobsTotalBytesApprox",
+            "Octree. Total number of bytes (approx.) of all octree blobs. Int64.",
+            Primitives.Int64.Id,
+            false
+            );
+
+        /// <summary>
         /// Octree. Number of points in this cell. Int32.
         /// </summary>
         public static readonly Def PointCountCell = new(
