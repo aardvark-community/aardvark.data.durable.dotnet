@@ -1,14 +1,27 @@
 ﻿using Aardvark.Base;
 using Aardvark.Data;
+using System.Numerics;
 
 class Program
 {
     public static void Main()
     {
-        var foo0 = Durable.Aardvark.ChunkClassifications1b;
-        static Durable.Def Def(string id, string name, string description, Durable.Def type)
-                => new(new Guid(id), name, description, type.Id, true);
-        var foo1 = Def("3cf3a1b8-1000-4b2f-a674-f0718c60de72", "Aardvark.Chunk.Classifications1b", "Classifications. byte[].", Durable.Primitives.UInt8Array);
+        Durable.Init();
+
+        var allPrimitiveDefs = Durable.Def.AllDefs.Select(x => x.PrimitiveTypeDef).Distinct().OrderBy(x => x.Name).ToArray();
+        Console.WriteLine(allPrimitiveDefs.Length);
+
+        var i = 0;
+        foreach (var x in allPrimitiveDefs)
+        {
+            var t = x.GetPrimitiveDotnetType();
+            if (t == null) Console.WriteLine($"[{i++,3}] {x}");
+        }
+
+        //var foo0 = Durable.Aardvark.ChunkClassifications1b;
+        //static Durable.Def Def(string id, string name, string description, Durable.Def type)
+        //        => new(new Guid(id), name, description, type.Id, true);
+        //var foo1 = Def("3cf3a1b8-1000-4b2f-a674-f0718c60de72", "Aardvark.Chunk.Classifications1b", "Classifications. byte[].", Durable.Primitives.UInt8Array);
 
         //var buffer = File.ReadAllBytes(@"E:\e57tests\stores\20220917\tmp\chunk-00001.gz");
         //var map = DurableCodec.DeserializeDurableMap(buffer);

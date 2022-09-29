@@ -1,3 +1,6 @@
+### 0.3.5
+- clean up recently added defs
+
 ### 0.3.4
 - Octree.Colors.[Range1f|Average|StdDev].[Red|Green|Blue|Alpha], Octree.[Intensities|Densitites].[Average|StdDev]
 

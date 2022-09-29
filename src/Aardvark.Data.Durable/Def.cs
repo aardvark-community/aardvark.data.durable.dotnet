@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Aardvark.Data
 {
@@ -7,6 +8,15 @@ namespace Aardvark.Data
     /// </summary>
     public static partial class Durable
     {
+        /// <summary></summary>
+        public static void Init()
+        {
+            _ = Primitives.Int8;
+            _ = Aardvark.C3ui;
+            _ = Generic.Classifications1b;
+            _ = Octree.AveragePointDistance;
+        }
+
         /// <summary></summary>
         public static Def Get(Guid key) => Def.Get(key);
 
@@ -72,6 +82,12 @@ namespace Aardvark.Data
                     ));
 
             /// <summary></summary>
+            public Def TypeDef => Get(Type);
+
+            /// <summary></summary>
+            public Def PrimitiveTypeDef => Get(PrimitiveType);
+
+            /// <summary></summary>
             public override string ToString() => $"[{Name}, {Id}]";
 
             /// <summary></summary>
@@ -93,15 +109,16 @@ namespace Aardvark.Data
             /// <summary></summary>
             public int CompareTo(Def other) => other is null ? 1 : Id.CompareTo(other.Id);
 
-            private static readonly Dictionary<Guid, Def> defs = new();
-
             /// <summary></summary>
             public static Def Get(Guid key) => defs[key];
 
             /// <summary></summary>
             public static bool TryGet(Guid key, out Def def) => defs.TryGetValue(key, out def);
+
+            /// <summary></summary>
+            public static Def[] AllDefs => defs.Values.ToArray();
+
+            private static readonly Dictionary<Guid, Def> defs = new();
         }
-
-
     }
 }
