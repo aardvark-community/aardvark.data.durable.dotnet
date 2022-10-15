@@ -1,3 +1,6 @@
+### 0.3.6
+- netcore: fixed DecodeArray from stream 
+
 ### 0.3.5
 - clean up recently added defs
 

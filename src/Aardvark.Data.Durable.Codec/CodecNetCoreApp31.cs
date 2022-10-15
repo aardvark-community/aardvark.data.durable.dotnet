@@ -661,12 +661,20 @@ namespace Aardvark.Data
         };
 
 
-        private static unsafe T[] DecodeArray<T>(Stream s) where T : struct
+        private static  T[] DecodeArray<T>(Stream s) where T : struct
         {
             var count = s.Read<int>();
             var xs = new T[count];
             var p = MemoryMarshal.Cast<T, byte>(xs.AsSpan());
-            if (s.Read(p) != p.Length) throw new Exception("Invariant 24838184-9d56-4c1f-a626-ba006641ef94.");
+            var totalbytes = p.Length;
+            var n = 0;
+            while (n < totalbytes)
+            {
+                var byteCount = s.Read(p);
+                n += byteCount;
+                p = p[byteCount..];
+            }
+            if (n != totalbytes) throw new Exception("Invariant 24838184-9d56-4c1f-a626-ba006641ef94.");
             return xs;
         }
 
