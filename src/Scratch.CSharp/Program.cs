@@ -4,19 +4,28 @@ using System.Numerics;
 
 class Program
 {
-    public static void Main()
+    public static async Task Main()
     {
         Durable.Init();
 
-        var allPrimitiveDefs = Durable.Def.AllDefs.Select(x => x.PrimitiveTypeDef).Distinct().OrderBy(x => x.Name).ToArray();
-        Console.WriteLine(allPrimitiveDefs.Length);
-
-        var i = 0;
-        foreach (var x in allPrimitiveDefs)
         {
-            var t = x.GetPrimitiveDotnetType();
-            if (t == null) Console.WriteLine($"[{i++,3}] {x}");
+#if NETCOREAPP
+            var client = new HttpClient();
+            var stream = await client.GetStreamAsync("http://localhost:8081/chunk0000000.dur");
+            var data = (IReadOnlyDictionary<Durable.Def, object>)DurableCodec.DeserializeDurableMap(stream);
+            return;
+#endif
         }
+
+        //var allPrimitiveDefs = Durable.Def.AllDefs.Select(x => x.PrimitiveTypeDef).Distinct().OrderBy(x => x.Name).ToArray();
+        //Console.WriteLine(allPrimitiveDefs.Length);
+
+        //var i = 0;
+        //foreach (var x in allPrimitiveDefs)
+        //{
+        //    var t = x.GetPrimitiveDotnetType();
+        //    if (t == null) Console.WriteLine($"[{i++,3}] {x}");
+        //}
 
         //var foo0 = Durable.Aardvark.ChunkClassifications1b;
         //static Durable.Def Def(string id, string name, string description, Durable.Def type)
