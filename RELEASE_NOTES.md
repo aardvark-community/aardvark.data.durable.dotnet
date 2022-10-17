@@ -1,3 +1,7 @@
+### 0.3.7
+- GZip and LZ4 variants for octree data
+- remove net5.0 target
+
 ### 0.3.6
 - netcore: fixed DecodeArray from stream 
 

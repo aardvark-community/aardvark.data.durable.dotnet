@@ -3855,12 +3855,12 @@ public static partial class Durable
             );
 
         /// <summary>
-        /// Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where 0 is cell.Min and 255 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt8[].
+        /// Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where 0 is cell.Min and 256 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt8[].
         /// </summary>
         public static readonly Def PositionsLocal3b = new(
             new Guid("c965597a-e2f8-4f1a-bef4-a0071c32e220"),
             "Octree.PositionsLocal3b",
-            "Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where 0 is cell.Min and 255 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt8[].",
+            "Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where 0 is cell.Min and 256 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt8[].",
             Primitives.UInt8Array.Id,
             true
             );
@@ -3877,12 +3877,34 @@ public static partial class Durable
             );
 
         /// <summary>
-        /// Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where 0 is cell.Min and UInt16.Max is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt16[].
+        /// Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where 0 is cell.Min and 256 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. GZip UInt8[].
+        /// </summary>
+        public static readonly Def PositionsLocal3bGz = new(
+            new Guid("4af2450e-5d6c-4190-beae-f05f87b537a3"),
+            "Octree.PositionsLocal3b.Gz",
+            "Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where 0 is cell.Min and 256 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. GZip UInt8[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where 0 is cell.Min and 256 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. LZ4 UInt8[].
+        /// </summary>
+        public static readonly Def PositionsLocal3bLz4 = new(
+            new Guid("3ac42040-064a-4c26-8e83-3fd218f8e502"),
+            "Octree.PositionsLocal3b.Lz4",
+            "Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where 0 is cell.Min and 256 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. LZ4 UInt8[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where 0 is cell.Min and UInt16.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt16[].
         /// </summary>
         public static readonly Def PositionsLocal3us = new(
             new Guid("f3c29fdb-5067-42c2-9809-0f8c103fcb82"),
             "Octree.PositionsLocal3us",
-            "Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where 0 is cell.Min and UInt16.Max is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt16[].",
+            "Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where 0 is cell.Min and UInt16.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt16[].",
             Primitives.UInt16Array.Id,
             true
             );
@@ -3899,12 +3921,34 @@ public static partial class Durable
             );
 
         /// <summary>
-        /// Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where 0 is cell.Min and UInt32.Max is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt32[].
+        /// Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where 0 is cell.Min and UInt16.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. GZip UInt16[].
+        /// </summary>
+        public static readonly Def PositionsLocal3usGz = new(
+            new Guid("05dcf041-ecbd-4bfc-9095-d0f2c57606ce"),
+            "Octree.PositionsLocal3us.Gz",
+            "Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where 0 is cell.Min and UInt16.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. GZip UInt16[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where 0 is cell.Min and UInt16.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. LZ4 UInt16[].
+        /// </summary>
+        public static readonly Def PositionsLocal3usLz4 = new(
+            new Guid("2827ac53-0708-421f-9579-7e5a4eec0260"),
+            "Octree.PositionsLocal3us.Lz4",
+            "Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where 0 is cell.Min and UInt16.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. LZ4 UInt16[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where 0 is cell.Min and UInt32.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt32[].
         /// </summary>
         public static readonly Def PositionsLocal3ui = new(
             new Guid("f251364f-d6d2-49e0-8095-45314fe2e80c"),
             "Octree.PositionsLocal3ui",
-            "Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where 0 is cell.Min and UInt32.Max is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt32[].",
+            "Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where 0 is cell.Min and UInt32.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt32[].",
             Primitives.UInt32Array.Id,
             true
             );
@@ -3921,12 +3965,34 @@ public static partial class Durable
             );
 
         /// <summary>
-        /// Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where 0 is cell.Min and UInt64.Max is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt64[].
+        /// Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where 0 is cell.Min and UInt32.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. GZip UInt32[].
+        /// </summary>
+        public static readonly Def PositionsLocal3uiGz = new(
+            new Guid("fecdecc4-e0e1-47a6-a839-f1ea3ac30458"),
+            "Octree.PositionsLocal3ui.Gz",
+            "Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where 0 is cell.Min and UInt32.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. GZip UInt32[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where 0 is cell.Min and UInt32.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. LZ4 UInt32[].
+        /// </summary>
+        public static readonly Def PositionsLocal3uiLz4 = new(
+            new Guid("0b413653-927d-4609-9453-01d66c8f4857"),
+            "Octree.PositionsLocal3ui.Lz4",
+            "Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where 0 is cell.Min and UInt32.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. LZ4 UInt32[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where 0 is cell.Min and UInt64.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt64[].
         /// </summary>
         public static readonly Def PositionsLocal3ul = new(
             new Guid("f256c25e-f599-4135-b3a6-18e811925625"),
             "Octree.PositionsLocal3ul",
-            "Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where 0 is cell.Min and UInt64.Max is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt64[].",
+            "Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where 0 is cell.Min and UInt64.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt64[].",
             Primitives.UInt64Array.Id,
             true
             );
@@ -3943,6 +4009,28 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where 0 is cell.Min and UInt64.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. GZip UInt64[].
+        /// </summary>
+        public static readonly Def PositionsLocal3ulGz = new(
+            new Guid("dd61fcfe-2168-44ee-bcf9-6b12301d07e9"),
+            "Octree.PositionsLocal3ul.Gz",
+            "Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where 0 is cell.Min and UInt64.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. GZip UInt64[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where 0 is cell.Min and UInt64.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. LZ4 UInt64[].
+        /// </summary>
+        public static readonly Def PositionsLocal3ulLz4 = new(
+            new Guid("14c3567f-5a2d-4042-9d5c-7024ee4eaed0"),
+            "Octree.PositionsLocal3ul.Lz4",
+            "Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where 0 is cell.Min and UInt64.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. LZ4 UInt64[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
         /// Octree. Per-point positions in global space. V3f[].
         /// </summary>
         public static readonly Def PositionsGlobal3f = new(
@@ -3950,6 +4038,28 @@ public static partial class Durable
             "Octree.PositionsGlobal3f",
             "Octree. Per-point positions in global space. V3f[].",
             Aardvark.V3fArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in global space. GZip V3f[].
+        /// </summary>
+        public static readonly Def PositionsGlobal3fGz = new(
+            new Guid("0fe0d6c0-1690-49f6-bf58-0788e06882e5"),
+            "Octree.PositionsGlobal3f.Gz",
+            "Octree. Per-point positions in global space. GZip V3f[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in global space. LZ4 V3f[].
+        /// </summary>
+        public static readonly Def PositionsGlobal3fLz4 = new(
+            new Guid("667af8c5-6b6f-4e0a-ad48-77d5056c44d2"),
+            "Octree.PositionsGlobal3f.Lz4",
+            "Octree. Per-point positions in global space. LZ4 V3f[].",
+            Primitives.UInt8Array.Id,
             true
             );
 
@@ -4009,6 +4119,28 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Per-point positions in global space. GZip V3d[].
+        /// </summary>
+        public static readonly Def PositionsGlobal3dGz = new(
+            new Guid("92ada8c3-7c45-46b0-a298-c9a7d91df90c"),
+            "Octree.PositionsGlobal3d.Gz",
+            "Octree. Per-point positions in global space. GZip V3d[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in global space. LZ4 V3d[].
+        /// </summary>
+        public static readonly Def PositionsGlobal3dLz4 = new(
+            new Guid("fa368fd0-fff9-403a-8f2c-994f7f9ab111"),
+            "Octree.PositionsGlobal3d.Lz4",
+            "Octree. Per-point positions in global space. LZ4 V3d[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
         /// Octree. Centroid of positions (global space). V3d.
         /// </summary>
         public static readonly Def PositionsGlobal3dCentroid = new(
@@ -4060,6 +4192,28 @@ public static partial class Durable
             "Octree.PositionsLocal3f",
             "Octree. Per-point positions in local cell space (as offsets from cell's center). V3f[].",
             Aardvark.V3fArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space (as offsets from cell's center). GZip V3f[].
+        /// </summary>
+        public static readonly Def PositionsLocal3fGz = new(
+            new Guid("5c065af2-c929-4df1-8077-e5c640b90d3b"),
+            "Octree.PositionsLocal3f.Gz",
+            "Octree. Per-point positions in local cell space (as offsets from cell's center). GZip V3f[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space (as offsets from cell's center). LZ4 V3f[].
+        /// </summary>
+        public static readonly Def PositionsLocal3fLz4 = new(
+            new Guid("b5d56540-75b5-4054-a643-596228731d20"),
+            "Octree.PositionsLocal3f.Lz4",
+            "Octree. Per-point positions in local cell space (as offsets from cell's center). LZ4 V3f[].",
+            Primitives.UInt8Array.Id,
             true
             );
 
@@ -4119,6 +4273,28 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Per-point positions in local cell space (as offsets from cell's center). GZip V3d[].
+        /// </summary>
+        public static readonly Def PositionsLocal3dGz = new(
+            new Guid("db5e2802-48cf-4e9e-8a7a-e9b523e7f3fa"),
+            "Octree.PositionsLocal3d.Gz",
+            "Octree. Per-point positions in local cell space (as offsets from cell's center). GZip V3d[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space (as offsets from cell's center). LZ4  V3d[].
+        /// </summary>
+        public static readonly Def PositionsLocal3dLz4 = new(
+            new Guid("95dff17f-4014-49c7-9c12-14479ae6b3de"),
+            "Octree.PositionsLocal3d.Lz4",
+            "Octree. Per-point positions in local cell space (as offsets from cell's center). LZ4  V3d[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
         /// Octree. Centroid of positions (local space). V3d.
         /// </summary>
         public static readonly Def PositionsLocal3dCentroid = new(
@@ -4174,13 +4350,35 @@ public static partial class Durable
             );
 
         /// <summary>
-        /// Octree. Per-point normals (V3f[]).
+        /// Octree. Per-point normals. V3f[].
         /// </summary>
         public static readonly Def Normals3f = new(
             new Guid("712d0a0c-a8d0-42d1-bfc7-77eac2e4a755"),
             "Octree.Normals3f",
-            "Octree. Per-point normals (V3f[]).",
+            "Octree. Per-point normals. V3f[].",
             Aardvark.V3fArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point normals. GZip V3f[].
+        /// </summary>
+        public static readonly Def Normals3fGz = new(
+            new Guid("43c5315d-bece-4956-921a-7a8a5e8e7671"),
+            "Octree.Normals3f.Gz",
+            "Octree. Per-point normals. GZip V3f[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point normals . LZ4 V3f[].
+        /// </summary>
+        public static readonly Def Normals3fLz4 = new(
+            new Guid("abf6f987-d930-4f14-9a61-10ac0d585c60"),
+            "Octree.Normals3f.Lz4",
+            "Octree. Per-point normals . LZ4 V3f[].",
+            Primitives.UInt8Array.Id,
             true
             );
 
@@ -4196,12 +4394,34 @@ public static partial class Durable
             );
 
         /// <summary>
-        /// Octree. Per-point normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0].
+        /// Octree. Per-point normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0]. Int8[].
         /// </summary>
         public static readonly Def Normals3sb = new(
             new Guid("aaf4872c-0964-4351-9530-8a3e2be94a6e"),
             "Octree.Normals3sb",
-            "Octree. Per-point normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0].",
+            "Octree. Per-point normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0]. Int8[].",
+            Primitives.Int8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0]. GZip Int8[].
+        /// </summary>
+        public static readonly Def Normals3sbGz = new(
+            new Guid("b581eb6a-4b42-4a4b-986a-3d93535d972a"),
+            "Octree.Normals3sb.Gz",
+            "Octree. Per-point normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0]. GZip Int8[].",
+            Primitives.Int8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0]. LZ4 Int8[].
+        /// </summary>
+        public static readonly Def Normals3sbLz4 = new(
+            new Guid("5cf6c90c-c4bb-49c1-8e4c-1db72c80fe7a"),
+            "Octree.Normals3sb.Lz4",
+            "Octree. Per-point normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0]. LZ4 Int8[].",
             Primitives.Int8Array.Id,
             true
             );
@@ -4218,13 +4438,35 @@ public static partial class Durable
             );
 
         /// <summary>
-        /// Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf.
+        /// Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf. Int16[].
         /// </summary>
         public static readonly Def NormalsOct16 = new(
             new Guid("144770e4-70ea-4dd2-91a5-91f48672e87e"),
             "Octree.Normals.Oct16",
-            "Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf.",
+            "Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf. Int16[].",
             Primitives.Int16Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf. GZip Int16[].
+        /// </summary>
+        public static readonly Def NormalsOct16Gz = new(
+            new Guid("fdffc3c2-80d3-4931-a537-ed7a2b4055a3"),
+            "Octree.Normals.Oct16.Gz",
+            "Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf. GZip Int16[].",
+            Primitives.Int8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf. LZ4 Int16[].
+        /// </summary>
+        public static readonly Def NormalsOct16Lz4 = new(
+            new Guid("b4f228b8-cf6d-4156-988f-b1d636d59447"),
+            "Octree.Normals.Oct16.Lz4",
+            "Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf. LZ4 Int16[].",
+            Primitives.Int8Array.Id,
             true
             );
 
@@ -4240,13 +4482,35 @@ public static partial class Durable
             );
 
         /// <summary>
-        /// Octree. Per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf.
+        /// Octree. Per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf. Int16[].
         /// </summary>
         public static readonly Def NormalsOct16P = new(
             new Guid("5fdf162c-bd21-4688-aa5c-91dd0a550c44"),
             "Octree.Normals.Oct16P",
-            "Octree. Per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf.",
+            "Octree. Per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf. Int16[].",
             Primitives.Int16Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf. GZip Int16[].
+        /// </summary>
+        public static readonly Def NormalsOct16PGz = new(
+            new Guid("c632ad7b-d473-488d-9b93-303685015f7a"),
+            "Octree.Normals.Oct16P.Gz",
+            "Octree. Per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf. GZip Int16[].",
+            Primitives.Int8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf. LZ4 Int16[].
+        /// </summary>
+        public static readonly Def NormalsOct16PLz4 = new(
+            new Guid("ed2895e4-660a-4cc9-9782-82117ba9f3a8"),
+            "Octree.Normals.Oct16P.Lz4",
+            "Octree. Per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf. LZ4 Int16[].",
+            Primitives.Int8Array.Id,
             true
             );
 
@@ -4269,6 +4533,28 @@ public static partial class Durable
             "Octree.Colors3b",
             "Octree. Per-point colors. C3b[].",
             Aardvark.C3bArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point colors. GZip C3b[].
+        /// </summary>
+        public static readonly Def Colors3bGz = new(
+            new Guid("d75474cc-6a04-4654-b370-148674c3dcfe"),
+            "Octree.Colors3b.Gz",
+            "Octree. Per-point colors. GZip C3b[].",
+            Primitives.Int8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point colors. LZ4 C3b[].
+        /// </summary>
+        public static readonly Def Colors3bLz4 = new(
+            new Guid("2d379d27-b336-40ce-a108-50aa09a704df"),
+            "Octree.Colors3b.Lz4",
+            "Octree. Per-point colors. LZ4 C3b[].",
+            Primitives.Int8Array.Id,
             true
             );
 
@@ -4317,6 +4603,28 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Per-point colors. GZip C4b[].
+        /// </summary>
+        public static readonly Def Colors4bGz = new(
+            new Guid("e369b1cb-d1a5-4e86-85c0-f0d00127e173"),
+            "Octree.Colors4b.Gz",
+            "Octree. Per-point colors. GZip C4b[].",
+            Primitives.Int8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point colors. LZ4 C4b[].
+        /// </summary>
+        public static readonly Def Colors4bLz4 = new(
+            new Guid("f93860c7-4215-4562-a932-e0167ad0357b"),
+            "Octree.Colors4b.Lz4",
+            "Octree. Per-point colors. LZ4 C4b[].",
+            Primitives.Int8Array.Id,
+            true
+            );
+
+        /// <summary>
         /// Octree. Reference to per-point colors. Guid.
         /// </summary>
         public static readonly Def Colors4bReference = new(
@@ -4350,6 +4658,28 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Per-point colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. GZip UInt16[].
+        /// </summary>
+        public static readonly Def ColorsRGB565Gz = new(
+            new Guid("2611094f-86ab-4e2b-a95f-7bf78cec5cf8"),
+            "Octree.Colors.RGB565.Gz",
+            "Octree. Per-point colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. GZip UInt16[].",
+            Primitives.Int8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. LZ4 UInt16[].
+        /// </summary>
+        public static readonly Def ColorsRGB565Lz4 = new(
+            new Guid("ea1bf5cf-d55c-4d2a-83c7-eac62ffc423d"),
+            "Octree.Colors.RGB565.Lz4",
+            "Octree. Per-point colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. LZ4 UInt16[].",
+            Primitives.Int8Array.Id,
+            true
+            );
+
+        /// <summary>
         /// Octree. Reference to per-point colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. Guid.
         /// </summary>
         public static readonly Def ColorsRGB565Reference = new(
@@ -4367,6 +4697,28 @@ public static partial class Durable
             new Guid("3fa600f0-6e99-4c11-918b-810430bae0cb"),
             "Octree.Intensities1b",
             "Octree. Per-point intensities. UInt8[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point intensities. GZip UInt8[].
+        /// </summary>
+        public static readonly Def Intensities1bGz = new(
+            new Guid("33fca4da-1337-4be5-a8b4-83865565698b"),
+            "Octree.Intensities1b.Gz",
+            "Octree. Per-point intensities. GZip UInt8[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point intensities. LZ4 UInt8[].
+        /// </summary>
+        public static readonly Def Intensities1bLz4 = new(
+            new Guid("073cef23-a31e-408f-8496-3937bf688ab3"),
+            "Octree.Intensities1b.Lz4",
+            "Octree. Per-point intensities. LZ4 UInt8[].",
             Primitives.UInt8Array.Id,
             true
             );
@@ -4394,6 +4746,28 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Per-point intensities. GZip Int32[].
+        /// </summary>
+        public static readonly Def Intensities1iGz = new(
+            new Guid("70071d0d-03d6-42d7-a557-cbd00a667e34"),
+            "Octree.Intensities1i.Gz",
+            "Octree. Per-point intensities. GZip Int32[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point intensities. LZ4 Int32[].
+        /// </summary>
+        public static readonly Def Intensities1iLz4 = new(
+            new Guid("a55e12f9-1094-4bdf-bc0b-dee0852400f2"),
+            "Octree.Intensities1i.Lz4",
+            "Octree. Per-point intensities. LZ4 Int32[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
         /// Octree. Reference to per-point intensities. Guid.
         /// </summary>
         public static readonly Def Intensities1iReference = new(
@@ -4412,6 +4786,28 @@ public static partial class Durable
             "Octree.Intensities1f",
             "Octree. Per-point intensities. Float32[].",
             Primitives.Float32Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point intensities. GZip Float32[].
+        /// </summary>
+        public static readonly Def Intensities1fGz = new(
+            new Guid("7ce8ef52-db0c-44a9-9ea4-599b8944572c"),
+            "Octree.Intensities1f.Gz",
+            "Octree. Per-point intensities. GZip Float32[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point intensities. LZ4 Float32[].
+        /// </summary>
+        public static readonly Def Intensities1fLz4 = new(
+            new Guid("ab54077e-a56c-413c-a7bd-a0414f9d22ab"),
+            "Octree.Intensities1f.Lz4",
+            "Octree. Per-point intensities. LZ4 Float32[].",
+            Primitives.UInt8Array.Id,
             true
             );
 
@@ -4493,6 +4889,28 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Per-point classifications. GZip UInt8[].
+        /// </summary>
+        public static readonly Def Classifications1bGz = new(
+            new Guid("1fdf8821-f2fc-4a23-ac79-8897cb185e49"),
+            "Octree.Classifications1b.Gz",
+            "Octree. Per-point classifications. GZip UInt8[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point classifications. LZ4 UInt8[].
+        /// </summary>
+        public static readonly Def Classifications1bLz4 = new(
+            new Guid("3fead014-acd3-430e-9bac-8bb86328cf10"),
+            "Octree.Classifications1b.Lz4",
+            "Octree. Per-point classifications. LZ4 UInt8[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
         /// Octree. Reference to per-point classifications (UInt8[]).
         /// </summary>
         public static readonly Def Classifications1bReference = new(
@@ -4511,6 +4929,28 @@ public static partial class Durable
             "Octree.Classifications1s",
             "Octree. Per-point classifications. UInt16[].",
             Primitives.UInt16Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point classifications. GZip UInt16[].
+        /// </summary>
+        public static readonly Def Classifications1sGz = new(
+            new Guid("a9e792c6-98b4-4ac3-bb32-68bc0f8a1c27"),
+            "Octree.Classifications1s.Gz",
+            "Octree. Per-point classifications. GZip UInt16[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point classifications. LZ4 UInt16[].
+        /// </summary>
+        public static readonly Def Classifications1sLz4 = new(
+            new Guid("9119051d-d578-4f4f-bf55-4ede12fb9ea2"),
+            "Octree.Classifications1s.Lz4",
+            "Octree. Per-point classifications. LZ4 UInt16[].",
+            Primitives.UInt8Array.Id,
             true
             );
 
@@ -4537,6 +4977,28 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Per-point classifications. GZip Int32[].
+        /// </summary>
+        public static readonly Def Classifications1iGz = new(
+            new Guid("5abd07cc-7c5b-4432-b065-f21067e4d20f"),
+            "Octree.Classifications1i.Gz",
+            "Octree. Per-point classifications. GZip Int32[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point classifications. LZ4 Int32[].
+        /// </summary>
+        public static readonly Def Classifications1iLz4 = new(
+            new Guid("8922e3c9-b014-4ec1-aadd-d347a2d0a760"),
+            "Octree.Classifications1i.Lz4",
+            "Octree. Per-point classifications. LZ4 Int32[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
         /// Octree. Reference to per-point classifications (Guid -> Int32[]).
         /// </summary>
         public static readonly Def Classifications1iReference = new(
@@ -4559,13 +5021,35 @@ public static partial class Durable
             );
 
         /// <summary>
-        /// Octree. Per-point velocities (V3f[]).
+        /// Octree. Per-point velocities. V3f[].
         /// </summary>
         public static readonly Def Velocities3f = new(
             new Guid("c8db5f0a-1ddf-47ab-8266-f8e929cf98c5"),
             "Octree.Velocities3f",
-            "Octree. Per-point velocities (V3f[]).",
+            "Octree. Per-point velocities. V3f[].",
             Aardvark.V3fArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point velocities. GZip V3f[].
+        /// </summary>
+        public static readonly Def Velocities3fGz = new(
+            new Guid("0d057a92-1acc-473b-9b6c-9d4b9dc88750"),
+            "Octree.Velocities3f.Gz",
+            "Octree. Per-point velocities. GZip V3f[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point velocities. LZ4 V3f[].
+        /// </summary>
+        public static readonly Def Velocities3fLz4 = new(
+            new Guid("ef850f44-65d6-4ee4-9f14-c74dfd90db9f"),
+            "Octree.Velocities3f.Lz4",
+            "Octree. Per-point velocities. LZ4 V3f[].",
+            Primitives.UInt8Array.Id,
             true
             );
 
@@ -4581,13 +5065,35 @@ public static partial class Durable
             );
 
         /// <summary>
-        /// Octree. Per-point velocities (V3d[]).
+        /// Octree. Per-point velocities. V3d[].
         /// </summary>
         public static readonly Def Velocities3d = new(
             new Guid("3f8a922d-3458-427f-8237-a189e338bf77"),
             "Octree.Velocities3d",
-            "Octree. Per-point velocities (V3d[]).",
+            "Octree. Per-point velocities. V3d[].",
             Aardvark.V3dArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point velocities. GZip V3d[].
+        /// </summary>
+        public static readonly Def Velocities3dGz = new(
+            new Guid("1b2e9317-ad4d-4a89-bb04-900aac4be252"),
+            "Octree.Velocities3d.Gz",
+            "Octree. Per-point velocities. GZip V3d[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point velocities. LZ4 V3d[].
+        /// </summary>
+        public static readonly Def Velocities3dLz4 = new(
+            new Guid("5265cb9f-4383-4ec3-943f-4400d3f11b79"),
+            "Octree.Velocities3d.Lz4",
+            "Octree. Per-point velocities. LZ4 V3d[].",
+            Primitives.UInt8Array.Id,
             true
             );
 
@@ -4603,13 +5109,35 @@ public static partial class Durable
             );
 
         /// <summary>
-        /// Octree. Per-point densities (float32[]).
+        /// Octree. Per-point densities. Float32[].
         /// </summary>
         public static readonly Def Densities1f = new(
             new Guid("040d084d-1f1b-4058-afc7-ea300bbb551d"),
             "Octree.Densities1f",
-            "Octree. Per-point densities (float32[]).",
+            "Octree. Per-point densities. Float32[].",
             Primitives.Float32Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point densities. GZip Float32[].
+        /// </summary>
+        public static readonly Def Densities1fGz = new(
+            new Guid("6829b3c5-8246-460b-a094-ac98765c6c71"),
+            "Octree.Densities1f.Gz",
+            "Octree. Per-point densities. GZip Float32[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point densities. LZ4 Float32[].
+        /// </summary>
+        public static readonly Def Densities1fLz4 = new(
+            new Guid("0fb60a7a-d23c-44e1-8d9d-ae78bba29e6f"),
+            "Octree.Densities1f.Lz4",
+            "Octree. Per-point densities. LZ4 Float32[].",
+            Primitives.UInt8Array.Id,
             true
             );
 
@@ -4643,6 +5171,28 @@ public static partial class Durable
             "Octree.KdTreeIndexArray",
             "Octree. Kd-tree index array. Int32[], where pivot is stored at index n/2 recursively.",
             Primitives.Int32Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Kd-tree index array. GZip Int32[], where pivot is stored at index n/2 recursively.
+        /// </summary>
+        public static readonly Def KdTreeIndexArrayGz = new(
+            new Guid("c0879068-f3c3-42a4-a96c-921052bd724d"),
+            "Octree.KdTreeIndexArray.Gz",
+            "Octree. Kd-tree index array. GZip Int32[], where pivot is stored at index n/2 recursively.",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Kd-tree index array. LZ4 Int32[], where pivot is stored at index n/2 recursively.
+        /// </summary>
+        public static readonly Def KdTreeIndexArrayLz4 = new(
+            new Guid("3eff3dc8-57b3-4a63-ba24-0e9d06d663eb"),
+            "Octree.KdTreeIndexArray.Lz4",
+            "Octree. Kd-tree index array. LZ4 Int32[], where pivot is stored at index n/2 recursively.",
+            Primitives.UInt8Array.Id,
             true
             );
 
