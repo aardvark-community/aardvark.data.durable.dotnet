@@ -4,18 +4,9 @@ using System.Numerics;
 
 class Program
 {
-    public static async Task Main()
+    public static void Main()
     {
-        Durable.Init();
-
-        {
-#if NETCOREAPP
-            var client = new HttpClient();
-            var stream = await client.GetStreamAsync("http://localhost:8081/chunk0000000.dur");
-            var data = (IReadOnlyDictionary<Durable.Def, object>)DurableCodec.DeserializeDurableMap(stream);
-            return;
-#endif
-        }
+        //Durable.Init();
 
         //var allPrimitiveDefs = Durable.Def.AllDefs.Select(x => x.PrimitiveTypeDef).Distinct().OrderBy(x => x.Name).ToArray();
         //Console.WriteLine(allPrimitiveDefs.Length);
