@@ -24,7 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{09B7D2C5-E1CD-43
 		..\RELEASE_NOTES.md = ..\RELEASE_NOTES.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Durable.Codec", "Durable.Codec\Durable.Codec.csproj", "{90EEF335-4B4B-426F-860A-9CD78EA5147F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aardworx.Data.DurableCodec2", "Aardworx.Data.DurableCodec2\Aardworx.Data.DurableCodec2.csproj", "{90EEF335-4B4B-426F-860A-9CD78EA5147F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scratch.CSharp", "Scratch.CSharp\Scratch.CSharp.csproj", "{AD0D7B6D-F818-4CC7-BD19-EB42C3C4EA27}"
 EndProject

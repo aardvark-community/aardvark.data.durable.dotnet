@@ -1,4 +1,5 @@
 using Aardvark.Base;
+using Aardworx.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -100,11 +101,11 @@ namespace Aardvark.Data.Tests
 
             // encode
             var ms = new MemoryStream();
-            Data.DurableCodec2.Encode(ms, Durable.Primitives.DurableMap2, m);
+            DurableCodec2.Encode(ms, Durable.Primitives.DurableMap2, m);
             var buffer = ms.ToArray();
 
             // decode
-            var m2 = Data.DurableCodec2.Decode(buffer).AsMap();
+            var m2 = DurableCodec2.Decode(buffer).AsMap();
 
             Assert.True(m2.Count == m.Count);
             Assert.True(m2.ContainsKey(Durable.Primitives.UInt8Array));
