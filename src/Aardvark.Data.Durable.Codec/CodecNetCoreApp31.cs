@@ -834,56 +834,56 @@ namespace Aardvark.Data
             EncodeWithoutTypeForPrimitives(stream, Durable.Primitives.DurableMap, durableMap);
         }
 
-        /// <summary>
-        /// Serialize DurableMap to byte array. 
-        /// Can be deserialized with DeserializeDurableMap.
-        /// </summary>
-        public static byte[] SerializeDurableMapAligned8(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
-        {
-            using var ms = new MemoryStream();
-            EncodeGuid(ms, Durable.Primitives.DurableMap.Id);
-            EncodeWithoutTypeForPrimitives(ms, Durable.Primitives.DurableMapAligned8, durableMap);
-            return ms.ToArray();
-        }
+        ///// <summary>
+        ///// Serialize DurableMap to byte array. 
+        ///// Can be deserialized with DeserializeDurableMap.
+        ///// </summary>
+        //public static byte[] SerializeDurableMapAligned8(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        //{
+        //    using var ms = new MemoryStream();
+        //    EncodeGuid(ms, Durable.Primitives.DurableMap.Id);
+        //    EncodeWithoutTypeForPrimitives(ms, Durable.Primitives.DurableMapAligned8, durableMap);
+        //    return ms.ToArray();
+        //}
 
-        /// <summary>
-        /// Serialize DurableMap to stream. 
-        /// Can be deserialized with DeserializeDurableMap.
-        /// </summary>
-        public static void SerializeDurableMapAligned8(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
-        {
-            EncodeGuid(stream, Durable.Primitives.DurableMap.Id);
-            EncodeWithoutTypeForPrimitives(stream, Durable.Primitives.DurableMapAligned8, durableMap);
-        }
+        ///// <summary>
+        ///// Serialize DurableMap to stream. 
+        ///// Can be deserialized with DeserializeDurableMap.
+        ///// </summary>
+        //public static void SerializeDurableMapAligned8(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        //{
+        //    EncodeGuid(stream, Durable.Primitives.DurableMap.Id);
+        //    EncodeWithoutTypeForPrimitives(stream, Durable.Primitives.DurableMapAligned8, durableMap);
+        //}
 
-        /// <summary>
-        /// Serialize DurableMap to byte array. 
-        /// Can be deserialized with DeserializeDurableMap.
-        /// </summary>
-        public static byte[] SerializeDurableMapAligned16(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
-        {
-            using var ms = new MemoryStream();
-            EncodeGuid(ms, Durable.Primitives.DurableMap.Id);
-            EncodeWithoutTypeForPrimitives(ms, Durable.Primitives.DurableMapAligned16, durableMap);
-            return ms.ToArray();
-        }
+        ///// <summary>
+        ///// Serialize DurableMap to byte array. 
+        ///// Can be deserialized with DeserializeDurableMap.
+        ///// </summary>
+        //public static byte[] SerializeDurableMapAligned16(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        //{
+        //    using var ms = new MemoryStream();
+        //    EncodeGuid(ms, Durable.Primitives.DurableMap.Id);
+        //    EncodeWithoutTypeForPrimitives(ms, Durable.Primitives.DurableMapAligned16, durableMap);
+        //    return ms.ToArray();
+        //}
 
-        /// <summary>
-        /// Serialize DurableMap to stream. 
-        /// Can be deserialized with DeserializeDurableMap.
-        /// </summary>
-        public static void SerializeDurableMapAligned16(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
-        {
-            EncodeGuid(stream, Durable.Primitives.DurableMap.Id);
-            EncodeWithoutTypeForPrimitives(stream, Durable.Primitives.DurableMapAligned16, durableMap);
-        }
+        ///// <summary>
+        ///// Serialize DurableMap to stream. 
+        ///// Can be deserialized with DeserializeDurableMap.
+        ///// </summary>
+        //public static void SerializeDurableMapAligned16(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        //{
+        //    EncodeGuid(stream, Durable.Primitives.DurableMap.Id);
+        //    EncodeWithoutTypeForPrimitives(stream, Durable.Primitives.DurableMapAligned16, durableMap);
+        //}
 
 
         private static IDictionary<Durable.Def, object> DeserializeDurableMapHelper((Durable.Def def, object obj) x)
         {
-            if (x.def == Durable.Primitives.DurableMap ||
-                x.def == Durable.Primitives.DurableMapAligned8 ||
-                x.def == Durable.Primitives.DurableMapAligned16
+            if (x.def == Durable.Primitives.DurableMap //||
+                //x.def == Durable.Primitives.DurableMapAligned8 ||
+                //x.def == Durable.Primitives.DurableMapAligned16
                 )
             {
                 return (IDictionary<Durable.Def, object>)x.obj;
@@ -914,6 +914,8 @@ namespace Aardvark.Data
 
 #region DurableNamedMap
 
+        #pragma warning disable CS0618 // Type or member is obsolete
+
         /// <summary>
         /// Serialize DurableNamedMap to byte array. 
         /// Can be deserialized with DeserializeDurableNamedMap.
@@ -921,8 +923,8 @@ namespace Aardvark.Data
         public static byte[] SerializeDurableNamedMap(IEnumerable<KeyValuePair<string, (Durable.Def, object)>> durableNamedMap)
         {
             using var ms = new MemoryStream();
-            EncodeGuid(ms, Durable.Primitives.DurableNamedMap.Id);
-            EncodeWithoutTypeForPrimitives(ms, Durable.Primitives.DurableNamedMap, durableNamedMap);
+            EncodeGuid(ms, Durable.Primitives.DurableNamedMapDeprecated20221021.Id);
+            EncodeWithoutTypeForPrimitives(ms, Durable.Primitives.DurableNamedMapDeprecated20221021, durableNamedMap);
             return ms.ToArray();
         }
 
@@ -939,8 +941,8 @@ namespace Aardvark.Data
         /// </summary>
         public static void SerializeDurableNamedMap(Stream stream, IEnumerable<KeyValuePair<string, (Durable.Def, object)>> durableNamedMap)
         {
-            EncodeGuid(stream, Durable.Primitives.DurableNamedMap.Id);
-            EncodeWithoutTypeForPrimitives(stream, Durable.Primitives.DurableNamedMap, durableNamedMap);
+            EncodeGuid(stream, Durable.Primitives.DurableNamedMapDeprecated20221021.Id);
+            EncodeWithoutTypeForPrimitives(stream, Durable.Primitives.DurableNamedMapDeprecated20221021, durableNamedMap);
         }
 
         /// <summary>
@@ -953,7 +955,7 @@ namespace Aardvark.Data
 
         private static IDictionary<string, (Durable.Def def, object obj)> DeserializeDurableNamedMapHelper((Durable.Def def, object obj) x)
         {
-            if (x.def == Durable.Primitives.DurableNamedMap)
+            if (x.def == Durable.Primitives.DurableNamedMapDeprecated20221021)
             {
                 return (IDictionary<string, (Durable.Def def, object obj)>)x.obj;
             }
@@ -978,10 +980,10 @@ namespace Aardvark.Data
         /// </summary>
         public static IDictionary<string, (Durable.Def def, object obj)> DeserializeDurableNamedMap(string filename)
             => DeserializeDurableNamedMapHelper(Deserialize(filename));
+        
+        #pragma warning restore CS0618 // Type or member is obsolete
 
 #endregion
-
-
 
 #endregion
 

@@ -26,8 +26,12 @@ namespace Aardvark.Data.Durable
 
 open System
 open System.Text.Json
+open System.Text
+open System.Security.Cryptography
 
 module Codegen = 
+
+    let hashGuid (s : string) : Guid = s |> Encoding.UTF8.GetBytes |> MD5.Create().ComputeHash |> Guid
 
     let doNotGenerateCodecFor = Set.ofList <| [
         Guid("bb9da8cb-c9d6-43dd-95d6-f569c82d9af6") // Aardvark.Cell
@@ -72,19 +76,18 @@ module Codegen =
         LetName : string
         Category : string
         Id : Guid
-        RawName : string
         Name : string
         Description : string
-        RawType : string
         Type : string
         IsArray : bool
         Layout : Option<(string*string)[]>
+        Obsolete : Option<string>
     }
 
     let mutable defs = Map.empty<Guid, Entry>
     let mutable rawname2def = Map.empty<string, Entry>
 
-    let parseEntry category (id : string) (def : JsonElement) =
+    let parseEntry category (id : string) (def : JsonElement) : Entry list =
     
         let rawName = 
             match def.TryGetProperty("name") with
@@ -108,13 +111,14 @@ module Codegen =
             if name = "Guid" then
                 "GuidDef"
             else
-                let name = if name.EndsWith("[]") then name.Replace("[]", "Array") else name
-                let ts = name.Split('.')
+                let name = name.Replace("[]", "Array")
+                let ts = name.Split('.') |> Array.map (fun s -> s.Substring(0, 1).ToUpper() + s.Substring(1))
+
                 if ts.Length > 1 then
                     if ts.[0] = category then
                         String.Join("", ts |> Array.skip(1))
                     else
-                        failwith "First part of dotted name must be category."
+                        failwith (sprintf "First part of dotted name must be category. Value = \"%s\"." name)
                 else
                     name
 
@@ -141,22 +145,48 @@ module Codegen =
             | true, x -> x.EnumerateObject() |> Seq.map(fun x -> (x.Name, x.Value.GetString())) |> Seq.toArray |> Some
             | false, _ -> None
             
+        let obsolete = 
+            match def.TryGetProperty("obsolete") with
+            | true, x -> Some(x.GetString())
+            | false, _ -> None
 
         let e = {
             LetName = letName
             Category = category
             Id = Guid.Parse(id)
-            RawName = rawName
             Name = name
             Description = description
-            RawType = rawType
             Type = typ
             IsArray = isArray
             Layout = layout
+            Obsolete = obsolete
         }
         defs <- defs |> Map.add e.Id e
-        rawname2def <- rawname2def |> Map.add e.RawName e
-        e
+        rawname2def <- rawname2def |> Map.add e.Name e
+
+        if e.IsArray then
+            if rawName <> name then failwith "???"
+            
+            // gz
+            let gzLetName = e.LetName + "Gz"
+            let gzId = hashGuid gzLetName
+            let gzEntry = { e with Id = gzId; LetName = gzLetName; Name = e.Name + ".gz"; Description = e.Description + " Compressed (GZip)." }
+
+            // lz4
+            let lz4LetName = e.LetName + "Lz4"
+            let lz4Id = hashGuid lz4LetName
+            let lz4Entry = { e with Id = lz4Id; LetName = lz4LetName; Name = e.Name + ".lz4"; Description = e.Description + " Compressed (LZ4)." }
+
+            if rawType = "None" then
+                [ e; gzEntry; lz4Entry ]
+            else
+                let gzTyp = e.Type.Substring(0, e.Type.Length - 3) + "Gz.Id"
+                let gzEntry = { gzEntry with Type = gzTyp }
+                let lz4Typ = e.Type.Substring(0, e.Type.Length - 3) + "Lz4.Id"
+                let lz4Entry = { lz4Entry with Type = lz4Typ }
+                [ e; gzEntry; lz4Entry ]
+        else
+            [ e ]
 
     let header = """/*
     MIT License
@@ -203,7 +233,8 @@ namespace Aardvark.Data
                 let category = kv.Name
                 for kv in kv.Value.EnumerateObject() do
                     parseEntry category kv.Name kv.Value
-            ]
+            ] 
+        let entries = entries |> List.collect id
 
         let names = Set.ofList [ for e in entries do yield e.LetName; yield sprintf "%s.%s" e.Category e.LetName ]
 
@@ -295,7 +326,7 @@ public static partial class Durable
     
         for kv in json.EnumerateObject() do
             let category = kv.Name
-            let entries = kv.Value.EnumerateObject() |> Seq.map (fun kv -> parseEntry category kv.Name kv.Value) |> Seq.toArray
+            let entries = kv.Value.EnumerateObject() |> Seq.map (fun kv -> parseEntry category kv.Name kv.Value) |> Seq.collect id |> Seq.toArray
             let usesNone = entries |> Seq.exists (fun e -> e.Type = "None")
 
             yield sprintf "    /// <summary></summary>"
@@ -311,6 +342,9 @@ public static partial class Durable
                 yield sprintf "        /// <summary>"
                 yield sprintf "        /// %s" (entry.Description)
                 yield sprintf "        /// </summary>"
+                match entry.Obsolete with
+                | Some s -> yield sprintf "        [Obsolete(\"%s\")]" s
+                | None -> ()
                 yield sprintf "        public static readonly Def %s = new(" entry.LetName
                 yield sprintf "            %s," (formatGuid entry.Id)
                 yield sprintf "            \"%s\"," entry.Name

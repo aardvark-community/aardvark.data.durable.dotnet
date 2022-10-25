@@ -6,7 +6,10 @@ class Program
 {
     public static void Main()
     {
-        //Durable.Init();
+        Durable.Init();
+
+        var foo0 = Durable.Octree.PositionsLocal3d;
+        var foo1 = Durable.Octree.PositionsLocal3dGz;
 
         //var allPrimitiveDefs = Durable.Def.AllDefs.Select(x => x.PrimitiveTypeDef).Distinct().OrderBy(x => x.Name).ToArray();
         //Console.WriteLine(allPrimitiveDefs.Length);

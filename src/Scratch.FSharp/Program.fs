@@ -24,15 +24,15 @@ let main argv =
     printfn "NET6_0"
     #endif
 
-    let map = [|
-        KeyValuePair<string, struct (Durable.Def * obj)>("NodeDataId", (Durable.Primitives.StringUTF8,      "babalu"     :> obj))
-        KeyValuePair<string, struct (Durable.Def * obj)>("Keys",       (Durable.Primitives.StringUTF8Array, [| "key0" |] :> obj))
-        KeyValuePair<string, struct (Durable.Def * obj)>("Offsets",    (Durable.Primitives.Int32Array,      [| 17 |]     :> obj))
-        KeyValuePair<string, struct (Durable.Def * obj)>("Sizes",      (Durable.Primitives.Int32Array,      [| 42 |]     :> obj))
-        |]
+    //let map = [|
+    //    KeyValuePair<string, struct (Durable.Def * obj)>("NodeDataId", (Durable.Primitives.StringUTF8,      "babalu"     :> obj))
+    //    KeyValuePair<string, struct (Durable.Def * obj)>("Keys",       (Durable.Primitives.StringUTF8Array, [| "key0" |] :> obj))
+    //    KeyValuePair<string, struct (Durable.Def * obj)>("Offsets",    (Durable.Primitives.Int32Array,      [| 17 |]     :> obj))
+    //    KeyValuePair<string, struct (Durable.Def * obj)>("Sizes",      (Durable.Primitives.Int32Array,      [| 42 |]     :> obj))
+    //    |]
         
-    let indexBuffer = DurableCodec.Serialize(Durable.Primitives.DurableNamedMap, map);
+    //let indexBuffer = DurableCodec.Serialize(Durable.Primitives.DurableNamedMapDeprecated20221021, map);
 
-    let decoded = DurableCodec.Deserialize(indexBuffer)
+    //let decoded = DurableCodec.Deserialize(indexBuffer)
 
     0

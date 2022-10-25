@@ -24,9 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{09B7D2C5-E1CD-43
 		..\RELEASE_NOTES.md = ..\RELEASE_NOTES.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aardworx.Data.DurableCodec2", "Aardworx.Data.DurableCodec2\Aardworx.Data.DurableCodec2.csproj", "{90EEF335-4B4B-426F-860A-9CD78EA5147F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scratch.CSharp", "Scratch.CSharp\Scratch.CSharp.csproj", "{AD0D7B6D-F818-4CC7-BD19-EB42C3C4EA27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scratch.CSharp", "Scratch.CSharp\Scratch.CSharp.csproj", "{AD0D7B6D-F818-4CC7-BD19-EB42C3C4EA27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,10 +52,6 @@ Global
 		{AE4D0A66-41B4-463C-9192-65BEC4B4FF45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE4D0A66-41B4-463C-9192-65BEC4B4FF45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE4D0A66-41B4-463C-9192-65BEC4B4FF45}.Release|Any CPU.Build.0 = Release|Any CPU
-		{90EEF335-4B4B-426F-860A-9CD78EA5147F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{90EEF335-4B4B-426F-860A-9CD78EA5147F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{90EEF335-4B4B-426F-860A-9CD78EA5147F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{90EEF335-4B4B-426F-860A-9CD78EA5147F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AD0D7B6D-F818-4CC7-BD19-EB42C3C4EA27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AD0D7B6D-F818-4CC7-BD19-EB42C3C4EA27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD0D7B6D-F818-4CC7-BD19-EB42C3C4EA27}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -67,7 +61,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E996B5E6-49B2-4479-9DDE-455A40509F43}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45
+		SolutionGuid = {E996B5E6-49B2-4479-9DDE-455A40509F43}
 	EndGlobalSection
 EndGlobal

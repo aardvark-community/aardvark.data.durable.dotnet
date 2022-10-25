@@ -11,7 +11,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Aardvark.Data.Durable.Codec\Aardvark.Data.Durable.Codec.csproj" />
     <ProjectReference Include="..\Aardvark.Data.Durable\Aardvark.Data.Durable.csproj" />
-    <ProjectReference Include="..\Aardworx.Data.DurableCodec2\Aardworx.Data.DurableCodec2.csproj" />
   </ItemGroup>
 
 </Project>

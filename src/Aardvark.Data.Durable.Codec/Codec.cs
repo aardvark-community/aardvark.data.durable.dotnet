@@ -68,16 +68,17 @@ namespace Aardvark.Data
             //// force Durable.Octree initializer
             var _ = Durable.Octree.NodeId;
 
+#pragma warning disable CS0618 // Type or member is obsolete
             s_encoders = new Dictionary<Guid, object>
             {
                 [Durable.Primitives.Unit.Id] = EncodeUnit,
 
                 [Durable.Primitives.DurableMap.Id] = EncodeDurableMapWithoutHeader,
-                [Durable.Primitives.DurableMapAligned8.Id] = EncodeDurableMap8WithoutHeader,
-                [Durable.Primitives.DurableMapAligned16.Id] = EncodeDurableMap16WithoutHeader,
-                [Durable.Primitives.GZipped.Id] = EncodeGZipped,
+                //[Durable.Primitives.DurableMapAligned8.Id] = EncodeDurableMap8WithoutHeader,
+                //[Durable.Primitives.DurableMapAligned16.Id] = EncodeDurableMap16WithoutHeader,
+                //[Durable.Primitives.GZipped.Id] = EncodeGZipped,
 
-                [Durable.Primitives.DurableNamedMap.Id] = EncodeDurableNamedMap4WithoutHeader,
+                [Durable.Primitives.DurableNamedMapDeprecated20221021.Id] = EncodeDurableNamedMap4WithoutHeader,
 
                 [Durable.Primitives.StringUTF8.Id] = EncodeStringUtf8,
                 [Durable.Primitives.StringUTF8Array.Id] = EncodeStringUtf8Array,
@@ -136,17 +137,19 @@ namespace Aardvark.Data
                 [Durable.Aardvark.Cylinder3dDeprecated20220302.Id] = EncodeCylinder3dDeprecated20220302,
                 [Durable.Aardvark.Cylinder3dDeprecated20220302Array.Id] = EncodeCylinder3dDeprecated20220302Array,
             };
+#pragma warning restore CS0618 // Type or member is obsolete
 
+#pragma warning disable CS0618 // Type or member is obsolete
             s_decoders = new Dictionary<Guid, object>
             {
                 [Durable.Primitives.Unit.Id] = DecodeUnit,
 
                 [Durable.Primitives.DurableMap.Id] = DecodeDurableMapWithoutHeader,
-                [Durable.Primitives.DurableMapAligned8.Id] = DecodeDurableMap8WithoutHeader,
-                [Durable.Primitives.DurableMapAligned16.Id] = DecodeDurableMap16WithoutHeader,
-                [Durable.Primitives.GZipped.Id] = DecodeGZipped,
+                //[Durable.Primitives.DurableMapAligned8.Id] = DecodeDurableMap8WithoutHeader,
+                //[Durable.Primitives.DurableMapAligned16.Id] = DecodeDurableMap16WithoutHeader,
+                //[Durable.Primitives.GZipped.Id] = DecodeGZipped,
 
-                [Durable.Primitives.DurableNamedMap.Id] = DecodeDurableNamedMap4WithoutHeader,
+                [Durable.Primitives.DurableNamedMapDeprecated20221021.Id] = DecodeDurableNamedMap4WithoutHeader,
 
                 [Durable.Primitives.StringUTF8.Id] = DecodeStringUtf8,
                 [Durable.Primitives.StringUTF8Array.Id] = DecodeStringUtf8Array,
@@ -195,6 +198,7 @@ namespace Aardvark.Data
                 [Durable.Aardvark.Cylinder3dDeprecated20220302.Id] = DecodeCylinder3dDeprecated20220302,
                 [Durable.Aardvark.Cylinder3dDeprecated20220302Array.Id] = DecodeCylinder3dDeprecated20220302Array,
             };
+#pragma warning restore CS0618 // Type or member is obsolete
 
             Init();
         }
@@ -202,7 +206,7 @@ namespace Aardvark.Data
         #region GZip
 
         /// <summary>
-        /// Returns decompressed buffer.
+        /// Returns compressed buffer.
         /// </summary>
         public static byte[] Gzip(this byte[] buffer)
         {
@@ -216,7 +220,7 @@ namespace Aardvark.Data
         }
 
         /// <summary>
-        /// Returns compressed buffer.
+        /// Returns uncompressed buffer.
         /// </summary>
         public static byte[] Ungzip(this byte[] buffer, int uncompressedBufferLength)
         {
