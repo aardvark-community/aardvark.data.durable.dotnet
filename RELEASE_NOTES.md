@@ -1,3 +1,7 @@
+### 0.3.8
+- cleanup, obsolete defs
+- add auto-generated .gz/.lz4 defs for array types
+
 ### 0.3.7
 - GZip and LZ4 variants for octree data
 - remove net5.0 target
