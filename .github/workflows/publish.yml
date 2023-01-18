@@ -16,14 +16,11 @@ jobs:
       - name: Install Dotnet
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '6.0.100'
+          dotnet-version: '6.0.103'
       - name: Restore Tools
         run: dotnet tool restore
       - name: Restore
         run: dotnet paket restore
-      # - name: Generate Code
-      #   shell: cmd
-      #   run: generate.cmd
       - name: Build
         shell: cmd
         run: dotnet build -c Release src\Aardvark.Data.Durable.sln

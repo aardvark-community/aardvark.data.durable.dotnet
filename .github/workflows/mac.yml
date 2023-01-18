@@ -1,4 +1,4 @@
-name: Windows
+name: MacOS
 
 on: 
   push:
@@ -11,7 +11,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: macos-latest
 
     steps:
     - name: Checkout
@@ -20,5 +20,5 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '6.0.103'
-    - name: build
-      run: .\build.cmd
+    - name: Build
+      run: bash ./build.sh
