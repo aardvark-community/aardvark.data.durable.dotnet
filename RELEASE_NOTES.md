@@ -1,3 +1,14 @@
+### 0.3.9
+- sync with definitions file
+    - add Durable.Octree.Subnodes.ByteRanges,
+    - add Durable.Octree.NodeByteRange
+    - add Durable.Octree.MultiNodeBlob
+    - restore Durable.Primitives.DurableMapAligned8
+    - restore Durable.Primitives.DurableMapAligned16
+- dotnet tool update
+- update package Aardvark.Build 1.0.18
+- fix pushpackages_nuget.cmd
+
 ### 0.3.8
 - cleanup, obsolete defs
 - add auto-generated .gz/.lz4 defs for array types
