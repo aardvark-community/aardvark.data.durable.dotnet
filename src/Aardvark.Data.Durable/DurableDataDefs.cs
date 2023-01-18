@@ -66,6 +66,50 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// A map of key/value pairs, where keys are durable IDs with values of corresponding types. Entries are 8-byte aligned.
+        /// </summary>
+        public static readonly Def DurableMapAligned8 = new(
+            new Guid("6780296f-c30a-4eba-806f-d07d84c7a5bc"),
+            "DurableMapAligned8",
+            "A map of key/value pairs, where keys are durable IDs with values of corresponding types. Entries are 8-byte aligned.",
+            None,
+            false
+            );
+
+        /// <summary>
+        /// A map of key/value pairs, where keys are durable IDs with values of corresponding types. Entries are 16-byte aligned.
+        /// </summary>
+        public static readonly Def DurableMapAligned16 = new(
+            new Guid("0ca48518-96b9-424f-b146-046ac3c8ed10"),
+            "DurableMapAligned16",
+            "A map of key/value pairs, where keys are durable IDs with values of corresponding types. Entries are 16-byte aligned.",
+            None,
+            false
+            );
+
+        /// <summary>
+        /// A map of name/key/value entries, where names are strings, keys are durable IDs (Guid) with values of corresponding types. All names, keys, and values are 4-byte aligned.
+        /// </summary>
+        public static readonly Def DurableNamedMap = new(
+            new Guid("29de4f2f-90da-49ff-902c-3315e29457c9"),
+            "DurableNamedMap",
+            "A map of name/key/value entries, where names are strings, keys are durable IDs (Guid) with values of corresponding types. All names, keys, and values are 4-byte aligned.",
+            None,
+            false
+            );
+
+        ///// <summary>
+        ///// A gzipped element.
+        ///// </summary>
+        //public static readonly Def GZipped = new(
+        //    new Guid("7d8fc4c0-d727-4171-bc91-78f92f0c1aa4"),
+        //    "GZipped",
+        //    "A gzipped element.",
+        //    None,
+        //    false
+        //    );
+
+        /// <summary>
         /// Globally unique identifier (GUID, 16 bytes). https://tools.ietf.org/html/rfc4122.
         /// </summary>
         public static readonly Def GuidDef = new(

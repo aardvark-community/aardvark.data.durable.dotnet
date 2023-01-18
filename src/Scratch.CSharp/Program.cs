@@ -8,8 +8,12 @@ class Program
     {
         Durable.Init();
 
-        var foo0 = Durable.Octree.PositionsLocal3d;
-        var foo1 = Durable.Octree.PositionsLocal3dGz;
+        var buffer = File.ReadAllBytes(@"t:\tmp\okblob");
+        buffer = buffer.Ungzip(buffer.Length);
+        DurableCodec.DeserializeDurableMap(buffer);
+
+        //var foo0 = Durable.Octree.PositionsLocal3d;
+        //var foo1 = Durable.Octree.PositionsLocal3dGz;
 
         //var allPrimitiveDefs = Durable.Def.AllDefs.Select(x => x.PrimitiveTypeDef).Distinct().OrderBy(x => x.Name).ToArray();
         //Console.WriteLine(allPrimitiveDefs.Length);

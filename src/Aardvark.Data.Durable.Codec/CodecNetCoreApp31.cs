@@ -834,56 +834,56 @@ namespace Aardvark.Data
             EncodeWithoutTypeForPrimitives(stream, Durable.Primitives.DurableMap, durableMap);
         }
 
-        ///// <summary>
-        ///// Serialize DurableMap to byte array. 
-        ///// Can be deserialized with DeserializeDurableMap.
-        ///// </summary>
-        //public static byte[] SerializeDurableMapAligned8(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
-        //{
-        //    using var ms = new MemoryStream();
-        //    EncodeGuid(ms, Durable.Primitives.DurableMap.Id);
-        //    EncodeWithoutTypeForPrimitives(ms, Durable.Primitives.DurableMapAligned8, durableMap);
-        //    return ms.ToArray();
-        //}
+        /// <summary>
+        /// Serialize DurableMap to byte array. 
+        /// Can be deserialized with DeserializeDurableMap.
+        /// </summary>
+        public static byte[] SerializeDurableMapAligned8(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        {
+            using var ms = new MemoryStream();
+            EncodeGuid(ms, Durable.Primitives.DurableMap.Id);
+            EncodeWithoutTypeForPrimitives(ms, Durable.Primitives.DurableMapAligned8, durableMap);
+            return ms.ToArray();
+        }
 
-        ///// <summary>
-        ///// Serialize DurableMap to stream. 
-        ///// Can be deserialized with DeserializeDurableMap.
-        ///// </summary>
-        //public static void SerializeDurableMapAligned8(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
-        //{
-        //    EncodeGuid(stream, Durable.Primitives.DurableMap.Id);
-        //    EncodeWithoutTypeForPrimitives(stream, Durable.Primitives.DurableMapAligned8, durableMap);
-        //}
+        /// <summary>
+        /// Serialize DurableMap to stream. 
+        /// Can be deserialized with DeserializeDurableMap.
+        /// </summary>
+        public static void SerializeDurableMapAligned8(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        {
+            EncodeGuid(stream, Durable.Primitives.DurableMap.Id);
+            EncodeWithoutTypeForPrimitives(stream, Durable.Primitives.DurableMapAligned8, durableMap);
+        }
 
-        ///// <summary>
-        ///// Serialize DurableMap to byte array. 
-        ///// Can be deserialized with DeserializeDurableMap.
-        ///// </summary>
-        //public static byte[] SerializeDurableMapAligned16(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
-        //{
-        //    using var ms = new MemoryStream();
-        //    EncodeGuid(ms, Durable.Primitives.DurableMap.Id);
-        //    EncodeWithoutTypeForPrimitives(ms, Durable.Primitives.DurableMapAligned16, durableMap);
-        //    return ms.ToArray();
-        //}
+        /// <summary>
+        /// Serialize DurableMap to byte array. 
+        /// Can be deserialized with DeserializeDurableMap.
+        /// </summary>
+        public static byte[] SerializeDurableMapAligned16(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        {
+            using var ms = new MemoryStream();
+            EncodeGuid(ms, Durable.Primitives.DurableMap.Id);
+            EncodeWithoutTypeForPrimitives(ms, Durable.Primitives.DurableMapAligned16, durableMap);
+            return ms.ToArray();
+        }
 
-        ///// <summary>
-        ///// Serialize DurableMap to stream. 
-        ///// Can be deserialized with DeserializeDurableMap.
-        ///// </summary>
-        //public static void SerializeDurableMapAligned16(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
-        //{
-        //    EncodeGuid(stream, Durable.Primitives.DurableMap.Id);
-        //    EncodeWithoutTypeForPrimitives(stream, Durable.Primitives.DurableMapAligned16, durableMap);
-        //}
+        /// <summary>
+        /// Serialize DurableMap to stream. 
+        /// Can be deserialized with DeserializeDurableMap.
+        /// </summary>
+        public static void SerializeDurableMapAligned16(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        {
+            EncodeGuid(stream, Durable.Primitives.DurableMap.Id);
+            EncodeWithoutTypeForPrimitives(stream, Durable.Primitives.DurableMapAligned16, durableMap);
+        }
 
 
         private static IDictionary<Durable.Def, object> DeserializeDurableMapHelper((Durable.Def def, object obj) x)
         {
-            if (x.def == Durable.Primitives.DurableMap //||
-                //x.def == Durable.Primitives.DurableMapAligned8 ||
-                //x.def == Durable.Primitives.DurableMapAligned16
+            if (x.def == Durable.Primitives.DurableMap ||
+                x.def == Durable.Primitives.DurableMapAligned8 ||
+                x.def == Durable.Primitives.DurableMapAligned16
                 )
             {
                 return (IDictionary<Durable.Def, object>)x.obj;

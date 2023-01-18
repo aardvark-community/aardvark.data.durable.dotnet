@@ -920,83 +920,83 @@ namespace Aardvark.Data.Tests
             Assert.True(ps[1] == V3f.OIO);
         }
 
-        //[Fact]
-        //public void Primitive_DurableMapAligned8()
-        //{
-        //    var id = Guid.NewGuid();
+        [Fact]
+        public void Primitive_DurableMapAligned8()
+        {
+            var id = Guid.NewGuid();
 
-        //    var map = ImmutableDictionary<Durable.Def, object>.Empty
-        //        .Add(Durable.Octree.NodeId, id)
-        //        .Add(Durable.Octree.NodeCountTotal, 123L)
-        //        .Add(Durable.Octree.Colors3b, new[] { C3b.Red, C3b.Green, C3b.Blue })
-        //        .Add(Durable.Octree.PositionsLocal3f, new[] { V3f.IOO, V3f.OIO })
-        //        ;
-        //    var buffer = DurableCodec.Serialize(Durable.Primitives.DurableMapAligned8, map);
-        //    var l = 16 + 4 + 4 + (16 + 16) + (16 + 8) + (16 + 4 + 3 * 3 + 3) + (16 + 4 + 2 * 12 + 4);
-        //    Assert.True(buffer.Length == l);
-        //    Assert.True(buffer.Length % 8 == 0);
+            var map = ImmutableDictionary<Durable.Def, object>.Empty
+                .Add(Durable.Octree.NodeId, id)
+                .Add(Durable.Octree.NodeCountTotal, 123L)
+                .Add(Durable.Octree.Colors3b, new[] { C3b.Red, C3b.Green, C3b.Blue })
+                .Add(Durable.Octree.PositionsLocal3f, new[] { V3f.IOO, V3f.OIO })
+                ;
+            var buffer = DurableCodec.Serialize(Durable.Primitives.DurableMapAligned8, map);
+            var l = 16 + 4 + 4 + (16 + 16) + (16 + 8) + (16 + 4 + 3 * 3 + 3) + (16 + 4 + 2 * 12 + 4);
+            Assert.True(buffer.Length == l);
+            Assert.True(buffer.Length % 8 == 0);
 
-        //    var (def, o) = DurableCodec.Deserialize(buffer);
-        //    Assert.True(def == Durable.Primitives.DurableMapAligned8);
+            var (def, o) = DurableCodec.Deserialize(buffer);
+            Assert.True(def == Durable.Primitives.DurableMapAligned8);
 
-        //    var m = o as ImmutableDictionary<Durable.Def, object>;
-        //    Assert.True(m != null);
-        //    Assert.True(m.Count == 4);
+            var m = o as ImmutableDictionary<Durable.Def, object>;
+            Assert.True(m != null);
+            Assert.True(m.Count == 4);
 
-        //    Assert.True(((Guid)m[Durable.Octree.NodeId]) == id);
+            Assert.True(((Guid)m[Durable.Octree.NodeId]) == id);
 
-        //    Assert.True(((long)m[Durable.Octree.NodeCountTotal]) == 123L);
+            Assert.True(((long)m[Durable.Octree.NodeCountTotal]) == 123L);
 
-        //    var cs = (C3b[])m[Durable.Octree.Colors3b];
-        //    Assert.True(cs.Length == 3);
-        //    Assert.True(cs[0] == C3b.Red);
-        //    Assert.True(cs[1] == C3b.Green);
-        //    Assert.True(cs[2] == C3b.Blue);
+            var cs = (C3b[])m[Durable.Octree.Colors3b];
+            Assert.True(cs.Length == 3);
+            Assert.True(cs[0] == C3b.Red);
+            Assert.True(cs[1] == C3b.Green);
+            Assert.True(cs[2] == C3b.Blue);
 
-        //    var ps = (V3f[])m[Durable.Octree.PositionsLocal3f];
-        //    Assert.True(ps.Length == 2);
-        //    Assert.True(ps[0] == V3f.IOO);
-        //    Assert.True(ps[1] == V3f.OIO);
-        //}
+            var ps = (V3f[])m[Durable.Octree.PositionsLocal3f];
+            Assert.True(ps.Length == 2);
+            Assert.True(ps[0] == V3f.IOO);
+            Assert.True(ps[1] == V3f.OIO);
+        }
 
-        //[Fact]
-        //public void Primitive_DurableMapAligned16()
-        //{
-        //    var id = Guid.NewGuid();
+        [Fact]
+        public void Primitive_DurableMapAligned16()
+        {
+            var id = Guid.NewGuid();
 
-        //    var map = ImmutableDictionary<Durable.Def, object>.Empty
-        //        .Add(Durable.Octree.NodeId, id)
-        //        .Add(Durable.Octree.NodeCountTotal, 123L)
-        //        .Add(Durable.Octree.Colors3b, new[] { C3b.Red, C3b.Green, C3b.Blue })
-        //        .Add(Durable.Octree.PositionsLocal3f, new[] { V3f.IOO, V3f.OIO })
-        //        ;
-        //    var buffer = DurableCodec.Serialize(Durable.Primitives.DurableMapAligned16, map);
-        //    var l = 16 + 4 + 12 + (16 + 16) + (16 + 8 + 8) + (16 + 4 + 3 * 3 + 3) + (16 + 4 + 2 * 12 + 4);
-        //    Assert.True(buffer.Length == l);
-        //    Assert.True(buffer.Length % 16 == 0);
+            var map = ImmutableDictionary<Durable.Def, object>.Empty
+                .Add(Durable.Octree.NodeId, id)
+                .Add(Durable.Octree.NodeCountTotal, 123L)
+                .Add(Durable.Octree.Colors3b, new[] { C3b.Red, C3b.Green, C3b.Blue })
+                .Add(Durable.Octree.PositionsLocal3f, new[] { V3f.IOO, V3f.OIO })
+                ;
+            var buffer = DurableCodec.Serialize(Durable.Primitives.DurableMapAligned16, map);
+            var l = 16 + 4 + 12 + (16 + 16) + (16 + 8 + 8) + (16 + 4 + 3 * 3 + 3) + (16 + 4 + 2 * 12 + 4);
+            Assert.True(buffer.Length == l);
+            Assert.True(buffer.Length % 16 == 0);
 
-        //    var (def, o) = DurableCodec.Deserialize(buffer);
-        //    Assert.True(def == Durable.Primitives.DurableMapAligned16);
+            var (def, o) = DurableCodec.Deserialize(buffer);
+            Assert.True(def == Durable.Primitives.DurableMapAligned16);
 
-        //    var m = o as ImmutableDictionary<Durable.Def, object>;
-        //    Assert.True(m != null);
-        //    Assert.True(m.Count == 4);
+            var m = o as ImmutableDictionary<Durable.Def, object>;
+            Assert.True(m != null);
+            Assert.True(m.Count == 4);
 
-        //    Assert.True(((Guid)m[Durable.Octree.NodeId]) == id);
+            Assert.True(((Guid)m[Durable.Octree.NodeId]) == id);
 
-        //    Assert.True(((long)m[Durable.Octree.NodeCountTotal]) == 123L);
+            Assert.True(((long)m[Durable.Octree.NodeCountTotal]) == 123L);
 
-        //    var cs = (C3b[])m[Durable.Octree.Colors3b];
-        //    Assert.True(cs.Length == 3);
-        //    Assert.True(cs[0] == C3b.Red);
-        //    Assert.True(cs[1] == C3b.Green);
-        //    Assert.True(cs[2] == C3b.Blue);
+            var cs = (C3b[])m[Durable.Octree.Colors3b];
+            Assert.True(cs.Length == 3);
+            Assert.True(cs[0] == C3b.Red);
+            Assert.True(cs[1] == C3b.Green);
+            Assert.True(cs[2] == C3b.Blue);
 
-        //    var ps = (V3f[])m[Durable.Octree.PositionsLocal3f];
-        //    Assert.True(ps.Length == 2);
-        //    Assert.True(ps[0] == V3f.IOO);
-        //    Assert.True(ps[1] == V3f.OIO);
-        //}
+            var ps = (V3f[])m[Durable.Octree.PositionsLocal3f];
+            Assert.True(ps.Length == 2);
+            Assert.True(ps[0] == V3f.IOO);
+            Assert.True(ps[1] == V3f.OIO);
+        }
 
 
 
@@ -1064,87 +1064,89 @@ namespace Aardvark.Data.Tests
 
 
 
-        //[Fact]
-        //public void Primitive_GZipped_DurableMap()
-        //{
-        //    var id = Guid.NewGuid();
+        [Fact]
+        [Obsolete]
+        public void Primitive_GZipped_DurableMap()
+        {
+            var id = Guid.NewGuid();
 
-        //    var map = ImmutableDictionary<Durable.Def, object>.Empty
-        //        .Add(Durable.Octree.NodeId, id)
-        //        .Add(Durable.Octree.NodeCountTotal, 123L)
-        //        .Add(Durable.Octree.Colors3b, new[] { C3b.Red, C3b.Green, C3b.Blue })
-        //        .Add(Durable.Octree.PositionsLocal3f, new[] { V3f.IOO, V3f.OIO })
-        //        ;
-        //    var value = new DurableGZipped(Durable.Primitives.DurableMap, map);
-        //    var buffer = DurableCodec.Serialize(Durable.Primitives.GZipped, value);
+            var map = ImmutableDictionary<Durable.Def, object>.Empty
+                .Add(Durable.Octree.NodeId, id)
+                .Add(Durable.Octree.NodeCountTotal, 123L)
+                .Add(Durable.Octree.Colors3b, new[] { C3b.Red, C3b.Green, C3b.Blue })
+                .Add(Durable.Octree.PositionsLocal3f, new[] { V3f.IOO, V3f.OIO })
+                ;
+            var value = new DurableGZipped(Durable.Primitives.DurableMap, map);
+            var buffer = DurableCodec.Serialize(Durable.Primitives.GZippedDeprecated20221021, value);
 
-        //    var (def, o) = DurableCodec.Deserialize(buffer);
-        //    Assert.True(def == Durable.Primitives.GZipped);
+            var (def, o) = DurableCodec.Deserialize(buffer);
+            Assert.True(def == Durable.Primitives.GZippedDeprecated20221021);
 
-        //    var gz = o as DurableGZipped;
-        //    Assert.True(gz != null);
-        //    Assert.True(gz.Def == Durable.Primitives.DurableMap);
+            var gz = o as DurableGZipped;
+            Assert.True(gz != null);
+            Assert.True(gz.Def == Durable.Primitives.DurableMap);
 
-        //    var m = gz.Value as ImmutableDictionary<Durable.Def, object>;
-        //    Assert.True(m != null);
-        //    Assert.True(m.Count == 4);
+            var m = gz.Value as ImmutableDictionary<Durable.Def, object>;
+            Assert.True(m != null);
+            Assert.True(m.Count == 4);
 
-        //    Assert.True(((Guid)m[Durable.Octree.NodeId]) == id);
+            Assert.True(((Guid)m[Durable.Octree.NodeId]) == id);
 
-        //    Assert.True(((long)m[Durable.Octree.NodeCountTotal]) == 123L);
+            Assert.True(((long)m[Durable.Octree.NodeCountTotal]) == 123L);
 
-        //    var cs = (C3b[])m[Durable.Octree.Colors3b];
-        //    Assert.True(cs.Length == 3);
-        //    Assert.True(cs[0] == C3b.Red);
-        //    Assert.True(cs[1] == C3b.Green);
-        //    Assert.True(cs[2] == C3b.Blue);
+            var cs = (C3b[])m[Durable.Octree.Colors3b];
+            Assert.True(cs.Length == 3);
+            Assert.True(cs[0] == C3b.Red);
+            Assert.True(cs[1] == C3b.Green);
+            Assert.True(cs[2] == C3b.Blue);
 
-        //    var ps = (V3f[])m[Durable.Octree.PositionsLocal3f];
-        //    Assert.True(ps.Length == 2);
-        //    Assert.True(ps[0] == V3f.IOO);
-        //    Assert.True(ps[1] == V3f.OIO);
-        //}
+            var ps = (V3f[])m[Durable.Octree.PositionsLocal3f];
+            Assert.True(ps.Length == 2);
+            Assert.True(ps[0] == V3f.IOO);
+            Assert.True(ps[1] == V3f.OIO);
+        }
 
-        //[Fact]
-        //public void Primitive_GZipped_DurableMapAligned16()
-        //{
-        //    var id = new Guid("a5221f7a-3594-4079-b390-84f261b47420");
+        [Fact]
+        [Obsolete]
+        public void Primitive_GZipped_DurableMapAligned16()
+        {
+            var id = new Guid("a5221f7a-3594-4079-b390-84f261b47420");
 
-        //    var map = ImmutableDictionary<Durable.Def, object>.Empty
-        //        .Add(Durable.Octree.NodeId, id)
-        //        //.Add(Durable.Octree.NodeCountTotal, 123L)
-        //        //.Add(Durable.Octree.Colors3b, new[] { C3b.Red, C3b.Green, C3b.Blue })
-        //        //.Add(Durable.Octree.PositionsLocal3f, new[] { V3f.IOO, V3f.OIO })
-        //        ;
-        //    var value = new DurableGZipped(Durable.Primitives.DurableMapAligned16, map);
-        //    var buffer = DurableCodec.Serialize(Durable.Primitives.GZipped, value);
+            var map = ImmutableDictionary<Durable.Def, object>.Empty
+                .Add(Durable.Octree.NodeId, id)
+                //.Add(Durable.Octree.NodeCountTotal, 123L)
+                //.Add(Durable.Octree.Colors3b, new[] { C3b.Red, C3b.Green, C3b.Blue })
+                //.Add(Durable.Octree.PositionsLocal3f, new[] { V3f.IOO, V3f.OIO })
+                ;
+            var value = new DurableGZipped(Durable.Primitives.DurableMapAligned16, map);
+            var buffer = DurableCodec.Serialize(Durable.Primitives.GZippedDeprecated20221021, value);
 
-        //    var (def, o) = DurableCodec.Deserialize(buffer);
-        //    Assert.True(def == Durable.Primitives.GZipped);
+            var (def, o) = DurableCodec.Deserialize(buffer);
+            Assert.True(def == Durable.Primitives.GZippedDeprecated20221021);
 
-        //    var gz = o as DurableGZipped;
-        //    Assert.True(gz != null);
-        //    Assert.True(gz.Def == Durable.Primitives.DurableMapAligned16);
+            var gz = o as DurableGZipped;
+            Assert.True(gz != null);
+            Assert.True(gz.Def == Durable.Primitives.DurableMapAligned16);
 
-        //    var m = gz.Value as ImmutableDictionary<Durable.Def, object>;
-        //    Assert.True(m != null);
-        //    Assert.True(m.Count == 1);
+            var m = gz.Value as ImmutableDictionary<Durable.Def, object>;
+            Assert.True(m != null);
+            Assert.True(m.Count == 1);
 
-        //    Assert.True(((Guid)m[Durable.Octree.NodeId]) == id);
+            Assert.True(((Guid)m[Durable.Octree.NodeId]) == id);
 
-        //    //Assert.True(((long)m[Durable.Octree.NodeCountTotal]) == 123L);
+            //Assert.True(((long)m[Durable.Octree.NodeCountTotal]) == 123L);
 
-        //    //var cs = (C3b[])m[Durable.Octree.Colors3b];
-        //    //Assert.True(cs.Length == 3);
-        //    //Assert.True(cs[0] == C3b.Red);
-        //    //Assert.True(cs[1] == C3b.Green);
-        //    //Assert.True(cs[2] == C3b.Blue);
+            //var cs = (C3b[])m[Durable.Octree.Colors3b];
+            //Assert.True(cs.Length == 3);
+            //Assert.True(cs[0] == C3b.Red);
+            //Assert.True(cs[1] == C3b.Green);
+            //Assert.True(cs[2] == C3b.Blue);
 
-        //    //var ps = (V3f[])m[Durable.Octree.PositionsLocal3f];
-        //    //Assert.True(ps.Length == 2);
-        //    //Assert.True(ps[0] == V3f.IOO);
-        //    //Assert.True(ps[1] == V3f.OIO);
-        //}
+            //var ps = (V3f[])m[Durable.Octree.PositionsLocal3f];
+            //Assert.True(ps.Length == 2);
+            //Assert.True(ps[0] == V3f.IOO);
+            //Assert.True(ps[1] == V3f.OIO);
+        }
 
 
 

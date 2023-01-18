@@ -68,53 +68,53 @@ namespace Aardvark.Data
                 foreach (var x in xs) EncodeDurableMapEntry(s, x.Key, x.Value);
             };
 
-//        private static Action<BinaryWriter, object> CreateEncodeDurableMapAlignedWithoutHeader(int alignmentInBytes)
-//            => (bw, o) =>
-//            {
-//                var s = bw.BaseStream;
+        private static Action<BinaryWriter, object> CreateEncodeDurableMapAlignedWithoutHeader(int alignmentInBytes)
+            => (bw, o) =>
+            {
+                var s = bw.BaseStream;
 
-//                var xs = (IEnumerable<KeyValuePair<Durable.Def, object>>)o;
+                var xs = (IEnumerable<KeyValuePair<Durable.Def, object>>)o;
 
-//                // number of entries (int + padding)
-//                var count = xs.Count();
-//                bw.Write(count); // 4 bytes
-//                PadToNextMultipleOf(alignmentInBytes);
-//#if DEBUG
-//                if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant 75944da3-3efa-4a0d-935d-c020d5ca7d56.");
-//#endif
+                // number of entries (int + padding)
+                var count = xs.Count();
+                bw.Write(count); // 4 bytes
+                PadToNextMultipleOf(alignmentInBytes);
+#if DEBUG
+                if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant 75944da3-3efa-4a0d-935d-c020d5ca7d56.");
+#endif
 
-//                // entries (+ padding after each entry)
-//                foreach (var x in xs)
-//                {
-//                    EncodeDurableMapEntry(bw, x.Key, x.Value);
-//                    PadToNextMultipleOf(alignmentInBytes);
-//#if DEBUG
-//                    if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant 9212ca74-a0a4-406f-9f7b-262e2e516918.");
-//#endif
-//                }
+                // entries (+ padding after each entry)
+                foreach (var x in xs)
+                {
+                    EncodeDurableMapEntry(bw, x.Key, x.Value);
+                    PadToNextMultipleOf(alignmentInBytes);
+#if DEBUG
+                    if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant 9212ca74-a0a4-406f-9f7b-262e2e516918.");
+#endif
+                }
 
-//                void PadToNextMultipleOf(int numberOfBytes)
-//                {
-//                    var m = (int)(s.Position % numberOfBytes);
-//                    if (m > 0)
-//                    {
-//                        var size = numberOfBytes - m;
-//                        var buffer = new byte[size];
-//                        s.Write(buffer, 0, size);
-//                    }
-//                }
+                void PadToNextMultipleOf(int numberOfBytes)
+                {
+                    var m = (int)(s.Position % numberOfBytes);
+                    if (m > 0)
+                    {
+                        var size = numberOfBytes - m;
+                        var buffer = new byte[size];
+                        s.Write(buffer, 0, size);
+                    }
+                }
 
-//            };
+            };
 
-        //private static readonly Action<BinaryWriter, object> EncodeDurableMap8WithoutHeader =
-        //    CreateEncodeDurableMapAlignedWithoutHeader(8);
+        private static readonly Action<BinaryWriter, object> EncodeDurableMap8WithoutHeader =
+            CreateEncodeDurableMapAlignedWithoutHeader(8);
 
-        //private static readonly Action<BinaryWriter, object> EncodeDurableMap16WithoutHeader =
-        //    CreateEncodeDurableMapAlignedWithoutHeader(16);
+        private static readonly Action<BinaryWriter, object> EncodeDurableMap16WithoutHeader =
+            CreateEncodeDurableMapAlignedWithoutHeader(16);
 
-#endregion
+        #endregion
 
-#region DurableNamedMap
+        #region DurableNamedMap
 
         //private static void EncodeDurableNamedMapEntry(BinaryWriter stream, string name, Durable.Def def, object x)
         //{
@@ -197,27 +197,27 @@ namespace Aardvark.Data
         //private static readonly Action<BinaryWriter, object> EncodeDurableNamedMap16WithoutHeader =
         //    CreateEncodeDurableNamedMapAlignedWithoutHeader(16);
 
-#endregion
+        #endregion
 
 
-        //private static readonly Action<BinaryWriter, object> EncodeGZipped =
-        //    (s, o) =>
-        //    {
-        //        var gzipped = (DurableGZipped)o;
-        //        using var ms = new MemoryStream();
-        //        using var bw = new BinaryWriter(ms);
-        //        EncodeGuid(bw, gzipped.Def.Id);
-        //        EncodeWithoutTypeForPrimitives(bw, gzipped.Def, gzipped.Value);
-        //        bw.Flush();
+        private static readonly Action<BinaryWriter, object> EncodeGZipped =
+            (s, o) =>
+            {
+                var gzipped = (DurableGZipped)o;
+                using var ms = new MemoryStream();
+                using var bw = new BinaryWriter(ms);
+                EncodeGuid(bw, gzipped.Def.Id);
+                EncodeWithoutTypeForPrimitives(bw, gzipped.Def, gzipped.Value);
+                bw.Flush();
 
-        //        var buffer = ms.ToArray();
-        //        var bufferDebug = string.Join(", ", buffer.Map(x => x.ToString()));
+                var buffer = ms.ToArray();
+                var bufferDebug = string.Join(", ", buffer.Map(x => x.ToString()));
 
-        //        var bufferGZipped = buffer.Gzip();
-        //        s.Write(buffer.Length);
-        //        s.Write(bufferGZipped.Length);
-        //        s.Write(bufferGZipped, 0, bufferGZipped.Length);
-        //    };
+                var bufferGZipped = buffer.Gzip();
+                s.Write(buffer.Length);
+                s.Write(bufferGZipped.Length);
+                s.Write(bufferGZipped, 0, bufferGZipped.Length);
+            };
 
 
         private static readonly Action<BinaryWriter, object> EncodeUnit = (s, o) => { };
@@ -432,59 +432,59 @@ namespace Aardvark.Data
                 return ImmutableDictionary.CreateRange(entries);
             };
 
-//        private static Func<BinaryReader, object> CreateDecodeDurableMapAlignedWithoutHeader(int alignmentInBytes)
-//            => br =>
-//            {
-//                var s = br.BaseStream;
+        private static Func<BinaryReader, object> CreateDecodeDurableMapAlignedWithoutHeader(int alignmentInBytes)
+            => br =>
+            {
+                var s = br.BaseStream;
 
-//                var count = br.ReadInt32();
-//                SkipToNextMultipleOf(s, alignmentInBytes);
-//#if DEBUG
-//                if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant a28bd69e-9807-4a66-971c-c3cfa46eebad.");
-//#endif
+                var count = br.ReadInt32();
+                SkipToNextMultipleOf(s, alignmentInBytes);
+#if DEBUG
+                if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant a28bd69e-9807-4a66-971c-c3cfa46eebad.");
+#endif
 
-//                var map = ImmutableDictionary<Durable.Def, object>.Empty;
-//                for (var i = 0; i < count; i++)
-//                {
-//                    var (def, o) = Decode(br);
-//                    map = map.Add(def, o);
-//                    SkipToNextMultipleOf(s, alignmentInBytes);
-//#if DEBUG
-//                    if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant 078e73a4-b743-46f5-acc2-79c22e9a1d89.");
-//#endif
-//                }
-//                return map;
+                var map = ImmutableDictionary<Durable.Def, object>.Empty;
+                for (var i = 0; i < count; i++)
+                {
+                    var (def, o) = Decode(br);
+                    map = map.Add(def, o);
+                    SkipToNextMultipleOf(s, alignmentInBytes);
+#if DEBUG
+                    if (s.Position % alignmentInBytes != 0) throw new Exception("Invariant 078e73a4-b743-46f5-acc2-79c22e9a1d89.");
+#endif
+                }
+                return map;
 
-//                static void SkipToNextMultipleOf(Stream s, int numberOfBytes)
-//                {
-//                    var m = (int)(s.Position % numberOfBytes);
-//                    if (m > 0) s.Seek(numberOfBytes - m, SeekOrigin.Current);
-//                }
-//            };
+                static void SkipToNextMultipleOf(Stream s, int numberOfBytes)
+                {
+                    var m = (int)(s.Position % numberOfBytes);
+                    if (m > 0) s.Seek(numberOfBytes - m, SeekOrigin.Current);
+                }
+            };
 
-//        private static readonly Func<BinaryReader, object> DecodeDurableMap8WithoutHeader =
-//            CreateDecodeDurableMapAlignedWithoutHeader(8);
+        private static readonly Func<BinaryReader, object> DecodeDurableMap8WithoutHeader =
+            CreateDecodeDurableMapAlignedWithoutHeader(8);
 
-//        private static readonly Func<BinaryReader, object> DecodeDurableMap16WithoutHeader =
-//            CreateDecodeDurableMapAlignedWithoutHeader(16);
+        private static readonly Func<BinaryReader, object> DecodeDurableMap16WithoutHeader =
+            CreateDecodeDurableMapAlignedWithoutHeader(16);
 
-#endregion
+        #endregion
 
-#region NamedNamedMap
+        #region NamedNamedMap
 
-        //private static readonly Func<BinaryReader, object> DecodeDurableNamedMapWithoutHeader =
-        //    s =>
-        //    {
-        //        var count = s.ReadInt32();
-        //        var entries = new KeyValuePair<string, (Durable.Def key, object value)>[count];
-        //        for (var i = 0; i < count; i++)
-        //        {
-        //            var name = (string)DecodeStringUtf8(s);
-        //            var e = Decode(s);
-        //            entries[i] = new KeyValuePair<string, (Durable.Def key, object value)>(name, (e.Item1, e.Item2));
-        //        }
-        //        return ImmutableDictionary.CreateRange(entries);
-        //    };
+        private static readonly Func<BinaryReader, object> DecodeDurableNamedMapWithoutHeader =
+            s =>
+            {
+                var count = s.ReadInt32();
+                var entries = new KeyValuePair<string, (Durable.Def key, object value)>[count];
+                for (var i = 0; i < count; i++)
+                {
+                    var name = (string)DecodeStringUtf8(s);
+                    var e = Decode(s);
+                    entries[i] = new KeyValuePair<string, (Durable.Def key, object value)>(name, (e.Item1, e.Item2));
+                }
+                return ImmutableDictionary.CreateRange(entries);
+            };
 
         private static Func<BinaryReader, object> CreateDecodeDurableNamedMapAlignedWithoutHeader(int alignmentInBytes)
             => br =>
@@ -521,29 +521,29 @@ namespace Aardvark.Data
         private static readonly Func<BinaryReader, object> DecodeDurableNamedMap4WithoutHeader =
             CreateDecodeDurableNamedMapAlignedWithoutHeader(4);
 
-        //private static readonly Func<BinaryReader, object> DecodeDurableNamedMap8WithoutHeader =
-        //    CreateDecodeDurableNamedMapAlignedWithoutHeader(8);
+        private static readonly Func<BinaryReader, object> DecodeDurableNamedMap8WithoutHeader =
+            CreateDecodeDurableNamedMapAlignedWithoutHeader(8);
 
-        //private static readonly Func<BinaryReader, object> DecodeDurableNamedMap16WithoutHeader =
-        //    CreateDecodeDurableNamedMapAlignedWithoutHeader(16);
+        private static readonly Func<BinaryReader, object> DecodeDurableNamedMap16WithoutHeader =
+            CreateDecodeDurableNamedMapAlignedWithoutHeader(16);
 
-#endregion
+        #endregion
 
-        //private static readonly Func<BinaryReader, object> DecodeGZipped =
-        //    s =>
-        //    {
-        //        var uncompressedBufferSize = s.ReadInt32();
-        //        var compressedBufferSize = s.ReadInt32();
-        //        var compressedBuffer = s.ReadBytes(compressedBufferSize);
+        private static readonly Func<BinaryReader, object> DecodeGZipped =
+            s =>
+            {
+                var uncompressedBufferSize = s.ReadInt32();
+                var compressedBufferSize = s.ReadInt32();
+                var compressedBuffer = s.ReadBytes(compressedBufferSize);
 
-        //        var uncompressedBuffer = compressedBuffer.Ungzip(uncompressedBufferSize);
+                var uncompressedBuffer = compressedBuffer.Ungzip(uncompressedBufferSize);
 
-        //        using var ms = new MemoryStream(uncompressedBuffer);
-        //        using var br = new BinaryReader(ms);
+                using var ms = new MemoryStream(uncompressedBuffer);
+                using var br = new BinaryReader(ms);
 
-        //        var (def, o) = Decode(br);
-        //        return new DurableGZipped(def, o);
-        //    };
+                var (def, o) = Decode(br);
+                return new DurableGZipped(def, o);
+            };
 
         private static readonly Func<BinaryReader, object> DecodeUnit = s => null;
 
@@ -813,61 +813,61 @@ namespace Aardvark.Data
             EncodeWithoutTypeForPrimitives(bw, Durable.Primitives.DurableMap, durableMap);
         }
 
-        ///// <summary>
-        ///// Serialize DurableMap to byte array. 
-        ///// Can be deserialized with DeserializeDurableMap.
-        ///// </summary>
-        //public static byte[] SerializeDurableMapAligned8(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
-        //{
-        //    using var ms = new MemoryStream();
-        //    using var bw = new BinaryWriter(ms);
-        //    EncodeGuid(bw, Durable.Primitives.DurableMap.Id);
-        //    EncodeWithoutTypeForPrimitives(bw, Durable.Primitives.DurableMapAligned8, durableMap);
-        //    bw.Flush();
-        //    return ms.ToArray();
-        //}
+        /// <summary>
+        /// Serialize DurableMap to byte array. 
+        /// Can be deserialized with DeserializeDurableMap.
+        /// </summary>
+        public static byte[] SerializeDurableMapAligned8(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        {
+            using var ms = new MemoryStream();
+            using var bw = new BinaryWriter(ms);
+            EncodeGuid(bw, Durable.Primitives.DurableMap.Id);
+            EncodeWithoutTypeForPrimitives(bw, Durable.Primitives.DurableMapAligned8, durableMap);
+            bw.Flush();
+            return ms.ToArray();
+        }
 
-        ///// <summary>
-        ///// Serialize DurableMap to stream. 
-        ///// Can be deserialized with DeserializeDurableMap.
-        ///// </summary>
-        //public static void SerializeDurableMapAligned8(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
-        //{
-        //    var bw = new BinaryWriter(stream);
-        //    EncodeGuid(bw, Durable.Primitives.DurableMap.Id);
-        //    EncodeWithoutTypeForPrimitives(bw, Durable.Primitives.DurableMapAligned8, durableMap);
-        //}
+        /// <summary>
+        /// Serialize DurableMap to stream. 
+        /// Can be deserialized with DeserializeDurableMap.
+        /// </summary>
+        public static void SerializeDurableMapAligned8(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        {
+            var bw = new BinaryWriter(stream);
+            EncodeGuid(bw, Durable.Primitives.DurableMap.Id);
+            EncodeWithoutTypeForPrimitives(bw, Durable.Primitives.DurableMapAligned8, durableMap);
+        }
 
-        ///// <summary>
-        ///// Serialize DurableMap to byte array. 
-        ///// Can be deserialized with DeserializeDurableMap.
-        ///// </summary>
-        //public static byte[] SerializeDurableMapAligned16(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
-        //{
-        //    using var ms = new MemoryStream();
-        //    using var bw = new BinaryWriter(ms);
-        //    EncodeGuid(bw, Durable.Primitives.DurableMap.Id);
-        //    EncodeWithoutTypeForPrimitives(bw, Durable.Primitives.DurableMapAligned16, durableMap);
-        //    return ms.ToArray();
-        //}
+        /// <summary>
+        /// Serialize DurableMap to byte array. 
+        /// Can be deserialized with DeserializeDurableMap.
+        /// </summary>
+        public static byte[] SerializeDurableMapAligned16(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        {
+            using var ms = new MemoryStream();
+            using var bw = new BinaryWriter(ms);
+            EncodeGuid(bw, Durable.Primitives.DurableMap.Id);
+            EncodeWithoutTypeForPrimitives(bw, Durable.Primitives.DurableMapAligned16, durableMap);
+            return ms.ToArray();
+        }
 
-        ///// <summary>
-        ///// Serialize DurableMap to stream. 
-        ///// Can be deserialized with DeserializeDurableMap.
-        ///// </summary>
-        //public static void SerializeDurableMapAligned16(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
-        //{
-        //    var bw = new BinaryWriter(stream);
-        //    EncodeGuid(bw, Durable.Primitives.DurableMap.Id);
-        //    EncodeWithoutTypeForPrimitives(bw, Durable.Primitives.DurableMapAligned16, durableMap);
-        //}
+        /// <summary>
+        /// Serialize DurableMap to stream. 
+        /// Can be deserialized with DeserializeDurableMap.
+        /// </summary>
+        public static void SerializeDurableMapAligned16(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
+        {
+            var bw = new BinaryWriter(stream);
+            EncodeGuid(bw, Durable.Primitives.DurableMap.Id);
+            EncodeWithoutTypeForPrimitives(bw, Durable.Primitives.DurableMapAligned16, durableMap);
+        }
 
 
         private static IDictionary<Durable.Def, object> DeserializeDurableMapHelper((Durable.Def def, object obj) x)
         {
-            if (x.def == Durable.Primitives.DurableMap
-                //x.def == Durable.Primitives.DurableMapAligned8 ||
-                //x.def == Durable.Primitives.DurableMapAligned16
+            if (x.def == Durable.Primitives.DurableMap ||
+                x.def == Durable.Primitives.DurableMapAligned8 ||
+                x.def == Durable.Primitives.DurableMapAligned16
                 )
             {
                 return (IDictionary<Durable.Def, object>)x.obj;

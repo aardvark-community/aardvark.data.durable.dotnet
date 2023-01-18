@@ -74,9 +74,9 @@ namespace Aardvark.Data
                 [Durable.Primitives.Unit.Id] = EncodeUnit,
 
                 [Durable.Primitives.DurableMap.Id] = EncodeDurableMapWithoutHeader,
-                //[Durable.Primitives.DurableMapAligned8.Id] = EncodeDurableMap8WithoutHeader,
-                //[Durable.Primitives.DurableMapAligned16.Id] = EncodeDurableMap16WithoutHeader,
-                //[Durable.Primitives.GZipped.Id] = EncodeGZipped,
+                [Durable.Primitives.DurableMapAligned8.Id] = EncodeDurableMap8WithoutHeader,
+                [Durable.Primitives.DurableMapAligned16.Id] = EncodeDurableMap16WithoutHeader,
+                [Durable.Primitives.GZippedDeprecated20221021.Id] = EncodeGZipped,
 
                 [Durable.Primitives.DurableNamedMapDeprecated20221021.Id] = EncodeDurableNamedMap4WithoutHeader,
 
@@ -145,9 +145,9 @@ namespace Aardvark.Data
                 [Durable.Primitives.Unit.Id] = DecodeUnit,
 
                 [Durable.Primitives.DurableMap.Id] = DecodeDurableMapWithoutHeader,
-                //[Durable.Primitives.DurableMapAligned8.Id] = DecodeDurableMap8WithoutHeader,
-                //[Durable.Primitives.DurableMapAligned16.Id] = DecodeDurableMap16WithoutHeader,
-                //[Durable.Primitives.GZipped.Id] = DecodeGZipped,
+                [Durable.Primitives.DurableMapAligned8.Id] = DecodeDurableMap8WithoutHeader,
+                [Durable.Primitives.DurableMapAligned16.Id] = DecodeDurableMap16WithoutHeader,
+                [Durable.Primitives.GZippedDeprecated20221021.Id] = DecodeGZipped,
 
                 [Durable.Primitives.DurableNamedMapDeprecated20221021.Id] = DecodeDurableNamedMap4WithoutHeader,
 
