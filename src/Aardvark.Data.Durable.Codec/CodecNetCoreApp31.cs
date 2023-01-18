@@ -838,6 +838,7 @@ namespace Aardvark.Data
         /// Serialize DurableMap to byte array. 
         /// Can be deserialized with DeserializeDurableMap.
         /// </summary>
+        [Obsolete]
         public static byte[] SerializeDurableMapAligned8(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
         {
             using var ms = new MemoryStream();
@@ -850,6 +851,7 @@ namespace Aardvark.Data
         /// Serialize DurableMap to stream. 
         /// Can be deserialized with DeserializeDurableMap.
         /// </summary>
+        [Obsolete]
         public static void SerializeDurableMapAligned8(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
         {
             EncodeGuid(stream, Durable.Primitives.DurableMap.Id);
@@ -860,6 +862,7 @@ namespace Aardvark.Data
         /// Serialize DurableMap to byte array. 
         /// Can be deserialized with DeserializeDurableMap.
         /// </summary>
+        [Obsolete]
         public static byte[] SerializeDurableMapAligned16(IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
         {
             using var ms = new MemoryStream();
@@ -872,6 +875,7 @@ namespace Aardvark.Data
         /// Serialize DurableMap to stream. 
         /// Can be deserialized with DeserializeDurableMap.
         /// </summary>
+        [Obsolete]
         public static void SerializeDurableMapAligned16(Stream stream, IEnumerable<KeyValuePair<Durable.Def, object>> durableMap)
         {
             EncodeGuid(stream, Durable.Primitives.DurableMap.Id);
@@ -882,8 +886,10 @@ namespace Aardvark.Data
         private static IDictionary<Durable.Def, object> DeserializeDurableMapHelper((Durable.Def def, object obj) x)
         {
             if (x.def == Durable.Primitives.DurableMap ||
+#pragma warning disable CS0618 // Type or member is obsolete
                 x.def == Durable.Primitives.DurableMapAligned8 ||
                 x.def == Durable.Primitives.DurableMapAligned16
+#pragma warning restore CS0618 // Type or member is obsolete
                 )
             {
                 return (IDictionary<Durable.Def, object>)x.obj;

@@ -68,6 +68,7 @@ public static partial class Durable
         /// <summary>
         /// A map of key/value pairs, where keys are durable IDs with values of corresponding types. Entries are 8-byte aligned.
         /// </summary>
+        [Obsolete("Deprecated 2022-10-21.")]
         public static readonly Def DurableMapAligned8 = new(
             new Guid("6780296f-c30a-4eba-806f-d07d84c7a5bc"),
             "DurableMapAligned8",
@@ -79,6 +80,7 @@ public static partial class Durable
         /// <summary>
         /// A map of key/value pairs, where keys are durable IDs with values of corresponding types. Entries are 16-byte aligned.
         /// </summary>
+        [Obsolete("Deprecated 2022-10-21.")]
         public static readonly Def DurableMapAligned16 = new(
             new Guid("0ca48518-96b9-424f-b146-046ac3c8ed10"),
             "DurableMapAligned16",
@@ -86,28 +88,6 @@ public static partial class Durable
             None,
             false
             );
-
-        /// <summary>
-        /// A map of name/key/value entries, where names are strings, keys are durable IDs (Guid) with values of corresponding types. All names, keys, and values are 4-byte aligned.
-        /// </summary>
-        public static readonly Def DurableNamedMap = new(
-            new Guid("29de4f2f-90da-49ff-902c-3315e29457c9"),
-            "DurableNamedMap",
-            "A map of name/key/value entries, where names are strings, keys are durable IDs (Guid) with values of corresponding types. All names, keys, and values are 4-byte aligned.",
-            None,
-            false
-            );
-
-        ///// <summary>
-        ///// A gzipped element.
-        ///// </summary>
-        //public static readonly Def GZipped = new(
-        //    new Guid("7d8fc4c0-d727-4171-bc91-78f92f0c1aa4"),
-        //    "GZipped",
-        //    "A gzipped element.",
-        //    None,
-        //    false
-        //    );
 
         /// <summary>
         /// Globally unique identifier (GUID, 16 bytes). https://tools.ietf.org/html/rfc4122.
@@ -7440,6 +7420,105 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Subnode byte ranges inside multi-node blob as array offset/size pairs. In ADDITION to Octree.Subnodes[Guids|Strings]. Array length is 16 (8x Int64 pair) for inner nodes (where (0L, 0L) means no subnode) and no array for leaf nodes. Int64[16].
+        /// </summary>
+        public static readonly Def SubnodesByteRanges = new(
+            new Guid("8818ce56-4429-4661-bac2-14e55d4d1f41"),
+            "Octree.Subnodes.ByteRanges",
+            "Octree. Subnode byte ranges inside multi-node blob as array offset/size pairs. In ADDITION to Octree.Subnodes[Guids|Strings]. Array length is 16 (8x Int64 pair) for inner nodes (where (0L, 0L) means no subnode) and no array for leaf nodes. Int64[16].",
+            Primitives.Int64Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Subnode byte ranges inside multi-node blob as array offset/size pairs. In ADDITION to Octree.Subnodes[Guids|Strings]. Array length is 16 (8x Int64 pair) for inner nodes (where (0L, 0L) means no subnode) and no array for leaf nodes. Int64[16]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def SubnodesByteRangesGz = new(
+            new Guid("9fb1c153-cf26-8a22-bf3d-0291119a03fa"),
+            "Octree.Subnodes.ByteRanges.gz",
+            "Octree. Subnode byte ranges inside multi-node blob as array offset/size pairs. In ADDITION to Octree.Subnodes[Guids|Strings]. Array length is 16 (8x Int64 pair) for inner nodes (where (0L, 0L) means no subnode) and no array for leaf nodes. Int64[16]. Compressed (GZip).",
+            Primitives.Int64ArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Subnode byte ranges inside multi-node blob as array offset/size pairs. In ADDITION to Octree.Subnodes[Guids|Strings]. Array length is 16 (8x Int64 pair) for inner nodes (where (0L, 0L) means no subnode) and no array for leaf nodes. Int64[16]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def SubnodesByteRangesLz4 = new(
+            new Guid("7eb0a930-2f76-f533-7a6a-113796d93cde"),
+            "Octree.Subnodes.ByteRanges.lz4",
+            "Octree. Subnode byte ranges inside multi-node blob as array offset/size pairs. In ADDITION to Octree.Subnodes[Guids|Strings]. Array length is 16 (8x Int64 pair) for inner nodes (where (0L, 0L) means no subnode) and no array for leaf nodes. Int64[16]. Compressed (LZ4).",
+            Primitives.Int64ArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Byte range inside multi-node blob as offset/size pair. In ADDITION to Octree.NodeId[String]. Array length is 2 (Int64 pair) and no array for non-multi-node blob. Int64[2].
+        /// </summary>
+        public static readonly Def NodeByteRange = new(
+            new Guid("9814aafe-bb6c-4b28-b375-23435e879e87"),
+            "Octree.NodeByteRange",
+            "Octree. Byte range inside multi-node blob as offset/size pair. In ADDITION to Octree.NodeId[String]. Array length is 2 (Int64 pair) and no array for non-multi-node blob. Int64[2].",
+            Primitives.Int64Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Byte range inside multi-node blob as offset/size pair. In ADDITION to Octree.NodeId[String]. Array length is 2 (Int64 pair) and no array for non-multi-node blob. Int64[2]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def NodeByteRangeGz = new(
+            new Guid("5cd7c37d-4e2b-2042-c113-dd285b4eba4b"),
+            "Octree.NodeByteRange.gz",
+            "Octree. Byte range inside multi-node blob as offset/size pair. In ADDITION to Octree.NodeId[String]. Array length is 2 (Int64 pair) and no array for non-multi-node blob. Int64[2]. Compressed (GZip).",
+            Primitives.Int64ArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Byte range inside multi-node blob as offset/size pair. In ADDITION to Octree.NodeId[String]. Array length is 2 (Int64 pair) and no array for non-multi-node blob. Int64[2]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def NodeByteRangeLz4 = new(
+            new Guid("75053ce1-6d58-3f4a-2e83-9a4ff0160733"),
+            "Octree.NodeByteRange.lz4",
+            "Octree. Byte range inside multi-node blob as offset/size pair. In ADDITION to Octree.NodeId[String]. Array length is 2 (Int64 pair) and no array for non-multi-node blob. Int64[2]. Compressed (LZ4).",
+            Primitives.Int64ArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Octree nodes stored in level order (multi-node blob). Uint8[].
+        /// </summary>
+        public static readonly Def MultiNodeBlob = new(
+            new Guid("ef8539ab-58c2-4982-8313-3b5bbc871d54"),
+            "Octree.MultiNodeBlob",
+            "Octree. Octree nodes stored in level order (multi-node blob). Uint8[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Octree nodes stored in level order (multi-node blob). Uint8[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def MultiNodeBlobGz = new(
+            new Guid("da046065-e7f0-763c-d7f3-d0be48bb247f"),
+            "Octree.MultiNodeBlob.gz",
+            "Octree. Octree nodes stored in level order (multi-node blob). Uint8[]. Compressed (GZip).",
+            Primitives.UInt8ArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Octree nodes stored in level order (multi-node blob). Uint8[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def MultiNodeBlobLz4 = new(
+            new Guid("2816e3ed-47f1-870a-d7e5-12eb54aa289b"),
+            "Octree.MultiNodeBlob.lz4",
+            "Octree. Octree nodes stored in level order (multi-node blob). Uint8[]. Compressed (LZ4).",
+            Primitives.UInt8ArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
         /// Octree. Exact bounding box of this tree's positions. Global space. Box3d.
         /// </summary>
         public static readonly Def BoundingBoxExactGlobal = new(
@@ -8892,6 +8971,39 @@ public static partial class Durable
             "Octree. Range of classification values. Range1i.",
             Aardvark.Range1i.Id,
             false
+            );
+
+        /// <summary>
+        /// Octree. Per-point classifications histogram. [value_0, count_0, ... value_n, count_n]. Int64[].
+        /// </summary>
+        public static readonly Def ClassificationsHistogram = new(
+            new Guid("ecada344-5cc2-497f-9078-3d80559ba08c"),
+            "Octree.Classifications.Histogram",
+            "Octree. Per-point classifications histogram. [value_0, count_0, ... value_n, count_n]. Int64[].",
+            Primitives.Int64Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point classifications histogram. [value_0, count_0, ... value_n, count_n]. Int64[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def ClassificationsHistogramGz = new(
+            new Guid("9089d380-53c3-55b7-2c73-1611321831d2"),
+            "Octree.Classifications.Histogram.gz",
+            "Octree. Per-point classifications histogram. [value_0, count_0, ... value_n, count_n]. Int64[]. Compressed (GZip).",
+            Primitives.Int64ArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point classifications histogram. [value_0, count_0, ... value_n, count_n]. Int64[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def ClassificationsHistogramLz4 = new(
+            new Guid("cfe35b99-e0ec-c631-1dbc-ecda6fca5e85"),
+            "Octree.Classifications.Histogram.lz4",
+            "Octree. Per-point classifications histogram. [value_0, count_0, ... value_n, count_n]. Int64[]. Compressed (LZ4).",
+            Primitives.Int64ArrayLz4.Id,
+            true
             );
 
         /// <summary>

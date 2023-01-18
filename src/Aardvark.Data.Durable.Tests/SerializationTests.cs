@@ -921,6 +921,7 @@ namespace Aardvark.Data.Tests
         }
 
         [Fact]
+        [Obsolete]
         public void Primitive_DurableMapAligned8()
         {
             var id = Guid.NewGuid();
@@ -960,6 +961,7 @@ namespace Aardvark.Data.Tests
         }
 
         [Fact]
+        [Obsolete]
         public void Primitive_DurableMapAligned16()
         {
             var id = Guid.NewGuid();
