@@ -1,7 +1,7 @@
 ﻿(*
     MIT License
 
-    Copyright (c) 2019-2022 Aardworx GmbH (https://aardworx.at). All rights reserved.
+    Copyright (c) 2019-2023 Aardworx GmbH (https://aardworx.at). All rights reserved.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -169,12 +169,12 @@ module Codegen =
             
             // gz
             let gzLetName = e.LetName + "Gz"
-            let gzId = hashGuid gzLetName
+            let gzId = hashGuid (if e.Category = "Octree" then gzLetName else e.Category + "." + gzLetName)
             let gzEntry = { e with Id = gzId; LetName = gzLetName; Name = e.Name + ".gz"; Description = e.Description + " Compressed (GZip)." }
 
             // lz4
             let lz4LetName = e.LetName + "Lz4"
-            let lz4Id = hashGuid lz4LetName
+            let lz4Id = hashGuid (if e.Category = "Octree" then lz4LetName else e.Category + "." + lz4LetName)
             let lz4Entry = { e with Id = lz4Id; LetName = lz4LetName; Name = e.Name + ".lz4"; Description = e.Description + " Compressed (LZ4)." }
 
             if rawType = "None" then
@@ -191,7 +191,7 @@ module Codegen =
     let header = """/*
     MIT License
 
-    Copyright (c) 2019-2022 Aardworx GmbH (https://aardworx.at). All rights reserved.
+    Copyright (c) 2019-2023 Aardworx GmbH (https://aardworx.at). All rights reserved.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal

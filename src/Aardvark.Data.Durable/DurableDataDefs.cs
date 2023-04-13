@@ -1,7 +1,7 @@
 /*
     MIT License
 
-    Copyright (c) 2019-2022 Aardworx GmbH (https://aardworx.at). All rights reserved.
+    Copyright (c) 2019-2023 Aardworx GmbH (https://aardworx.at). All rights reserved.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -115,7 +115,7 @@ public static partial class Durable
         /// Array of globally unique identifiers (GUID, 16 bytes). https://tools.ietf.org/html/rfc4122. Compressed (GZip).
         /// </summary>
         public static readonly Def GuidArrayGz = new(
-            new Guid("7db82ecc-101b-41ff-0d96-8c54e07903c9"),
+            new Guid("65112063-17a4-c3dd-e73e-08c647dda6a1"),
             "Guid[].gz",
             "Array of globally unique identifiers (GUID, 16 bytes). https://tools.ietf.org/html/rfc4122. Compressed (GZip).",
             None,
@@ -126,7 +126,7 @@ public static partial class Durable
         /// Array of globally unique identifiers (GUID, 16 bytes). https://tools.ietf.org/html/rfc4122. Compressed (LZ4).
         /// </summary>
         public static readonly Def GuidArrayLz4 = new(
-            new Guid("4ae35d11-7a0e-882b-5a46-9e454c04a149"),
+            new Guid("21f5a16c-12cd-d720-d491-5d5d26465e85"),
             "Guid[].lz4",
             "Array of globally unique identifiers (GUID, 16 bytes). https://tools.ietf.org/html/rfc4122. Compressed (LZ4).",
             None,
@@ -159,7 +159,7 @@ public static partial class Durable
         /// Array of signed 8-bit integers. 2-complement. Compressed (GZip).
         /// </summary>
         public static readonly Def Int8ArrayGz = new(
-            new Guid("4df62b4d-c148-7828-2025-2705f3245c55"),
+            new Guid("dbf37354-f577-c991-5f5a-479f17749eb4"),
             "Int8[].gz",
             "Array of signed 8-bit integers. 2-complement. Compressed (GZip).",
             None,
@@ -170,7 +170,7 @@ public static partial class Durable
         /// Array of signed 8-bit integers. 2-complement. Compressed (LZ4).
         /// </summary>
         public static readonly Def Int8ArrayLz4 = new(
-            new Guid("8c7d47ec-a572-28e3-b54b-990a757177ba"),
+            new Guid("cee39ff6-a46e-5b99-3f1a-21664c1b76b0"),
             "Int8[].lz4",
             "Array of signed 8-bit integers. 2-complement. Compressed (LZ4).",
             None,
@@ -203,7 +203,7 @@ public static partial class Durable
         /// Array of unsigned 8-bit integers. Compressed (GZip).
         /// </summary>
         public static readonly Def UInt8ArrayGz = new(
-            new Guid("92a17d5a-a787-3f40-e3e6-7a6cd0b0e825"),
+            new Guid("6260fd4d-c8a5-716d-43bc-42719a1dbb68"),
             "UInt8[].gz",
             "Array of unsigned 8-bit integers. Compressed (GZip).",
             None,
@@ -214,7 +214,7 @@ public static partial class Durable
         /// Array of unsigned 8-bit integers. Compressed (LZ4).
         /// </summary>
         public static readonly Def UInt8ArrayLz4 = new(
-            new Guid("b8d1407a-2fd8-1906-9a52-2811a96064aa"),
+            new Guid("dbd687aa-e59e-7e80-c153-89b097f465ba"),
             "UInt8[].lz4",
             "Array of unsigned 8-bit integers. Compressed (LZ4).",
             None,
@@ -247,7 +247,7 @@ public static partial class Durable
         /// Array of signed 16-bit integers. 2-complement. Compressed (GZip).
         /// </summary>
         public static readonly Def Int16ArrayGz = new(
-            new Guid("93d126ab-033e-9d94-0fb1-909c8c97d2fb"),
+            new Guid("cc23a924-f2d0-d073-b325-c09daae67f81"),
             "Int16[].gz",
             "Array of signed 16-bit integers. 2-complement. Compressed (GZip).",
             None,
@@ -258,7 +258,7 @@ public static partial class Durable
         /// Array of signed 16-bit integers. 2-complement. Compressed (LZ4).
         /// </summary>
         public static readonly Def Int16ArrayLz4 = new(
-            new Guid("42dc162f-63ff-6652-ac51-1c0f021d1b0e"),
+            new Guid("b1c8a452-438a-57af-0ee3-ac661d6941a1"),
             "Int16[].lz4",
             "Array of signed 16-bit integers. 2-complement. Compressed (LZ4).",
             None,
@@ -291,7 +291,7 @@ public static partial class Durable
         /// Array of unsigned 16-bit integers. Compressed (GZip).
         /// </summary>
         public static readonly Def UInt16ArrayGz = new(
-            new Guid("189f0dc6-021d-0b49-cf6b-eb3b535fb01a"),
+            new Guid("c598e137-3c25-d230-d5f5-15c79903a506"),
             "UInt16[].gz",
             "Array of unsigned 16-bit integers. Compressed (GZip).",
             None,
@@ -302,7 +302,7 @@ public static partial class Durable
         /// Array of unsigned 16-bit integers. Compressed (LZ4).
         /// </summary>
         public static readonly Def UInt16ArrayLz4 = new(
-            new Guid("ae392484-e170-88f4-dff9-3928c351d5d3"),
+            new Guid("4562e023-d2fb-4854-5a55-9c7d9c3d0ba8"),
             "UInt16[].lz4",
             "Array of unsigned 16-bit integers. Compressed (LZ4).",
             None,
@@ -335,7 +335,7 @@ public static partial class Durable
         /// Array of signed 32-bit integers. 2-complement. Compressed (GZip).
         /// </summary>
         public static readonly Def Int32ArrayGz = new(
-            new Guid("decdc940-a8ee-758c-23b6-dcec279a2991"),
+            new Guid("65a62265-8e1d-ecbf-1fce-4b8b1ed23764"),
             "Int32[].gz",
             "Array of signed 32-bit integers. 2-complement. Compressed (GZip).",
             None,
@@ -346,7 +346,7 @@ public static partial class Durable
         /// Array of signed 32-bit integers. 2-complement. Compressed (LZ4).
         /// </summary>
         public static readonly Def Int32ArrayLz4 = new(
-            new Guid("23ec5ec5-7580-983e-fb31-90cc6dc92de8"),
+            new Guid("58d68af0-df76-f3c2-16fe-4eb8cf585946"),
             "Int32[].lz4",
             "Array of signed 32-bit integers. 2-complement. Compressed (LZ4).",
             None,
@@ -379,7 +379,7 @@ public static partial class Durable
         /// Array of unsigned 32-bit integers. Compressed (GZip).
         /// </summary>
         public static readonly Def UInt32ArrayGz = new(
-            new Guid("5099ee82-1c60-eaa7-52a5-9812f424d6b0"),
+            new Guid("3c3a03e0-94a6-489b-fe9c-b258081db7b8"),
             "UInt32[].gz",
             "Array of unsigned 32-bit integers. Compressed (GZip).",
             None,
@@ -390,7 +390,7 @@ public static partial class Durable
         /// Array of unsigned 32-bit integers. Compressed (LZ4).
         /// </summary>
         public static readonly Def UInt32ArrayLz4 = new(
-            new Guid("832d8f67-4906-8c15-eb10-2518442b8eea"),
+            new Guid("cee153e6-f7fd-4628-17b9-ffaf9004e03a"),
             "UInt32[].lz4",
             "Array of unsigned 32-bit integers. Compressed (LZ4).",
             None,
@@ -423,7 +423,7 @@ public static partial class Durable
         /// Array of signed 64-bit integers. 2-complement. Compressed (GZip).
         /// </summary>
         public static readonly Def Int64ArrayGz = new(
-            new Guid("2a8f676d-30d5-fd7c-e7f9-e440d633b40d"),
+            new Guid("b6591340-128e-3b59-e28c-2dd6d0fb9684"),
             "Int64[].gz",
             "Array of signed 64-bit integers. 2-complement. Compressed (GZip).",
             None,
@@ -434,7 +434,7 @@ public static partial class Durable
         /// Array of signed 64-bit integers. 2-complement. Compressed (LZ4).
         /// </summary>
         public static readonly Def Int64ArrayLz4 = new(
-            new Guid("920ed97a-fb10-2f1d-bc2a-e301b789a514"),
+            new Guid("cc10eeb4-a6b0-ada3-1b01-3f00d0d925b4"),
             "Int64[].lz4",
             "Array of signed 64-bit integers. 2-complement. Compressed (LZ4).",
             None,
@@ -467,7 +467,7 @@ public static partial class Durable
         /// Array of unsigned 64-bit integers. Compressed (GZip).
         /// </summary>
         public static readonly Def UInt64ArrayGz = new(
-            new Guid("d40f7076-5a97-aae3-e83b-63413141472f"),
+            new Guid("06a4f9eb-f175-b720-d993-4394cebeb4ce"),
             "UInt64[].gz",
             "Array of unsigned 64-bit integers. Compressed (GZip).",
             None,
@@ -478,7 +478,7 @@ public static partial class Durable
         /// Array of unsigned 64-bit integers. Compressed (LZ4).
         /// </summary>
         public static readonly Def UInt64ArrayLz4 = new(
-            new Guid("fecadfe1-1229-a623-e41f-c382b34b20ea"),
+            new Guid("69255894-6a33-d59d-5ae5-17605b1aba16"),
             "UInt64[].lz4",
             "Array of unsigned 64-bit integers. Compressed (LZ4).",
             None,
@@ -511,7 +511,7 @@ public static partial class Durable
         /// Array of floating point values (IEEE 754, half precision, 16-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (GZip).
         /// </summary>
         public static readonly Def Float16ArrayGz = new(
-            new Guid("4ccd6ebe-17e3-5be6-05cb-2d37a5b46799"),
+            new Guid("6e491d9b-51fc-15f8-80e1-db7d60d7dbd7"),
             "Float16[].gz",
             "Array of floating point values (IEEE 754, half precision, 16-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (GZip).",
             None,
@@ -522,7 +522,7 @@ public static partial class Durable
         /// Array of floating point values (IEEE 754, half precision, 16-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (LZ4).
         /// </summary>
         public static readonly Def Float16ArrayLz4 = new(
-            new Guid("09a86600-80ef-cecc-bd41-cce7531b4198"),
+            new Guid("410885cc-1e6a-b512-50c8-fc25c4866a4b"),
             "Float16[].lz4",
             "Array of floating point values (IEEE 754, half precision, 16-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (LZ4).",
             None,
@@ -555,7 +555,7 @@ public static partial class Durable
         /// Array of floating point values (IEEE 754, single precision, 32-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (GZip).
         /// </summary>
         public static readonly Def Float32ArrayGz = new(
-            new Guid("ff524bec-4447-f3e7-2005-b74441a910a8"),
+            new Guid("34ae993a-e77c-ec53-1599-fd24328498f8"),
             "Float32[].gz",
             "Array of floating point values (IEEE 754, single precision, 32-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (GZip).",
             None,
@@ -566,7 +566,7 @@ public static partial class Durable
         /// Array of floating point values (IEEE 754, single precision, 32-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (LZ4).
         /// </summary>
         public static readonly Def Float32ArrayLz4 = new(
-            new Guid("aefe0c2e-fd81-6d80-a6c7-6eca6f214acd"),
+            new Guid("9a523e9c-4a1a-a309-7231-2a19a7b58212"),
             "Float32[].lz4",
             "Array of floating point values (IEEE 754, single precision, 32-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (LZ4).",
             None,
@@ -599,7 +599,7 @@ public static partial class Durable
         /// Array of floating point values (IEEE 754, double precision, 64-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (GZip).
         /// </summary>
         public static readonly Def Float64ArrayGz = new(
-            new Guid("01069efa-8a23-3a65-5704-3f8c38ddf10b"),
+            new Guid("761de517-cb60-f46e-47c7-d782d6e84da5"),
             "Float64[].gz",
             "Array of floating point values (IEEE 754, double precision, 64-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (GZip).",
             None,
@@ -610,7 +610,7 @@ public static partial class Durable
         /// Array of floating point values (IEEE 754, double precision, 64-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (LZ4).
         /// </summary>
         public static readonly Def Float64ArrayLz4 = new(
-            new Guid("5ad841dd-3581-cc81-e34f-ad0f476d938e"),
+            new Guid("d8048265-e847-b905-0d54-5fdb70e80229"),
             "Float64[].lz4",
             "Array of floating point values (IEEE 754, double precision, 64-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (LZ4).",
             None,
@@ -643,7 +643,7 @@ public static partial class Durable
         /// Array of floating point values (IEEE 754, quadruple precision, 128-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (GZip).
         /// </summary>
         public static readonly Def Float128ArrayGz = new(
-            new Guid("9d3c90a1-efb4-4efa-6b7b-38ed079a54d1"),
+            new Guid("68edd81d-8f3e-511b-a7b2-e4e4cfbedffd"),
             "Float128[].gz",
             "Array of floating point values (IEEE 754, quadruple precision, 128-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (GZip).",
             None,
@@ -654,7 +654,7 @@ public static partial class Durable
         /// Array of floating point values (IEEE 754, quadruple precision, 128-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (LZ4).
         /// </summary>
         public static readonly Def Float128ArrayLz4 = new(
-            new Guid("c24a95d9-1112-df4e-76f1-b9c085f12f6b"),
+            new Guid("55302f6c-cb8e-bb44-5db1-0b47facf8687"),
             "Float128[].lz4",
             "Array of floating point values (IEEE 754, quadruple precision, 128-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (LZ4).",
             None,
@@ -687,7 +687,7 @@ public static partial class Durable
         /// Array of floating point values (IEEE 754, octuple precision, 256-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (GZip).
         /// </summary>
         public static readonly Def Float256ArrayGz = new(
-            new Guid("9ad89214-61cc-29d4-ae20-4088cb69b2dc"),
+            new Guid("5ff35b1c-c91a-267a-3ae8-31d8ffd812e0"),
             "Float256[].gz",
             "Array of floating point values (IEEE 754, octuple precision, 256-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (GZip).",
             None,
@@ -698,7 +698,7 @@ public static partial class Durable
         /// Array of floating point values (IEEE 754, octuple precision, 256-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (LZ4).
         /// </summary>
         public static readonly Def Float256ArrayLz4 = new(
-            new Guid("102f9dcb-c714-4d2e-5c74-40b60713cb65"),
+            new Guid("ec5b47d0-2910-adb0-72f4-694f5a238cfa"),
             "Float256[].lz4",
             "Array of floating point values (IEEE 754, octuple precision, 256-bit). https://en.wikipedia.org/wiki/IEEE_754. Compressed (LZ4).",
             None,
@@ -731,7 +731,7 @@ public static partial class Durable
         /// Array of decimal floating point values (IEEE 754, 32-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal32_floating-point_format. Compressed (GZip).
         /// </summary>
         public static readonly Def DecimalBID32ArrayGz = new(
-            new Guid("1872e8be-2b78-d1fb-83dd-abba55917318"),
+            new Guid("d29d44ed-4340-551f-b5e8-2a9232f41879"),
             "DecimalBID32[].gz",
             "Array of decimal floating point values (IEEE 754, 32-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal32_floating-point_format. Compressed (GZip).",
             None,
@@ -742,7 +742,7 @@ public static partial class Durable
         /// Array of decimal floating point values (IEEE 754, 32-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal32_floating-point_format. Compressed (LZ4).
         /// </summary>
         public static readonly Def DecimalBID32ArrayLz4 = new(
-            new Guid("c9c1b28f-1a22-2027-0fa5-dc0a8832f08e"),
+            new Guid("f4c7d01c-72c7-85b4-f75c-0b4561d498d1"),
             "DecimalBID32[].lz4",
             "Array of decimal floating point values (IEEE 754, 32-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal32_floating-point_format. Compressed (LZ4).",
             None,
@@ -775,7 +775,7 @@ public static partial class Durable
         /// Array of decimal floating point values (IEEE 754, 32-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal32_floating-point_format. Compressed (GZip).
         /// </summary>
         public static readonly Def DecimalDPD32ArrayGz = new(
-            new Guid("50570664-a408-573f-555e-be360f7289ca"),
+            new Guid("4d40dbe4-41d0-1973-cc35-f51b1af19021"),
             "DecimalDPD32[].gz",
             "Array of decimal floating point values (IEEE 754, 32-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal32_floating-point_format. Compressed (GZip).",
             None,
@@ -786,7 +786,7 @@ public static partial class Durable
         /// Array of decimal floating point values (IEEE 754, 32-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal32_floating-point_format. Compressed (LZ4).
         /// </summary>
         public static readonly Def DecimalDPD32ArrayLz4 = new(
-            new Guid("968c01cd-6191-b55d-239e-0ad44e3efd36"),
+            new Guid("cf963d2a-a0a7-89ba-86a9-69ad86a6d476"),
             "DecimalDPD32[].lz4",
             "Array of decimal floating point values (IEEE 754, 32-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal32_floating-point_format. Compressed (LZ4).",
             None,
@@ -819,7 +819,7 @@ public static partial class Durable
         /// Array of decimal floating point values (6IEEE 754, 4-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal64_floating-point_format. Compressed (GZip).
         /// </summary>
         public static readonly Def DecimalBID64ArrayGz = new(
-            new Guid("a3375c12-7f7b-cd8d-85bf-e974a17d2a9c"),
+            new Guid("17050802-1978-cc9f-1b21-eee8304ed482"),
             "DecimalBID64[].gz",
             "Array of decimal floating point values (6IEEE 754, 4-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal64_floating-point_format. Compressed (GZip).",
             None,
@@ -830,7 +830,7 @@ public static partial class Durable
         /// Array of decimal floating point values (6IEEE 754, 4-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal64_floating-point_format. Compressed (LZ4).
         /// </summary>
         public static readonly Def DecimalBID64ArrayLz4 = new(
-            new Guid("cf9b0dd2-39dd-7322-19b6-56366cb87719"),
+            new Guid("d7eb94b7-c3e3-30e5-d858-295def2d3bf8"),
             "DecimalBID64[].lz4",
             "Array of decimal floating point values (6IEEE 754, 4-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal64_floating-point_format. Compressed (LZ4).",
             None,
@@ -863,7 +863,7 @@ public static partial class Durable
         /// Array of decimal floating point values (IEEE 754, 64-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal64_floating-point_format. Compressed (GZip).
         /// </summary>
         public static readonly Def DecimalDPD64ArrayGz = new(
-            new Guid("00497a9d-cab7-b60a-8e0b-56071f8ea465"),
+            new Guid("a8b7d2ef-4291-eecf-a89a-e8e09f2a134f"),
             "DecimalDPD64[].gz",
             "Array of decimal floating point values (IEEE 754, 64-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal64_floating-point_format. Compressed (GZip).",
             None,
@@ -874,7 +874,7 @@ public static partial class Durable
         /// Array of decimal floating point values (IEEE 754, 64-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal64_floating-point_format. Compressed (LZ4).
         /// </summary>
         public static readonly Def DecimalDPD64ArrayLz4 = new(
-            new Guid("8deebd28-e7c1-dbeb-4a48-b60fbe79e232"),
+            new Guid("80c5f610-aee8-c1b2-2980-093ddc7491cf"),
             "DecimalDPD64[].lz4",
             "Array of decimal floating point values (IEEE 754, 64-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal64_floating-point_format. Compressed (LZ4).",
             None,
@@ -907,7 +907,7 @@ public static partial class Durable
         /// Array of decimal floating point values (IEEE 754, 128-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal128_floating-point_format. Compressed (GZip).
         /// </summary>
         public static readonly Def DecimalBID128ArrayGz = new(
-            new Guid("935371ec-c3ce-db3f-5a17-e2ae02e68400"),
+            new Guid("bd858449-0438-de69-d14d-27b8b404ec8a"),
             "DecimalBID128[].gz",
             "Array of decimal floating point values (IEEE 754, 128-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal128_floating-point_format. Compressed (GZip).",
             None,
@@ -918,7 +918,7 @@ public static partial class Durable
         /// Array of decimal floating point values (IEEE 754, 128-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal128_floating-point_format. Compressed (LZ4).
         /// </summary>
         public static readonly Def DecimalBID128ArrayLz4 = new(
-            new Guid("ed1c81b1-b8ab-015b-732f-f4470ba41f67"),
+            new Guid("ab2d2381-2a5e-7614-c2b9-2b8f801ea36e"),
             "DecimalBID128[].lz4",
             "Array of decimal floating point values (IEEE 754, 128-bit) encoded as binary integer decimal (BID). https://en.wikipedia.org/wiki/Decimal128_floating-point_format. Compressed (LZ4).",
             None,
@@ -951,7 +951,7 @@ public static partial class Durable
         /// Array of decimal floating point values (IEEE 754, 128-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal128_floating-point_format. Compressed (GZip).
         /// </summary>
         public static readonly Def DecimalDPD128ArrayGz = new(
-            new Guid("16d6d443-92ee-04a5-ae10-bd3a3a5e46e9"),
+            new Guid("104a66b9-5dc5-3de4-8d45-ed2d7156b613"),
             "DecimalDPD128[].gz",
             "Array of decimal floating point values (IEEE 754, 128-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal128_floating-point_format. Compressed (GZip).",
             None,
@@ -962,7 +962,7 @@ public static partial class Durable
         /// Array of decimal floating point values (IEEE 754, 128-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal128_floating-point_format. Compressed (LZ4).
         /// </summary>
         public static readonly Def DecimalDPD128ArrayLz4 = new(
-            new Guid("65315f7b-e5d9-a5a7-3fdd-ac1bd60e296c"),
+            new Guid("ccc79f17-726b-ea68-4b9d-320159cd97a5"),
             "DecimalDPD128[].lz4",
             "Array of decimal floating point values (IEEE 754, 128-bit) encoded as densely packed decimal (DPD). https://en.wikipedia.org/wiki/Decimal128_floating-point_format. Compressed (LZ4).",
             None,
@@ -995,7 +995,7 @@ public static partial class Durable
         /// Array of .NET decimal values (System.Decimal, 128-bit). https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/types#the-decimal-type. Compressed (GZip).
         /// </summary>
         public static readonly Def DecimalDotnetArrayGz = new(
-            new Guid("93206a8e-f715-e8f8-f90f-59df182d7a67"),
+            new Guid("7ef52c2d-e2f8-0efc-46a6-45aa7bb3b995"),
             "DecimalDotnet[].gz",
             "Array of .NET decimal values (System.Decimal, 128-bit). https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/types#the-decimal-type. Compressed (GZip).",
             None,
@@ -1006,7 +1006,7 @@ public static partial class Durable
         /// Array of .NET decimal values (System.Decimal, 128-bit). https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/types#the-decimal-type. Compressed (LZ4).
         /// </summary>
         public static readonly Def DecimalDotnetArrayLz4 = new(
-            new Guid("0be780b5-d8fc-8dfd-ada4-1a21fd4c9a87"),
+            new Guid("332fc87f-7aba-723f-2773-202dbfc4d225"),
             "DecimalDotnet[].lz4",
             "Array of .NET decimal values (System.Decimal, 128-bit). https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/types#the-decimal-type. Compressed (LZ4).",
             None,
@@ -1039,7 +1039,7 @@ public static partial class Durable
         /// Array of strings. UTF8 encoding. Compressed (GZip).
         /// </summary>
         public static readonly Def StringUTF8ArrayGz = new(
-            new Guid("fbf5243a-a068-15d7-aef6-ec4ea7e05dde"),
+            new Guid("eede1d29-0337-2f61-d9c9-5a3b65ae5ffc"),
             "StringUTF8[].gz",
             "Array of strings. UTF8 encoding. Compressed (GZip).",
             None,
@@ -1050,7 +1050,7 @@ public static partial class Durable
         /// Array of strings. UTF8 encoding. Compressed (LZ4).
         /// </summary>
         public static readonly Def StringUTF8ArrayLz4 = new(
-            new Guid("5ed703b9-caa9-a336-6e49-740982952045"),
+            new Guid("15a6b0f6-ab89-5f75-e316-79cfcc0f35fd"),
             "StringUTF8[].lz4",
             "Array of strings. UTF8 encoding. Compressed (LZ4).",
             None,
@@ -1113,7 +1113,7 @@ public static partial class Durable
         /// Array of V2i. Compressed (GZip).
         /// </summary>
         public static readonly Def V2iArrayGz = new(
-            new Guid("cd57cc77-86fa-b237-8102-75ef60e10a0b"),
+            new Guid("e17be58e-5241-3f1b-ecf3-a3d8b4db1f5e"),
             "V2i[].gz",
             "Array of V2i. Compressed (GZip).",
             None,
@@ -1124,7 +1124,7 @@ public static partial class Durable
         /// Array of V2i. Compressed (LZ4).
         /// </summary>
         public static readonly Def V2iArrayLz4 = new(
-            new Guid("8b4dd383-9af7-91d9-67e3-163c36e1f698"),
+            new Guid("db8a32db-8c92-2251-815a-6615cbe86009"),
             "V2i[].lz4",
             "Array of V2i. Compressed (LZ4).",
             None,
@@ -1157,7 +1157,7 @@ public static partial class Durable
         /// Array of V2l. Compressed (GZip).
         /// </summary>
         public static readonly Def V2lArrayGz = new(
-            new Guid("04eebdc7-a8cf-3f8a-db77-3b80d0dd8fa8"),
+            new Guid("5f3816fe-afa0-235b-85de-3e9b5f1c8155"),
             "V2l[].gz",
             "Array of V2l. Compressed (GZip).",
             None,
@@ -1168,7 +1168,7 @@ public static partial class Durable
         /// Array of V2l. Compressed (LZ4).
         /// </summary>
         public static readonly Def V2lArrayLz4 = new(
-            new Guid("b6143f2c-01d8-9bac-a027-eac4ff9f3801"),
+            new Guid("e8492752-a18b-9da7-02e8-ca0b3a83fbd2"),
             "V2l[].lz4",
             "Array of V2l. Compressed (LZ4).",
             None,
@@ -1201,7 +1201,7 @@ public static partial class Durable
         /// Array of V2f. Compressed (GZip).
         /// </summary>
         public static readonly Def V2fArrayGz = new(
-            new Guid("71e1d0cb-d1ae-0611-c365-f08aea48cfa1"),
+            new Guid("e1625be8-8e27-c279-fcd3-69c2dc0af9fc"),
             "V2f[].gz",
             "Array of V2f. Compressed (GZip).",
             None,
@@ -1212,7 +1212,7 @@ public static partial class Durable
         /// Array of V2f. Compressed (LZ4).
         /// </summary>
         public static readonly Def V2fArrayLz4 = new(
-            new Guid("a19808a6-ee43-f30f-a840-ecbd21b7801d"),
+            new Guid("f5efe277-ac94-d8b9-2917-fc32b3378d17"),
             "V2f[].lz4",
             "Array of V2f. Compressed (LZ4).",
             None,
@@ -1245,7 +1245,7 @@ public static partial class Durable
         /// Array of V2d. Compressed (GZip).
         /// </summary>
         public static readonly Def V2dArrayGz = new(
-            new Guid("2ce28404-984e-95e9-9988-087108af1dfb"),
+            new Guid("555d827c-9109-c31f-a08b-d85fe4d99853"),
             "V2d[].gz",
             "Array of V2d. Compressed (GZip).",
             None,
@@ -1256,7 +1256,7 @@ public static partial class Durable
         /// Array of V2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def V2dArrayLz4 = new(
-            new Guid("4842297a-d3e2-de9a-8971-e88a661b9232"),
+            new Guid("513d5820-280c-01db-f035-a71a8dd30f3b"),
             "V2d[].lz4",
             "Array of V2d. Compressed (LZ4).",
             None,
@@ -1289,7 +1289,7 @@ public static partial class Durable
         /// Array of V3i. Compressed (GZip).
         /// </summary>
         public static readonly Def V3iArrayGz = new(
-            new Guid("0904e974-01cb-a551-1da1-5371c7ffaede"),
+            new Guid("8447d78e-a9ca-8976-b2c2-f906fd90a1c1"),
             "V3i[].gz",
             "Array of V3i. Compressed (GZip).",
             None,
@@ -1300,7 +1300,7 @@ public static partial class Durable
         /// Array of V3i. Compressed (LZ4).
         /// </summary>
         public static readonly Def V3iArrayLz4 = new(
-            new Guid("798041f8-afaa-69bd-bb7f-af01f0d905b0"),
+            new Guid("e22b8474-c7e4-29b2-8b5a-29174e137208"),
             "V3i[].lz4",
             "Array of V3i. Compressed (LZ4).",
             None,
@@ -1333,7 +1333,7 @@ public static partial class Durable
         /// Array of V3l. Compressed (GZip).
         /// </summary>
         public static readonly Def V3lArrayGz = new(
-            new Guid("c1435376-3086-6dbc-00d6-7c877849cdd5"),
+            new Guid("4a00b9c9-7a9b-2150-1bc4-284d4119c9d1"),
             "V3l[].gz",
             "Array of V3l. Compressed (GZip).",
             None,
@@ -1344,7 +1344,7 @@ public static partial class Durable
         /// Array of V3l. Compressed (LZ4).
         /// </summary>
         public static readonly Def V3lArrayLz4 = new(
-            new Guid("725987a2-cec1-13bb-bde0-a98eb20d740b"),
+            new Guid("ae8571bb-cf07-d21e-9312-7b26e3c61c0c"),
             "V3l[].lz4",
             "Array of V3l. Compressed (LZ4).",
             None,
@@ -1377,7 +1377,7 @@ public static partial class Durable
         /// Array of V3f. Compressed (GZip).
         /// </summary>
         public static readonly Def V3fArrayGz = new(
-            new Guid("2e47cba3-0366-297b-faf7-fddf8b2c2fd9"),
+            new Guid("ac35fbb9-19d9-9abe-36b9-51e9ee81f3d5"),
             "V3f[].gz",
             "Array of V3f. Compressed (GZip).",
             None,
@@ -1388,7 +1388,7 @@ public static partial class Durable
         /// Array of V3f. Compressed (LZ4).
         /// </summary>
         public static readonly Def V3fArrayLz4 = new(
-            new Guid("4938146c-9757-0f29-01d1-77a48892bdf2"),
+            new Guid("5409f7ee-7f6d-4811-8313-1dafb108ac1f"),
             "V3f[].lz4",
             "Array of V3f. Compressed (LZ4).",
             None,
@@ -1421,7 +1421,7 @@ public static partial class Durable
         /// Array of V3d. Compressed (GZip).
         /// </summary>
         public static readonly Def V3dArrayGz = new(
-            new Guid("a7e4a364-890f-014b-c382-54aa1be24a1f"),
+            new Guid("ce3e650f-4c2d-b5d2-7c88-47c78cf3200d"),
             "V3d[].gz",
             "Array of V3d. Compressed (GZip).",
             None,
@@ -1432,7 +1432,7 @@ public static partial class Durable
         /// Array of V3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def V3dArrayLz4 = new(
-            new Guid("1461634f-56e6-a2f6-1acb-0ab3657637a7"),
+            new Guid("70a77d2e-f602-34ea-a478-7324839c2310"),
             "V3d[].lz4",
             "Array of V3d. Compressed (LZ4).",
             None,
@@ -1465,7 +1465,7 @@ public static partial class Durable
         /// Array of V4i. Compressed (GZip).
         /// </summary>
         public static readonly Def V4iArrayGz = new(
-            new Guid("8d278301-ea37-4230-ee3a-fb9b02f09c34"),
+            new Guid("2b4e0b63-9baa-7c74-30bc-0080c9e8fe41"),
             "V4i[].gz",
             "Array of V4i. Compressed (GZip).",
             None,
@@ -1476,7 +1476,7 @@ public static partial class Durable
         /// Array of V4i. Compressed (LZ4).
         /// </summary>
         public static readonly Def V4iArrayLz4 = new(
-            new Guid("613f6062-4cee-ff74-6e26-40a2bf1ad4c5"),
+            new Guid("b1f63ff4-a990-ca5e-e46f-fb8575b7e06f"),
             "V4i[].lz4",
             "Array of V4i. Compressed (LZ4).",
             None,
@@ -1509,7 +1509,7 @@ public static partial class Durable
         /// Array of V4l. Compressed (GZip).
         /// </summary>
         public static readonly Def V4lArrayGz = new(
-            new Guid("25caadc0-33b2-6b89-9812-fcf71925da27"),
+            new Guid("c3ce7e6b-a247-d72e-745f-bf32e140e241"),
             "V4l[].gz",
             "Array of V4l. Compressed (GZip).",
             None,
@@ -1520,7 +1520,7 @@ public static partial class Durable
         /// Array of V4l. Compressed (LZ4).
         /// </summary>
         public static readonly Def V4lArrayLz4 = new(
-            new Guid("66f65dd1-5d82-6200-6d8c-bbdb92761f02"),
+            new Guid("a67291d5-b1db-8bf3-d19d-239dc59aafb3"),
             "V4l[].lz4",
             "Array of V4l. Compressed (LZ4).",
             None,
@@ -1553,7 +1553,7 @@ public static partial class Durable
         /// Array of V4f. Compressed (GZip).
         /// </summary>
         public static readonly Def V4fArrayGz = new(
-            new Guid("0749650b-121d-750a-fff3-fbcd8d94a74f"),
+            new Guid("3b238275-43c7-e547-fb93-5835a661ea18"),
             "V4f[].gz",
             "Array of V4f. Compressed (GZip).",
             None,
@@ -1564,7 +1564,7 @@ public static partial class Durable
         /// Array of V4f. Compressed (LZ4).
         /// </summary>
         public static readonly Def V4fArrayLz4 = new(
-            new Guid("cbffd966-bbae-20cc-1c44-d8cec0bcbb1f"),
+            new Guid("e0ae63fa-0da0-694d-ce50-1d806fc6c9be"),
             "V4f[].lz4",
             "Array of V4f. Compressed (LZ4).",
             None,
@@ -1597,7 +1597,7 @@ public static partial class Durable
         /// Array of V4d. Compressed (GZip).
         /// </summary>
         public static readonly Def V4dArrayGz = new(
-            new Guid("3d876332-fc9f-09cb-270d-6771c526d705"),
+            new Guid("583b3c26-ee82-d5d4-6a08-648982d2e069"),
             "V4d[].gz",
             "Array of V4d. Compressed (GZip).",
             None,
@@ -1608,7 +1608,7 @@ public static partial class Durable
         /// Array of V4d. Compressed (LZ4).
         /// </summary>
         public static readonly Def V4dArrayLz4 = new(
-            new Guid("3508db97-87f0-9765-ac1a-0d95f3f5d2d8"),
+            new Guid("8363ee0e-a3c7-0c7f-b587-2bc612c11164"),
             "V4d[].lz4",
             "Array of V4d. Compressed (LZ4).",
             None,
@@ -1641,7 +1641,7 @@ public static partial class Durable
         /// Array of M22f. Compressed (GZip).
         /// </summary>
         public static readonly Def M22fArrayGz = new(
-            new Guid("b538a615-4f31-8b9d-07f1-fad74adadb0b"),
+            new Guid("4e6ef5da-611d-cbd1-ae7f-27517664fe7d"),
             "M22f[].gz",
             "Array of M22f. Compressed (GZip).",
             None,
@@ -1652,7 +1652,7 @@ public static partial class Durable
         /// Array of M22f. Compressed (LZ4).
         /// </summary>
         public static readonly Def M22fArrayLz4 = new(
-            new Guid("89c2ef1f-d35f-9e7a-f238-18eee5d6f392"),
+            new Guid("7ee9d018-72a1-8b52-d589-30f362387072"),
             "M22f[].lz4",
             "Array of M22f. Compressed (LZ4).",
             None,
@@ -1685,7 +1685,7 @@ public static partial class Durable
         /// Array of M22d. Compressed (GZip).
         /// </summary>
         public static readonly Def M22dArrayGz = new(
-            new Guid("828632cd-0a50-7aa1-0a86-6dc476d2fbb3"),
+            new Guid("ce1b482b-a797-50e1-0b7f-fd0f96bb177a"),
             "M22d[].gz",
             "Array of M22d. Compressed (GZip).",
             None,
@@ -1696,7 +1696,7 @@ public static partial class Durable
         /// Array of M22d. Compressed (LZ4).
         /// </summary>
         public static readonly Def M22dArrayLz4 = new(
-            new Guid("a398e619-d012-6a70-ccc3-ebb687556935"),
+            new Guid("66ecba63-54d9-906d-b64d-b67d79d9889a"),
             "M22d[].lz4",
             "Array of M22d. Compressed (LZ4).",
             None,
@@ -1729,7 +1729,7 @@ public static partial class Durable
         /// Array of M33f. Compressed (GZip).
         /// </summary>
         public static readonly Def M33fArrayGz = new(
-            new Guid("14fece35-45b4-ef3e-899d-e7bce33aed2b"),
+            new Guid("eb7b4264-081e-6ce9-2a12-598ce426dfd9"),
             "M33f[].gz",
             "Array of M33f. Compressed (GZip).",
             None,
@@ -1740,7 +1740,7 @@ public static partial class Durable
         /// Array of M33f. Compressed (LZ4).
         /// </summary>
         public static readonly Def M33fArrayLz4 = new(
-            new Guid("6614b399-2854-d751-f983-62e75481415a"),
+            new Guid("3cd262b3-b732-fb83-b8fa-edddea1501db"),
             "M33f[].lz4",
             "Array of M33f. Compressed (LZ4).",
             None,
@@ -1773,7 +1773,7 @@ public static partial class Durable
         /// Array of M33d. Compressed (GZip).
         /// </summary>
         public static readonly Def M33dArrayGz = new(
-            new Guid("db99ff3d-bd1e-1390-f5fa-cfa2ca405d04"),
+            new Guid("d74c9868-e6a6-81c7-1f54-ee74f046284f"),
             "M33d[].gz",
             "Array of M33d. Compressed (GZip).",
             None,
@@ -1784,7 +1784,7 @@ public static partial class Durable
         /// Array of M33d. Compressed (LZ4).
         /// </summary>
         public static readonly Def M33dArrayLz4 = new(
-            new Guid("0df270c2-ce3f-d901-5516-5afcf0abb338"),
+            new Guid("cd24f862-ed38-177c-4f76-9b767c4f6617"),
             "M33d[].lz4",
             "Array of M33d. Compressed (LZ4).",
             None,
@@ -1817,7 +1817,7 @@ public static partial class Durable
         /// Array of M44f. Compressed (GZip).
         /// </summary>
         public static readonly Def M44fArrayGz = new(
-            new Guid("b836e769-16e9-7ff2-cfe7-8132886cd1c0"),
+            new Guid("490c4a54-15fc-c116-29d8-53da1dcc4c08"),
             "M44f[].gz",
             "Array of M44f. Compressed (GZip).",
             None,
@@ -1828,7 +1828,7 @@ public static partial class Durable
         /// Array of M44f. Compressed (LZ4).
         /// </summary>
         public static readonly Def M44fArrayLz4 = new(
-            new Guid("b8cc3453-1352-041b-96ca-8b575e44f1ba"),
+            new Guid("b43fbf4e-5040-d8eb-3070-7c830b52126d"),
             "M44f[].lz4",
             "Array of M44f. Compressed (LZ4).",
             None,
@@ -1861,7 +1861,7 @@ public static partial class Durable
         /// Array of M44d. Compressed (GZip).
         /// </summary>
         public static readonly Def M44dArrayGz = new(
-            new Guid("03d75232-2b8a-c1c9-5df3-b962a1f5089a"),
+            new Guid("65f4a49c-d4f9-edf1-4d5c-9396d1cb8d33"),
             "M44d[].gz",
             "Array of M44d. Compressed (GZip).",
             None,
@@ -1872,7 +1872,7 @@ public static partial class Durable
         /// Array of M44d. Compressed (LZ4).
         /// </summary>
         public static readonly Def M44dArrayLz4 = new(
-            new Guid("8e84e3af-d4f9-41be-69e7-036181191b0d"),
+            new Guid("f42d6722-a8f0-bf10-29d4-f67a006c6991"),
             "M44d[].lz4",
             "Array of M44d. Compressed (LZ4).",
             None,
@@ -1905,7 +1905,7 @@ public static partial class Durable
         /// Array of Affine2f. Compressed (GZip).
         /// </summary>
         public static readonly Def Affine2fArrayGz = new(
-            new Guid("019bb874-f4ba-2f3f-50b0-c3161d23d62c"),
+            new Guid("9d840094-ac65-3b77-5252-715862d1c659"),
             "Affine2f[].gz",
             "Array of Affine2f. Compressed (GZip).",
             None,
@@ -1916,7 +1916,7 @@ public static partial class Durable
         /// Array of Affine2f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Affine2fArrayLz4 = new(
-            new Guid("f4fa7a63-3434-163a-e014-6578fc157e00"),
+            new Guid("af698c37-2196-9f76-1430-9fbd6df07117"),
             "Affine2f[].lz4",
             "Array of Affine2f. Compressed (LZ4).",
             None,
@@ -1949,7 +1949,7 @@ public static partial class Durable
         /// Array of Affine2d. Compressed (GZip).
         /// </summary>
         public static readonly Def Affine2dArrayGz = new(
-            new Guid("59f1d012-373b-d0aa-3793-8f5f4951e89e"),
+            new Guid("c315f9a3-e44c-d1b3-2b6b-6afdc98652d5"),
             "Affine2d[].gz",
             "Array of Affine2d. Compressed (GZip).",
             None,
@@ -1960,7 +1960,7 @@ public static partial class Durable
         /// Array of Affine2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Affine2dArrayLz4 = new(
-            new Guid("53be59db-f4a4-3535-045e-efed879fad56"),
+            new Guid("e8eac0ea-ea44-f0a5-a137-b495b597d21d"),
             "Affine2d[].lz4",
             "Array of Affine2d. Compressed (LZ4).",
             None,
@@ -1993,7 +1993,7 @@ public static partial class Durable
         /// Array of Affine3f. Compressed (GZip).
         /// </summary>
         public static readonly Def Affine3fArrayGz = new(
-            new Guid("0963cd5b-0293-df02-d752-139b51a2b852"),
+            new Guid("d6a0e877-c74c-1604-1ba7-9381d8fa35c5"),
             "Affine3f[].gz",
             "Array of Affine3f. Compressed (GZip).",
             None,
@@ -2004,7 +2004,7 @@ public static partial class Durable
         /// Array of Affine3f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Affine3fArrayLz4 = new(
-            new Guid("bb40d54a-b7c0-5385-0cfe-4046bbd89797"),
+            new Guid("09f6309e-c66b-e724-7365-389f8c0e46c7"),
             "Affine3f[].lz4",
             "Array of Affine3f. Compressed (LZ4).",
             None,
@@ -2037,7 +2037,7 @@ public static partial class Durable
         /// Array of Affine3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Affine3dArrayGz = new(
-            new Guid("f51dad63-032c-48a0-cda1-598a69010dc0"),
+            new Guid("465d9b99-4f53-c53b-fa7c-52d3a00942f5"),
             "Affine3d[].gz",
             "Array of Affine3d. Compressed (GZip).",
             None,
@@ -2048,7 +2048,7 @@ public static partial class Durable
         /// Array of Affine3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Affine3dArrayLz4 = new(
-            new Guid("b17fec39-1ca8-947b-de2f-9a3f635f501d"),
+            new Guid("893e0134-dbef-7f42-867e-944adb13a782"),
             "Affine3d[].lz4",
             "Array of Affine3d. Compressed (LZ4).",
             None,
@@ -2081,7 +2081,7 @@ public static partial class Durable
         /// Array of Rot2f. Compressed (GZip).
         /// </summary>
         public static readonly Def Rot2fArrayGz = new(
-            new Guid("fbf7e7f0-4af2-5f97-572c-f9bd9ad55deb"),
+            new Guid("2d21c61c-c74b-caf1-4e69-2864ef70b5fd"),
             "Rot2f[].gz",
             "Array of Rot2f. Compressed (GZip).",
             None,
@@ -2092,7 +2092,7 @@ public static partial class Durable
         /// Array of Rot2f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Rot2fArrayLz4 = new(
-            new Guid("49e4d22e-9b50-10b1-a6a6-f539a90c3adb"),
+            new Guid("0d50e129-fda0-9276-7d44-93fbfba1da9c"),
             "Rot2f[].lz4",
             "Array of Rot2f. Compressed (LZ4).",
             None,
@@ -2125,7 +2125,7 @@ public static partial class Durable
         /// Array of Rot2d. Compressed (GZip).
         /// </summary>
         public static readonly Def Rot2dArrayGz = new(
-            new Guid("ae6f5057-4bdd-505a-a178-ceb9c7a6656f"),
+            new Guid("90f0c4ed-976a-fd22-4752-c68a875fbc9c"),
             "Rot2d[].gz",
             "Array of Rot2d. Compressed (GZip).",
             None,
@@ -2136,7 +2136,7 @@ public static partial class Durable
         /// Array of Rot2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Rot2dArrayLz4 = new(
-            new Guid("17f8e4a5-cd3b-0123-27a7-5f305cc8cf36"),
+            new Guid("6e1a1d89-b791-26f0-de79-86ac4341231a"),
             "Rot2d[].lz4",
             "Array of Rot2d. Compressed (LZ4).",
             None,
@@ -2169,7 +2169,7 @@ public static partial class Durable
         /// Array of Rot3f. Compressed (GZip).
         /// </summary>
         public static readonly Def Rot3fArrayGz = new(
-            new Guid("8fb81a07-d126-a0ed-c9d7-483c31dd297c"),
+            new Guid("8f515f12-edc7-1885-98be-41f378b8df34"),
             "Rot3f[].gz",
             "Array of Rot3f. Compressed (GZip).",
             None,
@@ -2180,7 +2180,7 @@ public static partial class Durable
         /// Array of Rot3f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Rot3fArrayLz4 = new(
-            new Guid("d5c8701d-44d9-dddf-41ba-ea54d3a83202"),
+            new Guid("8d455deb-e12e-c31a-caaf-74ab30292397"),
             "Rot3f[].lz4",
             "Array of Rot3f. Compressed (LZ4).",
             None,
@@ -2213,7 +2213,7 @@ public static partial class Durable
         /// Array of Rot3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Rot3dArrayGz = new(
-            new Guid("8f6b0dc2-0bf5-02f8-f80c-aeb3362d48ae"),
+            new Guid("888fdd8f-d9e8-1484-fde7-b9d0ebff2d21"),
             "Rot3d[].gz",
             "Array of Rot3d. Compressed (GZip).",
             None,
@@ -2224,7 +2224,7 @@ public static partial class Durable
         /// Array of Rot3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Rot3dArrayLz4 = new(
-            new Guid("9dd569b1-2448-a6ab-e661-a8acaac9b442"),
+            new Guid("01abe336-2df4-bf12-874d-b99a24775ff8"),
             "Rot3d[].lz4",
             "Array of Rot3d. Compressed (LZ4).",
             None,
@@ -2257,7 +2257,7 @@ public static partial class Durable
         /// Array of Euclidean2f. Compressed (GZip).
         /// </summary>
         public static readonly Def Euclidean2fArrayGz = new(
-            new Guid("f8007abb-1977-105f-d2d4-363cc7221ed9"),
+            new Guid("01ed606c-1679-b125-12c9-6e0ef42e0527"),
             "Euclidean2f[].gz",
             "Array of Euclidean2f. Compressed (GZip).",
             None,
@@ -2268,7 +2268,7 @@ public static partial class Durable
         /// Array of Euclidean2f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Euclidean2fArrayLz4 = new(
-            new Guid("9a46ba0e-4c62-db19-5c8b-6f37d433093f"),
+            new Guid("ffb8e7f6-36ae-d4ae-eef5-00f4ba790dde"),
             "Euclidean2f[].lz4",
             "Array of Euclidean2f. Compressed (LZ4).",
             None,
@@ -2301,7 +2301,7 @@ public static partial class Durable
         /// Array of Euclidean2d. Compressed (GZip).
         /// </summary>
         public static readonly Def Euclidean2dArrayGz = new(
-            new Guid("0f6b35da-f22d-7cf5-ceee-4490b90b61c9"),
+            new Guid("9969fb7e-b260-e7ec-0cb2-9505aa921dc4"),
             "Euclidean2d[].gz",
             "Array of Euclidean2d. Compressed (GZip).",
             None,
@@ -2312,7 +2312,7 @@ public static partial class Durable
         /// Array of Euclidean2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Euclidean2dArrayLz4 = new(
-            new Guid("678c2073-175c-9e15-3e44-9ed645bb6364"),
+            new Guid("f7b4ba45-7837-e16b-fdc0-59db5a45655d"),
             "Euclidean2d[].lz4",
             "Array of Euclidean2d. Compressed (LZ4).",
             None,
@@ -2345,7 +2345,7 @@ public static partial class Durable
         /// Array of Euclidean3f. Compressed (GZip).
         /// </summary>
         public static readonly Def Euclidean3fArrayGz = new(
-            new Guid("a4e620a1-3eb3-77cb-ff0e-5fd4c7e43b09"),
+            new Guid("aab1b7f2-a90f-10cd-cd09-073a6dfefe2c"),
             "Euclidean3f[].gz",
             "Array of Euclidean3f. Compressed (GZip).",
             None,
@@ -2356,7 +2356,7 @@ public static partial class Durable
         /// Array of Euclidean3f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Euclidean3fArrayLz4 = new(
-            new Guid("e12eb124-137a-5b48-9353-30c2702784fe"),
+            new Guid("93aa32b8-5459-fa74-9b03-738cf2a5124e"),
             "Euclidean3f[].lz4",
             "Array of Euclidean3f. Compressed (LZ4).",
             None,
@@ -2389,7 +2389,7 @@ public static partial class Durable
         /// Array of Euclidean3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Euclidean3dArrayGz = new(
-            new Guid("a216003d-0ffd-f59f-69b4-1e947fc0c0d8"),
+            new Guid("5f86bca1-d1e5-3d02-8195-8cb2677cea36"),
             "Euclidean3d[].gz",
             "Array of Euclidean3d. Compressed (GZip).",
             None,
@@ -2400,7 +2400,7 @@ public static partial class Durable
         /// Array of Euclidean3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Euclidean3dArrayLz4 = new(
-            new Guid("ddaa566a-231a-1381-8a5b-361d28c9e15f"),
+            new Guid("3e3cd167-b48e-6310-34f3-a913b1fd8cb1"),
             "Euclidean3d[].lz4",
             "Array of Euclidean3d. Compressed (LZ4).",
             None,
@@ -2433,7 +2433,7 @@ public static partial class Durable
         /// Array of Scale2f. Compressed (GZip).
         /// </summary>
         public static readonly Def Scale2fArrayGz = new(
-            new Guid("f19697d2-13c6-6133-6cb0-b19153dee45d"),
+            new Guid("fa11ce93-a364-e07e-1a7a-6b2cd8d4088e"),
             "Scale2f[].gz",
             "Array of Scale2f. Compressed (GZip).",
             None,
@@ -2444,7 +2444,7 @@ public static partial class Durable
         /// Array of Scale2f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Scale2fArrayLz4 = new(
-            new Guid("5bcbb3b1-04d7-0d0b-5d4d-342697a448e9"),
+            new Guid("c7c9f7c2-80a5-62db-61c5-906c1cf223b3"),
             "Scale2f[].lz4",
             "Array of Scale2f. Compressed (LZ4).",
             None,
@@ -2477,7 +2477,7 @@ public static partial class Durable
         /// Array of Scale2d. Compressed (GZip).
         /// </summary>
         public static readonly Def Scale2dArrayGz = new(
-            new Guid("9291cf9d-ed1f-87d2-9062-6bb128170ce4"),
+            new Guid("3bdb0dc4-ec7f-6278-8662-ce6402043c10"),
             "Scale2d[].gz",
             "Array of Scale2d. Compressed (GZip).",
             None,
@@ -2488,7 +2488,7 @@ public static partial class Durable
         /// Array of Scale2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Scale2dArrayLz4 = new(
-            new Guid("727ec6ec-e3b1-ab93-4e33-e0f0cd75dcf2"),
+            new Guid("a4024560-7adc-c18e-169e-f00487ba59c4"),
             "Scale2d[].lz4",
             "Array of Scale2d. Compressed (LZ4).",
             None,
@@ -2521,7 +2521,7 @@ public static partial class Durable
         /// Array of Scale3f. Compressed (GZip).
         /// </summary>
         public static readonly Def Scale3fArrayGz = new(
-            new Guid("76cd368c-27e4-2615-e02d-5c7e2d850778"),
+            new Guid("e3cd0b52-475a-7cea-03b4-c6f450e27210"),
             "Scale3f[].gz",
             "Array of Scale3f. Compressed (GZip).",
             None,
@@ -2532,7 +2532,7 @@ public static partial class Durable
         /// Array of Scale3f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Scale3fArrayLz4 = new(
-            new Guid("4ffeb16f-70a5-4068-03f0-3893ff9094f0"),
+            new Guid("33a6df10-d2d0-7d88-8f45-a5cde0f98dfb"),
             "Scale3f[].lz4",
             "Array of Scale3f. Compressed (LZ4).",
             None,
@@ -2565,7 +2565,7 @@ public static partial class Durable
         /// Array of Scale3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Scale3dArrayGz = new(
-            new Guid("53abc3aa-4f6b-d0dd-e13f-710dc33811aa"),
+            new Guid("4cae74b8-8caa-d15b-ba08-1c26529aba73"),
             "Scale3d[].gz",
             "Array of Scale3d. Compressed (GZip).",
             None,
@@ -2576,7 +2576,7 @@ public static partial class Durable
         /// Array of Scale3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Scale3dArrayLz4 = new(
-            new Guid("f8869c43-e9ce-97e1-8e93-7ae8dd7934f7"),
+            new Guid("54c876c0-bdae-9f3b-477a-ca70070088f7"),
             "Scale3d[].lz4",
             "Array of Scale3d. Compressed (LZ4).",
             None,
@@ -2609,7 +2609,7 @@ public static partial class Durable
         /// Array of Shift2f. Compressed (GZip).
         /// </summary>
         public static readonly Def Shift2fArrayGz = new(
-            new Guid("32f427a2-d81f-97a5-ff86-823263725322"),
+            new Guid("4c6e7768-fc86-2026-7951-0ef17d09c194"),
             "Shift2f[].gz",
             "Array of Shift2f. Compressed (GZip).",
             None,
@@ -2620,7 +2620,7 @@ public static partial class Durable
         /// Array of Shift2f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Shift2fArrayLz4 = new(
-            new Guid("c60456de-85aa-89df-ccfb-bee5db5daadc"),
+            new Guid("2dd506cb-6bcb-a299-b948-9f5dfdad9901"),
             "Shift2f[].lz4",
             "Array of Shift2f. Compressed (LZ4).",
             None,
@@ -2653,7 +2653,7 @@ public static partial class Durable
         /// Array of Shift2d. Compressed (GZip).
         /// </summary>
         public static readonly Def Shift2dArrayGz = new(
-            new Guid("a9c6b7ab-6929-dccc-0483-3286401c3829"),
+            new Guid("503e0a6f-c16c-f883-11a6-425e699f930d"),
             "Shift2d[].gz",
             "Array of Shift2d. Compressed (GZip).",
             None,
@@ -2664,7 +2664,7 @@ public static partial class Durable
         /// Array of Shift2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Shift2dArrayLz4 = new(
-            new Guid("b0c61acc-5da6-cbae-9e73-412411943d7f"),
+            new Guid("8318e9b2-9afe-256f-3e74-7f812976b4d6"),
             "Shift2d[].lz4",
             "Array of Shift2d. Compressed (LZ4).",
             None,
@@ -2697,7 +2697,7 @@ public static partial class Durable
         /// Array of Shift3f. Compressed (GZip).
         /// </summary>
         public static readonly Def Shift3fArrayGz = new(
-            new Guid("984b988f-1e33-e950-8562-9ec04b918330"),
+            new Guid("3695abeb-f541-a1d5-4112-09351227877e"),
             "Shift3f[].gz",
             "Array of Shift3f. Compressed (GZip).",
             None,
@@ -2708,7 +2708,7 @@ public static partial class Durable
         /// Array of Shift3f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Shift3fArrayLz4 = new(
-            new Guid("9d907c2b-b23c-9f8b-a715-d909e17aa74f"),
+            new Guid("d97cbb4f-13e2-6ebb-06c7-a58610052faa"),
             "Shift3f[].lz4",
             "Array of Shift3f. Compressed (LZ4).",
             None,
@@ -2741,7 +2741,7 @@ public static partial class Durable
         /// Array of Shift3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Shift3dArrayGz = new(
-            new Guid("36179608-2c8b-bcb9-2874-10f27b292feb"),
+            new Guid("6ed014c1-ff45-604d-5ed1-ea580d9df5d2"),
             "Shift3d[].gz",
             "Array of Shift3d. Compressed (GZip).",
             None,
@@ -2752,7 +2752,7 @@ public static partial class Durable
         /// Array of Shift3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Shift3dArrayLz4 = new(
-            new Guid("35302689-2359-6844-c657-08a3a7945c7c"),
+            new Guid("7c4cce3a-c74c-7604-9baf-887245e785db"),
             "Shift3d[].lz4",
             "Array of Shift3d. Compressed (LZ4).",
             None,
@@ -2785,7 +2785,7 @@ public static partial class Durable
         /// Array of Similarity2f. Compressed (GZip).
         /// </summary>
         public static readonly Def Similarity2fArrayGz = new(
-            new Guid("ce21ac13-382a-9b48-a57d-fab17b8c0b17"),
+            new Guid("f41f9ede-0901-6d82-87a3-7c6ef132df21"),
             "Similarity2f[].gz",
             "Array of Similarity2f. Compressed (GZip).",
             None,
@@ -2796,7 +2796,7 @@ public static partial class Durable
         /// Array of Similarity2f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Similarity2fArrayLz4 = new(
-            new Guid("54b96ecd-87e6-bb55-4f8c-79e00bde0710"),
+            new Guid("c7ed93dc-e503-15fe-c37a-523dd05e843f"),
             "Similarity2f[].lz4",
             "Array of Similarity2f. Compressed (LZ4).",
             None,
@@ -2829,7 +2829,7 @@ public static partial class Durable
         /// Array of Similarity2d. Compressed (GZip).
         /// </summary>
         public static readonly Def Similarity2dArrayGz = new(
-            new Guid("2b0a05df-e7be-475e-2f61-b17dfc44923b"),
+            new Guid("361c6915-6fec-0945-96a7-a34d5f3c5186"),
             "Similarity2d[].gz",
             "Array of Similarity2d. Compressed (GZip).",
             None,
@@ -2840,7 +2840,7 @@ public static partial class Durable
         /// Array of Similarity2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Similarity2dArrayLz4 = new(
-            new Guid("003a0426-93a1-676f-1656-6a05df9ba063"),
+            new Guid("f92e7c3d-aa85-64d8-69b6-7a79ac51eaf3"),
             "Similarity2d[].lz4",
             "Array of Similarity2d. Compressed (LZ4).",
             None,
@@ -2873,7 +2873,7 @@ public static partial class Durable
         /// Array of Similarity3f. Compressed (GZip).
         /// </summary>
         public static readonly Def Similarity3fArrayGz = new(
-            new Guid("761e2f52-6619-66ef-c519-48c82c7256e6"),
+            new Guid("22764038-5ed1-14b7-f8c7-6c920140b6c0"),
             "Similarity3f[].gz",
             "Array of Similarity3f. Compressed (GZip).",
             None,
@@ -2884,7 +2884,7 @@ public static partial class Durable
         /// Array of Similarity3f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Similarity3fArrayLz4 = new(
-            new Guid("77fbc1e8-68ac-34c0-5666-46159c33ec91"),
+            new Guid("aea447ba-7e03-fdb3-d48d-dca444269727"),
             "Similarity3f[].lz4",
             "Array of Similarity3f. Compressed (LZ4).",
             None,
@@ -2917,7 +2917,7 @@ public static partial class Durable
         /// Array of Similarity3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Similarity3dArrayGz = new(
-            new Guid("1d6f9c32-08da-b132-7b94-b4445aad6311"),
+            new Guid("f45074a3-754f-8248-21e2-83c8154d35a3"),
             "Similarity3d[].gz",
             "Array of Similarity3d. Compressed (GZip).",
             None,
@@ -2928,7 +2928,7 @@ public static partial class Durable
         /// Array of Similarity3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Similarity3dArrayLz4 = new(
-            new Guid("7534f639-62ef-c680-9104-4db56925422f"),
+            new Guid("919c80af-4f80-fc3f-4ec3-dc1baf7e96eb"),
             "Similarity3d[].lz4",
             "Array of Similarity3d. Compressed (LZ4).",
             None,
@@ -2961,7 +2961,7 @@ public static partial class Durable
         /// Array of Trafo2f. Compressed (GZip).
         /// </summary>
         public static readonly Def Trafo2fArrayGz = new(
-            new Guid("9a1a46f3-b647-716d-d5d0-c33e5d126958"),
+            new Guid("1205ef8a-cb67-6a0f-ce5e-79ea327543f2"),
             "Trafo2f[].gz",
             "Array of Trafo2f. Compressed (GZip).",
             None,
@@ -2972,7 +2972,7 @@ public static partial class Durable
         /// Array of Trafo2f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Trafo2fArrayLz4 = new(
-            new Guid("988c6b92-a682-d892-3966-f45c6a7a5164"),
+            new Guid("ec5f7e2e-2c4d-ffe6-99af-b1687bd3c717"),
             "Trafo2f[].lz4",
             "Array of Trafo2f. Compressed (LZ4).",
             None,
@@ -3005,7 +3005,7 @@ public static partial class Durable
         /// Array of Trafo2d. Compressed (GZip).
         /// </summary>
         public static readonly Def Trafo2dArrayGz = new(
-            new Guid("d978413f-1ceb-2744-9e76-8bf63827ac57"),
+            new Guid("6a7243db-7a52-0cd1-6a0c-5cb1ec2f00f0"),
             "Trafo2d[].gz",
             "Array of Trafo2d. Compressed (GZip).",
             None,
@@ -3016,7 +3016,7 @@ public static partial class Durable
         /// Array of Trafo2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Trafo2dArrayLz4 = new(
-            new Guid("3bb56778-7b8a-38e1-28bb-44014893bf15"),
+            new Guid("0a75f387-2507-f675-2c07-63d308afab0c"),
             "Trafo2d[].lz4",
             "Array of Trafo2d. Compressed (LZ4).",
             None,
@@ -3049,7 +3049,7 @@ public static partial class Durable
         /// Array of Trafo3f. Compressed (GZip).
         /// </summary>
         public static readonly Def Trafo3fArrayGz = new(
-            new Guid("050af3cb-7153-501b-30c2-7f060b868697"),
+            new Guid("d5aaadcb-ab0a-dc8c-633f-62555eebb09f"),
             "Trafo3f[].gz",
             "Array of Trafo3f. Compressed (GZip).",
             None,
@@ -3060,7 +3060,7 @@ public static partial class Durable
         /// Array of Trafo3f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Trafo3fArrayLz4 = new(
-            new Guid("ae3ca5be-f765-33a4-1275-0e9093bee179"),
+            new Guid("596a0ea1-0eb2-5cca-8891-fade1d29c3c2"),
             "Trafo3f[].lz4",
             "Array of Trafo3f. Compressed (LZ4).",
             None,
@@ -3093,7 +3093,7 @@ public static partial class Durable
         /// Array of Trafo3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Trafo3dArrayGz = new(
-            new Guid("5b12936d-8f55-e485-6032-9687e3c39012"),
+            new Guid("4bc092c2-67e1-f0d5-fb41-e18c46f1972c"),
             "Trafo3d[].gz",
             "Array of Trafo3d. Compressed (GZip).",
             None,
@@ -3104,7 +3104,7 @@ public static partial class Durable
         /// Array of Trafo3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Trafo3dArrayLz4 = new(
-            new Guid("3fc6ee9d-0f7b-f24b-a5a2-40d82dd7065e"),
+            new Guid("0a088520-1c82-6078-7dab-c51d42355beb"),
             "Trafo3d[].lz4",
             "Array of Trafo3d. Compressed (LZ4).",
             None,
@@ -3137,7 +3137,7 @@ public static partial class Durable
         /// Array of Range1b. Compressed (GZip).
         /// </summary>
         public static readonly Def Range1bArrayGz = new(
-            new Guid("f09fbec4-ce02-236b-c2ae-ad2662399ef4"),
+            new Guid("b81b62bb-9c81-cf67-875c-438031de872a"),
             "Range1b[].gz",
             "Array of Range1b. Compressed (GZip).",
             None,
@@ -3148,7 +3148,7 @@ public static partial class Durable
         /// Array of Range1b. Compressed (LZ4).
         /// </summary>
         public static readonly Def Range1bArrayLz4 = new(
-            new Guid("6a12b1dc-39ae-b5e3-270e-6cf0c9d74bfe"),
+            new Guid("98e57065-fb7a-2c7a-5d81-da824b067061"),
             "Range1b[].lz4",
             "Array of Range1b. Compressed (LZ4).",
             None,
@@ -3181,7 +3181,7 @@ public static partial class Durable
         /// Array of Range1sb. Compressed (GZip).
         /// </summary>
         public static readonly Def Range1sbArrayGz = new(
-            new Guid("69504f81-88cb-f7a2-2873-b3b1faea8b30"),
+            new Guid("8d8714dc-d817-0f2c-7e00-f717e41fe818"),
             "Range1sb[].gz",
             "Array of Range1sb. Compressed (GZip).",
             None,
@@ -3192,7 +3192,7 @@ public static partial class Durable
         /// Array of Range1sb. Compressed (LZ4).
         /// </summary>
         public static readonly Def Range1sbArrayLz4 = new(
-            new Guid("4adf5622-824e-758c-8ecb-2ce6dacdbe92"),
+            new Guid("dc919b90-8e14-6d9d-f6d9-2ed8db9100ab"),
             "Range1sb[].lz4",
             "Array of Range1sb. Compressed (LZ4).",
             None,
@@ -3225,7 +3225,7 @@ public static partial class Durable
         /// Array of Range1s. Compressed (GZip).
         /// </summary>
         public static readonly Def Range1sArrayGz = new(
-            new Guid("3051d4e8-125e-7a92-ce4f-2ca39ddd6824"),
+            new Guid("3ed7a8bf-67c1-f7ee-9d4a-5aaf9065d676"),
             "Range1s[].gz",
             "Array of Range1s. Compressed (GZip).",
             None,
@@ -3236,7 +3236,7 @@ public static partial class Durable
         /// Array of Range1s. Compressed (LZ4).
         /// </summary>
         public static readonly Def Range1sArrayLz4 = new(
-            new Guid("ca7f4420-e5a4-ead2-37e8-2272e41fd7c6"),
+            new Guid("683f4f6d-6ee4-31df-a0dc-ca769377214e"),
             "Range1s[].lz4",
             "Array of Range1s. Compressed (LZ4).",
             None,
@@ -3269,7 +3269,7 @@ public static partial class Durable
         /// Array of Range1us. Compressed (GZip).
         /// </summary>
         public static readonly Def Range1usArrayGz = new(
-            new Guid("7f096fbf-21ab-f108-41fc-3c1b473e1440"),
+            new Guid("125a4fe7-aece-f3c8-ebd3-9e65df6565c7"),
             "Range1us[].gz",
             "Array of Range1us. Compressed (GZip).",
             None,
@@ -3280,7 +3280,7 @@ public static partial class Durable
         /// Array of Range1us. Compressed (LZ4).
         /// </summary>
         public static readonly Def Range1usArrayLz4 = new(
-            new Guid("e5fc9ed5-6379-0b2f-70f8-d5dcefc79bd2"),
+            new Guid("8f38110b-66eb-c700-cba4-bd1d5ab07364"),
             "Range1us[].lz4",
             "Array of Range1us. Compressed (LZ4).",
             None,
@@ -3313,7 +3313,7 @@ public static partial class Durable
         /// Array of Range1i. Compressed (GZip).
         /// </summary>
         public static readonly Def Range1iArrayGz = new(
-            new Guid("2f5b7d70-c5b1-9c16-b82e-1d45ad210eee"),
+            new Guid("c12e4177-f392-f72e-df92-1acb7f3c9cd6"),
             "Range1i[].gz",
             "Array of Range1i. Compressed (GZip).",
             None,
@@ -3324,7 +3324,7 @@ public static partial class Durable
         /// Array of Range1i. Compressed (LZ4).
         /// </summary>
         public static readonly Def Range1iArrayLz4 = new(
-            new Guid("eac436ba-ce6d-8595-412f-6a953116a114"),
+            new Guid("4840b0d0-c66b-de9e-ea1a-c42cfc2fa2ce"),
             "Range1i[].lz4",
             "Array of Range1i. Compressed (LZ4).",
             None,
@@ -3357,7 +3357,7 @@ public static partial class Durable
         /// Array of Range1ui. Compressed (GZip).
         /// </summary>
         public static readonly Def Range1uiArrayGz = new(
-            new Guid("152d680f-bf38-3aae-be3e-080752005e6f"),
+            new Guid("5e0bd3fb-0219-0dfd-54e4-13606e25dc71"),
             "Range1ui[].gz",
             "Array of Range1ui. Compressed (GZip).",
             None,
@@ -3368,7 +3368,7 @@ public static partial class Durable
         /// Array of Range1ui. Compressed (LZ4).
         /// </summary>
         public static readonly Def Range1uiArrayLz4 = new(
-            new Guid("eb58f4ee-2dd9-fb6c-0b20-e7ae37d9fbf6"),
+            new Guid("58e9e48e-48ab-5d6a-5308-673c2fbb3211"),
             "Range1ui[].lz4",
             "Array of Range1ui. Compressed (LZ4).",
             None,
@@ -3401,7 +3401,7 @@ public static partial class Durable
         /// Array of Range1l. Compressed (GZip).
         /// </summary>
         public static readonly Def Range1lArrayGz = new(
-            new Guid("9274479a-b7d8-bdc7-d107-85999d1f26d2"),
+            new Guid("2ac104d6-d29e-4265-5a81-807e9d184957"),
             "Range1l[].gz",
             "Array of Range1l. Compressed (GZip).",
             None,
@@ -3412,7 +3412,7 @@ public static partial class Durable
         /// Array of Range1l. Compressed (LZ4).
         /// </summary>
         public static readonly Def Range1lArrayLz4 = new(
-            new Guid("5300cef8-db1b-67f5-6018-c9519724da28"),
+            new Guid("401efb41-0a50-5a45-3a97-9cc6810e40dd"),
             "Range1l[].lz4",
             "Array of Range1l. Compressed (LZ4).",
             None,
@@ -3445,7 +3445,7 @@ public static partial class Durable
         /// Array of Range1ul. Compressed (GZip).
         /// </summary>
         public static readonly Def Range1ulArrayGz = new(
-            new Guid("ba76c1ac-911e-e6e2-6725-edce39a05e6d"),
+            new Guid("2909e12e-1a1f-e037-1295-247721c28c1c"),
             "Range1ul[].gz",
             "Array of Range1ul. Compressed (GZip).",
             None,
@@ -3456,7 +3456,7 @@ public static partial class Durable
         /// Array of Range1ul. Compressed (LZ4).
         /// </summary>
         public static readonly Def Range1ulArrayLz4 = new(
-            new Guid("f535ad28-2214-ed77-c969-5d606a16005c"),
+            new Guid("342d0e9d-ce45-5107-2120-78c52b094116"),
             "Range1ul[].lz4",
             "Array of Range1ul. Compressed (LZ4).",
             None,
@@ -3489,7 +3489,7 @@ public static partial class Durable
         /// Array of Range1f. Compressed (GZip).
         /// </summary>
         public static readonly Def Range1fArrayGz = new(
-            new Guid("b4b3beba-8608-c78d-7e94-03dd9a3b7095"),
+            new Guid("82a5ac50-eaa2-1b4b-8b57-f2d50016002f"),
             "Range1f[].gz",
             "Array of Range1f. Compressed (GZip).",
             None,
@@ -3500,7 +3500,7 @@ public static partial class Durable
         /// Array of Range1f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Range1fArrayLz4 = new(
-            new Guid("d1f94c4e-40d5-0297-adbe-fa660cda322d"),
+            new Guid("85fb8803-6470-2c13-018b-f1a0681cec84"),
             "Range1f[].lz4",
             "Array of Range1f. Compressed (LZ4).",
             None,
@@ -3533,7 +3533,7 @@ public static partial class Durable
         /// Array of Range1d. Compressed (GZip).
         /// </summary>
         public static readonly Def Range1dArrayGz = new(
-            new Guid("6ff2ed4a-86d2-ed86-759b-cde938a092c0"),
+            new Guid("df97bbb3-c466-25ce-be00-2597fa758d0a"),
             "Range1d[].gz",
             "Array of Range1d. Compressed (GZip).",
             None,
@@ -3544,7 +3544,7 @@ public static partial class Durable
         /// Array of Range1d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Range1dArrayLz4 = new(
-            new Guid("4de5a244-9c71-1cbb-14b5-22ab3cbdc27c"),
+            new Guid("25e093bb-58f4-3157-f197-e66284da50eb"),
             "Range1d[].lz4",
             "Array of Range1d. Compressed (LZ4).",
             None,
@@ -3577,7 +3577,7 @@ public static partial class Durable
         /// Array of Box2i. Compressed (GZip).
         /// </summary>
         public static readonly Def Box2iArrayGz = new(
-            new Guid("bdd23e1f-3c4e-76c3-4db6-a62a4f3602a5"),
+            new Guid("17e2ab65-9e2e-0361-f195-eb8742319f98"),
             "Box2i[].gz",
             "Array of Box2i. Compressed (GZip).",
             None,
@@ -3588,7 +3588,7 @@ public static partial class Durable
         /// Array of Box2i. Compressed (LZ4).
         /// </summary>
         public static readonly Def Box2iArrayLz4 = new(
-            new Guid("041b37dc-9490-a70a-6438-3e1f88164aec"),
+            new Guid("32be572b-dc42-c0ff-0a6f-1fd468224446"),
             "Box2i[].lz4",
             "Array of Box2i. Compressed (LZ4).",
             None,
@@ -3621,7 +3621,7 @@ public static partial class Durable
         /// Array of Box2l. Compressed (GZip).
         /// </summary>
         public static readonly Def Box2lArrayGz = new(
-            new Guid("9c7fb1b9-041d-73b2-7810-81de82cb8374"),
+            new Guid("998c12a1-ce64-89de-a365-befbc970ef86"),
             "Box2l[].gz",
             "Array of Box2l. Compressed (GZip).",
             None,
@@ -3632,7 +3632,7 @@ public static partial class Durable
         /// Array of Box2l. Compressed (LZ4).
         /// </summary>
         public static readonly Def Box2lArrayLz4 = new(
-            new Guid("1d1fd3ff-8f93-c7ed-2f0c-d07ff9930002"),
+            new Guid("9fb8b8d1-588f-f704-6f02-f7646666139e"),
             "Box2l[].lz4",
             "Array of Box2l. Compressed (LZ4).",
             None,
@@ -3665,7 +3665,7 @@ public static partial class Durable
         /// Array of Box2f. Compressed (GZip).
         /// </summary>
         public static readonly Def Box2fArrayGz = new(
-            new Guid("9fbcd137-b12f-0416-9a2d-d76cb342f3dd"),
+            new Guid("29b2f391-2c4e-21e4-acaa-d98236b95a30"),
             "Box2f[].gz",
             "Array of Box2f. Compressed (GZip).",
             None,
@@ -3676,7 +3676,7 @@ public static partial class Durable
         /// Array of Box2f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Box2fArrayLz4 = new(
-            new Guid("d35d7716-c0b0-f68a-78d2-65028cbf51e1"),
+            new Guid("a4a5efa6-6d17-e382-ee8f-ddca300d164e"),
             "Box2f[].lz4",
             "Array of Box2f. Compressed (LZ4).",
             None,
@@ -3709,7 +3709,7 @@ public static partial class Durable
         /// Array of Box2d. Compressed (GZip).
         /// </summary>
         public static readonly Def Box2dArrayGz = new(
-            new Guid("12d1fe4e-7589-94cd-b50c-8126359f71f3"),
+            new Guid("ad4d70a9-d6f1-177c-5b90-f766ceb0ace2"),
             "Box2d[].gz",
             "Array of Box2d. Compressed (GZip).",
             None,
@@ -3720,7 +3720,7 @@ public static partial class Durable
         /// Array of Box2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Box2dArrayLz4 = new(
-            new Guid("99b6c89e-a90f-4963-bf61-2b4763f71848"),
+            new Guid("cd9951d4-83d9-9a8a-671d-8bc3ae5997ad"),
             "Box2d[].lz4",
             "Array of Box2d. Compressed (LZ4).",
             None,
@@ -3753,7 +3753,7 @@ public static partial class Durable
         /// Array of Box3i. Compressed (GZip).
         /// </summary>
         public static readonly Def Box3iArrayGz = new(
-            new Guid("b1f307e4-2079-e15d-3f88-b5dcaaa9b2ee"),
+            new Guid("513ac103-4fe2-29da-82ff-1ec76895e0bc"),
             "Box3i[].gz",
             "Array of Box3i. Compressed (GZip).",
             None,
@@ -3764,7 +3764,7 @@ public static partial class Durable
         /// Array of Box3i. Compressed (LZ4).
         /// </summary>
         public static readonly Def Box3iArrayLz4 = new(
-            new Guid("bf0a9f9d-a7d3-6d9e-bee7-c48104b785db"),
+            new Guid("518e0d8e-8913-cb03-6bd4-128b4d6ac14a"),
             "Box3i[].lz4",
             "Array of Box3i. Compressed (LZ4).",
             None,
@@ -3797,7 +3797,7 @@ public static partial class Durable
         /// Array of Box3l. Compressed (GZip).
         /// </summary>
         public static readonly Def Box3lArrayGz = new(
-            new Guid("9a71ee9b-77fc-cad5-6594-738be3bea0fc"),
+            new Guid("281f1f9f-c9a9-8eee-0a34-a6ab8b64e879"),
             "Box3l[].gz",
             "Array of Box3l. Compressed (GZip).",
             None,
@@ -3808,7 +3808,7 @@ public static partial class Durable
         /// Array of Box3l. Compressed (LZ4).
         /// </summary>
         public static readonly Def Box3lArrayLz4 = new(
-            new Guid("804b61fb-2c7f-1809-63d2-003f69c73876"),
+            new Guid("9611f89b-3502-a661-a228-fab76d1930e1"),
             "Box3l[].lz4",
             "Array of Box3l. Compressed (LZ4).",
             None,
@@ -3841,7 +3841,7 @@ public static partial class Durable
         /// Array of Box3f. Compressed (GZip).
         /// </summary>
         public static readonly Def Box3fArrayGz = new(
-            new Guid("760105ac-9da1-6989-9237-37d90f7f0d35"),
+            new Guid("89121914-9e33-d96c-6666-dab567742a3a"),
             "Box3f[].gz",
             "Array of Box3f. Compressed (GZip).",
             None,
@@ -3852,7 +3852,7 @@ public static partial class Durable
         /// Array of Box3f. Compressed (LZ4).
         /// </summary>
         public static readonly Def Box3fArrayLz4 = new(
-            new Guid("074dbaa5-e03f-468e-28c9-9c1eafb93b7c"),
+            new Guid("98998f65-c7ad-e774-c7a6-695c27304db2"),
             "Box3f[].lz4",
             "Array of Box3f. Compressed (LZ4).",
             None,
@@ -3885,7 +3885,7 @@ public static partial class Durable
         /// Array of Box3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Box3dArrayGz = new(
-            new Guid("0781e86e-ac58-b1c0-b9f4-640ac6a87374"),
+            new Guid("4485f6e7-b92f-3405-e2c3-fbce225b33c3"),
             "Box3d[].gz",
             "Array of Box3d. Compressed (GZip).",
             None,
@@ -3896,7 +3896,7 @@ public static partial class Durable
         /// Array of Box3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Box3dArrayLz4 = new(
-            new Guid("e685c75b-cba8-ba64-ddb2-e267446fbb97"),
+            new Guid("91741753-d6bf-55e2-2c6c-a84f44dac429"),
             "Box3d[].lz4",
             "Array of Box3d. Compressed (LZ4).",
             None,
@@ -3940,7 +3940,7 @@ public static partial class Durable
         /// Array of CellPadded32. Compressed (GZip).
         /// </summary>
         public static readonly Def CellPadded32ArrayGz = new(
-            new Guid("fea3c1db-887a-9717-158f-b3df45a8120d"),
+            new Guid("be18bddb-3489-19ec-d1ab-9c8c97240fa3"),
             "CellPadded32[].gz",
             "Array of CellPadded32. Compressed (GZip).",
             None,
@@ -3951,7 +3951,7 @@ public static partial class Durable
         /// Array of CellPadded32. Compressed (LZ4).
         /// </summary>
         public static readonly Def CellPadded32ArrayLz4 = new(
-            new Guid("449488ad-bc70-f5e6-7785-094d0eedd6d8"),
+            new Guid("22dcd02e-0766-d03c-c3c8-7d92d16e9e6c"),
             "CellPadded32[].lz4",
             "Array of CellPadded32. Compressed (LZ4).",
             None,
@@ -3973,7 +3973,7 @@ public static partial class Durable
         /// fix 2020-08-28: changed type from Cell[] to CellPadded32[], because it was always serialized this way. Compressed (GZip).
         /// </summary>
         public static readonly Def CellArrayGz = new(
-            new Guid("3d8d2908-3df1-eb6f-c251-66eb820f3560"),
+            new Guid("35c2c67c-f7d4-2f48-724a-307315b5b2c9"),
             "Cell[].gz",
             "fix 2020-08-28: changed type from Cell[] to CellPadded32[], because it was always serialized this way. Compressed (GZip).",
             CellPadded32ArrayGz.Id,
@@ -3984,7 +3984,7 @@ public static partial class Durable
         /// fix 2020-08-28: changed type from Cell[] to CellPadded32[], because it was always serialized this way. Compressed (LZ4).
         /// </summary>
         public static readonly Def CellArrayLz4 = new(
-            new Guid("cd6ce996-78dd-d7e8-6a50-38c67bb0b30a"),
+            new Guid("58a4f10e-7fb9-cf6b-9f98-db71f0dee09e"),
             "Cell[].lz4",
             "fix 2020-08-28: changed type from Cell[] to CellPadded32[], because it was always serialized this way. Compressed (LZ4).",
             CellPadded32ArrayLz4.Id,
@@ -4028,7 +4028,7 @@ public static partial class Durable
         /// Array of Cell2dPadded24. Compressed (GZip).
         /// </summary>
         public static readonly Def Cell2dPadded24ArrayGz = new(
-            new Guid("b1d636c5-f8cc-f245-d826-73a9b019a086"),
+            new Guid("1c5f85aa-caaa-c95f-91ba-dc6d8662fa49"),
             "Cell2dPadded24[].gz",
             "Array of Cell2dPadded24. Compressed (GZip).",
             None,
@@ -4039,7 +4039,7 @@ public static partial class Durable
         /// Array of Cell2dPadded24. Compressed (LZ4).
         /// </summary>
         public static readonly Def Cell2dPadded24ArrayLz4 = new(
-            new Guid("e3ba6a25-b006-1e1f-599d-c01a4437babd"),
+            new Guid("35295a61-b3f9-c7dd-6184-53a6f214d121"),
             "Cell2dPadded24[].lz4",
             "Array of Cell2dPadded24. Compressed (LZ4).",
             None,
@@ -4061,7 +4061,7 @@ public static partial class Durable
         /// fix 2020-08-28: changed type from Cell2d[] to Cell2dPadded24[], because it was always serialized this way. Compressed (GZip).
         /// </summary>
         public static readonly Def Cell2dArrayGz = new(
-            new Guid("11e5ca01-f1d8-90aa-1878-13fda3af926f"),
+            new Guid("a1d25eff-e511-79a3-0f1e-e619f68bb1fa"),
             "Cell2d[].gz",
             "fix 2020-08-28: changed type from Cell2d[] to Cell2dPadded24[], because it was always serialized this way. Compressed (GZip).",
             Cell2dPadded24ArrayGz.Id,
@@ -4072,7 +4072,7 @@ public static partial class Durable
         /// fix 2020-08-28: changed type from Cell2d[] to Cell2dPadded24[], because it was always serialized this way. Compressed (LZ4).
         /// </summary>
         public static readonly Def Cell2dArrayLz4 = new(
-            new Guid("db43474c-4a96-96cf-e64e-339dfa0b7ca4"),
+            new Guid("7f1dc668-e132-6431-249a-b23f9de244a4"),
             "Cell2d[].lz4",
             "fix 2020-08-28: changed type from Cell2d[] to Cell2dPadded24[], because it was always serialized this way. Compressed (LZ4).",
             Cell2dPadded24ArrayLz4.Id,
@@ -4105,7 +4105,7 @@ public static partial class Durable
         /// Array of C3b. Compressed (GZip).
         /// </summary>
         public static readonly Def C3bArrayGz = new(
-            new Guid("14a38d02-1234-5d38-b249-b22c9952da2b"),
+            new Guid("7049ca53-50c9-2ba9-d3dc-49a0d536ba48"),
             "C3b[].gz",
             "Array of C3b. Compressed (GZip).",
             None,
@@ -4116,7 +4116,7 @@ public static partial class Durable
         /// Array of C3b. Compressed (LZ4).
         /// </summary>
         public static readonly Def C3bArrayLz4 = new(
-            new Guid("2fb3f3af-5363-f2bc-88f1-eaf7503ea9ec"),
+            new Guid("6028b9d7-5de4-0e57-2a6c-47850d454fb6"),
             "C3b[].lz4",
             "Array of C3b. Compressed (LZ4).",
             None,
@@ -4149,7 +4149,7 @@ public static partial class Durable
         /// Array of C3us. Compressed (GZip).
         /// </summary>
         public static readonly Def C3usArrayGz = new(
-            new Guid("1058659e-ec4d-be2b-783b-80210fa45566"),
+            new Guid("867a854a-bb2f-f284-dfa5-39aedf94ba58"),
             "C3us[].gz",
             "Array of C3us. Compressed (GZip).",
             None,
@@ -4160,7 +4160,7 @@ public static partial class Durable
         /// Array of C3us. Compressed (LZ4).
         /// </summary>
         public static readonly Def C3usArrayLz4 = new(
-            new Guid("041d7b90-4482-c1f5-eaa8-5a30881f9973"),
+            new Guid("dd731949-3398-85ae-0b67-88f65db0622e"),
             "C3us[].lz4",
             "Array of C3us. Compressed (LZ4).",
             None,
@@ -4193,7 +4193,7 @@ public static partial class Durable
         /// Array of C3ui. Compressed (GZip).
         /// </summary>
         public static readonly Def C3uiArrayGz = new(
-            new Guid("d4784195-de35-d9a5-70c6-44461049f4d5"),
+            new Guid("49db6443-7207-b5a3-09be-e4de42af874e"),
             "C3ui[].gz",
             "Array of C3ui. Compressed (GZip).",
             None,
@@ -4204,7 +4204,7 @@ public static partial class Durable
         /// Array of C3ui. Compressed (LZ4).
         /// </summary>
         public static readonly Def C3uiArrayLz4 = new(
-            new Guid("ef281619-bf71-680c-9233-e357920aada8"),
+            new Guid("835b2163-73af-24dc-cf4c-996a0f593b38"),
             "C3ui[].lz4",
             "Array of C3ui. Compressed (LZ4).",
             None,
@@ -4237,7 +4237,7 @@ public static partial class Durable
         /// Array of C3f. Compressed (GZip).
         /// </summary>
         public static readonly Def C3fArrayGz = new(
-            new Guid("9a7582f9-0b11-d989-c3ef-1dafa3e06c4d"),
+            new Guid("1126ebd5-5361-0248-2a36-df8e288a1349"),
             "C3f[].gz",
             "Array of C3f. Compressed (GZip).",
             None,
@@ -4248,7 +4248,7 @@ public static partial class Durable
         /// Array of C3f. Compressed (LZ4).
         /// </summary>
         public static readonly Def C3fArrayLz4 = new(
-            new Guid("a96127d0-652b-5436-e566-d3759aacb792"),
+            new Guid("d7dec669-61fd-c6fc-acca-92a73c9b2da4"),
             "C3f[].lz4",
             "Array of C3f. Compressed (LZ4).",
             None,
@@ -4281,7 +4281,7 @@ public static partial class Durable
         /// Array of C3d. Compressed (GZip).
         /// </summary>
         public static readonly Def C3dArrayGz = new(
-            new Guid("b6b7dc39-4003-324a-0cd9-5fa75759c2cf"),
+            new Guid("ae38a324-754a-5e83-9173-21500bd4b747"),
             "C3d[].gz",
             "Array of C3d. Compressed (GZip).",
             None,
@@ -4292,7 +4292,7 @@ public static partial class Durable
         /// Array of C3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def C3dArrayLz4 = new(
-            new Guid("88fb06e2-e72c-ab66-cc38-e1a7dae8dc88"),
+            new Guid("7e1ac931-348e-f670-dc53-ef3d96965150"),
             "C3d[].lz4",
             "Array of C3d. Compressed (LZ4).",
             None,
@@ -4325,7 +4325,7 @@ public static partial class Durable
         /// Array of C4b. Compressed (GZip).
         /// </summary>
         public static readonly Def C4bArrayGz = new(
-            new Guid("5490e122-1b7c-3578-5881-617885cfd87f"),
+            new Guid("b18f1210-d19f-b7dc-88ae-61dbfb8f6133"),
             "C4b[].gz",
             "Array of C4b. Compressed (GZip).",
             None,
@@ -4336,7 +4336,7 @@ public static partial class Durable
         /// Array of C4b. Compressed (LZ4).
         /// </summary>
         public static readonly Def C4bArrayLz4 = new(
-            new Guid("d6558067-cf0d-448a-0ad5-d5e3c60941fc"),
+            new Guid("621fc0c7-ee10-ea6b-d290-a00885df36a0"),
             "C4b[].lz4",
             "Array of C4b. Compressed (LZ4).",
             None,
@@ -4369,7 +4369,7 @@ public static partial class Durable
         /// Array of C4us. Compressed (GZip).
         /// </summary>
         public static readonly Def C4usArrayGz = new(
-            new Guid("f496f4a7-2966-7035-2085-03f9a041c530"),
+            new Guid("a6542064-f970-eb79-8b1e-36ec4c326dc3"),
             "C4us[].gz",
             "Array of C4us. Compressed (GZip).",
             None,
@@ -4380,7 +4380,7 @@ public static partial class Durable
         /// Array of C4us. Compressed (LZ4).
         /// </summary>
         public static readonly Def C4usArrayLz4 = new(
-            new Guid("a0e291f6-7166-3bb3-bfd0-c43d3bfd8b2e"),
+            new Guid("ca78601c-a0dd-1129-c592-a16c31032379"),
             "C4us[].lz4",
             "Array of C4us. Compressed (LZ4).",
             None,
@@ -4413,7 +4413,7 @@ public static partial class Durable
         /// Array of C4ui. Compressed (GZip).
         /// </summary>
         public static readonly Def C4uiArrayGz = new(
-            new Guid("a71826aa-cbe1-134e-955a-f1680eed8018"),
+            new Guid("3268e82d-f695-cd18-8165-a51067755586"),
             "C4ui[].gz",
             "Array of C4ui. Compressed (GZip).",
             None,
@@ -4424,7 +4424,7 @@ public static partial class Durable
         /// Array of C4ui. Compressed (LZ4).
         /// </summary>
         public static readonly Def C4uiArrayLz4 = new(
-            new Guid("039b7e7e-d84e-c0d2-cc6c-273946d8d5fb"),
+            new Guid("198e83b0-dee1-8a78-8905-e0d3210473e9"),
             "C4ui[].lz4",
             "Array of C4ui. Compressed (LZ4).",
             None,
@@ -4457,7 +4457,7 @@ public static partial class Durable
         /// Array of C4f. Compressed (GZip).
         /// </summary>
         public static readonly Def C4fArrayGz = new(
-            new Guid("b4864085-3da2-11ee-5878-807747a55281"),
+            new Guid("26ea96cd-dac6-0ac1-dd89-f3a8a784162f"),
             "C4f[].gz",
             "Array of C4f. Compressed (GZip).",
             None,
@@ -4468,7 +4468,7 @@ public static partial class Durable
         /// Array of C4f. Compressed (LZ4).
         /// </summary>
         public static readonly Def C4fArrayLz4 = new(
-            new Guid("4554035f-caa7-22c9-04a8-500fcd535e73"),
+            new Guid("4156d51a-c5e3-2892-1477-c42619bc22ab"),
             "C4f[].lz4",
             "Array of C4f. Compressed (LZ4).",
             None,
@@ -4501,7 +4501,7 @@ public static partial class Durable
         /// Array of C4d. Compressed (GZip).
         /// </summary>
         public static readonly Def C4dArrayGz = new(
-            new Guid("24f03982-a0dc-c0a6-04e9-53f3f7790bbc"),
+            new Guid("a21504f8-d918-31db-5792-2d97e221fabb"),
             "C4d[].gz",
             "Array of C4d. Compressed (GZip).",
             None,
@@ -4512,7 +4512,7 @@ public static partial class Durable
         /// Array of C4d. Compressed (LZ4).
         /// </summary>
         public static readonly Def C4dArrayLz4 = new(
-            new Guid("6bd47d99-ac29-0d52-a3ca-3270f8898478"),
+            new Guid("4bd34c11-ab77-3b1c-fc59-ba3e95f22465"),
             "C4d[].lz4",
             "Array of C4d. Compressed (LZ4).",
             None,
@@ -4545,7 +4545,7 @@ public static partial class Durable
         /// Array of CieLabf. Compressed (GZip).
         /// </summary>
         public static readonly Def CieLabfArrayGz = new(
-            new Guid("0f903a44-86be-212b-b9fe-18288ee91ddb"),
+            new Guid("4e469fff-8349-ec45-a922-fac26edfc794"),
             "CieLabf[].gz",
             "Array of CieLabf. Compressed (GZip).",
             None,
@@ -4556,7 +4556,7 @@ public static partial class Durable
         /// Array of CieLabf. Compressed (LZ4).
         /// </summary>
         public static readonly Def CieLabfArrayLz4 = new(
-            new Guid("b8cc7e54-1d99-9895-8a1c-bd9cda87e991"),
+            new Guid("c6411bb9-7c72-de0c-d931-b339faa94325"),
             "CieLabf[].lz4",
             "Array of CieLabf. Compressed (LZ4).",
             None,
@@ -4589,7 +4589,7 @@ public static partial class Durable
         /// Array of CIeLuvf. Compressed (GZip).
         /// </summary>
         public static readonly Def CIeLuvfArrayGz = new(
-            new Guid("91b03876-b8de-9c30-7a76-d7b03098e31f"),
+            new Guid("76a30dfe-c986-0cbc-61cf-a54fd1b98224"),
             "CIeLuvf[].gz",
             "Array of CIeLuvf. Compressed (GZip).",
             None,
@@ -4600,7 +4600,7 @@ public static partial class Durable
         /// Array of CIeLuvf. Compressed (LZ4).
         /// </summary>
         public static readonly Def CIeLuvfArrayLz4 = new(
-            new Guid("f357418a-5858-2d52-e2f4-ed865ebcdcee"),
+            new Guid("2e6e21f5-398e-4cfb-2fd8-075a709195a0"),
             "CIeLuvf[].lz4",
             "Array of CIeLuvf. Compressed (LZ4).",
             None,
@@ -4633,7 +4633,7 @@ public static partial class Durable
         /// Array of CieXYZf. Compressed (GZip).
         /// </summary>
         public static readonly Def CieXYZfArrayGz = new(
-            new Guid("8495fc84-cee5-0f5d-dccb-a858f1b4a479"),
+            new Guid("b39f8e87-43f0-77e7-9b46-b13403064369"),
             "CieXYZf[].gz",
             "Array of CieXYZf. Compressed (GZip).",
             None,
@@ -4644,7 +4644,7 @@ public static partial class Durable
         /// Array of CieXYZf. Compressed (LZ4).
         /// </summary>
         public static readonly Def CieXYZfArrayLz4 = new(
-            new Guid("dba200db-3535-28df-909c-db66c55abfde"),
+            new Guid("13f963c0-eb1b-ad2c-3b05-67af7859c658"),
             "CieXYZf[].lz4",
             "Array of CieXYZf. Compressed (LZ4).",
             None,
@@ -4677,7 +4677,7 @@ public static partial class Durable
         /// Array of CieYxyf. Compressed (GZip).
         /// </summary>
         public static readonly Def CieYxyfArrayGz = new(
-            new Guid("aa09301a-c3a1-9f11-6fd7-d72c0f51f392"),
+            new Guid("b33e5c64-d96c-5b5f-04f3-a0af1920e677"),
             "CieYxyf[].gz",
             "Array of CieYxyf. Compressed (GZip).",
             None,
@@ -4688,7 +4688,7 @@ public static partial class Durable
         /// Array of CieYxyf. Compressed (LZ4).
         /// </summary>
         public static readonly Def CieYxyfArrayLz4 = new(
-            new Guid("6336bdd6-94df-11b7-b037-c358e3b19768"),
+            new Guid("7c90c860-24b3-4c6d-9c94-859562fe8768"),
             "CieYxyf[].lz4",
             "Array of CieYxyf. Compressed (LZ4).",
             None,
@@ -4721,7 +4721,7 @@ public static partial class Durable
         /// Array of CMYKf. Compressed (GZip).
         /// </summary>
         public static readonly Def CMYKfArrayGz = new(
-            new Guid("cf195ff5-dff8-83ff-340d-2d63ea45201d"),
+            new Guid("8ac860df-2acf-de03-4b36-c83166571870"),
             "CMYKf[].gz",
             "Array of CMYKf. Compressed (GZip).",
             None,
@@ -4732,7 +4732,7 @@ public static partial class Durable
         /// Array of CMYKf. Compressed (LZ4).
         /// </summary>
         public static readonly Def CMYKfArrayLz4 = new(
-            new Guid("9b43f474-df4b-059f-cb2a-d41afad48a99"),
+            new Guid("dc533164-636a-01e8-ef23-d18be823bc8b"),
             "CMYKf[].lz4",
             "Array of CMYKf. Compressed (LZ4).",
             None,
@@ -4765,7 +4765,7 @@ public static partial class Durable
         /// Array of HSLf. Compressed (GZip).
         /// </summary>
         public static readonly Def HSLfArrayGz = new(
-            new Guid("bb648c01-1224-6a9e-5675-ed9e884625e1"),
+            new Guid("6c2ad39a-c344-81aa-b3f6-49113092df9c"),
             "HSLf[].gz",
             "Array of HSLf. Compressed (GZip).",
             None,
@@ -4776,7 +4776,7 @@ public static partial class Durable
         /// Array of HSLf. Compressed (LZ4).
         /// </summary>
         public static readonly Def HSLfArrayLz4 = new(
-            new Guid("27fe2de5-25f4-44f0-c7f2-9909e80182cf"),
+            new Guid("db1fa9bc-ee29-f08e-19c6-d3ebb9e8a2ce"),
             "HSLf[].lz4",
             "Array of HSLf. Compressed (LZ4).",
             None,
@@ -4809,7 +4809,7 @@ public static partial class Durable
         /// Array of HSVf. Compressed (GZip).
         /// </summary>
         public static readonly Def HSVfArrayGz = new(
-            new Guid("d2e0d6a3-f633-fa29-e5b7-1ea201086265"),
+            new Guid("45908bc2-0801-6169-8cd2-8d884b2ffe3a"),
             "HSVf[].gz",
             "Array of HSVf. Compressed (GZip).",
             None,
@@ -4820,7 +4820,7 @@ public static partial class Durable
         /// Array of HSVf. Compressed (LZ4).
         /// </summary>
         public static readonly Def HSVfArrayLz4 = new(
-            new Guid("ecc0b53f-dc5a-1d35-7875-411c70810c76"),
+            new Guid("f5e97785-a913-619d-b2c1-c07efefab75b"),
             "HSVf[].lz4",
             "Array of HSVf. Compressed (LZ4).",
             None,
@@ -4853,7 +4853,7 @@ public static partial class Durable
         /// Array of Yuvf. Compressed (GZip).
         /// </summary>
         public static readonly Def YuvfArrayGz = new(
-            new Guid("f1b993d4-c1db-19d3-5930-5e1edea6a719"),
+            new Guid("3eaafaf9-e8f2-9a4e-f0a8-3bef51b3b63f"),
             "Yuvf[].gz",
             "Array of Yuvf. Compressed (GZip).",
             None,
@@ -4864,7 +4864,7 @@ public static partial class Durable
         /// Array of Yuvf. Compressed (LZ4).
         /// </summary>
         public static readonly Def YuvfArrayLz4 = new(
-            new Guid("808398d1-e144-f625-6994-b2f66a83300d"),
+            new Guid("3e402451-d15c-d3d7-d534-f6d7a7678a0b"),
             "Yuvf[].lz4",
             "Array of Yuvf. Compressed (LZ4).",
             None,
@@ -4919,7 +4919,7 @@ public static partial class Durable
         /// Array of Capsule3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Capsule3dArrayGz = new(
-            new Guid("b2c260ed-8d68-9e36-662f-ee8cf787632c"),
+            new Guid("293ec2a8-f0e4-b346-3dfb-59c2c0f58137"),
             "Capsule3d[].gz",
             "Array of Capsule3d. Compressed (GZip).",
             None,
@@ -4930,7 +4930,7 @@ public static partial class Durable
         /// Array of Capsule3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Capsule3dArrayLz4 = new(
-            new Guid("b8b91046-4005-85c1-5690-5e68029a7270"),
+            new Guid("ad7a3972-229c-3341-db53-f1cb50fc2498"),
             "Capsule3d[].lz4",
             "Array of Capsule3d. Compressed (LZ4).",
             None,
@@ -4963,7 +4963,7 @@ public static partial class Durable
         /// Array of Circle2d. Compressed (GZip).
         /// </summary>
         public static readonly Def Circle2dArrayGz = new(
-            new Guid("368e27d9-fc49-3b09-c649-6500e23e9c1a"),
+            new Guid("562c6d82-227d-e15a-8596-eedc0c932e8d"),
             "Circle2d[].gz",
             "Array of Circle2d. Compressed (GZip).",
             None,
@@ -4974,7 +4974,7 @@ public static partial class Durable
         /// Array of Circle2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Circle2dArrayLz4 = new(
-            new Guid("5ac6a905-774a-bca4-8bb7-f2650c4697a1"),
+            new Guid("5d907d4e-b931-ec87-26c4-87fa0b3c9e6b"),
             "Circle2d[].lz4",
             "Array of Circle2d. Compressed (LZ4).",
             None,
@@ -5007,7 +5007,7 @@ public static partial class Durable
         /// Array of Circle3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Circle3dArrayGz = new(
-            new Guid("a323e1c3-5881-efd5-13bf-a42202ebddda"),
+            new Guid("b95be024-d8ab-14a4-e1b1-13de3ac7a588"),
             "Circle3d[].gz",
             "Array of Circle3d. Compressed (GZip).",
             None,
@@ -5018,7 +5018,7 @@ public static partial class Durable
         /// Array of Circle3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Circle3dArrayLz4 = new(
-            new Guid("c3f19068-70bf-e7d7-2f40-d5c2cf690fc3"),
+            new Guid("c802c7fd-918f-8967-2ce6-55391fd903ee"),
             "Circle3d[].lz4",
             "Array of Circle3d. Compressed (LZ4).",
             None,
@@ -5051,7 +5051,7 @@ public static partial class Durable
         /// Array of ObliqueCone3d. Compressed (GZip).
         /// </summary>
         public static readonly Def ObliqueCone3dArrayGz = new(
-            new Guid("42f78f82-0db6-005b-5009-fc1b4875255c"),
+            new Guid("f6ba5830-2e7c-90ff-c071-2e1f7ddb376e"),
             "ObliqueCone3d[].gz",
             "Array of ObliqueCone3d. Compressed (GZip).",
             None,
@@ -5062,7 +5062,7 @@ public static partial class Durable
         /// Array of ObliqueCone3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def ObliqueCone3dArrayLz4 = new(
-            new Guid("370988e2-fffa-2766-ac08-b650987812af"),
+            new Guid("16fd3e79-3656-e267-59d4-74b2af7ba6df"),
             "ObliqueCone3d[].lz4",
             "Array of ObliqueCone3d. Compressed (LZ4).",
             None,
@@ -5095,7 +5095,7 @@ public static partial class Durable
         /// Array of Cone3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Cone3dArrayGz = new(
-            new Guid("0fcad684-3304-1d3a-7196-7ae38ef155f5"),
+            new Guid("1726ddcd-1c99-7521-b9da-4b7e3d3282f6"),
             "Cone3d[].gz",
             "Array of Cone3d. Compressed (GZip).",
             None,
@@ -5106,7 +5106,7 @@ public static partial class Durable
         /// Array of Cone3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Cone3dArrayLz4 = new(
-            new Guid("6fd697f8-b016-c77c-002b-46d05d65aa71"),
+            new Guid("c04a3f39-829b-73c7-d784-ece58fb87d61"),
             "Cone3d[].lz4",
             "Array of Cone3d. Compressed (LZ4).",
             None,
@@ -5142,7 +5142,7 @@ public static partial class Durable
         /// </summary>
         [Obsolete("Deprecated 2022-03-02. Obsolete field DistanceScale. Use 95ada0ae-0243-43d2-8e99-d0aaea843ae8 instead.")]
         public static readonly Def Cylinder3dDeprecated20220302ArrayGz = new(
-            new Guid("2042b2c8-a425-2f79-473a-43a65e471ad2"),
+            new Guid("d22c24dd-cd0d-2dfe-a144-4269d4d268ab"),
             "Aardvark.Cylinder3d.Deprecated.20220302[].gz",
             "Deprecated 2022-03-02. Obsolete field DistanceScale. Use 95ada0ae-0243-43d2-8e99-d0aaea843ae8 instead. Compressed (GZip).",
             None,
@@ -5154,7 +5154,7 @@ public static partial class Durable
         /// </summary>
         [Obsolete("Deprecated 2022-03-02. Obsolete field DistanceScale. Use 95ada0ae-0243-43d2-8e99-d0aaea843ae8 instead.")]
         public static readonly Def Cylinder3dDeprecated20220302ArrayLz4 = new(
-            new Guid("f2d4d1ed-de2f-dfde-15c0-48e1959af083"),
+            new Guid("14836555-4dab-fae0-84ef-f40067cc1979"),
             "Aardvark.Cylinder3d.Deprecated.20220302[].lz4",
             "Deprecated 2022-03-02. Obsolete field DistanceScale. Use 95ada0ae-0243-43d2-8e99-d0aaea843ae8 instead. Compressed (LZ4).",
             None,
@@ -5187,7 +5187,7 @@ public static partial class Durable
         /// Array of Cylinder3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Cylinder3dArrayGz = new(
-            new Guid("36c8689a-1a13-5085-11ec-28e96800a4b4"),
+            new Guid("bff8422f-87db-e2d8-fd66-944b0f2793ca"),
             "Cylinder3d[].gz",
             "Array of Cylinder3d. Compressed (GZip).",
             None,
@@ -5198,7 +5198,7 @@ public static partial class Durable
         /// Array of Cylinder3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Cylinder3dArrayLz4 = new(
-            new Guid("7184b31d-8b18-879d-9dce-a00e698a90e9"),
+            new Guid("a8a8d8a8-137b-4e6e-d34b-5e0df12a0de2"),
             "Cylinder3d[].lz4",
             "Array of Cylinder3d. Compressed (LZ4).",
             None,
@@ -5231,7 +5231,7 @@ public static partial class Durable
         /// Array of Line2d. Compressed (GZip).
         /// </summary>
         public static readonly Def Line2dArrayGz = new(
-            new Guid("c73fa4c8-ecad-8636-c302-50e8fba4c190"),
+            new Guid("f31484a8-ea72-724e-e151-411e0e6261ce"),
             "Line2d[].gz",
             "Array of Line2d. Compressed (GZip).",
             None,
@@ -5242,7 +5242,7 @@ public static partial class Durable
         /// Array of Line2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Line2dArrayLz4 = new(
-            new Guid("832e2e6a-e263-1e05-0cf6-00cb651b9477"),
+            new Guid("762a891e-3af3-8e0b-4b2f-8fa6d0f4ff98"),
             "Line2d[].lz4",
             "Array of Line2d. Compressed (LZ4).",
             None,
@@ -5275,7 +5275,7 @@ public static partial class Durable
         /// Array of Line3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Line3dArrayGz = new(
-            new Guid("b50ea609-c571-c9cc-ec78-beb3b2bfa0a5"),
+            new Guid("147c450e-9865-13a1-b4d7-e923b337ce85"),
             "Line3d[].gz",
             "Array of Line3d. Compressed (GZip).",
             None,
@@ -5286,7 +5286,7 @@ public static partial class Durable
         /// Array of Line3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Line3dArrayLz4 = new(
-            new Guid("99f14cd8-a074-8a30-2154-a64ba447d0aa"),
+            new Guid("af1fbd46-232e-5472-c0f3-3cad74758a30"),
             "Line3d[].lz4",
             "Array of Line3d. Compressed (LZ4).",
             None,
@@ -5319,7 +5319,7 @@ public static partial class Durable
         /// Array of Triangle2d. Compressed (GZip).
         /// </summary>
         public static readonly Def Triangle2dArrayGz = new(
-            new Guid("e2066584-0b30-2d9c-0be3-e83023649ab4"),
+            new Guid("c72e6888-3417-4a0f-6fd2-22d5b9d82071"),
             "Triangle2d[].gz",
             "Array of Triangle2d. Compressed (GZip).",
             None,
@@ -5330,7 +5330,7 @@ public static partial class Durable
         /// Array of Triangle2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Triangle2dArrayLz4 = new(
-            new Guid("65b09c1f-2151-669b-ec67-f4ff91afb30a"),
+            new Guid("5575bcda-8273-88a5-d8da-0f93ba31086e"),
             "Triangle2d[].lz4",
             "Array of Triangle2d. Compressed (LZ4).",
             None,
@@ -5363,7 +5363,7 @@ public static partial class Durable
         /// Array of Triangle3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Triangle3dArrayGz = new(
-            new Guid("61bdfe10-097c-9c79-90ac-b6c4dfc0b6a1"),
+            new Guid("c6fee9c9-55a5-cf16-f073-f5bdff3ae707"),
             "Triangle3d[].gz",
             "Array of Triangle3d. Compressed (GZip).",
             None,
@@ -5374,7 +5374,7 @@ public static partial class Durable
         /// Array of Triangle3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Triangle3dArrayLz4 = new(
-            new Guid("86bcd5be-0e27-9168-15c5-74f78814aa25"),
+            new Guid("3384950e-8ca9-d8fa-b026-7e417ea625d4"),
             "Triangle3d[].lz4",
             "Array of Triangle3d. Compressed (LZ4).",
             None,
@@ -5407,7 +5407,7 @@ public static partial class Durable
         /// Array of Quad2d. Compressed (GZip).
         /// </summary>
         public static readonly Def Quad2dArrayGz = new(
-            new Guid("288c9824-fda9-2fa9-f888-41cdf2e49a51"),
+            new Guid("5033dda8-b0de-4b1b-b000-0581da7fca65"),
             "Quad2d[].gz",
             "Array of Quad2d. Compressed (GZip).",
             None,
@@ -5418,7 +5418,7 @@ public static partial class Durable
         /// Array of Quad2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Quad2dArrayLz4 = new(
-            new Guid("73305d99-b199-c69e-f6ad-4ecc0c6fa231"),
+            new Guid("a0f7c89b-7b5d-2032-0393-1437fb200874"),
             "Quad2d[].lz4",
             "Array of Quad2d. Compressed (LZ4).",
             None,
@@ -5451,7 +5451,7 @@ public static partial class Durable
         /// Array of Quad3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Quad3dArrayGz = new(
-            new Guid("4fab85e6-9534-7f67-de3c-8eade72c64d5"),
+            new Guid("e6b945d1-89e9-3677-1706-1a34b8eb001b"),
             "Quad3d[].gz",
             "Array of Quad3d. Compressed (GZip).",
             None,
@@ -5462,7 +5462,7 @@ public static partial class Durable
         /// Array of Quad3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Quad3dArrayLz4 = new(
-            new Guid("90f4a657-fd48-6c8f-825f-2e0543af2e4a"),
+            new Guid("e4432822-5e6c-c22d-24e8-4de24b5feeac"),
             "Quad3d[].lz4",
             "Array of Quad3d. Compressed (LZ4).",
             None,
@@ -5495,7 +5495,7 @@ public static partial class Durable
         /// Array of Ellipse2d. Compressed (GZip).
         /// </summary>
         public static readonly Def Ellipse2dArrayGz = new(
-            new Guid("8eaf0d67-630e-a19c-b18c-0661337517de"),
+            new Guid("01fb5c6b-c1a9-5154-4727-c53418435e85"),
             "Ellipse2d[].gz",
             "Array of Ellipse2d. Compressed (GZip).",
             None,
@@ -5506,7 +5506,7 @@ public static partial class Durable
         /// Array of Ellipse2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Ellipse2dArrayLz4 = new(
-            new Guid("cdd1ec36-6423-1bd4-4368-d02c32db49b2"),
+            new Guid("431400cd-de7a-05ad-d4af-0a34c1f7b4ed"),
             "Ellipse2d[].lz4",
             "Array of Ellipse2d. Compressed (LZ4).",
             None,
@@ -5539,7 +5539,7 @@ public static partial class Durable
         /// Array of Ellipse3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Ellipse3dArrayGz = new(
-            new Guid("177ac95b-6aff-9952-fe8b-05681cf676d2"),
+            new Guid("0cf156c4-1676-50f1-864a-44bd59c20dd1"),
             "Ellipse3d[].gz",
             "Array of Ellipse3d. Compressed (GZip).",
             None,
@@ -5550,7 +5550,7 @@ public static partial class Durable
         /// Array of Ellipse3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Ellipse3dArrayLz4 = new(
-            new Guid("11c6323c-7b17-f2be-ddae-f260836e4169"),
+            new Guid("5ab837e0-1809-0d74-686b-72c23fc3dc9e"),
             "Ellipse3d[].lz4",
             "Array of Ellipse3d. Compressed (LZ4).",
             None,
@@ -5583,7 +5583,7 @@ public static partial class Durable
         /// Array of Sphere3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Sphere3dArrayGz = new(
-            new Guid("b279b5ca-f481-247f-d4dc-7c0543b97eab"),
+            new Guid("1937f27a-3afe-367b-bd41-11d97f97018b"),
             "Sphere3d[].gz",
             "Array of Sphere3d. Compressed (GZip).",
             None,
@@ -5594,7 +5594,7 @@ public static partial class Durable
         /// Array of Sphere3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Sphere3dArrayLz4 = new(
-            new Guid("baf1c9ba-5d44-0360-34fb-41e256fe6388"),
+            new Guid("53fff1d2-d6d2-50bd-15a0-81b3eaf6d4e9"),
             "Sphere3d[].lz4",
             "Array of Sphere3d. Compressed (LZ4).",
             None,
@@ -5627,7 +5627,7 @@ public static partial class Durable
         /// Array of Plane2d. Compressed (GZip).
         /// </summary>
         public static readonly Def Plane2dArrayGz = new(
-            new Guid("e59aac53-18f5-f975-2bca-ea7ad42988c1"),
+            new Guid("276e7797-6c6f-6cbb-aaf7-d7be089d0152"),
             "Plane2d[].gz",
             "Array of Plane2d. Compressed (GZip).",
             None,
@@ -5638,7 +5638,7 @@ public static partial class Durable
         /// Array of Plane2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Plane2dArrayLz4 = new(
-            new Guid("60182849-c773-1cd7-b726-6073a89880a0"),
+            new Guid("1cc4aefa-729d-c71b-a501-6739195258d1"),
             "Plane2d[].lz4",
             "Array of Plane2d. Compressed (LZ4).",
             None,
@@ -5671,7 +5671,7 @@ public static partial class Durable
         /// Array of Plane3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Plane3dArrayGz = new(
-            new Guid("a270b20d-a13f-c813-e79f-af2d9eb20e58"),
+            new Guid("c0f0f833-e58e-2326-197b-c45c96611f72"),
             "Plane3d[].gz",
             "Array of Plane3d. Compressed (GZip).",
             None,
@@ -5682,7 +5682,7 @@ public static partial class Durable
         /// Array of Plane3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Plane3dArrayLz4 = new(
-            new Guid("761f0ae6-61fb-e6e0-ce75-d8198dc96be4"),
+            new Guid("87a07f54-4aa6-a7f8-8265-603c4754ad32"),
             "Plane3d[].lz4",
             "Array of Plane3d. Compressed (LZ4).",
             None,
@@ -5715,7 +5715,7 @@ public static partial class Durable
         /// Array of Ray2d. Compressed (GZip).
         /// </summary>
         public static readonly Def Ray2dArrayGz = new(
-            new Guid("ab6526c4-bbda-72c7-b383-968f8c3e5625"),
+            new Guid("f0e7d5f6-f43d-2833-a2c4-f19c0ba3a790"),
             "Ray2d[].gz",
             "Array of Ray2d. Compressed (GZip).",
             None,
@@ -5726,7 +5726,7 @@ public static partial class Durable
         /// Array of Ray2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Ray2dArrayLz4 = new(
-            new Guid("66dad4de-e946-b4fb-de5f-a1dae950ffd2"),
+            new Guid("ed1eb853-9df0-c94e-f984-eae6206e6f4e"),
             "Ray2d[].lz4",
             "Array of Ray2d. Compressed (LZ4).",
             None,
@@ -5759,7 +5759,7 @@ public static partial class Durable
         /// Array of Ray3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Ray3dArrayGz = new(
-            new Guid("a0b88a9d-1bd9-d83f-bfa0-a7537c55abab"),
+            new Guid("e0cbef0d-766c-b014-3381-f10a8ab3ebc3"),
             "Ray3d[].gz",
             "Array of Ray3d. Compressed (GZip).",
             None,
@@ -5770,7 +5770,7 @@ public static partial class Durable
         /// Array of Ray3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Ray3dArrayLz4 = new(
-            new Guid("99ec1d22-29fd-1718-8fc9-272d726f4a6b"),
+            new Guid("f8789cc3-8019-a0f8-a10f-ff9fe9cd6297"),
             "Ray3d[].lz4",
             "Array of Ray3d. Compressed (LZ4).",
             None,
@@ -5803,7 +5803,7 @@ public static partial class Durable
         /// Array of Torus3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Torus3dArrayGz = new(
-            new Guid("e7c3751f-796c-6cf1-156d-787154a1f44f"),
+            new Guid("38126fee-4452-6d60-943c-805e37724b99"),
             "Torus3d[].gz",
             "Array of Torus3d. Compressed (GZip).",
             None,
@@ -5814,7 +5814,7 @@ public static partial class Durable
         /// Array of Torus3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Torus3dArrayLz4 = new(
-            new Guid("00af3111-47af-164a-f5b2-bcf85eb1731c"),
+            new Guid("961f3049-7eed-d8c8-9d01-84d65e7db038"),
             "Torus3d[].lz4",
             "Array of Torus3d. Compressed (LZ4).",
             None,
@@ -5847,7 +5847,7 @@ public static partial class Durable
         /// Array of Polygon2d. Compressed (GZip).
         /// </summary>
         public static readonly Def Polygon2dArrayGz = new(
-            new Guid("accd1a15-15c3-088e-02bd-48af25476ea2"),
+            new Guid("e4c28db5-3ed8-b376-7e20-b9d3dda52048"),
             "Polygon2d[].gz",
             "Array of Polygon2d. Compressed (GZip).",
             None,
@@ -5858,7 +5858,7 @@ public static partial class Durable
         /// Array of Polygon2d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Polygon2dArrayLz4 = new(
-            new Guid("dbd4e57d-4fcf-81ad-e3f3-e82845fb8e68"),
+            new Guid("6fa2ddcf-36a0-a81c-8cd0-a9574961a1b6"),
             "Polygon2d[].lz4",
             "Array of Polygon2d. Compressed (LZ4).",
             None,
@@ -5891,7 +5891,7 @@ public static partial class Durable
         /// Array of Polygon3d. Compressed (GZip).
         /// </summary>
         public static readonly Def Polygon3dArrayGz = new(
-            new Guid("a1dfdb3a-2631-9a40-eb30-c32f564a1da8"),
+            new Guid("1a468890-b22d-f24f-219a-d03c4484d19d"),
             "Polygon3d[].gz",
             "Array of Polygon3d. Compressed (GZip).",
             None,
@@ -5902,7 +5902,7 @@ public static partial class Durable
         /// Array of Polygon3d. Compressed (LZ4).
         /// </summary>
         public static readonly Def Polygon3dArrayLz4 = new(
-            new Guid("6b32a8f0-05e2-776e-6ca8-4d928935ca0c"),
+            new Guid("06f252cd-7dd6-bff0-f969-e99b351dd45e"),
             "Polygon3d[].lz4",
             "Array of Polygon3d. Compressed (LZ4).",
             None,
@@ -5924,7 +5924,7 @@ public static partial class Durable
         /// Positions. V2f[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkPositions2fGz = new(
-            new Guid("0571ea59-8e67-8c89-fded-b48c288e85a4"),
+            new Guid("6e3a216d-6b3c-3fbc-ac37-c6421179ffb6"),
             "Aardvark.Chunk.Positions2f.gz",
             "Positions. V2f[]. Compressed (GZip).",
             V2fArrayGz.Id,
@@ -5935,7 +5935,7 @@ public static partial class Durable
         /// Positions. V2f[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkPositions2fLz4 = new(
-            new Guid("0d5c219f-e474-90d5-ce6a-b02574b7c42f"),
+            new Guid("e4a82b09-c1c9-f63c-e4e6-d6381d917548"),
             "Aardvark.Chunk.Positions2f.lz4",
             "Positions. V2f[]. Compressed (LZ4).",
             V2fArrayLz4.Id,
@@ -5957,7 +5957,7 @@ public static partial class Durable
         /// Positions. V2d[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkPositions2dGz = new(
-            new Guid("6ae7d425-2d5c-8719-4024-8e091c8c1767"),
+            new Guid("4cddb171-c8a8-a1b4-8e1c-06997f299e98"),
             "Aardvark.Chunk.Positions2d.gz",
             "Positions. V2d[]. Compressed (GZip).",
             V2dArrayGz.Id,
@@ -5968,7 +5968,7 @@ public static partial class Durable
         /// Positions. V2d[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkPositions2dLz4 = new(
-            new Guid("626e2871-fc19-4e72-34fa-6172bd3b4d7a"),
+            new Guid("930ae932-56f0-dd90-309b-79c6edccf4b3"),
             "Aardvark.Chunk.Positions2d.lz4",
             "Positions. V2d[]. Compressed (LZ4).",
             V2dArrayLz4.Id,
@@ -5990,7 +5990,7 @@ public static partial class Durable
         /// Positions. V3f[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkPositions3fGz = new(
-            new Guid("6e150a94-89c9-ab3e-3980-09032ce86abe"),
+            new Guid("63722e11-5b72-4ece-118c-fd9be27dc530"),
             "Aardvark.Chunk.Positions3f.gz",
             "Positions. V3f[]. Compressed (GZip).",
             V3fArrayGz.Id,
@@ -6001,7 +6001,7 @@ public static partial class Durable
         /// Positions. V3f[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkPositions3fLz4 = new(
-            new Guid("d1093169-e459-a433-2c33-9d376aec912e"),
+            new Guid("e8c696aa-5939-4370-3bf8-bb7e90cc01a1"),
             "Aardvark.Chunk.Positions3f.lz4",
             "Positions. V3f[]. Compressed (LZ4).",
             V3fArrayLz4.Id,
@@ -6023,7 +6023,7 @@ public static partial class Durable
         /// Positions. V3d[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkPositions3dGz = new(
-            new Guid("9d4d5d3e-f05f-a9f8-1667-c0218480425c"),
+            new Guid("abe850bb-798a-0bfc-342f-adfb41a445b5"),
             "Aardvark.Chunk.Positions3d.gz",
             "Positions. V3d[]. Compressed (GZip).",
             V3dArrayGz.Id,
@@ -6034,7 +6034,7 @@ public static partial class Durable
         /// Positions. V3d[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkPositions3dLz4 = new(
-            new Guid("91adc113-8d3c-dce1-0572-7c92986452cb"),
+            new Guid("466d859b-2ac6-4cc4-78d1-e5d5a3aad4ce"),
             "Aardvark.Chunk.Positions3d.lz4",
             "Positions. V3d[]. Compressed (LZ4).",
             V3dArrayLz4.Id,
@@ -6056,7 +6056,7 @@ public static partial class Durable
         /// Colors. C3b[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkColors3bGz = new(
-            new Guid("e29c90c9-f6a8-7eb2-cb19-0a77f44666e4"),
+            new Guid("2a1e5d7d-a733-5b5a-bc35-f435966a52ef"),
             "Aardvark.Chunk.Colors3b.gz",
             "Colors. C3b[]. Compressed (GZip).",
             C3bArrayGz.Id,
@@ -6067,7 +6067,7 @@ public static partial class Durable
         /// Colors. C3b[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkColors3bLz4 = new(
-            new Guid("94d3d8d6-e129-79df-b8a9-45acc70a82ad"),
+            new Guid("93f2d78a-bda6-5970-7b75-da99eab272df"),
             "Aardvark.Chunk.Colors3b.lz4",
             "Colors. C3b[]. Compressed (LZ4).",
             C3bArrayLz4.Id,
@@ -6089,7 +6089,7 @@ public static partial class Durable
         /// Colors. C3f[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkColors3fGz = new(
-            new Guid("ac65a024-e29a-1a54-9d0e-f02273bbe690"),
+            new Guid("13a2e75c-d4d2-d071-1c6a-1a2736c596f8"),
             "Aardvark.Chunk.Colors3f.gz",
             "Colors. C3f[]. Compressed (GZip).",
             C3fArrayGz.Id,
@@ -6100,7 +6100,7 @@ public static partial class Durable
         /// Colors. C3f[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkColors3fLz4 = new(
-            new Guid("7305506e-8e2f-eef3-c902-5fd2650c2d3a"),
+            new Guid("aa410ab8-f1bb-66df-2605-1a6a4880c4f0"),
             "Aardvark.Chunk.Colors3f.lz4",
             "Colors. C3f[]. Compressed (LZ4).",
             C3fArrayLz4.Id,
@@ -6122,7 +6122,7 @@ public static partial class Durable
         /// Colors. C4b[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkColors4bGz = new(
-            new Guid("df0a64c5-219b-5989-e280-ac198c0811d5"),
+            new Guid("c046b981-c69e-5b7a-fe42-94616fb95bc2"),
             "Aardvark.Chunk.Colors4b.gz",
             "Colors. C4b[]. Compressed (GZip).",
             C4bArrayGz.Id,
@@ -6133,7 +6133,7 @@ public static partial class Durable
         /// Colors. C4b[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkColors4bLz4 = new(
-            new Guid("4f94b4ba-a414-539b-6112-51f151e3a491"),
+            new Guid("c2b1f184-2a36-9604-14ee-5695f9b66e3e"),
             "Aardvark.Chunk.Colors4b.lz4",
             "Colors. C4b[]. Compressed (LZ4).",
             C4bArrayLz4.Id,
@@ -6155,7 +6155,7 @@ public static partial class Durable
         /// Colors. C4f[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkColors4fGz = new(
-            new Guid("d3bbeba9-9578-fc1e-7410-ccd799174360"),
+            new Guid("25979251-58ce-dd97-2a7b-2a430f716438"),
             "Aardvark.Chunk.Colors4f.gz",
             "Colors. C4f[]. Compressed (GZip).",
             C4fArrayGz.Id,
@@ -6166,7 +6166,7 @@ public static partial class Durable
         /// Colors. C4f[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkColors4fLz4 = new(
-            new Guid("1cbd3163-6a54-74bd-a999-c75eb152b8de"),
+            new Guid("6078ff90-0d15-5ee8-9944-721e7fd87904"),
             "Aardvark.Chunk.Colors4f.lz4",
             "Colors. C4f[]. Compressed (LZ4).",
             C4fArrayLz4.Id,
@@ -6188,7 +6188,7 @@ public static partial class Durable
         /// Normals. V3f[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkNormals3fGz = new(
-            new Guid("cb46049a-4b3c-67bb-2580-883deda1d333"),
+            new Guid("75bd1431-0035-8baa-2a80-476754cb98c0"),
             "Aardvark.Chunk.Normals3f.gz",
             "Normals. V3f[]. Compressed (GZip).",
             V3fArrayGz.Id,
@@ -6199,7 +6199,7 @@ public static partial class Durable
         /// Normals. V3f[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkNormals3fLz4 = new(
-            new Guid("194bfeb2-d14f-2aad-4a5b-ecb9b044bb9b"),
+            new Guid("840a13a1-938a-8cef-fe11-b2e4db81b59c"),
             "Aardvark.Chunk.Normals3f.lz4",
             "Normals. V3f[]. Compressed (LZ4).",
             V3fArrayLz4.Id,
@@ -6221,7 +6221,7 @@ public static partial class Durable
         /// Intensities. UInt8[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkIntensities1bGz = new(
-            new Guid("4569513b-803d-c69f-4655-28c9b7805350"),
+            new Guid("2b1f9228-e886-7b4b-f30d-2dd168ba9b7b"),
             "Aardvark.Chunk.Intensities1b.gz",
             "Intensities. UInt8[]. Compressed (GZip).",
             Primitives.UInt8ArrayGz.Id,
@@ -6232,7 +6232,7 @@ public static partial class Durable
         /// Intensities. UInt8[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkIntensities1bLz4 = new(
-            new Guid("08601ed3-63f1-16f2-1bcd-e8b179a01baa"),
+            new Guid("053d2799-b3af-a36f-2702-1f6fb30bf83a"),
             "Aardvark.Chunk.Intensities1b.lz4",
             "Intensities. UInt8[]. Compressed (LZ4).",
             Primitives.UInt8ArrayLz4.Id,
@@ -6254,7 +6254,7 @@ public static partial class Durable
         /// Intensities. Int16[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkIntensities1sGz = new(
-            new Guid("3f956606-6969-d29f-e1ea-8c66b5c6c329"),
+            new Guid("868c19dd-3483-e201-468d-18039a323d70"),
             "Aardvark.Chunk.Intensities1s.gz",
             "Intensities. Int16[]. Compressed (GZip).",
             Primitives.Int16ArrayGz.Id,
@@ -6265,7 +6265,7 @@ public static partial class Durable
         /// Intensities. Int16[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkIntensities1sLz4 = new(
-            new Guid("846ca031-983e-1e8a-75e0-43821f91f37c"),
+            new Guid("5616f149-9abb-5389-bf5a-b3a4ea8609dd"),
             "Aardvark.Chunk.Intensities1s.lz4",
             "Intensities. Int16[]. Compressed (LZ4).",
             Primitives.Int16ArrayLz4.Id,
@@ -6287,7 +6287,7 @@ public static partial class Durable
         /// Intensities. UInt16[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkIntensities1usGz = new(
-            new Guid("d424dccc-af63-00e1-6367-f0a5fef0a6f3"),
+            new Guid("b28c541a-0e10-7ffb-1790-2f81b2a1dcf4"),
             "Aardvark.Chunk.Intensities1us.gz",
             "Intensities. UInt16[]. Compressed (GZip).",
             Primitives.UInt16ArrayGz.Id,
@@ -6298,7 +6298,7 @@ public static partial class Durable
         /// Intensities. UInt16[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkIntensities1usLz4 = new(
-            new Guid("11462548-18e3-d926-c55a-88daa387271e"),
+            new Guid("f34911ef-08de-abb1-9617-a9ad58c6d471"),
             "Aardvark.Chunk.Intensities1us.lz4",
             "Intensities. UInt16[]. Compressed (LZ4).",
             Primitives.UInt16ArrayLz4.Id,
@@ -6320,7 +6320,7 @@ public static partial class Durable
         /// Intensities. Int32[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkIntensities1iGz = new(
-            new Guid("34626a9c-9805-9d78-0ff7-1c6d4b296627"),
+            new Guid("5af97db1-a61d-4ac4-02fc-1357d9330565"),
             "Aardvark.Chunk.Intensities1i.gz",
             "Intensities. Int32[]. Compressed (GZip).",
             Primitives.Int32ArrayGz.Id,
@@ -6331,7 +6331,7 @@ public static partial class Durable
         /// Intensities. Int32[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkIntensities1iLz4 = new(
-            new Guid("dd3641ce-4712-38f6-08dd-448732edf24b"),
+            new Guid("095ce10c-4d29-66c2-7777-1df46ed24b8b"),
             "Aardvark.Chunk.Intensities1i.lz4",
             "Intensities. Int32[]. Compressed (LZ4).",
             Primitives.Int32ArrayLz4.Id,
@@ -6353,7 +6353,7 @@ public static partial class Durable
         /// Intensities. UInt32[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkIntensities1uiGz = new(
-            new Guid("603f732f-eed6-c5ec-5e84-bf581782a661"),
+            new Guid("0dbb4c58-c3d7-1d40-bfbe-d9c35606caae"),
             "Aardvark.Chunk.Intensities1ui.gz",
             "Intensities. UInt32[]. Compressed (GZip).",
             Primitives.UInt32ArrayGz.Id,
@@ -6364,7 +6364,7 @@ public static partial class Durable
         /// Intensities. UInt32[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkIntensities1uiLz4 = new(
-            new Guid("e90524a5-41bc-780d-1e09-2b1aac11574a"),
+            new Guid("85790cd0-9914-4fc9-24c0-2c5d9645b3a6"),
             "Aardvark.Chunk.Intensities1ui.lz4",
             "Intensities. UInt32[]. Compressed (LZ4).",
             Primitives.UInt32ArrayLz4.Id,
@@ -6386,7 +6386,7 @@ public static partial class Durable
         /// Intensities. Float32[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkIntensities1fGz = new(
-            new Guid("e6b98ccd-28d8-9341-cbf7-fde70fd7d754"),
+            new Guid("18f4e8f1-4019-6993-5bb2-62433887a5ab"),
             "Aardvark.Chunk.Intensities1f.gz",
             "Intensities. Float32[]. Compressed (GZip).",
             Primitives.Float32ArrayGz.Id,
@@ -6397,7 +6397,7 @@ public static partial class Durable
         /// Intensities. Float32[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkIntensities1fLz4 = new(
-            new Guid("86fce411-e20c-3aba-0c69-ea465d92e4b7"),
+            new Guid("68305a44-90db-b521-2800-eb151cc9fe19"),
             "Aardvark.Chunk.Intensities1f.lz4",
             "Intensities. Float32[]. Compressed (LZ4).",
             Primitives.Float32ArrayLz4.Id,
@@ -6419,7 +6419,7 @@ public static partial class Durable
         /// Intensities. Float64[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkIntensities1dGz = new(
-            new Guid("c19c991b-0923-d3c4-d18a-f0ade7d10212"),
+            new Guid("8cf2aff0-9d73-bc77-bd2c-12d7d86a4fef"),
             "Aardvark.Chunk.Intensities1d.gz",
             "Intensities. Float64[]. Compressed (GZip).",
             Primitives.Float64ArrayGz.Id,
@@ -6430,7 +6430,7 @@ public static partial class Durable
         /// Intensities. Float64[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkIntensities1dLz4 = new(
-            new Guid("6c110614-ce5d-0bc4-8ef8-3a5355b70275"),
+            new Guid("c355c939-d799-ada1-a12f-c63bc78c83cb"),
             "Aardvark.Chunk.Intensities1d.lz4",
             "Intensities. Float64[]. Compressed (LZ4).",
             Primitives.Float64ArrayLz4.Id,
@@ -6452,7 +6452,7 @@ public static partial class Durable
         /// Classifications. UInt8[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkClassifications1bGz = new(
-            new Guid("c1ec6d97-0e67-f053-2d0d-71645e0f1de4"),
+            new Guid("f4a7e8fd-3fba-719f-d595-8341b0422cc3"),
             "Aardvark.Chunk.Classifications1b.gz",
             "Classifications. UInt8[]. Compressed (GZip).",
             Primitives.UInt8ArrayGz.Id,
@@ -6463,7 +6463,7 @@ public static partial class Durable
         /// Classifications. UInt8[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkClassifications1bLz4 = new(
-            new Guid("c479f7ee-75a2-6292-fafc-2af34b845869"),
+            new Guid("16ba09fd-eed8-3761-cb79-9370f19d3bfc"),
             "Aardvark.Chunk.Classifications1b.lz4",
             "Classifications. UInt8[]. Compressed (LZ4).",
             Primitives.UInt8ArrayLz4.Id,
@@ -6485,7 +6485,7 @@ public static partial class Durable
         /// Classifications. Int16[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkClassifications1sGz = new(
-            new Guid("9218657c-6dfe-23fc-3427-4ce8ac55fa8a"),
+            new Guid("c15f79fc-ba26-f328-786a-daa4bdc8f1a3"),
             "Aardvark.Chunk.Classifications1s.gz",
             "Classifications. Int16[]. Compressed (GZip).",
             Primitives.Int16ArrayGz.Id,
@@ -6496,7 +6496,7 @@ public static partial class Durable
         /// Classifications. Int16[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkClassifications1sLz4 = new(
-            new Guid("5d8d36dc-3216-0fb8-6e4c-69d3297bdcca"),
+            new Guid("884abf70-89cd-dacc-bb30-c0324a0581f8"),
             "Aardvark.Chunk.Classifications1s.lz4",
             "Classifications. Int16[]. Compressed (LZ4).",
             Primitives.Int16ArrayLz4.Id,
@@ -6518,7 +6518,7 @@ public static partial class Durable
         /// Classifications. UInt16[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkClassifications1usGz = new(
-            new Guid("cb737b6d-d277-1123-84b1-f807171dbab2"),
+            new Guid("d57b183c-638b-d823-0acd-06eef554aabd"),
             "Aardvark.Chunk.Classifications1us.gz",
             "Classifications. UInt16[]. Compressed (GZip).",
             Primitives.UInt16ArrayGz.Id,
@@ -6529,7 +6529,7 @@ public static partial class Durable
         /// Classifications. UInt16[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkClassifications1usLz4 = new(
-            new Guid("a4bb2ff5-3bd0-344d-3137-71373359dadb"),
+            new Guid("423951c1-6853-5b82-53ad-b3b756babe1b"),
             "Aardvark.Chunk.Classifications1us.lz4",
             "Classifications. UInt16[]. Compressed (LZ4).",
             Primitives.UInt16ArrayLz4.Id,
@@ -6551,7 +6551,7 @@ public static partial class Durable
         /// Classifications. Int32[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkClassifications1iGz = new(
-            new Guid("7e55da8b-bc47-4b05-498a-5381f0f56a9d"),
+            new Guid("d7b3aa55-d943-ba01-829f-a28ab8a64e99"),
             "Aardvark.Chunk.Classifications1i.gz",
             "Classifications. Int32[]. Compressed (GZip).",
             Primitives.Int32ArrayGz.Id,
@@ -6562,7 +6562,7 @@ public static partial class Durable
         /// Classifications. Int32[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkClassifications1iLz4 = new(
-            new Guid("6f34691f-03e8-8d2b-3d7c-0b9e5365e608"),
+            new Guid("1571f3c4-8a96-ccbd-c30e-f15939c53fb0"),
             "Aardvark.Chunk.Classifications1i.lz4",
             "Classifications. Int32[]. Compressed (LZ4).",
             Primitives.Int32ArrayLz4.Id,
@@ -6584,7 +6584,7 @@ public static partial class Durable
         /// Classifications. UInt32[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkClassifications1uiGz = new(
-            new Guid("bbf2d015-f54c-b8a0-39b9-0be99f056fe0"),
+            new Guid("c4a93459-db9a-68d9-dbde-be311a0cf8d1"),
             "Aardvark.Chunk.Classifications1ui.gz",
             "Classifications. UInt32[]. Compressed (GZip).",
             Primitives.UInt32ArrayGz.Id,
@@ -6595,7 +6595,7 @@ public static partial class Durable
         /// Classifications. UInt32[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkClassifications1uiLz4 = new(
-            new Guid("d7f6e13f-43b1-d9f6-e5e8-c5b24fa9c6c9"),
+            new Guid("c0e68ac2-0b2c-c25f-e400-201924da8fde"),
             "Aardvark.Chunk.Classifications1ui.lz4",
             "Classifications. UInt32[]. Compressed (LZ4).",
             Primitives.UInt32ArrayLz4.Id,
@@ -6617,7 +6617,7 @@ public static partial class Durable
         /// Classifications. StringUTF8[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ChunkClassificationsStringGz = new(
-            new Guid("dec15310-a427-7ab4-9ac5-78785d359620"),
+            new Guid("4c3db3e1-a0cd-d8fe-35d6-eff09dcb8d84"),
             "Aardvark.Chunk.ClassificationsString.gz",
             "Classifications. StringUTF8[]. Compressed (GZip).",
             Primitives.StringUTF8ArrayGz.Id,
@@ -6628,7 +6628,7 @@ public static partial class Durable
         /// Classifications. StringUTF8[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ChunkClassificationsStringLz4 = new(
-            new Guid("730b2698-bd4f-eb00-94f3-6d093258943e"),
+            new Guid("3d87571a-f68f-683d-1e10-d4144655b6db"),
             "Aardvark.Chunk.ClassificationsString.lz4",
             "Classifications. StringUTF8[]. Compressed (LZ4).",
             Primitives.StringUTF8ArrayLz4.Id,
@@ -6655,7 +6655,7 @@ public static partial class Durable
         /// Generic positions. V3f[]. Compressed (GZip).
         /// </summary>
         public static readonly Def Positions3fGz = new(
-            new Guid("0986d122-0b98-d190-9fcf-2e07ba79105a"),
+            new Guid("ccc87e76-e77a-612f-fb8e-3e3a9a98baa6"),
             "Generic.Positions3f.gz",
             "Generic positions. V3f[]. Compressed (GZip).",
             Aardvark.V3fArrayGz.Id,
@@ -6666,7 +6666,7 @@ public static partial class Durable
         /// Generic positions. V3f[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def Positions3fLz4 = new(
-            new Guid("b36d2384-7242-eec1-4b4e-75dddb14f796"),
+            new Guid("5e33f01a-fa71-9fe7-6019-1bfdfb73c693"),
             "Generic.Positions3f.lz4",
             "Generic positions. V3f[]. Compressed (LZ4).",
             Aardvark.V3fArrayLz4.Id,
@@ -6688,7 +6688,7 @@ public static partial class Durable
         /// Generic positions. V3d[]. Compressed (GZip).
         /// </summary>
         public static readonly Def Positions3dGz = new(
-            new Guid("29de34d3-dc59-56cd-da89-dec87928045d"),
+            new Guid("47bc0d96-becc-a591-cf26-1c4fae6cb2d2"),
             "Generic.Positions3d.gz",
             "Generic positions. V3d[]. Compressed (GZip).",
             Aardvark.V3dArrayGz.Id,
@@ -6699,7 +6699,7 @@ public static partial class Durable
         /// Generic positions. V3d[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def Positions3dLz4 = new(
-            new Guid("85272a05-a4e5-ad2f-f418-3a06afd7edc2"),
+            new Guid("eb5dff08-1afa-4628-e095-9bf30c62b7da"),
             "Generic.Positions3d.lz4",
             "Generic positions. V3d[]. Compressed (LZ4).",
             Aardvark.V3dArrayLz4.Id,
@@ -6721,7 +6721,7 @@ public static partial class Durable
         /// Generic normals. V3f[]. Compressed (GZip).
         /// </summary>
         public static readonly Def Normals3fGz = new(
-            new Guid("4ef65720-c2a0-e7ff-a093-5c4484e31f94"),
+            new Guid("8c5bf8c3-6867-3e35-36be-591fb700d12d"),
             "Generic.Normals3f.gz",
             "Generic normals. V3f[]. Compressed (GZip).",
             Aardvark.V3fArrayGz.Id,
@@ -6732,7 +6732,7 @@ public static partial class Durable
         /// Generic normals. V3f[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def Normals3fLz4 = new(
-            new Guid("9c425ace-b766-875e-3bcf-036d39b7f351"),
+            new Guid("a4cdf2da-3599-85fa-da26-2a08dc1fd422"),
             "Generic.Normals3f.lz4",
             "Generic normals. V3f[]. Compressed (LZ4).",
             Aardvark.V3fArrayLz4.Id,
@@ -6754,7 +6754,7 @@ public static partial class Durable
         /// Generic normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0]. Compressed (GZip).
         /// </summary>
         public static readonly Def Normals3sbGz = new(
-            new Guid("f125a474-4d7d-38a2-f5a9-49b855f1d90d"),
+            new Guid("6df0cc86-bf89-9249-74e6-a376766d8123"),
             "Generic.Normals3sb.gz",
             "Generic normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0]. Compressed (GZip).",
             Primitives.Int8ArrayGz.Id,
@@ -6765,7 +6765,7 @@ public static partial class Durable
         /// Generic normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0]. Compressed (LZ4).
         /// </summary>
         public static readonly Def Normals3sbLz4 = new(
-            new Guid("84d4dc1f-bd40-4ba4-f012-b9065bf78c91"),
+            new Guid("4962fb74-7d51-689c-6386-abde26019922"),
             "Generic.Normals3sb.lz4",
             "Generic normals (X:int8, Y:int8, Z:int8), where [-128,+127] is mapped to [-1.0,+1.0]. Compressed (LZ4).",
             Primitives.Int8ArrayLz4.Id,
@@ -6787,7 +6787,7 @@ public static partial class Durable
         /// Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf. Compressed (GZip).
         /// </summary>
         public static readonly Def NormalsOct16Gz = new(
-            new Guid("01a4f6a5-3c6f-cdf8-35ae-8dbc0cf4884d"),
+            new Guid("62bb883e-eb8a-4495-fba8-1d1d289aeedb"),
             "Generic.Normals.Oct16.gz",
             "Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf. Compressed (GZip).",
             Primitives.Int16ArrayGz.Id,
@@ -6798,7 +6798,7 @@ public static partial class Durable
         /// Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf. Compressed (LZ4).
         /// </summary>
         public static readonly Def NormalsOct16Lz4 = new(
-            new Guid("08cb4e93-fa23-18fd-d550-a5e53fffbcbb"),
+            new Guid("8980e964-dc7b-d539-62d6-bea36a8d5d3d"),
             "Generic.Normals.Oct16.lz4",
             "Octree. Per-point normals encoded as 16bits per normal according to format oct16 decribed in http://jcgt.org/published/0003/02/01/paper.pdf. Compressed (LZ4).",
             Primitives.Int16ArrayLz4.Id,
@@ -6820,7 +6820,7 @@ public static partial class Durable
         /// Octree. Per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf. Compressed (GZip).
         /// </summary>
         public static readonly Def NormalsOct16PGz = new(
-            new Guid("03181ec7-06a3-98f4-37e1-da91573ccb97"),
+            new Guid("24f3bda4-0b40-9e93-ddf4-761624579d56"),
             "Generic.Normals.Oct16P.gz",
             "Octree. Per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf. Compressed (GZip).",
             Primitives.Int16ArrayGz.Id,
@@ -6831,7 +6831,7 @@ public static partial class Durable
         /// Octree. Per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf. Compressed (LZ4).
         /// </summary>
         public static readonly Def NormalsOct16PLz4 = new(
-            new Guid("17b38b5c-bb39-f9ea-c2f8-05651bf5c11b"),
+            new Guid("0779ea4d-21af-6237-2c68-019b8cd4e566"),
             "Generic.Normals.Oct16P.lz4",
             "Octree. Per-point normals encoded as 16bits per normal according to format oct16P decribed in http://jcgt.org/published/0003/02/01/paper.pdf. Compressed (LZ4).",
             Primitives.Int16ArrayLz4.Id,
@@ -6853,7 +6853,7 @@ public static partial class Durable
         /// Generic colors. C3b[]. Compressed (GZip).
         /// </summary>
         public static readonly Def Colors3bGz = new(
-            new Guid("229230d3-301f-2232-123c-b8d7029a2dc4"),
+            new Guid("94b44daf-ecae-657f-7487-8f202bb2b3ee"),
             "Generic.Colors3b.gz",
             "Generic colors. C3b[]. Compressed (GZip).",
             Aardvark.C3bArrayGz.Id,
@@ -6864,7 +6864,7 @@ public static partial class Durable
         /// Generic colors. C3b[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def Colors3bLz4 = new(
-            new Guid("ef9ac31e-a870-9029-d47b-9ca7332238ea"),
+            new Guid("65d82ab9-6dee-9c1f-facb-152a06e739c5"),
             "Generic.Colors3b.lz4",
             "Generic colors. C3b[]. Compressed (LZ4).",
             Aardvark.C3bArrayLz4.Id,
@@ -6888,7 +6888,7 @@ public static partial class Durable
         /// </summary>
         [Obsolete("Deprecated 2020-11-17. Wrong type. Use d60b86bf-724c-4d41-ac64-040374557d72 instead.")]
         public static readonly Def Colors4bDeprecated20201117Gz = new(
-            new Guid("335790c0-5213-7580-ed7a-c8bec932ac2e"),
+            new Guid("5607ef98-caf4-0cf3-c3a3-d237b37af787"),
             "Generic.Colors4b.Deprecated.20201117.gz",
             "Deprecated 2020-11-17. Wrong type. Use d60b86bf-724c-4d41-ac64-040374557d72 instead. Generic colors. C4b[]. Compressed (GZip).",
             Aardvark.C3bArrayGz.Id,
@@ -6900,7 +6900,7 @@ public static partial class Durable
         /// </summary>
         [Obsolete("Deprecated 2020-11-17. Wrong type. Use d60b86bf-724c-4d41-ac64-040374557d72 instead.")]
         public static readonly Def Colors4bDeprecated20201117Lz4 = new(
-            new Guid("7333a94b-f53a-c975-7bfc-f250c374eff4"),
+            new Guid("d1941c43-9461-a024-3a23-98b077bc67d5"),
             "Generic.Colors4b.Deprecated.20201117.lz4",
             "Deprecated 2020-11-17. Wrong type. Use d60b86bf-724c-4d41-ac64-040374557d72 instead. Generic colors. C4b[]. Compressed (LZ4).",
             Aardvark.C3bArrayLz4.Id,
@@ -6922,7 +6922,7 @@ public static partial class Durable
         /// Generic colors. C4b[]. Compressed (GZip).
         /// </summary>
         public static readonly Def Colors4bGz = new(
-            new Guid("b8e6ba93-dd1f-d6ed-ab90-76d3bf5dce60"),
+            new Guid("868a1470-466d-cf9f-cabb-14c1c6a24d7a"),
             "Generic.Colors4b.gz",
             "Generic colors. C4b[]. Compressed (GZip).",
             Aardvark.C4bArrayGz.Id,
@@ -6933,7 +6933,7 @@ public static partial class Durable
         /// Generic colors. C4b[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def Colors4bLz4 = new(
-            new Guid("b8f326e0-8572-386d-7976-734c94557ccb"),
+            new Guid("75ec3019-808f-cc73-4249-307ca32adf07"),
             "Generic.Colors4b.lz4",
             "Generic colors. C4b[]. Compressed (LZ4).",
             Aardvark.C4bArrayLz4.Id,
@@ -6955,7 +6955,7 @@ public static partial class Durable
         /// Generic colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. UInt16[]. Compressed (GZip).
         /// </summary>
         public static readonly Def ColorsRGB565Gz = new(
-            new Guid("d5095e07-322a-117e-c885-c0da23510b00"),
+            new Guid("4972f67a-ee4f-f488-1ddf-ea8461d5b55e"),
             "Generic.Colors.RGB565.gz",
             "Generic colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. UInt16[]. Compressed (GZip).",
             Primitives.UInt16ArrayGz.Id,
@@ -6966,7 +6966,7 @@ public static partial class Durable
         /// Generic colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. UInt16[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def ColorsRGB565Lz4 = new(
-            new Guid("dc135f07-024a-d773-1a99-f17cb59a9281"),
+            new Guid("5660f943-5ff6-31b1-c8df-af71b6689c40"),
             "Generic.Colors.RGB565.lz4",
             "Generic colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. UInt16[]. Compressed (LZ4).",
             Primitives.UInt16ArrayLz4.Id,
@@ -6988,7 +6988,7 @@ public static partial class Durable
         /// Generic intensities. Int32[]. Compressed (GZip).
         /// </summary>
         public static readonly Def Intensities1iGz = new(
-            new Guid("115f3492-20eb-e192-5643-8c775224ae15"),
+            new Guid("d7d7584d-5d83-2e0d-d8f4-2678aa4fcd35"),
             "Generic.Intensities1i.gz",
             "Generic intensities. Int32[]. Compressed (GZip).",
             Primitives.Int32ArrayGz.Id,
@@ -6999,7 +6999,7 @@ public static partial class Durable
         /// Generic intensities. Int32[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def Intensities1iLz4 = new(
-            new Guid("741f27a6-b977-5abe-ed3f-f5ef911bf181"),
+            new Guid("38a24f8a-467d-48af-204f-1d4c10e19284"),
             "Generic.Intensities1i.lz4",
             "Generic intensities. Int32[]. Compressed (LZ4).",
             Primitives.Int32ArrayLz4.Id,
@@ -7021,7 +7021,7 @@ public static partial class Durable
         /// Generic intensities. Float32[]. Compressed (GZip).
         /// </summary>
         public static readonly Def Intensities1fGz = new(
-            new Guid("77d21399-6780-4322-bf94-6e4eeabb43fd"),
+            new Guid("5a1adbfd-c65f-a1b7-00b7-f05e1a9462eb"),
             "Generic.Intensities1f.gz",
             "Generic intensities. Float32[]. Compressed (GZip).",
             Primitives.Float32ArrayGz.Id,
@@ -7032,7 +7032,7 @@ public static partial class Durable
         /// Generic intensities. Float32[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def Intensities1fLz4 = new(
-            new Guid("ed6ca58f-14d4-3b64-50d4-ff6f1dcaba66"),
+            new Guid("e5d8e901-4155-00ac-f396-2a72a3953ab5"),
             "Generic.Intensities1f.lz4",
             "Generic intensities. Float32[]. Compressed (LZ4).",
             Primitives.Float32ArrayLz4.Id,
@@ -7054,7 +7054,7 @@ public static partial class Durable
         /// Generic classifications. UInt8[]. Compressed (GZip).
         /// </summary>
         public static readonly Def Classifications1bGz = new(
-            new Guid("a9a23e98-f397-66fc-faf8-fdbe08f44041"),
+            new Guid("6c1d591a-d203-255d-cd1b-6f094d8ec38a"),
             "Generic.Classifications1b.gz",
             "Generic classifications. UInt8[]. Compressed (GZip).",
             Primitives.UInt8ArrayGz.Id,
@@ -7065,7 +7065,7 @@ public static partial class Durable
         /// Generic classifications. UInt8[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def Classifications1bLz4 = new(
-            new Guid("8060ebde-5ea3-a9c5-1533-3acc25ebfa19"),
+            new Guid("59e18742-c766-9114-0638-25856d3258d8"),
             "Generic.Classifications1b.lz4",
             "Generic classifications. UInt8[]. Compressed (LZ4).",
             Primitives.UInt8ArrayLz4.Id,
@@ -7087,7 +7087,7 @@ public static partial class Durable
         /// Generic classifications. UInt16[]. Compressed (GZip).
         /// </summary>
         public static readonly Def Classifications1sGz = new(
-            new Guid("998532f3-0659-df8f-8a2b-2117a73cf619"),
+            new Guid("98db9097-401b-d3a7-151f-3d46ec652e10"),
             "Generic.Classifications1s.gz",
             "Generic classifications. UInt16[]. Compressed (GZip).",
             Primitives.UInt16ArrayGz.Id,
@@ -7098,7 +7098,7 @@ public static partial class Durable
         /// Generic classifications. UInt16[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def Classifications1sLz4 = new(
-            new Guid("48c43927-ef18-96ef-a5a9-8621171bd905"),
+            new Guid("9cdd3601-ad84-863a-56c5-f73f15d26b52"),
             "Generic.Classifications1s.lz4",
             "Generic classifications. UInt16[]. Compressed (LZ4).",
             Primitives.UInt16ArrayLz4.Id,
@@ -7120,7 +7120,7 @@ public static partial class Durable
         /// Generic classifications. Int32[]. Compressed (GZip).
         /// </summary>
         public static readonly Def Classifications1iGz = new(
-            new Guid("f457d3ed-b10a-193c-1f62-f1f0c712d93c"),
+            new Guid("3f0b747e-9aff-a8ff-5c8d-2fb79223dc13"),
             "Generic.Classifications1i.gz",
             "Generic classifications. Int32[]. Compressed (GZip).",
             Primitives.Int32ArrayGz.Id,
@@ -7131,7 +7131,7 @@ public static partial class Durable
         /// Generic classifications. Int32[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def Classifications1iLz4 = new(
-            new Guid("e426b104-b766-da95-8d71-35b3c21a802c"),
+            new Guid("dc96daf6-bca7-87de-1ddd-312844bf4494"),
             "Generic.Classifications1i.lz4",
             "Generic classifications. Int32[]. Compressed (LZ4).",
             Primitives.Int32ArrayLz4.Id,
@@ -7153,7 +7153,7 @@ public static partial class Durable
         /// Generic velocities (V3f[]). Compressed (GZip).
         /// </summary>
         public static readonly Def Velocities3fGz = new(
-            new Guid("9544a0b8-6686-6448-db40-de0fd7ba9989"),
+            new Guid("f5ecf184-cc38-67e8-cb00-302b257f9f76"),
             "Generic.Velocities3f.gz",
             "Generic velocities (V3f[]). Compressed (GZip).",
             Aardvark.V3fArrayGz.Id,
@@ -7164,7 +7164,7 @@ public static partial class Durable
         /// Generic velocities (V3f[]). Compressed (LZ4).
         /// </summary>
         public static readonly Def Velocities3fLz4 = new(
-            new Guid("09dcd3f2-dcb8-539f-0e53-5ba968541e61"),
+            new Guid("525048c1-a538-81b6-b004-c503fc579ae0"),
             "Generic.Velocities3f.lz4",
             "Generic velocities (V3f[]). Compressed (LZ4).",
             Aardvark.V3fArrayLz4.Id,
@@ -7186,7 +7186,7 @@ public static partial class Durable
         /// Generic velocities (V3d[]). Compressed (GZip).
         /// </summary>
         public static readonly Def Velocities3dGz = new(
-            new Guid("13353638-7c53-9f2c-d96d-bef9c333e9af"),
+            new Guid("548a8f44-9a26-046d-441e-b88c860ed604"),
             "Generic.Velocities3d.gz",
             "Generic velocities (V3d[]). Compressed (GZip).",
             Aardvark.V3dArrayGz.Id,
@@ -7197,7 +7197,7 @@ public static partial class Durable
         /// Generic velocities (V3d[]). Compressed (LZ4).
         /// </summary>
         public static readonly Def Velocities3dLz4 = new(
-            new Guid("7928d366-8f9b-20c5-e572-19e7c8530571"),
+            new Guid("a7d8cfa8-5ca7-f891-1c22-56cc53397408"),
             "Generic.Velocities3d.lz4",
             "Generic velocities (V3d[]). Compressed (LZ4).",
             Aardvark.V3dArrayLz4.Id,
@@ -7219,7 +7219,7 @@ public static partial class Durable
         /// Generic densities (float32[]). Compressed (GZip).
         /// </summary>
         public static readonly Def Densities1fGz = new(
-            new Guid("be9c7392-391b-d2e8-d1eb-04493025c3f6"),
+            new Guid("b94f9abd-16cb-99b4-5e78-0cfd3d6c8940"),
             "Generic.Densities1f.gz",
             "Generic densities (float32[]). Compressed (GZip).",
             Primitives.Float32ArrayGz.Id,
@@ -7230,7 +7230,7 @@ public static partial class Durable
         /// Generic densities (float32[]). Compressed (LZ4).
         /// </summary>
         public static readonly Def Densities1fLz4 = new(
-            new Guid("068f649b-ded4-60ba-8f12-18c27ae09d58"),
+            new Guid("e026c9c1-50ae-d50c-831c-d39421750cc2"),
             "Generic.Densities1f.lz4",
             "Generic densities (float32[]). Compressed (LZ4).",
             Primitives.Float32ArrayLz4.Id,
@@ -7252,7 +7252,7 @@ public static partial class Durable
         /// Generic densities (float64[]). Compressed (GZip).
         /// </summary>
         public static readonly Def Densities1dGz = new(
-            new Guid("2691a3ab-af13-f29b-661e-c870ef921e85"),
+            new Guid("27324c92-424b-ee63-098c-044557754ce5"),
             "Generic.Densities1d.gz",
             "Generic densities (float64[]). Compressed (GZip).",
             Primitives.Float64ArrayGz.Id,
@@ -7263,7 +7263,7 @@ public static partial class Durable
         /// Generic densities (float64[]). Compressed (LZ4).
         /// </summary>
         public static readonly Def Densities1dLz4 = new(
-            new Guid("2da7f73e-bcd0-528b-5fd4-c6a2d06e68d1"),
+            new Guid("27228a4d-6e16-507d-e1c5-171e9ce12b53"),
             "Generic.Densities1d.lz4",
             "Generic densities (float64[]). Compressed (LZ4).",
             Primitives.Float64ArrayLz4.Id,
