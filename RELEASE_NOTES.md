@@ -1,3 +1,7 @@
+### 0.4.0
+- Fixed auto-generated guids for .gz and .lz4 arrays, which were previously identical for same names in different categories.
+  In order to break as little as possible, the previous guids are kept for the "Octree" category, which will remap names from other categories to Octree on upgrade/load.
+
 ### 0.3.9
 - sync with definitions file
     - add Durable.Octree.Subnodes.ByteRanges,
