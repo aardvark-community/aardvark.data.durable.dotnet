@@ -7673,6 +7673,50 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where -128 is cell.Min and +128 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int8[].
+        /// </summary>
+        public static readonly Def PositionsLocal3sb = new(
+            new Guid("2a7c36bc-8d84-45b6-86fa-b66b562b3cc2"),
+            "Octree.PositionsLocal3sb",
+            "Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where -128 is cell.Min and +128 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int8[].",
+            Primitives.Int8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where -128 is cell.Min and +128 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int8[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def PositionsLocal3sbGz = new(
+            new Guid("21d81a2e-90d4-8ba2-5771-3dc7c1162c4c"),
+            "Octree.PositionsLocal3sb.gz",
+            "Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where -128 is cell.Min and +128 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int8[]. Compressed (GZip).",
+            Primitives.Int8ArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where -128 is cell.Min and +128 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int8[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def PositionsLocal3sbLz4 = new(
+            new Guid("4ac131e0-171b-d337-c454-41a1dcc4a5fe"),
+            "Octree.PositionsLocal3sb.lz4",
+            "Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where -128 is cell.Min and +128 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int8[]. Compressed (LZ4).",
+            Primitives.Int8ArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Reference to Octree.PositionsLocal3sb. Guid.
+        /// </summary>
+        public static readonly Def PositionsLocal3sbReference = new(
+            new Guid("3e225a08-fe26-4038-bbce-8d43275b029e"),
+            "Octree.PositionsLocal3sb.Reference",
+            "Octree. Reference to Octree.PositionsLocal3sb. Guid.",
+            Primitives.GuidDef.Id,
+            false
+            );
+
+        /// <summary>
         /// Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where 0 is cell.Min and 256 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt8[].
         /// </summary>
         public static readonly Def PositionsLocal3b = new(
@@ -7712,6 +7756,50 @@ public static partial class Durable
             new Guid("52aa381e-ddf2-4d77-a746-5cacaa1d10a9"),
             "Octree.PositionsLocal3b.Reference",
             "Octree. Reference to Octree.PositionsLocal3b. Guid.",
+            Primitives.GuidDef.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where Int16.Min is cell.Min and Int16.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int16[].
+        /// </summary>
+        public static readonly Def PositionsLocal3s = new(
+            new Guid("2d83f869-39c0-4b4b-9470-af97a82677a7"),
+            "Octree.PositionsLocal3s",
+            "Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where Int16.Min is cell.Min and Int16.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int16[].",
+            Primitives.Int16Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where Int16.Min is cell.Min and Int16.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int16[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def PositionsLocal3sGz = new(
+            new Guid("799fc895-058b-b860-4bbe-9ef3dfde4784"),
+            "Octree.PositionsLocal3s.gz",
+            "Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where Int16.Min is cell.Min and Int16.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int16[]. Compressed (GZip).",
+            Primitives.Int16ArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where Int16.Min is cell.Min and Int16.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int16[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def PositionsLocal3sLz4 = new(
+            new Guid("2cdcbee6-f2d3-4a18-3eba-a8076e56d894"),
+            "Octree.PositionsLocal3s.lz4",
+            "Octree. Per-point positions in local cell space as uniform 16-bit subdivision, where Int16.Min is cell.Min and Int16.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int16[]. Compressed (LZ4).",
+            Primitives.Int16ArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Reference to Octree.PositionsLocal3s. Guid.
+        /// </summary>
+        public static readonly Def PositionsLocal3sReference = new(
+            new Guid("35c5b633-2a7f-4ee3-87de-3321c72ca832"),
+            "Octree.PositionsLocal3s.Reference",
+            "Octree. Reference to Octree.PositionsLocal3s. Guid.",
             Primitives.GuidDef.Id,
             false
             );
@@ -7761,6 +7849,50 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where Int32.Min is cell.Min and Int32.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int32[].
+        /// </summary>
+        public static readonly Def PositionsLocal3i = new(
+            new Guid("c479bb05-2563-4ebb-b6c4-1a1c1d6c606d"),
+            "Octree.PositionsLocal3i",
+            "Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where Int32.Min is cell.Min and Int32.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int32[].",
+            Primitives.Int32Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where Int32.Min is cell.Min and Int32.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int32[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def PositionsLocal3iGz = new(
+            new Guid("90ec9d6c-52b0-be12-e5e8-353eb54e9137"),
+            "Octree.PositionsLocal3i.gz",
+            "Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where Int32.Min is cell.Min and Int32.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int32[]. Compressed (GZip).",
+            Primitives.Int32ArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where Int32.Min is cell.Min and Int32.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int32[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def PositionsLocal3iLz4 = new(
+            new Guid("197f5033-eef4-70cc-ff55-aa0f1080d4c3"),
+            "Octree.PositionsLocal3i.lz4",
+            "Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where Int32.Min is cell.Min and Int32.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int32[]. Compressed (LZ4).",
+            Primitives.Int32ArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Reference to Octree.PositionsLocal3i. Guid.
+        /// </summary>
+        public static readonly Def PositionsLocal3iReference = new(
+            new Guid("6e570668-b471-4dd1-b186-9b4461ee713c"),
+            "Octree.PositionsLocal3i.Reference",
+            "Octree. Reference to Octree.PositionsLocal3i. Guid.",
+            Primitives.GuidDef.Id,
+            false
+            );
+
+        /// <summary>
         /// Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where 0 is cell.Min and UInt32.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. UInt32[].
         /// </summary>
         public static readonly Def PositionsLocal3ui = new(
@@ -7800,6 +7932,50 @@ public static partial class Durable
             new Guid("6cfa3f22-27bc-4b86-917c-98f92f38bc46"),
             "Octree.PositionsLocal3ui.Reference",
             "Octree. Reference to Octree.PositionsLocal3ui. Guid.",
+            Primitives.GuidDef.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where Int64.Min is cell.Min and Int64.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int64[].
+        /// </summary>
+        public static readonly Def PositionsLocal3l = new(
+            new Guid("89d17a79-6888-4d68-b68b-7556630c13b1"),
+            "Octree.PositionsLocal3l",
+            "Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where Int64.Min is cell.Min and Int64.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int64[].",
+            Primitives.Int64Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where Int64.Min is cell.Min and Int64.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int64[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def PositionsLocal3lGz = new(
+            new Guid("80a1349d-2de9-955e-2295-62e8a50c9739"),
+            "Octree.PositionsLocal3l.gz",
+            "Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where Int64.Min is cell.Min and Int64.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int64[]. Compressed (GZip).",
+            Primitives.Int64ArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where Int64.Min is cell.Min and Int64.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int64[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def PositionsLocal3lLz4 = new(
+            new Guid("ae6f4ff8-3250-8a25-0470-8d679398c06f"),
+            "Octree.PositionsLocal3l.lz4",
+            "Octree. Per-point positions in local cell space as uniform 64-bit subdivision, where Int64.Min is cell.Min and Int64.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int64[]. Compressed (LZ4).",
+            Primitives.Int64ArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Reference to Octree.PositionsLocal3l. Guid.
+        /// </summary>
+        public static readonly Def PositionsLocal3lReference = new(
+            new Guid("58a28940-8436-4796-8041-57e8ff5caccf"),
+            "Octree.PositionsLocal3l.Reference",
+            "Octree. Reference to Octree.PositionsLocal3l. Guid.",
             Primitives.GuidDef.Id,
             false
             );
