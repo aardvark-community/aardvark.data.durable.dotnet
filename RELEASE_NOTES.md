@@ -1,3 +1,12 @@
+### 0.3.10
+- sync with definitions file
+    - add Octree.PerCellPartIndex1ui
+    - add Octree.PerPointPartIndex1[bsi]
+    - add Octree.Cir[34]b (color infrared)
+- dotnet tool update
+- update package Aardvark.Base 5.2.25
+- update package Aardvark.Build 1.0.20
+
 ### 0.4.3
 - pump version to 0.4.3 in order to avoid collision with hidden nuget packages
 
