@@ -7673,6 +7673,149 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Per-cell part index. UInt32.
+        /// </summary>
+        public static readonly Def PerCellPartIndex1ui = new(
+            new Guid("0a80f2b3-6484-4e4d-a573-3e8ff0378e93"),
+            "Octree.PerCellPartIndex1ui",
+            "Octree. Per-cell part index. UInt32.",
+            Primitives.UInt32.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Per-point part index. UInt8[].
+        /// </summary>
+        public static readonly Def PerPointPartIndex1b = new(
+            new Guid("3b393e63-85fc-4258-a79e-a16edf2cb9de"),
+            "Octree.PerPointPartIndex1b",
+            "Octree. Per-point part index. UInt8[].",
+            Primitives.UInt8Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point part index. UInt8[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def PerPointPartIndex1bGz = new(
+            new Guid("88b0cf06-abd4-4461-9eea-1919f389ed25"),
+            "Octree.PerPointPartIndex1b.gz",
+            "Octree. Per-point part index. UInt8[]. Compressed (GZip).",
+            Primitives.UInt8ArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point part index. UInt8[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def PerPointPartIndex1bLz4 = new(
+            new Guid("ee8bf99c-d4e7-901d-0ac2-38eeae033d06"),
+            "Octree.PerPointPartIndex1b.lz4",
+            "Octree. Per-point part index. UInt8[]. Compressed (LZ4).",
+            Primitives.UInt8ArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Reference to per-point part index. Guid.
+        /// </summary>
+        public static readonly Def PerPointPartIndex1bReference = new(
+            new Guid("050005ac-f6b4-44f0-9709-d877617a5403"),
+            "Octree.PerPointPartIndex1b.Reference",
+            "Octree. Reference to per-point part index. Guid.",
+            Primitives.GuidDef.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Per-point part index. UInt16[].
+        /// </summary>
+        public static readonly Def PerPointPartIndex1s = new(
+            new Guid("5e13d36a-1958-4936-bad0-d0ddf6274f2e"),
+            "Octree.PerPointPartIndex1s",
+            "Octree. Per-point part index. UInt16[].",
+            Primitives.UInt16Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point part index. UInt16[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def PerPointPartIndex1sGz = new(
+            new Guid("56d1cbaf-9896-370d-8a65-bcb937da60a7"),
+            "Octree.PerPointPartIndex1s.gz",
+            "Octree. Per-point part index. UInt16[]. Compressed (GZip).",
+            Primitives.UInt16ArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point part index. UInt16[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def PerPointPartIndex1sLz4 = new(
+            new Guid("6a792d3d-330e-1b64-2bbe-7a717cbc0b4e"),
+            "Octree.PerPointPartIndex1s.lz4",
+            "Octree. Per-point part index. UInt16[]. Compressed (LZ4).",
+            Primitives.UInt16ArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Reference to per-point part index. Guid.
+        /// </summary>
+        public static readonly Def PerPointPartIndex1sReference = new(
+            new Guid("eedb807b-6e62-4ad0-989b-44b56ba88fb0"),
+            "Octree.PerPointPartIndex1s.Reference",
+            "Octree. Reference to per-point part index. Guid.",
+            Primitives.GuidDef.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Per-point part index. UInt32[].
+        /// </summary>
+        public static readonly Def PerPointPartIndex1i = new(
+            new Guid("987dde4b-d7a0-4eff-aecb-9447aca0afb5"),
+            "Octree.PerPointPartIndex1i",
+            "Octree. Per-point part index. UInt32[].",
+            Primitives.UInt32Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point part index. UInt32[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def PerPointPartIndex1iGz = new(
+            new Guid("97cc4d6b-386a-3a00-1a2b-e3a31332f1fc"),
+            "Octree.PerPointPartIndex1i.gz",
+            "Octree. Per-point part index. UInt32[]. Compressed (GZip).",
+            Primitives.UInt32ArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point part index. UInt32[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def PerPointPartIndex1iLz4 = new(
+            new Guid("d8ab95fb-65ab-61ef-6a86-fb757a355199"),
+            "Octree.PerPointPartIndex1i.lz4",
+            "Octree. Per-point part index. UInt32[]. Compressed (LZ4).",
+            Primitives.UInt32ArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Reference to per-point part index. Guid.
+        /// </summary>
+        public static readonly Def PerPointPartIndex1iReference = new(
+            new Guid("e04d4f9a-f361-4de3-8de6-0ded1013bded"),
+            "Octree.PerPointPartIndex1i.Reference",
+            "Octree. Reference to per-point part index. Guid.",
+            Primitives.GuidDef.Id,
+            false
+            );
+
+        /// <summary>
         /// Octree. Per-point positions in local cell space as uniform 8-bit subdivision, where -128 is cell.Min and +128 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int8[].
         /// </summary>
         public static readonly Def PositionsLocal3sb = new(
@@ -7855,7 +7998,7 @@ public static partial class Durable
             new Guid("c479bb05-2563-4ebb-b6c4-1a1c1d6c606d"),
             "Octree.PositionsLocal3i",
             "Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where Int32.Min is cell.Min and Int32.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int32[].",
-            Primitives.Int32Array.Id,
+            Aardvark.V3iArray.Id,
             true
             );
 
@@ -7866,7 +8009,7 @@ public static partial class Durable
             new Guid("90ec9d6c-52b0-be12-e5e8-353eb54e9137"),
             "Octree.PositionsLocal3i.gz",
             "Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where Int32.Min is cell.Min and Int32.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int32[]. Compressed (GZip).",
-            Primitives.Int32ArrayGz.Id,
+            Aardvark.V3iArrayGz.Id,
             true
             );
 
@@ -7877,7 +8020,7 @@ public static partial class Durable
             new Guid("197f5033-eef4-70cc-ff55-aa0f1080d4c3"),
             "Octree.PositionsLocal3i.lz4",
             "Octree. Per-point positions in local cell space as uniform 32-bit subdivision, where Int32.Min is cell.Min and Int32.Max+1 is cell.Max. Layout for n points is [x0,y0,z0,x1,y1,z1,...x(n-1),y(n-1), z(n-1)]. Int32[]. Compressed (LZ4).",
-            Primitives.Int32ArrayLz4.Id,
+            Aardvark.V3iArrayLz4.Id,
             true
             );
 
@@ -8773,6 +8916,160 @@ public static partial class Durable
             "Octree. Reference to per-point colors in RGB565 format, where bits 0 to 4 are the blue value, 5 to 10 are green, and 11-15 are red. Guid.",
             Primitives.GuidDef.Id,
             false
+            );
+
+        /// <summary>
+        /// Octree. Per-point colored infrared (CIR). C3b[].
+        /// </summary>
+        public static readonly Def Cir3b = new(
+            new Guid("025da754-95fa-4a51-96c7-e775d68a44c3"),
+            "Octree.Cir3b",
+            "Octree. Per-point colored infrared (CIR). C3b[].",
+            Aardvark.C3bArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point colored infrared (CIR). C3b[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def Cir3bGz = new(
+            new Guid("4083343b-f71e-470a-be08-c51d5f6388bc"),
+            "Octree.Cir3b.gz",
+            "Octree. Per-point colored infrared (CIR). C3b[]. Compressed (GZip).",
+            Aardvark.C3bArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point colored infrared (CIR). C3b[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def Cir3bLz4 = new(
+            new Guid("cd49870c-092e-f10b-dd49-0d1ab3800138"),
+            "Octree.Cir3b.lz4",
+            "Octree. Per-point colored infrared (CIR). C3b[]. Compressed (LZ4).",
+            Aardvark.C3bArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Reference to Per-point colored infrared (CIR). Guid.
+        /// </summary>
+        public static readonly Def Cir3bReference = new(
+            new Guid("3192a4c1-f398-4ce7-b3a4-851aacc27f68"),
+            "Octree.Cir3b.Reference",
+            "Octree. Reference to Per-point colored infrared (CIR). Guid.",
+            Primitives.GuidDef.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[].
+        /// </summary>
+        public static readonly Def Cir3bRange = new(
+            new Guid("af1737d6-8732-4d27-baec-b7446403f006"),
+            "Octree.Cir3b.Range",
+            "Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[].",
+            Aardvark.V4fArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def Cir3bRangeGz = new(
+            new Guid("93464f13-257b-0cf2-c778-94ba779614ec"),
+            "Octree.Cir3b.Range.gz",
+            "Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[]. Compressed (GZip).",
+            Aardvark.V4fArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def Cir3bRangeLz4 = new(
+            new Guid("0edef8a9-7786-45eb-dfb1-cfb91be9082d"),
+            "Octree.Cir3b.Range.lz4",
+            "Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[]. Compressed (LZ4).",
+            Aardvark.V4fArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point colored infrared (CIR). C4b[].
+        /// </summary>
+        public static readonly Def Cir4b = new(
+            new Guid("ea719119-06a0-45cd-b40c-474b013c4827"),
+            "Octree.Cir4b",
+            "Octree. Per-point colored infrared (CIR). C4b[].",
+            Aardvark.C4bArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point colored infrared (CIR). C4b[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def Cir4bGz = new(
+            new Guid("ea0379b7-8e63-0d06-14f9-f7e6673e3917"),
+            "Octree.Cir4b.gz",
+            "Octree. Per-point colored infrared (CIR). C4b[]. Compressed (GZip).",
+            Aardvark.C4bArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point colored infrared (CIR). C4b[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def Cir4bLz4 = new(
+            new Guid("6978642e-2e05-a54f-ef93-d7b31f600c87"),
+            "Octree.Cir4b.lz4",
+            "Octree. Per-point colored infrared (CIR). C4b[]. Compressed (LZ4).",
+            Aardvark.C4bArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Reference to Per-point colored infrared (CIR). Guid.
+        /// </summary>
+        public static readonly Def Cir4bReference = new(
+            new Guid("54791fac-5798-43a7-87da-a1996fc18bd2"),
+            "Octree.Cir4b.Reference",
+            "Octree. Reference to Per-point colored infrared (CIR). Guid.",
+            Primitives.GuidDef.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[].
+        /// </summary>
+        public static readonly Def Cir4bRange = new(
+            new Guid("06d227e7-467f-4205-af1a-1705bb5fea39"),
+            "Octree.Cir4b.Range",
+            "Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[].",
+            Aardvark.V4fArray.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def Cir4bRangeGz = new(
+            new Guid("a4fac97c-a4ea-b331-3b8c-5f111570e473"),
+            "Octree.Cir4b.Range.gz",
+            "Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[]. Compressed (GZip).",
+            Aardvark.V4fArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def Cir4bRangeLz4 = new(
+            new Guid("d222b1ae-23b8-b49f-7f9f-87e506d71fb1"),
+            "Octree.Cir4b.Range.lz4",
+            "Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[]. Compressed (LZ4).",
+            Aardvark.V4fArrayLz4.Id,
+            true
             );
 
         /// <summary>
