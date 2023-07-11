@@ -1,3 +1,6 @@
+### 0.3.11
+- fixed version string
+
 ### 0.3.10
 - sync with definitions file
     - add Octree.PerCellPartIndex1ui
