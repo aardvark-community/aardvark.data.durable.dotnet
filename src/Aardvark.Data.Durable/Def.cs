@@ -39,6 +39,10 @@ namespace Aardvark.Data
 
             /// <summary></summary>
             public Def(Guid id, string name, string description, Guid type, bool isArray)
+                : this(id, name, description, type, isArray, verbose: false) { }
+
+            /// <summary></summary>
+            public Def(Guid id, string name, string description, Guid type, bool isArray, bool verbose)
             {
                 lock (defs)
                 {
@@ -56,11 +60,14 @@ namespace Aardvark.Data
                         }
                         else
                         {
-                            //Console.WriteLine(
-                            //    $"[WARNING] Redefinition of existing Durable.Def {id}.\n" +
-                            //    $"          NEW: Def(id: {id}, name: {name}, description: {description}, type: {type}, isArray: {isArray}).\n" +
-                            //    $"          OLD: Def(id: {x.Id}, name: {x.Name}, description: {x.Description}, type: {x.Type}, isArray: {x.IsArray})."
-                            //    );
+                            if (verbose)
+                            {
+                                Console.WriteLine(
+                                    $"[WARNING] Redefinition of existing Durable.Def {id}.\n" +
+                                    $"          NEW: Def(id: {id}, name: {name}, description: {description}, type: {type}, isArray: {isArray}).\n" +
+                                    $"          OLD: Def(id: {x.Id}, name: {x.Name}, description: {x.Description}, type: {x.Type}, isArray: {x.IsArray})."
+                                    );
+                            }
                         }
                     }
 
@@ -117,6 +124,20 @@ namespace Aardvark.Data
 
             /// <summary></summary>
             public static Def[] AllDefs => defs.Values.ToArray();
+
+            /// <summary>
+            /// Adds an alias key for given definition.
+            /// This allows apps to remap obsolete keys to the actual/current definition.
+            /// </summary>
+            /// <param name="key">Alias id.</param>
+            /// <param name="definition">Aliased definition.</param>
+            public static void AddAlias(Guid key, Def definition)
+            {
+                lock (defs)
+                {
+                    defs[key] = definition;
+                }
+            }
 
             private static readonly Dictionary<Guid, Def> defs = new();
         }

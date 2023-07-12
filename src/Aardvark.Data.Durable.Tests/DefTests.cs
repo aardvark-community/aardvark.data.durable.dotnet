@@ -47,5 +47,15 @@ namespace Aardvark.Data.Tests
 
             Assert.True(a.CompareTo(null) == 1);
         }
+
+        [Fact]
+        public void AliasTest()
+        {
+            var a = new Durable.Def(Guid.NewGuid(), "test", "test", Durable.Primitives.Unit.Id, false);
+            var alias = Guid.NewGuid();
+            Durable.Def.AddAlias(alias, a);
+
+            Assert.True(a == Durable.Def.Get(alias));
+        }
     }
 }
