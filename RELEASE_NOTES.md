@@ -1,3 +1,6 @@
+### 0.3.13
+- Def.AddAlias
+
 ### 0.3.12
 - branch 0.3.x
 
