@@ -8969,7 +8969,7 @@ public static partial class Durable
             new Guid("af1737d6-8732-4d27-baec-b7446403f006"),
             "Octree.Cir3b.Range",
             "Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[].",
-            Aardvark.V4fArray.Id,
+            Aardvark.V3fArray.Id,
             true
             );
 
@@ -8980,7 +8980,7 @@ public static partial class Durable
             new Guid("93464f13-257b-0cf2-c778-94ba779614ec"),
             "Octree.Cir3b.Range.gz",
             "Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[]. Compressed (GZip).",
-            Aardvark.V4fArrayGz.Id,
+            Aardvark.V3fArrayGz.Id,
             true
             );
 
@@ -8991,7 +8991,7 @@ public static partial class Durable
             new Guid("0edef8a9-7786-45eb-dfb1-cfb91be9082d"),
             "Octree.Cir3b.Range.lz4",
             "Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[]. Compressed (LZ4).",
-            Aardvark.V4fArrayLz4.Id,
+            Aardvark.V3fArrayLz4.Id,
             true
             );
 

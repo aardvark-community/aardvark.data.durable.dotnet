@@ -1,3 +1,6 @@
+### 0.3.14
+- fix typo (Octree.Cir3bRange)
+- 
 ### 0.3.13
 - Def.AddAlias
 
