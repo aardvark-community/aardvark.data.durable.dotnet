@@ -1,6 +1,7 @@
 ### 0.3.14
+- Octree.PartIndexRange, Octree.PerCellPartIndex1i
 - fix typo (Octree.Cir3bRange)
-- 
+
 ### 0.3.13
 - Def.AddAlias
 
