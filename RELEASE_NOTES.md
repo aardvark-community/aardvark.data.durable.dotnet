@@ -1,5 +1,7 @@
-### 0.3.14
+### 0.3.15
 - Octree.PartIndexRange, Octree.PerCellPartIndex1i
+
+### 0.3.14
 - fix typo (Octree.Cir3bRange)
 
 ### 0.3.13

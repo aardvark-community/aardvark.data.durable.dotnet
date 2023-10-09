@@ -11,7 +11,7 @@ namespace Aardvark.Data
         /// <summary>
         /// Version.
         /// </summary>
-        public const string Version = "0.3.14";
+        public const string Version = "0.3.15";
 
         /// <summary></summary>
         public static void Init()
