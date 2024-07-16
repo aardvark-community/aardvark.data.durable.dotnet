@@ -1,3 +1,6 @@
+### 0.5.0-prerelease0001
+- Updated to NET 8 and Aardvark.Base 5.3
+
 ### 0.4.3
 - pump version to 0.4.3 in order to avoid collision with hidden nuget packages
 
