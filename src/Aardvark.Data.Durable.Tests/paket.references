@@ -1,5 +1,4 @@
-FSharp.Core
-Aardvark.Base
+group Test
 
 Microsoft.NET.Test.Sdk
 xunit

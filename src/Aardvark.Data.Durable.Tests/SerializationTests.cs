@@ -254,7 +254,8 @@ namespace Aardvark.Data.Tests
         [Fact] public void Aardvark_C4us() => Primitive(Durable.Aardvark.C4us, new C4us(5, 15, 155, 127), 8);
 
         [Fact] public void Aardvark_CieLabf() => Primitive(Durable.Aardvark.CieLabf, new CieLabf(0.1f, 0.2f, 0.3f), 12);
-        [Fact] public void Aardvark_CIeLuvf() => Primitive(Durable.Aardvark.CIeLuvf, new CIeLuvf(0.1f, 0.2f, 0.3f), 12);
+        [Fact] public void Aardvark_CIeLuvf() => Primitive(Durable.Aardvark.CIeLuvf, new CieLuvf(0.1f, 0.2f, 0.3f), 12);
+        [Fact] public void Aardvark_CieLuvf() => Primitive(Durable.Aardvark.CieLuvf, new CieLuvf(0.1f, 0.2f, 0.3f), 12);
         [Fact] public void Aardvark_CieXYZf() => Primitive(Durable.Aardvark.CieXYZf, new CieXYZf(0.1f, 0.2f, 0.3f), 12);
         [Fact] public void Aardvark_CieYxyf() => Primitive(Durable.Aardvark.CieYxyf, new CieYxyf(0.1f, 0.2f, 0.3f), 12);
         [Fact] public void Aardvark_CMYKf() => Primitive(Durable.Aardvark.CMYKf, new CMYKf(0.1f, 0.2f, 0.3f, 0.4f), 16);
@@ -790,8 +791,12 @@ namespace Aardvark.Data.Tests
                new[] { new CieLabf(0.1f, 0.2f, 0.3f) }, 4 + 1 * 12
                );
         [Fact]
-        public void Primitive_CieLuvfArray() => PrimitiveArray(Durable.Aardvark.CIeLuvfArray,
-               new[] { new CIeLuvf(0.1f, 0.2f, 0.3f) }, 4 + 1 * 12
+        public void Primitive_CIeLuvfArray() => PrimitiveArray(Durable.Aardvark.CIeLuvfArray,
+               new[] { new CieLuvf(0.1f, 0.2f, 0.3f) }, 4 + 1 * 12
+               );
+        [Fact]
+        public void Primitive_CieLuvfArray() => PrimitiveArray(Durable.Aardvark.CieLuvfArray,
+               new[] { new CieLuvf(0.1f, 0.2f, 0.3f) }, 4 + 1 * 12
                );
         [Fact]
         public void Primitive_CieXYZfArray() => PrimitiveArray(Durable.Aardvark.CieXYZfArray,

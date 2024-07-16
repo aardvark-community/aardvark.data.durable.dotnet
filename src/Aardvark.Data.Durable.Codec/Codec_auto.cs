@@ -1566,24 +1566,24 @@ namespace Aardvark.Data
 
                 #endregion
 
-                #region Durable.Aardvark.CIeLuvf
+                #region Durable.Aardvark.CieLuvf
 
                 #if NETSTANDARD2_0 || NET472
-                Action<BinaryWriter, object> EncodeCIeLuvf = (s, o) => { var x = (CIeLuvf)o; s.Write(x.L); s.Write(x.u); s.Write(x.v); };
-                Action<BinaryWriter, object> EncodeCIeLuvfArray = (s, o) => EncodeArray(s, (CIeLuvf[])o);
-                Func<BinaryReader, object> DecodeCIeLuvf = s => new CIeLuvf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
-                Func<BinaryReader, object> DecodeCIeLuvfArray = DecodeArray<CIeLuvf>;
+                Action<BinaryWriter, object> EncodeCieLuvf = (s, o) => { var x = (CieLuvf)o; s.Write(x.L); s.Write(x.u); s.Write(x.v); };
+                Action<BinaryWriter, object> EncodeCieLuvfArray = (s, o) => EncodeArray(s, (CieLuvf[])o);
+                Func<BinaryReader, object> DecodeCieLuvf = s => new CieLuvf(s.ReadSingle(), s.ReadSingle(), s.ReadSingle());
+                Func<BinaryReader, object> DecodeCieLuvfArray = DecodeArray<CieLuvf>;
                 #endif
                 #if NETCOREAPP3_1 || NET5_0_OR_GREATER
-                Action<Stream, object> EncodeCIeLuvf = Write<CIeLuvf>;
-                Action<Stream, object> EncodeCIeLuvfArray = (s, o) => EncodeArray(s, (CIeLuvf[])o);
-                Func<Stream, object> DecodeCIeLuvf = ReadBoxed<CIeLuvf>;
-                Func<Stream, object> DecodeCIeLuvfArray = DecodeArray<CIeLuvf>;
+                Action<Stream, object> EncodeCieLuvf = Write<CieLuvf>;
+                Action<Stream, object> EncodeCieLuvfArray = (s, o) => EncodeArray(s, (CieLuvf[])o);
+                Func<Stream, object> DecodeCieLuvf = ReadBoxed<CieLuvf>;
+                Func<Stream, object> DecodeCieLuvfArray = DecodeArray<CieLuvf>;
                 #endif
-                s_encoders[Durable.Aardvark.CIeLuvf.Id] = EncodeCIeLuvf;
-                s_decoders[Durable.Aardvark.CIeLuvf.Id] = DecodeCIeLuvf;
-                s_encoders[Durable.Aardvark.CIeLuvfArray.Id] = EncodeCIeLuvfArray;
-                s_decoders[Durable.Aardvark.CIeLuvfArray.Id] = DecodeCIeLuvfArray;
+                s_encoders[Durable.Aardvark.CieLuvf.Id] = EncodeCieLuvf;
+                s_decoders[Durable.Aardvark.CieLuvf.Id] = DecodeCieLuvf;
+                s_encoders[Durable.Aardvark.CieLuvfArray.Id] = EncodeCieLuvfArray;
+                s_decoders[Durable.Aardvark.CieLuvfArray.Id] = DecodeCieLuvfArray;
 
                 #endregion
 

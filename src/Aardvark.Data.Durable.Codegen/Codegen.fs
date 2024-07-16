@@ -51,6 +51,7 @@ module Codegen =
         Guid("4da0c246-8d1d-44a0-ad7a-49522eee8d6e") // Aardvark.Polygon3d
         Guid("7d1c8157-c0a7-49f7-9ed7-e99e0160daad") // Aardvark.Polygon3d[]
         Guid("6982d0a3-1cb4-4c9f-b479-6ebd3926bf7b") // Aardvark.Cylinder3d.Deprecated.20220302
+        Guid("972c001e-a7a8-45ea-a234-f4788489d6e7") // Aardvark.CIeLuvf (Renamed to CieLuvF)
         ]
 
     let binaryWriterAllowedWriteTypes = Set.ofList <| [

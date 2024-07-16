@@ -4608,6 +4608,50 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// A color in CIELUV color space with channels L,u,v (Float32).
+        /// </summary>
+        public static readonly Def CieLuvf = new(
+            new Guid("805bc7f1-f5d3-41c1-b9a8-958efa75ea7a"),
+            "CieLuvf",
+            "A color in CIELUV color space with channels L,u,v (Float32).",
+            None,
+            false
+            );
+
+        /// <summary>
+        /// Array of CieLuvf.
+        /// </summary>
+        public static readonly Def CieLuvfArray = new(
+            new Guid("617ba25a-cfad-44db-aa38-55805f9b0f65"),
+            "CieLuvf[]",
+            "Array of CieLuvf.",
+            None,
+            true
+            );
+
+        /// <summary>
+        /// Array of CieLuvf. Compressed (GZip).
+        /// </summary>
+        public static readonly Def CieLuvfArrayGz = new(
+            new Guid("a1129545-5986-d759-e7d8-ea8f52f41408"),
+            "CieLuvf[].gz",
+            "Array of CieLuvf. Compressed (GZip).",
+            None,
+            true
+            );
+
+        /// <summary>
+        /// Array of CieLuvf. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def CieLuvfArrayLz4 = new(
+            new Guid("2e1dfa1e-61df-4d58-e137-c1a254864e37"),
+            "CieLuvf[].lz4",
+            "Array of CieLuvf. Compressed (LZ4).",
+            None,
+            true
+            );
+
+        /// <summary>
         /// A color in CIEXYZ color space with channels X,Y,Z (Float32).
         /// </summary>
         public static readonly Def CieXYZf = new(

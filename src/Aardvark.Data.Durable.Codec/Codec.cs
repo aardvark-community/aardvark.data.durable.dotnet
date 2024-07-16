@@ -34,7 +34,7 @@ namespace Aardvark.Data
         /// <summary>
         /// Version.
         /// </summary>
-        public const string Version = "0.4.3";
+        public const string Version = "0.5.0";
     }
 
     /// <summary>
@@ -201,6 +201,12 @@ namespace Aardvark.Data
 #pragma warning restore CS0618 // Type or member is obsolete
 
             Init();
+
+            // CIeLuvf was renamed to CieLuvf
+            s_encoders[Durable.Aardvark.CIeLuvf.Id]      = s_encoders[Durable.Aardvark.CieLuvf.Id];
+            s_encoders[Durable.Aardvark.CIeLuvfArray.Id] = s_encoders[Durable.Aardvark.CieLuvfArray.Id];
+            s_decoders[Durable.Aardvark.CIeLuvf.Id]      = s_decoders[Durable.Aardvark.CieLuvf.Id];
+            s_decoders[Durable.Aardvark.CIeLuvfArray.Id] = s_decoders[Durable.Aardvark.CieLuvfArray.Id];
         }
 
         #region GZip
@@ -324,8 +330,10 @@ namespace Aardvark.Data
             { Durable.Aardvark.C4usArray, typeof(C4us[]) },
             { Durable.Aardvark.CieLabf     , typeof(CieLabf  ) },
             { Durable.Aardvark.CieLabfArray, typeof(CieLabf[]) },
-            { Durable.Aardvark.CIeLuvf     , typeof(CIeLuvf  ) },
-            { Durable.Aardvark.CIeLuvfArray, typeof(CIeLuvf[]) },
+            { Durable.Aardvark.CIeLuvf     , typeof(CieLuvf  ) },
+            { Durable.Aardvark.CIeLuvfArray, typeof(CieLuvf[]) },
+            { Durable.Aardvark.CieLuvf     , typeof(CieLuvf  ) },
+            { Durable.Aardvark.CieLuvfArray, typeof(CieLuvf[]) },
             { Durable.Aardvark.CieXYZf     , typeof(CieXYZf  ) },
             { Durable.Aardvark.CieXYZfArray, typeof(CieXYZf[]) },
             { Durable.Aardvark.CieYxyf     , typeof(CieYxyf  ) },
