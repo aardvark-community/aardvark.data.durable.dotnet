@@ -34,7 +34,7 @@ namespace Aardvark.Data
         /// <summary>
         /// Version.
         /// </summary>
-        public const string Version = "0.4.3";
+        public const string Version = "0.3.15";
     }
 
     /// <summary>

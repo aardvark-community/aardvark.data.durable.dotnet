@@ -8,6 +8,11 @@ namespace Aardvark.Data
     /// </summary>
     public static partial class Durable
     {
+        /// <summary>
+        /// Version.
+        /// </summary>
+        public const string Version = "0.3.15";
+
         /// <summary></summary>
         public static void Init()
         {

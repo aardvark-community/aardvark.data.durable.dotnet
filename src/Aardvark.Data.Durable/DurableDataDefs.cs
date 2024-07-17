@@ -7673,6 +7673,28 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Min and max part index in octree. Range1i.
+        /// </summary>
+        public static readonly Def PartIndexRange = new(
+            new Guid("ad5baa84-26aa-481b-bf64-7861a3bb7012"),
+            "Octree.PartIndexRange",
+            "Octree. Min and max part index in octree. Range1i.",
+            Aardvark.Range1i.Id,
+            false
+            );
+
+        /// <summary>
+        /// Octree. Per-cell part index. Int32.
+        /// </summary>
+        public static readonly Def PerCellPartIndex1i = new(
+            new Guid("915e76fc-30ba-4231-bd19-ecbc1deaccdc"),
+            "Octree.PerCellPartIndex1i",
+            "Octree. Per-cell part index. Int32.",
+            Primitives.Int32.Id,
+            false
+            );
+
+        /// <summary>
         /// Octree. Per-cell part index. UInt32.
         /// </summary>
         public static readonly Def PerCellPartIndex1ui = new(
@@ -8963,35 +8985,35 @@ public static partial class Durable
             );
 
         /// <summary>
-        /// Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[].
+        /// Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V3f[].
         /// </summary>
         public static readonly Def Cir3bRange = new(
             new Guid("af1737d6-8732-4d27-baec-b7446403f006"),
             "Octree.Cir3b.Range",
-            "Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[].",
-            Aardvark.V4fArray.Id,
+            "Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V3f[].",
+            Aardvark.V3fArray.Id,
             true
             );
 
         /// <summary>
-        /// Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[]. Compressed (GZip).
+        /// Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V3f[]. Compressed (GZip).
         /// </summary>
         public static readonly Def Cir3bRangeGz = new(
             new Guid("93464f13-257b-0cf2-c778-94ba779614ec"),
             "Octree.Cir3b.Range.gz",
-            "Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[]. Compressed (GZip).",
-            Aardvark.V4fArrayGz.Id,
+            "Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V3f[]. Compressed (GZip).",
+            Aardvark.V3fArrayGz.Id,
             true
             );
 
         /// <summary>
-        /// Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[]. Compressed (LZ4).
+        /// Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V3f[]. Compressed (LZ4).
         /// </summary>
         public static readonly Def Cir3bRangeLz4 = new(
             new Guid("0edef8a9-7786-45eb-dfb1-cfb91be9082d"),
             "Octree.Cir3b.Range.lz4",
-            "Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V4f[]. Compressed (LZ4).",
-            Aardvark.V4fArrayLz4.Id,
+            "Octree. Per-point colored infrared (CIR) statistics. [min, max, avg, stddev]. V3f[]. Compressed (LZ4).",
+            Aardvark.V3fArrayLz4.Id,
             true
             );
 
