@@ -1,12 +1,29 @@
-### 0.5.0-prerelease0001
+### 0.4.4-prerelease0001
 - Updated to NET 8 and Aardvark.Base 5.3
 
-### 0.4.3
-- pump version to 0.4.3 in order to avoid collision with hidden nuget packages
+### 0.3.15
+- Octree.PartIndexRange, Octree.PerCellPartIndex1i
 
-### 0.4.0
-- Fixed auto-generated guids for .gz and .lz4 arrays, which were previously identical for same names in different categories.
-  In order to break as little as possible, the previous guids are kept for the "Octree" category, which will remap names from other categories to Octree on upgrade/load.
+### 0.3.14
+- fix typo (Octree.Cir3bRange)
+
+### 0.3.13
+- Def.AddAlias
+
+### 0.3.12
+- branch 0.3.x
+
+### 0.3.11
+- fixed version string
+
+### 0.3.10
+- sync with definitions file
+    - add Octree.PerCellPartIndex1ui
+    - add Octree.PerPointPartIndex1[bsi]
+    - add Octree.Cir[34]b (color infrared)
+- dotnet tool update
+- update package Aardvark.Base 5.2.25
+- update package Aardvark.Build 1.0.20
 
 ### 0.3.9
 - sync with definitions file
