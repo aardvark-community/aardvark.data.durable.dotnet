@@ -2,12 +2,12 @@ STORAGE: NONE
 RESTRICTION: || (== net472) (== net8.0) (== netstandard2.0)
 NUGET
   remote: https://api.nuget.org/v3/index.json
-    Aardvark.Base (5.3.0-prerelease0003)
-      Aardvark.Base.Telemetry (5.3.0-prerelease0003)
+    Aardvark.Base (5.3)
+      Aardvark.Base.Telemetry (5.3)
       System.Collections.Immutable (>= 8.0)
       System.Reflection.Metadata (>= 8.0)
       System.Text.Json (>= 8.0.4)
-    Aardvark.Base.Telemetry (5.3.0-prerelease0003)
+    Aardvark.Base.Telemetry (5.3)
     Aardvark.Build (1.0.24)
     FSharp.Core (8.0.100)
     Microsoft.Bcl.AsyncInterfaces (8.0) - restriction: || (== net472) (&& (== net8.0) (>= net462)) (&& (== net8.0) (< net6.0)) (== netstandard2.0)

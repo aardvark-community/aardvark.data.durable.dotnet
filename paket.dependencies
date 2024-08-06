@@ -8,7 +8,7 @@ nuget FSharp.Core                   >= 8.0.0 lowest_matching: true
 nuget System.Memory                 >= 4.5.5 lowest_matching: true
 nuget Microsoft.SourceLink.GitHub   >= 8.0.0 lowest_matching: true
 
-nuget Aardvark.Base                 ~> 5.3.0-prerelease0003
+nuget Aardvark.Base                 ~> 5.3.0
 
 group Test
     framework: net8.0, net472

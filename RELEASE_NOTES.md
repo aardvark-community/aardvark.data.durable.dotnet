@@ -1,5 +1,8 @@
-### 0.4.4-prerelease0001
+### 0.4.4
 - Updated to NET 8 and Aardvark.Base 5.3
+
+### 0.4.4-prerelease0001
+- Updated to NET 8 and Aardvark.Base 5.3 (prerelease)
 
 ### 0.3.15
 - Octree.PartIndexRange, Octree.PerCellPartIndex1i
