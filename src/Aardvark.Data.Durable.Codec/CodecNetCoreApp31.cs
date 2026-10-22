@@ -537,7 +537,7 @@ namespace Aardvark.Data
                 var compressedBufferSize = s.Read<int>();
 
                 var compressedBuffer = new byte[compressedBufferSize];
-                s.Read(compressedBuffer, 0, compressedBufferSize);
+                s.ReadExactly(compressedBuffer, 0, compressedBufferSize);
 
                 var uncompressedBuffer = compressedBuffer.Ungzip(uncompressedBufferSize);
 
