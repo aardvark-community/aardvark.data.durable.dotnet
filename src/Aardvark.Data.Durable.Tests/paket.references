@@ -1,4 +1,4 @@
 Microsoft.NET.Test.Sdk
-xunit
+xunit.v3.mtp-off
 xunit.runner.visualstudio
 coverlet.collector
