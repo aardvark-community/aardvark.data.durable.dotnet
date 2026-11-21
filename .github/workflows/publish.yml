@@ -32,7 +32,7 @@ jobs:
 
       - name: Build
         shell: cmd
-        run: dotnet build -c Release src\Aardvark.Data.Durable.sln
+        run: dotnet build -c Release src\Aardvark.Data.Durable.sln --warnaserror
 
       - name: Test
         run: dotnet test src\Aardvark.Data.Durable.sln -c Release --no-build --nologo --logger:"console;verbosity=normal"

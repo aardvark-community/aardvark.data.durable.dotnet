@@ -1,3 +1,10 @@
+### 0.5.0
+- .NET 10 is the primary supported runtime; netstandard2.0 provides backwards compatibility.
+- Removed the separate net472 codec assembly; .NET Framework compatibility is verified against the netstandard2.0 build.
+- Updated dependencies and local tools, and migrated tests to xUnit.net v3.
+- Declared the immutable collections runtime dependency for reliable package consumption.
+- Renamed codec implementation files and expanded build, test, and publishing documentation.
+
 ### 0.4.4
 - Updated to NET 8 and Aardvark.Base 5.3
 
