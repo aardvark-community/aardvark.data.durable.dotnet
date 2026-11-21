@@ -1,3 +1,6 @@
+### 0.5.1
+- Aardvark.Data.Durable.Codec no longer declares System.Collections.Immutable itself; Aardvark.Base brings it (>= 8.0). 0.5.0 required 11.0 for every target, which F# Interactive on .NET 10 cannot load beside the framework's 10.0.
+
 ### 0.5.0
 - .NET 10 is the primary supported runtime; netstandard2.0 provides backwards compatibility.
 - Removed the separate net472 codec assembly; .NET Framework compatibility is verified against the netstandard2.0 build.

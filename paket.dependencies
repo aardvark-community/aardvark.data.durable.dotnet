@@ -6,7 +6,6 @@ nuget Aardvark.Build                ~> 2.0.7
 
 nuget FSharp.Core                   >= 11.0.101
 nuget System.Memory                 >= 4.6.3
-nuget System.Collections.Immutable  >= 11.0.0
 nuget Microsoft.SourceLink.GitHub   >= 11.0.100 copy_local: true
 
 nuget Aardvark.Base                 ~> 5.3.28

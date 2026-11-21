@@ -102,7 +102,11 @@ these files.
   outputs out of commits. Read versions from the manifests and lockfile rather
   than duplicating them in documentation.
 - Declare runtime packages used directly by a library in its `paket.references`
-  so packing records the required versions. Validate packages with an isolated
+  so packing records the required versions. Packing takes the locked version as
+  the minimum, so do not declare a package a dependency already brings at the
+  version the library needs: 0.5.0 declared System.Collections.Immutable, which
+  Aardvark.Base brings (>= 8.0), and so required 11.0 on every target, newer than
+  .NET 10's own; F# Interactive could not load it. Validate packages with an isolated
   consumer: tests sharing the repository lockfile can hide missing package
   dependencies. Keep its isolated NuGet cache outside the consumer project so
   SDK default file globs do not include package DLLs for unrelated targets.
