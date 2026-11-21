@@ -1204,5 +1204,18 @@ namespace Aardvark.Data.Tests
             Assert.True(ps[0] == V3f.IOO);
             Assert.True(ps[1] == V3f.OIO);
         }
+
+#if NET5_0_OR_GREATER
+        [Fact]
+        public void CodecReferencesNoNewerImmutableCollectionsThanTheRuntimeShips()
+        {
+            // On .NET 10 a consumer may get System.Collections.Immutable only from the shared framework, as F# Interactive
+            // does: a codec built against a newer package (0.5.0 and 0.5.1: 11.0) fails to load it there.
+            var referenced = Array.Find(typeof(DurableCodec).Assembly.GetReferencedAssemblies(), a => a.Name == "System.Collections.Immutable");
+            Assert.NotNull(referenced);
+            Assert.True(referenced.Version.Major <= Environment.Version.Major,
+                $"The codec references System.Collections.Immutable {referenced.Version}; the runtime is {Environment.Version}.");
+        }
+#endif
     }
 }

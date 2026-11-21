@@ -103,10 +103,13 @@ these files.
   than duplicating them in documentation.
 - Declare runtime packages used directly by a library in its `paket.references`
   so packing records the required versions. Packing takes the locked version as
-  the minimum, so do not declare a package a dependency already brings at the
-  version the library needs: 0.5.0 declared System.Collections.Immutable, which
-  Aardvark.Base brings (>= 8.0), and so required 11.0 on every target, newer than
-  .NET 10's own; F# Interactive could not load it. Validate packages with an isolated
+  the minimum, for every target alike. A package that .NET 10's shared framework
+  provides (System.Collections.Immutable) is restricted to the other targets in
+  `paket.dependencies` and locked at a version the .NET 10 SDK prunes (10.0.x):
+  a newer one makes the net10.0 build reference it, and a consumer with only the
+  framework's fails to load it (0.5.0, 0.5.1: 11.0).
+  `SerializationTests.CodecReferencesNoNewerImmutableCollectionsThanTheRuntimeShips`
+  checks it. Validate packages with an isolated
   consumer: tests sharing the repository lockfile can hide missing package
   dependencies. Keep its isolated NuGet cache outside the consumer project so
   SDK default file globs do not include package DLLs for unrelated targets.
