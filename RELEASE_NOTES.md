@@ -1,3 +1,6 @@
+### 0.5.3
+- Time definitions (definitions 5718474): Octree.Times1d (per-point time in seconds since the time origin of the point's part), Generic.TimeSystem and Generic.TimeOriginKind with one Unit-typed definition per value, Generic.TimeOrigin, Generic.TimeRange, Generic.TimeAcquisitionStart, Generic.TimeAcquisitionEnd and Generic.TimeAcquisition, with the Guids pointlike already writes.
+
 ### 0.5.2
 - Aardvark.Data.Durable.Codec for .NET 10 is built against the shared framework's System.Collections.Immutable, no longer the 11.0 package: 0.5.0 and 0.5.1 referenced 11.0, which a .NET 10 consumer without that package (F# Interactive, or 0.5.1's own dependencies) failed to load. The netstandard2.0 build uses and declares 10.0.
 

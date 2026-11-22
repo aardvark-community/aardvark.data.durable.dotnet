@@ -7314,6 +7314,171 @@ public static partial class Durable
             true
             );
 
+        /// <summary>
+        /// Generic. The time system of every time on a record, as the Guid of one of the Generic.TimeSystem.* values. Guid.
+        /// </summary>
+        public static readonly Def TimeSystem = new(
+            new Guid("38fee4cd-a795-41a2-9a42-6358fe044aaf"),
+            "Generic.TimeSystem",
+            "Generic. The time system of every time on a record, as the Guid of one of the Generic.TimeSystem.* values. Guid.",
+            Primitives.GuidDef.Id,
+            false
+            );
+
+        /// <summary>
+        /// GPS time: continuous seconds without leap seconds, traceable to GNSS or an atomic clock. A value of Generic.TimeSystem (38fee4cd-a795-41a2-9a42-6358fe044aaf). Unit.
+        /// </summary>
+        public static readonly Def TimeSystemGps = new(
+            new Guid("c9dec654-3e96-4e39-9c2e-033c9f728b62"),
+            "Generic.TimeSystem.Gps",
+            "GPS time: continuous seconds without leap seconds, traceable to GNSS or an atomic clock. A value of Generic.TimeSystem (38fee4cd-a795-41a2-9a42-6358fe044aaf). Unit.",
+            Primitives.Unit.Id,
+            false
+            );
+
+        /// <summary>
+        /// Seconds by the device's own clock, not traceable to GNSS or an atomic clock. A value of Generic.TimeSystem (38fee4cd-a795-41a2-9a42-6358fe044aaf). Unit.
+        /// </summary>
+        public static readonly Def TimeSystemDeviceClock = new(
+            new Guid("362993d8-5b53-40a8-8867-15f2369bd00c"),
+            "Generic.TimeSystem.DeviceClock",
+            "Seconds by the device's own clock, not traceable to GNSS or an atomic clock. A value of Generic.TimeSystem (38fee4cd-a795-41a2-9a42-6358fe044aaf). Unit.",
+            Primitives.Unit.Id,
+            false
+            );
+
+        /// <summary>
+        /// A local wall-clock reading without a time zone. A value of Generic.TimeSystem (38fee4cd-a795-41a2-9a42-6358fe044aaf). Unit.
+        /// </summary>
+        public static readonly Def TimeSystemLocalWallClock = new(
+            new Guid("667533de-30fc-4bbc-93c9-67d01b0aa560"),
+            "Generic.TimeSystem.LocalWallClock",
+            "A local wall-clock reading without a time zone. A value of Generic.TimeSystem (38fee4cd-a795-41a2-9a42-6358fe044aaf). Unit.",
+            Primitives.Unit.Id,
+            false
+            );
+
+        /// <summary>
+        /// The source does not say which time system its times belong to. A value of Generic.TimeSystem (38fee4cd-a795-41a2-9a42-6358fe044aaf). Unit.
+        /// </summary>
+        public static readonly Def TimeSystemUnknown = new(
+            new Guid("65943667-4c82-453e-8bb4-3bdee1765e94"),
+            "Generic.TimeSystem.Unknown",
+            "The source does not say which time system its times belong to. A value of Generic.TimeSystem (38fee4cd-a795-41a2-9a42-6358fe044aaf). Unit.",
+            Primitives.Unit.Id,
+            false
+            );
+
+        /// <summary>
+        /// Generic. How a record's time origin is defined, as the Guid of one of the Generic.TimeOriginKind.* values. Guid.
+        /// </summary>
+        public static readonly Def TimeOriginKind = new(
+            new Guid("ea0ab541-ab5b-4eaa-84f6-60d0791a7153"),
+            "Generic.TimeOriginKind",
+            "Generic. How a record's time origin is defined, as the Guid of one of the Generic.TimeOriginKind.* values. Guid.",
+            Primitives.GuidDef.Id,
+            false
+            );
+
+        /// <summary>
+        /// The start of a GPS week (LAS GPS week time); the origin is the week times 604800 s once the week is known. A value of Generic.TimeOriginKind (ea0ab541-ab5b-4eaa-84f6-60d0791a7153). Unit.
+        /// </summary>
+        public static readonly Def TimeOriginKindGpsWeekStart = new(
+            new Guid("2d860768-a853-4850-9ac8-20475382cd54"),
+            "Generic.TimeOriginKind.GpsWeekStart",
+            "The start of a GPS week (LAS GPS week time); the origin is the week times 604800 s once the week is known. A value of Generic.TimeOriginKind (ea0ab541-ab5b-4eaa-84f6-60d0791a7153). Unit.",
+            Primitives.Unit.Id,
+            false
+            );
+
+        /// <summary>
+        /// Standard GPS time minus an offset the source states (LAS adjusted standard GPS time: 1e9 s); the origin is that offset. A value of Generic.TimeOriginKind (ea0ab541-ab5b-4eaa-84f6-60d0791a7153). Unit.
+        /// </summary>
+        public static readonly Def TimeOriginKindAdjustedStandardGps = new(
+            new Guid("e2a43ad5-a3a5-4772-aae6-56c4601e16fc"),
+            "Generic.TimeOriginKind.AdjustedStandardGps",
+            "Standard GPS time minus an offset the source states (LAS adjusted standard GPS time: 1e9 s); the origin is that offset. A value of Generic.TimeOriginKind (ea0ab541-ab5b-4eaa-84f6-60d0791a7153). Unit.",
+            Primitives.Unit.Id,
+            false
+            );
+
+        /// <summary>
+        /// The record's acquisition start (E57 timeStamp); the origin is that instant. A value of Generic.TimeOriginKind (ea0ab541-ab5b-4eaa-84f6-60d0791a7153). Unit.
+        /// </summary>
+        public static readonly Def TimeOriginKindAcquisitionStart = new(
+            new Guid("5f492797-2635-4336-937f-047ca2ca0eda"),
+            "Generic.TimeOriginKind.AcquisitionStart",
+            "The record's acquisition start (E57 timeStamp); the origin is that instant. A value of Generic.TimeOriginKind (ea0ab541-ab5b-4eaa-84f6-60d0791a7153). Unit.",
+            Primitives.Unit.Id,
+            false
+            );
+
+        /// <summary>
+        /// The source does not say where its times count from. A value of Generic.TimeOriginKind (ea0ab541-ab5b-4eaa-84f6-60d0791a7153). Unit.
+        /// </summary>
+        public static readonly Def TimeOriginKindUnknown = new(
+            new Guid("0c6b7bca-1e24-4da6-b5f7-6fad01e10da1"),
+            "Generic.TimeOriginKind.Unknown",
+            "The source does not say where its times count from. A value of Generic.TimeOriginKind (ea0ab541-ab5b-4eaa-84f6-60d0791a7153). Unit.",
+            Primitives.Unit.Id,
+            false
+            );
+
+        /// <summary>
+        /// Generic. A record's time origin in seconds since 1980-01-06T00:00:00 in the record's time system. Float64.
+        /// </summary>
+        public static readonly Def TimeOrigin = new(
+            new Guid("771cae80-5887-4ffd-80c4-8dd86fd91d74"),
+            "Generic.TimeOrigin",
+            "Generic. A record's time origin in seconds since 1980-01-06T00:00:00 in the record's time system. Float64.",
+            Primitives.Float64.Id,
+            false
+            );
+
+        /// <summary>
+        /// Generic. Minimum and maximum of a record's supplied per-point times, in seconds since its time origin. Range1d.
+        /// </summary>
+        public static readonly Def TimeRange = new(
+            new Guid("97683369-6931-4661-80f3-5902d785b1b7"),
+            "Generic.TimeRange",
+            "Generic. Minimum and maximum of a record's supplied per-point times, in seconds since its time origin. Range1d.",
+            Aardvark.Range1d.Id,
+            false
+            );
+
+        /// <summary>
+        /// Generic. A record's acquisition start in seconds since 1980-01-06T00:00:00 in the record's time system. Float64.
+        /// </summary>
+        public static readonly Def TimeAcquisitionStart = new(
+            new Guid("e1d2cc2e-6573-4ced-a1b5-064acf62d0ad"),
+            "Generic.TimeAcquisitionStart",
+            "Generic. A record's acquisition start in seconds since 1980-01-06T00:00:00 in the record's time system. Float64.",
+            Primitives.Float64.Id,
+            false
+            );
+
+        /// <summary>
+        /// Generic. A record's acquisition end in seconds since 1980-01-06T00:00:00 in the record's time system. Float64.
+        /// </summary>
+        public static readonly Def TimeAcquisitionEnd = new(
+            new Guid("fc0ba37d-5c33-4571-85b1-6dea55a4c277"),
+            "Generic.TimeAcquisitionEnd",
+            "Generic. A record's acquisition end in seconds since 1980-01-06T00:00:00 in the record's time system. Float64.",
+            Primitives.Float64.Id,
+            false
+            );
+
+        /// <summary>
+        /// Generic. When a record was acquired, in seconds since 1980-01-06T00:00:00 in the record's time system. Float64.
+        /// </summary>
+        public static readonly Def TimeAcquisition = new(
+            new Guid("8a7dd12c-8076-417b-8533-2ba062632fb0"),
+            "Generic.TimeAcquisition",
+            "Generic. When a record was acquired, in seconds since 1980-01-06T00:00:00 in the record's time system. Float64.",
+            Primitives.Float64.Id,
+            false
+            );
+
     }
     /// <summary></summary>
     public static class Octree
@@ -9796,6 +9961,39 @@ public static partial class Durable
             "Octree. Reference to Aardvark.Geometry.PointRkdTreeDData.",
             Primitives.GuidDef.Id,
             false
+            );
+
+        /// <summary>
+        /// Octree. Per-point acquisition time in seconds since the time origin of the point's part. Float64[].
+        /// </summary>
+        public static readonly Def Times1d = new(
+            new Guid("cd0fcb5f-f830-4df2-97a8-b3a7970e9ef8"),
+            "Octree.Times1d",
+            "Octree. Per-point acquisition time in seconds since the time origin of the point's part. Float64[].",
+            Primitives.Float64Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point acquisition time in seconds since the time origin of the point's part. Float64[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def Times1dGz = new(
+            new Guid("dc861e30-6552-fcdd-146c-0437c1cd963e"),
+            "Octree.Times1d.gz",
+            "Octree. Per-point acquisition time in seconds since the time origin of the point's part. Float64[]. Compressed (GZip).",
+            Primitives.Float64ArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point acquisition time in seconds since the time origin of the point's part. Float64[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def Times1dLz4 = new(
+            new Guid("79992270-b712-3eb9-65b3-1a041d065fa2"),
+            "Octree.Times1d.lz4",
+            "Octree. Per-point acquisition time in seconds since the time origin of the point's part. Float64[]. Compressed (LZ4).",
+            Primitives.Float64ArrayLz4.Id,
+            true
             );
 
     }
