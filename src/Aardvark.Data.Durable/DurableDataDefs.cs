@@ -9436,6 +9436,138 @@ public static partial class Durable
             );
 
         /// <summary>
+        /// Octree. Per-point intensities. Int16[].
+        /// </summary>
+        public static readonly Def Intensities1s = new(
+            new Guid("3d70a06f-7e48-4b0a-a371-a4040999e98c"),
+            "Octree.Intensities1s",
+            "Octree. Per-point intensities. Int16[].",
+            Primitives.Int16Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point intensities. Int16[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def Intensities1sGz = new(
+            new Guid("ff31b602-2c1f-cfc4-8700-e18829d7cbd6"),
+            "Octree.Intensities1s.gz",
+            "Octree. Per-point intensities. Int16[]. Compressed (GZip).",
+            Primitives.Int16ArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point intensities. Int16[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def Intensities1sLz4 = new(
+            new Guid("cb8afcba-0899-c330-bc06-d679503c3177"),
+            "Octree.Intensities1s.lz4",
+            "Octree. Per-point intensities. Int16[]. Compressed (LZ4).",
+            Primitives.Int16ArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point intensities. UInt16[].
+        /// </summary>
+        public static readonly Def Intensities1us = new(
+            new Guid("bf58adf5-43a6-41db-90f2-54f03ba85f66"),
+            "Octree.Intensities1us",
+            "Octree. Per-point intensities. UInt16[].",
+            Primitives.UInt16Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point intensities. UInt16[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def Intensities1usGz = new(
+            new Guid("27b4ea6b-f0e4-c193-80de-0900af44c739"),
+            "Octree.Intensities1us.gz",
+            "Octree. Per-point intensities. UInt16[]. Compressed (GZip).",
+            Primitives.UInt16ArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point intensities. UInt16[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def Intensities1usLz4 = new(
+            new Guid("535e1c6b-1a91-681e-f090-72ca25da2586"),
+            "Octree.Intensities1us.lz4",
+            "Octree. Per-point intensities. UInt16[]. Compressed (LZ4).",
+            Primitives.UInt16ArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point intensities. UInt32[].
+        /// </summary>
+        public static readonly Def Intensities1ui = new(
+            new Guid("9e64f8a0-17e7-43ac-9539-80e87f97d056"),
+            "Octree.Intensities1ui",
+            "Octree. Per-point intensities. UInt32[].",
+            Primitives.UInt32Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point intensities. UInt32[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def Intensities1uiGz = new(
+            new Guid("37b33ac4-8382-8a0e-9fe4-e7b9a38ac63c"),
+            "Octree.Intensities1ui.gz",
+            "Octree. Per-point intensities. UInt32[]. Compressed (GZip).",
+            Primitives.UInt32ArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point intensities. UInt32[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def Intensities1uiLz4 = new(
+            new Guid("46c2825a-5218-b8e0-524c-9c7e83e5c3c3"),
+            "Octree.Intensities1ui.lz4",
+            "Octree. Per-point intensities. UInt32[]. Compressed (LZ4).",
+            Primitives.UInt32ArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point intensities. Float64[].
+        /// </summary>
+        public static readonly Def Intensities1d = new(
+            new Guid("447fd0be-0dc0-478f-b2bf-b8b3807c5553"),
+            "Octree.Intensities1d",
+            "Octree. Per-point intensities. Float64[].",
+            Primitives.Float64Array.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point intensities. Float64[]. Compressed (GZip).
+        /// </summary>
+        public static readonly Def Intensities1dGz = new(
+            new Guid("f92540a3-a422-d203-ac70-790608118cce"),
+            "Octree.Intensities1d.gz",
+            "Octree. Per-point intensities. Float64[]. Compressed (GZip).",
+            Primitives.Float64ArrayGz.Id,
+            true
+            );
+
+        /// <summary>
+        /// Octree. Per-point intensities. Float64[]. Compressed (LZ4).
+        /// </summary>
+        public static readonly Def Intensities1dLz4 = new(
+            new Guid("1fa03115-ec3f-ddaf-b556-a97da8b399d3"),
+            "Octree.Intensities1d.lz4",
+            "Octree. Per-point intensities. Float64[]. Compressed (LZ4).",
+            Primitives.Float64ArrayLz4.Id,
+            true
+            );
+
+        /// <summary>
         /// Octree. Per-point intensities with offset stored as Octree.IntensitiesWithOffset1f.Offset. Float32[].
         /// </summary>
         public static readonly Def IntensitiesWithOffset1f = new(

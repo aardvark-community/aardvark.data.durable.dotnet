@@ -1,3 +1,6 @@
+### 0.5.4
+- Octree intensity definitions for every element type (definitions 17db5ba): Octree.Intensities1s (Int16[]), Octree.Intensities1us (UInt16[]), Octree.Intensities1ui (UInt32[]) and Octree.Intensities1d (Float64[]), beside Octree.Intensities1b, 1i and 1f, each with its .gz and .lz4 encodings, so a reader stores and keeps a source's intensity type.
+
 ### 0.5.3
 - Time definitions (definitions 5718474): Octree.Times1d (per-point time in seconds since the time origin of the point's part), Generic.TimeSystem and Generic.TimeOriginKind with one Unit-typed definition per value, Generic.TimeOrigin, Generic.TimeRange, Generic.TimeAcquisitionStart, Generic.TimeAcquisitionEnd and Generic.TimeAcquisition, with the Guids pointlike already writes.
 

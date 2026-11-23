@@ -63,6 +63,25 @@ namespace Aardvark.Data.Tests
         }
 
         [Fact]
+        public void IntensityDefinitionsCoverEveryWidth()
+        {
+            // One octree intensity definition per element type, so a reader keeps a source's type.
+            Assert.Equal(Durable.Primitives.UInt8Array.Id, Durable.Octree.Intensities1b.Type);
+            Assert.Equal(Durable.Primitives.Int16Array.Id, Durable.Octree.Intensities1s.Type);
+            Assert.Equal(Durable.Primitives.UInt16Array.Id, Durable.Octree.Intensities1us.Type);
+            Assert.Equal(Durable.Primitives.Int32Array.Id, Durable.Octree.Intensities1i.Type);
+            Assert.Equal(Durable.Primitives.UInt32Array.Id, Durable.Octree.Intensities1ui.Type);
+            Assert.Equal(Durable.Primitives.Float32Array.Id, Durable.Octree.Intensities1f.Type);
+            Assert.Equal(Durable.Primitives.Float64Array.Id, Durable.Octree.Intensities1d.Type);
+            Assert.Equal(new Guid("3d70a06f-7e48-4b0a-a371-a4040999e98c"), Durable.Octree.Intensities1s.Id);
+            Assert.Equal(new Guid("bf58adf5-43a6-41db-90f2-54f03ba85f66"), Durable.Octree.Intensities1us.Id);
+            Assert.Equal(new Guid("9e64f8a0-17e7-43ac-9539-80e87f97d056"), Durable.Octree.Intensities1ui.Id);
+            Assert.Equal(new Guid("447fd0be-0dc0-478f-b2bf-b8b3807c5553"), Durable.Octree.Intensities1d.Id);
+            Assert.Equal(Durable.Primitives.UInt16ArrayGz.Id, Durable.Octree.Intensities1usGz.Type);
+            Assert.Equal(Durable.Primitives.Float64ArrayGz.Id, Durable.Octree.Intensities1dGz.Type);
+        }
+
+        [Fact]
         public void AliasTest()
         {
             var a = new Durable.Def(Guid.NewGuid(), "test", "test", Durable.Primitives.Unit.Id, false);
