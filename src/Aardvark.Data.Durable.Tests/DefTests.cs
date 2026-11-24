@@ -82,6 +82,20 @@ namespace Aardvark.Data.Tests
         }
 
         [Fact]
+        public void ScaledIntensityDefinitionsHoldRawIntegersWithScaleAndOffset()
+        {
+            // Raw integers with one scale and offset per node keep an E57 ScaledInteger intensity exact in 2 bytes.
+            Assert.Equal(Durable.Primitives.UInt16Array.Id, Durable.Octree.IntensitiesScaled1us.Type);
+            Assert.Equal(Durable.Primitives.Float64.Id, Durable.Octree.IntensitiesScaled1usScale.Type);
+            Assert.Equal(Durable.Primitives.Float64.Id, Durable.Octree.IntensitiesScaled1usOffset.Type);
+            Assert.Equal(new Guid("f4a182f1-34dd-40b6-a268-2144a9ab2393"), Durable.Octree.IntensitiesScaled1us.Id);
+            Assert.Equal(new Guid("cee531fd-1842-4d26-a856-a5f6e839f2e4"), Durable.Octree.IntensitiesScaled1usScale.Id);
+            Assert.Equal(new Guid("2ce16e5e-bcef-46d7-8622-b46ae1a420db"), Durable.Octree.IntensitiesScaled1usOffset.Id);
+            Assert.Equal(Durable.Primitives.UInt16ArrayGz.Id, Durable.Octree.IntensitiesScaled1usGz.Type);
+            Assert.Equal("Octree.IntensitiesScaled1us.Scale", Durable.Octree.IntensitiesScaled1usScale.Name);
+        }
+
+        [Fact]
         public void AliasTest()
         {
             var a = new Durable.Def(Guid.NewGuid(), "test", "test", Durable.Primitives.Unit.Id, false);

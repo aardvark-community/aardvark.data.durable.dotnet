@@ -1,3 +1,6 @@
+### 0.5.5
+- Octree intensities as scaled raw integers (definitions 6e69335): Octree.IntensitiesScaled1us (UInt16[]) with Octree.IntensitiesScaled1us.Scale and Octree.IntensitiesScaled1us.Offset (Float64 per node); intensity = raw * scale + offset, as E57 ScaledInteger stores it.
+
 ### 0.5.4
 - Octree intensity definitions for every element type (definitions 17db5ba): Octree.Intensities1s (Int16[]), Octree.Intensities1us (UInt16[]), Octree.Intensities1ui (UInt32[]) and Octree.Intensities1d (Float64[]), beside Octree.Intensities1b, 1i and 1f, each with its .gz and .lz4 encodings, so a reader stores and keeps a source's intensity type.
 
